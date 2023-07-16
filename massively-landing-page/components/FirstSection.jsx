@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import mainImg from "@/public/images/main-section.jpg"
+import DarkButton from './DarkButton'
 
 export default function FirstSection() {
   return (
@@ -18,9 +19,7 @@ export default function FirstSection() {
         height="500"
       />
 
-      <button className="border border-2 border-dark text-dark bg-white text-uppercase py-2 px-4 my-3 mx-auto">
-        Full Story
-      </button>
+      <DarkButton />
 
     </section>
   )
