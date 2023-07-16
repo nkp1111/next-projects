@@ -4,7 +4,6 @@ import stories from "@/constant/stories"
 import DarkButton from "./DarkButton"
 import Image from "next/image"
 import { Pagination } from "nextjs-pagination";
-import { useState } from "react";
 
 export default function SecondSection() {
   return (
@@ -15,22 +14,24 @@ export default function SecondSection() {
           <Items currentItems={stories} />
         </div>
       </div>
-      <Pagination
-        totalItems={500}
-        itemsPerPage={20}
-        // onPageChange={handlePageChange}
-        color="#333"
-        shape="square"
-        buttonCount={10}
-        showNextPrev={true}
-        showFirstLast={false}
-        // onSuccess={(page: number) => console.log("Current page: ", page)}
-        // onError={(error: Error) => console.error(error)}
-        // firstText="First"
-        // lastText="Last"
-        // prevText="Prev"
-        nextText="Next >"
-      />
+      <div className="d-flex justify-content-center">
+        <Pagination
+          totalItems={500}
+          itemsPerPage={20}
+          // onPageChange={handlePageChange}
+          color="#333"
+          shape="square"
+          buttonCount={10}
+          showNextPrev={true}
+          showFirstLast={false}
+          // onSuccess={(page: number) => console.log("Current page: ", page)}
+          // onError={(error: Error) => console.error(error)}
+          // firstText="First"
+          // lastText="Last"
+          // prevText="Prev"
+          nextText="Next >"
+        />
+      </div>
     </section>
   )
 }
@@ -41,7 +42,7 @@ export function Items({ currentItems }) {
     <>
       {currentItems &&
         currentItems.map((item) => (
-          <article key={item.id} className="card col col-6 text-center rounded-0">
+          <article key={item.id} className="card col col-lg-6 col-12 text-center rounded-0">
             <h3>{item.title}</h3>
             <Image
               src={item.image}
@@ -51,7 +52,7 @@ export function Items({ currentItems }) {
               className="m-auto"
             />
             <p>{item.description}</p>
-            <DarkButton />
+            <DarkButton text={'Full Story'} />
           </article>
         ))}
     </>
