@@ -1,13 +1,16 @@
 import { navData, navIcons } from "@/constant/navdata"
+import styles from "@/app/utils.module.css"
 
 export default function Navbar() {
   return (
-    <nav className="navbar bg-dark text-white p-0" >
+    <nav className={`p-0 ${styles.navbar}`} >
       <div className="container-fluid d-flex justify-content-between p-0">
-        <ul className="navbar-nav flex-row p-0">
+        <ul className="navbar-nav flex-row p-0 h-100">
           {navData.map(item => (
             <li key={item.id} className={`${item.id === 1 && "text-dark bg-white"} p-2 px-3`}>
-              <a href={item.link} className="nav-link text-uppercase">{item.name}</a>
+              <h3 className={`${item.id !== 1 ? "text-white" : "text-black"} `}>
+                <a href={item.link} className={`nav-link text-uppercase`}>{item.name}</a>
+              </h3>
             </li>
           ))}
         </ul>
@@ -15,9 +18,11 @@ export default function Navbar() {
         <ul className="navbar-nav flex-row gap-2">
           {navIcons.map(item => (
             <li key={item.id} className={`nav-item p-2 ${item.id === 4 && "pe-4"}`}>
-              <a href={item.link} className="nav-link">
-                {<item.icon className="text-white" />}
-              </a>
+              <h3 className="m-0">
+                <a href={item.link} className="nav-link">
+                  {<item.icon className={`text-white fs-5 ${styles.icon}`} />}
+                </a>
+              </h3>
             </li>
           ))}
         </ul>

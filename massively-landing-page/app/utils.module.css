@@ -1,10 +1,50 @@
-.man_container {
-  width: 80%;
+.front_page {
+  height: 80vh;
+  padding-top: 30vh;
+}
+
+.front_text {
+  width: 50%;
   margin: auto;
 }
 
+.man_container {
+  width: 80%;
+  margin: auto;
+  background-color: var(--bg-light-gray-white);
+}
+
+.navbar {
+  background-color: var(--bg-dark-black);
+  color: var(--bg-white);
+}
+
+.icon,
+.dark_btn {
+  transition: all 0.3s linear;
+}
+
+.icon:hover {
+  scale: 1.05;
+}
+
+.dark_btn:hover {
+  opacity: 0.8;
+}
+
 @media screen and (max-width: 768px) {
+  .front_text {
+    width: 80%;
+  }
+
   .man_container {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .front_text {
+    width: 95%;
+    margin: 0;
   }
 }

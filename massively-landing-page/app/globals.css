@@ -58,15 +58,43 @@ a {
   src: url("../public/fonts/SourceSansPro-Black.ttf") format("truetype");
 }
 
-:root {}
+:root {
+
+  /* fonts  */
+  --base-font-size: 16px;
+  --font-sourcesan: "SourceSansPro-black";
+  --font-merri-light: "Merriweather-light";
+  --font-merri-light-italic: "Merriweather-lightItalic";
+  --font-merri-bold: "Merriweather-bold";
+  --font-merri-bold-italic: "Merriweather-boldItalic";
+
+  /* background colors  */
+  --bg-dark-black: #1e252d;
+  --bg-light-gray-white: #eee;
+  --bg-very-light-white: #f5f5f5;
+
+  /* text colors  */
+  --text-black: #000;
+  --text-light-black: #1e252d;
+  --text-blue-gray: #909498;
+  --text-dark-blue-gray: #717981;
+
+  /* background and text colors  */
+  --bg-white: #fff;
+  --bg-dark: #212931;
+
+}
 
 body {
   width: 100vw;
   min-height: 100vh;
-  font-family: "SourceSansPro-black";
+  font-family: var(--font-merri-light), Arial, Helvetica, sans-serif;
   background: url("../public/images/bg.jpg");
   position: relative;
   overflow-x: hidden;
+  font-size: var(--base-font-size);
+  line-height: 2;
+  color: var(--bg-dark);
 }
 
 body::before {
@@ -76,6 +104,51 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("../public/images/overlay.png");
+  background-image: url("../public/images/overlay.png");
+  background-color: #2129317a;
   z-index: -1;
+}
+
+h1,
+h2,
+h3,
+label,
+button {
+  font-family: var(--font-sourcesan), Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  color: var(--bg-white);
+  font-size: 80px;
+  line-height: 1;
+}
+
+h2 {
+  color: var(--bg-dark);
+  font-size: 64px;
+  line-height: 1.1;
+  width: 50%;
+  margin: auto;
+}
+
+h3 {
+  color: var(--text-dark-blue-gray);
+  font-size: 12px;
+}
+
+@media screen and (max-width: 768px) {
+  h2 {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 45px;
+  }
+
+  h2 {
+    font-size: 35px;
+  }
 }
