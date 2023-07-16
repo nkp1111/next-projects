@@ -51,4 +51,21 @@
     width: 95%;
     margin: 0;
   }
+
+  .navbar>div {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar ul {
+    width: 100%;
+  }
+
+  .navbar ul:first-child {
+    justify-content: space-between;
+  }
+
+  .navbar ul:last-child {
+    justify-content: center;
+  }
 }
