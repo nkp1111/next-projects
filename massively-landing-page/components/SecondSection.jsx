@@ -5,6 +5,13 @@ import DarkButton from "./DarkButton"
 import Image from "next/image"
 import { Pagination } from "nextjs-pagination";
 
+const paginationBtnStyles = {
+  margin: 0,
+  border: "1px solid #717981",
+  background: "transparent",
+  color: "#212931"
+}
+
 export default function SecondSection() {
   return (
     <section>
@@ -14,12 +21,14 @@ export default function SecondSection() {
           <Items currentItems={stories} />
         </div>
       </div>
-      <div className="d-flex justify-content-center">
+
+      <div className="d-flex justify-content-center my-5 py-5">
         <Pagination
+          currentItems={1}
           totalItems={500}
           itemsPerPage={20}
           // onPageChange={handlePageChange}
-          color="#333"
+          color="#212931"
           shape="square"
           buttonCount={10}
           showNextPrev={true}
@@ -29,6 +38,7 @@ export default function SecondSection() {
           // firstText="First"
           // lastText="Last"
           // prevText="Prev"
+          customStyles={paginationBtnStyles}
           nextText="Next >"
         />
       </div>
@@ -42,16 +52,17 @@ export function Items({ currentItems }) {
     <>
       {currentItems &&
         currentItems.map((item) => (
-          <article key={item.id} className="card col col-lg-6 col-12 text-center rounded-0">
-            <h3>{item.title}</h3>
+          <article key={item.id} className="card col col-lg-6 col-12 text-center rounded-0 p-5">
+            <div className="fst-italic">{item.date}</div>
+            <h3 className="text-uppercase my-3">{item.title}</h3>
             <Image
               src={item.image}
               alt={item.title}
-              width={500}
-              height={400}
+              width={450}
+              height={250}
               className="m-auto"
             />
-            <p>{item.description}</p>
+            <p className="mt-4">{item.description}</p>
             <DarkButton text={'Full Story'} />
           </article>
         ))}

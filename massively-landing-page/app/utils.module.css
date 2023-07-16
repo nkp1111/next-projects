@@ -15,7 +15,7 @@
 }
 
 .navbar {
-  background-color: var(--bg-dark-black);
+  background-color: var(--bg-dark);
   color: var(--bg-white);
 }
 
@@ -30,6 +30,10 @@
 
 .dark_btn:hover {
   opacity: 0.8;
+}
+
+.third_section {
+  background-color: var(--bg-very-light-white);
 }
 
 @media screen and (max-width: 768px) {

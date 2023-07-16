@@ -4,7 +4,7 @@ import DarkButton from './DarkButton'
 
 export default function FirstSection() {
   return (
-    <section className='text-center d-flex flex-column'>
+    <section className='text-center d-flex flex-column pb-5'>
       <div className='my-5'>April 25, 2017</div>
       <h2 className='text-uppercase'>and this is a massive headline</h2>
       <p className='fst-italic my-4 w-50 mx-auto'>
@@ -20,7 +20,6 @@ export default function FirstSection() {
       />
 
       <DarkButton text="full story" />
-
     </section>
   )
 }

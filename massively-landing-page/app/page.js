@@ -18,9 +18,9 @@ export default function Home() {
           <FirstSection />
           <SecondSection />
           <ThirdSection />
-          <Footer />
         </div>
       </div>
+      <Footer />
     </main>
   )
 }

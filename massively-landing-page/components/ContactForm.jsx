@@ -3,17 +3,17 @@ import DarkButton from "./DarkButton";
 export default function ContactForm() {
   return (
     <form>
-      <div class="mb-3">
-        <label for="name" class="form-label">NAME</label>
-        <input type="text" class="form-control" id="name" />
+      <div className="mb-3">
+        <label htmlFor="name" className="form-label fs-5">NAME</label>
+        <input type="text" className="form-control" id="name" />
       </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">EMAIL</label>
-        <input type="email" class="form-control" id="email" />
+      <div className="mb-3">
+        <label htmlFor="email" className="form-label fs-5">EMAIL</label>
+        <input type="email" className="form-control" id="email" />
       </div>
-      <div class="mb-3">
-        <label for="message" class="form-label">MESSAGE</label>
-        <textarea type="text" class="form-control" id="message" ></textarea>
+      <div className="mb-3">
+        <label htmlFor="message" className="form-label fs-5">MESSAGE</label>
+        <textarea className="form-control" id="message" ></textarea>
       </div>
 
       <DarkButton text={"send message"} />
