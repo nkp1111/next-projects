@@ -1,8 +1,12 @@
-import FrontPage from "@/components/FrontPage";
-import Navbar from "@/components/Navbar";
 import style from "./utils.module.css"
-import FirstSection from "@/components/FirstSection";
-import SecondSection from "@/components/SecondSection";
+import {
+  FirstSection,
+  FrontPage,
+  Navbar,
+  SecondSection,
+  ThirdSection,
+  Footer,
+} from "@/components"
 
 export default function Home() {
   return (
@@ -13,7 +17,8 @@ export default function Home() {
           <Navbar />
           <FirstSection />
           <SecondSection />
-
+          <ThirdSection />
+          <Footer />
         </div>
       </div>
     </main>
