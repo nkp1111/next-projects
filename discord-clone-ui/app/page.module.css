@@ -1,0 +1,45 @@
+/* cover page  */
+.center_bg_img {
+  background: url("../public/assets/center_bg_landing_header.svg") center bottom/ contain no-repeat;
+  background-color: var(--violet-shade-2);
+  height: 100vh;
+}
+
+.main_bg_parent {
+  position: relative;
+  height: 100%;
+  padding-top: 7vh;
+  padding-bottom: 30vh;
+}
+
+.main_bg_parent p {
+  width: 50%;
+  margin: auto;
+}
+
+@media screen and (max-width:500px) {
+  .main_bg_parent p {
+    width: 90%;
+  }
+}
+
+.left_bg_img,
+.right_bg_img {
+  position: absolute;
+  bottom: 0;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  width: 30vw;
+  aspect-ratio: 41/24;
+  /* z-index: -1; */
+}
+
+.left_bg_img {
+  background: url("../public/assets/left_bg_landing_header.svg") center center/ cover;
+  left: 0;
+}
+
+.right_bg_img {
+  background: url("../public/assets/right_bg_landing_header.svg") center center/ cover;
+  right: 0;
+}
