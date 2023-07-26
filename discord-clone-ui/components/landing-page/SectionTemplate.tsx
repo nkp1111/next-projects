@@ -7,12 +7,13 @@ type SectionType = {
   title: string,
   text: string,
   image: string,
-  dir?: string,
+  ind: number,
 }
 
 
-export default function SectionTemplate({ title, text, image, dir = 'rtl' }: SectionType) {
-  const [width, setWidth] = useState(0)
+export default function SectionTemplate({ title, text, image, ind }: SectionType) {
+  const [width, setWidth] = useState(0);
+  const dir = ind % 2 === 0 ? "rtl" : "ltr"
 
   useEffect(() => {
     const handleWidth = () => {
@@ -24,10 +25,11 @@ export default function SectionTemplate({ title, text, image, dir = 'rtl' }: Sec
   }, []);
 
   return (
-    <section>
+    <section className={`${ind % 2 !== 0 ? 'dark' : ''}`}>
       <div className="container">
         <div className="row">
-          <div className={`col col-md-5 col-12 d-flex justify-content-center flex-column ${width > 768 && dir === 'rtl' && 'order-2'}`}>
+          <div className={`col col-md-5 col-12 d-flex justify-content-center flex-column 
+          ${width > 768 && dir === 'rtl' && 'order-2'}`}>
             <h2 className='text-start fw-bold'>{title}</h2>
             <p>{text}</p>
           </div>

@@ -43,3 +43,12 @@
   background: url("../public/assets/right_bg_landing_header.svg") center center/ cover;
   right: 0;
 }
+
+
+
+/* section  */
+.last_section {}
+
+.last_section button {
+  background: var(--violet-shade-2);
+}

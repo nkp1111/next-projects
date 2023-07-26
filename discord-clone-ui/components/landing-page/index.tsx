@@ -4,6 +4,7 @@ import CoverPage from './CoverPage'
 import SectionTemplate from './SectionTemplate'
 import styles from '@/app/page.module.css'
 import { sectionData } from '@/constant/sectionData'
+import LastSection from './LastSection'
 
 export default function LandingPage() {
   return (
@@ -11,13 +12,14 @@ export default function LandingPage() {
       <Header />
       <main>
         <CoverPage />
-        {sectionData.map((item, ind) => (
+        {sectionData.slice(0, 3).map((item, ind) => (
           <SectionTemplate
             key={item.id}
             {...item}
-            dir={ind % 2 === 0 ? "rtl" : "ltr"}
+            ind={ind}
           />
         ))}
+        <LastSection />
       </main>
     </div>
   )
