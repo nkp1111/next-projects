@@ -2,7 +2,7 @@
 .center_bg_img {
   background: url("../public/assets/center_bg_landing_header.svg") center bottom/ contain no-repeat;
   background-color: var(--violet-shade-2);
-  height: 100vh;
+  height: 95vh;
 }
 
 .main_bg_parent {
@@ -29,7 +29,7 @@
   bottom: 0;
   object-fit: cover;
   background-repeat: no-repeat;
-  width: 30vw;
+  width: 35vw;
   aspect-ratio: 41/24;
   /* z-index: -1; */
 }
