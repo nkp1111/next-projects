@@ -12,7 +12,7 @@ export default function LastSection() {
       <div className="container">
         <div className="row">
           <div className={`col col-12 text-center`}>
-            <h2 className='fw-bold'>{title}</h2>
+            <h2 className='fw-bold text-uppercase'>{title}</h2>
             <p>{text}</p>
           </div>
           <div className='col col-12'>

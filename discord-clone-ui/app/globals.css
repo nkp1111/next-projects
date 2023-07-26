@@ -85,8 +85,7 @@ main {
   min-height: 75vh;
 }
 
-header,
-footer {
+header {
   padding: 1rem var(--main-padding-x);
 }
 
@@ -110,4 +109,26 @@ h2 {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+footer {
+  background-color: var(--black-shade-1);
+  padding: 5vh var(--main-padding-x);
+}
+
+footer h3 {
+  color: var(--violet-shade-1);
+  font-size: 2rem;
+}
+
+footer .text-head {
+  color: var(--violet-shade-2);
+}
+
+footer hr {
+  border: 2px solid var(--violet-shade-1);
+}
+
+footer button {
+  background: var(--violet-shade-1);
 }

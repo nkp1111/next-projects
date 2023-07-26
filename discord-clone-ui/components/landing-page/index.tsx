@@ -5,6 +5,7 @@ import SectionTemplate from './SectionTemplate'
 import styles from '@/app/page.module.css'
 import { sectionData } from '@/constant/sectionData'
 import LastSection from './LastSection'
+import Footer from './Footer'
 
 export default function LandingPage() {
   return (
@@ -20,6 +21,7 @@ export default function LandingPage() {
           />
         ))}
         <LastSection />
+        <Footer />
       </main>
     </div>
   )
