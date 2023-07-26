@@ -21,7 +21,7 @@ export default function LastSection() {
               alt="."
               width={900}
               height={400}
-              className='d-block m-auto'
+              className='d-block m-auto last-section-image'
             />
           </div>
           <div className={`col col-12 text-center`}>

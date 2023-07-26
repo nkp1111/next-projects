@@ -7,7 +7,6 @@
 
 .main_bg_parent {
   position: relative;
-  height: 100%;
   padding-top: 7vh;
   padding-bottom: 30vh;
 }
@@ -30,6 +29,7 @@
   object-fit: cover;
   background-repeat: no-repeat;
   width: 35vw;
+  min-width: 350px;
   aspect-ratio: 41/24;
   /* z-index: -1; */
 }
@@ -45,10 +45,30 @@
 }
 
 
+@media screen and (max-width: 768px) {
+  .center_bg_img {
+    height: 100vh;
+  }
+
+  .left_bg_img {
+    display: none;
+  }
+
+  .right_bg_img {
+    bottom: 5vh;
+  }
+}
+
 
 /* section  */
 .last_section {}
 
 .last_section button {
   background: var(--violet-shade-2);
+}
+
+@media screen and (max-width: 768px) {
+  .last_section div>img {
+    height: 200px;
+  }
 }

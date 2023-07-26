@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className='text-white'>
       <div className="container">
         <div className="row">
-          <div className="col col-3 flex-col">
+          <div className="col col-md-3 col-12 footer-head">
             <h3 className='text-uppercase fw-bold'>imagine a place</h3>
             <p>
               <Image
@@ -39,7 +39,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="col col-9 text-white d-flex flex-wrap justify-content-between">
+          <div className="col col-md-9 col-12 text-white d-flex flex-wrap justify-content-between">
             {Object.keys(footerLinks).map(item => (
               <div key={item} className='d-flex flex-column'>
                 <p className='text-head'>{item}</p>

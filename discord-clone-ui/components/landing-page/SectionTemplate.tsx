@@ -38,7 +38,7 @@ export default function SectionTemplate({ title, text, image, ind }: SectionType
               src={image}
               alt="."
               width={900}
-              height={400}
+              height={width > 600 ? 400 : 200}
             />
           </div>
         </div>
