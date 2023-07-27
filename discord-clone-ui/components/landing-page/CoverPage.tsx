@@ -25,9 +25,9 @@ export default function CoverPage() {
             />
             Download for Mac
           </button>
-          <button type="button" className="px-5 py-2 rounded-pill btn btn-dark ms-3 mb-3">
+          <a href="/dashboard" type="button" className="px-5 py-2 rounded-pill btn btn-dark ms-3 mb-3">
             Open Discord in your browser
-          </button>
+          </a>
         </div>
       </div>
     </div>

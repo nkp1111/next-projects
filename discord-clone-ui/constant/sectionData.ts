@@ -4,7 +4,15 @@ import fandomImage from "@/public/assets/fandom_landing.svg"
 import justChillingImage from "@/public/assets/just_chiling_landing.svg"
 
 
-export const sectionData = [
+type SectionType = {
+  id: number,
+  title: string,
+  text: string,
+  image: string,
+}
+
+
+export const sectionData: SectionType[] = [
   {
     id: 1,
     title: "Create an invite-only place where you belong",
@@ -29,5 +37,4 @@ export const sectionData = [
     text: "Low-latency voice and video feels like you're in the same room. Wave hello over video, watch friends stream their games, or gather up and have a drawing session with screen share.",
     image: justChillingImage,
   },
-
 ]
