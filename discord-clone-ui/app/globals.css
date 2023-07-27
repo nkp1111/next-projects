@@ -129,7 +129,7 @@ footer hr {
   border: 2px solid var(--violet-shade-1);
 }
 
-footer button {
+footer a.rounded-pill {
   background: var(--violet-shade-1);
 }
 

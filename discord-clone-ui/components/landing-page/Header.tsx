@@ -27,7 +27,7 @@ export default function Header() {
           </ul>
         </div>
 
-        <button type='button' className='btn bg-white rounded-pill'>Login</button>
+        <a href='/login' role='button' className='btn bg-white rounded-pill'>Login</a>
       </nav>
     </header>
   )

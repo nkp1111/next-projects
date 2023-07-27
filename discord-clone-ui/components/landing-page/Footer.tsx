@@ -62,7 +62,7 @@ export default function Footer() {
               width={150}
               height={50} />
 
-            <button type="button" className='rounded-pill p-2 px-3'>Sign up</button>
+            <a href="/register" role="button" className='rounded-pill p-2 px-3'>Sign up</a>
           </div>
         </div>
       </div>
