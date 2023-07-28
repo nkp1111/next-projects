@@ -5,7 +5,7 @@ import Image from 'next/image'
 export default function Logo() {
   return (
     <header>
-      <a href="/">
+      <a href="/" title="home">
         <Image
           src={discordLogo}
           alt="discord logo"
