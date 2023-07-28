@@ -1,0 +1,56 @@
+.sidebar,
+.content_sidebar,
+.content_main {
+  padding-top: 2rem;
+}
+
+
+.sidebar {
+  width: 80px;
+  background: var(--black-shade-1);
+}
+
+.link_icon {
+  padding: 0.7rem;
+  border-radius: 50%;
+  background: var(--black-shade-5);
+}
+
+.link_icon:hover {
+  box-shadow: 0 0 3px var(--black-shade-3);
+}
+
+
+
+/*                              */
+.content_sidebar {
+  width: 320px;
+  background: var(--black-shade-3);
+}
+
+.discord_sidebar {
+  color: var(--white-shade-5);
+}
+
+.discord_sidebar input {
+  background: var(--black-shade-1);
+}
+
+.discord_sidebar input::placeholder {
+  color: var(--black-shade-6);
+}
+
+.discord_sidebar li:hover {
+  cursor: pointer;
+}
+
+.active_nav_item {
+  background: var(--black-shade-5);
+  color: var(--white-shade-2);
+}
+
+/*                              */
+.content_main {
+  flex: 1;
+  background: var(--black-shade-6);
+}
