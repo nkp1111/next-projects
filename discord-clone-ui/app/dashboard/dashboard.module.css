@@ -1,6 +1,11 @@
-.sidebar,
-.content_sidebar,
-.content_main {
+/* utils  */
+.shadow_sm {
+  box-shadow: 0 0 2px var(--black-shade-1);
+}
+
+
+/*********************************************/
+.sidebar {
   padding-top: 2rem;
 }
 
@@ -22,7 +27,7 @@
 
 
 
-/*                              */
+/*********************************************/
 .content_sidebar {
   width: 320px;
   background: var(--black-shade-3);
@@ -49,8 +54,46 @@
   color: var(--white-shade-2);
 }
 
-/*                              */
+
+/*********************************************/
 .content_main {
   flex: 1;
-  background: var(--black-shade-6);
+  background: var(--black-shade-5);
+}
+
+.discord_main {
+  color: var(--white-shade-3);
+  height: 100%;
+}
+
+.discord_main_body {
+  flex: 1;
+}
+
+.no_friend_background,
+.add_friend_background {
+  margin: auto;
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  top: 40%;
+  left: 20%;
+}
+
+.no_friend_background {
+  background: url("../../public/assets/no_online_friends.svg") center center/ contain no-repeat;
+}
+
+.add_friend_background {
+  background: url("../../public/assets/add_friend_icon.svg") center center/contain no-repeat;
+}
+
+.discord_main form {
+  background: var(--black-shade-1);
+  border-radius: 5px;
+}
+
+.discord_main form button {
+  border-radius: 5px;
+  background: var(--violet-shade-1);
 }

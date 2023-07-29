@@ -26,7 +26,7 @@ export function DiscordNav(
 
 export default function DiscordSidebar() {
   return (
-    <div className={`px-3 ${styles.discord_sidebar}`}>
+    <div className={`px-3 py-2 ${styles.discord_sidebar}`}>
       <form action="">
         <input type="text" className="form-action w-100 p-2" title="search"
           placeholder='Find or start a conversation' />

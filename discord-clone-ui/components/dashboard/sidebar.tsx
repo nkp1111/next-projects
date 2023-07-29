@@ -5,7 +5,7 @@ import styles from "@/app/dashboard/dashboard.module.css"
 
 export default function Sidebar() {
   return (
-    <div className={`${styles.sidebar}`}>
+    <div className={`${styles.sidebar} flex-shrink-0`}>
       <div className="d-flex flex-column gap-3 align-items-center h-100">
         {sidebarData.map(item => (
           <a href={item.link} key={item.id}
