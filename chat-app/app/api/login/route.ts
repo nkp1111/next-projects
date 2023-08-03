@@ -4,32 +4,32 @@ import sendToken from '@/lib/sendToken';
 
 export async function POST(request: Request) {
   try {
-    const { username, email, password, confirmPassword } = await request.json();
-    const userExist = await User.findOne({ email });
+    const { email, password } = await request.json();
 
-    if (!username || !email || !password || !confirmPassword) {
+    if (!email || !password) {
       return NextResponse.json(
         { error: "username, email, password and confirmPassword are all required" },
         { status: 400 },
       )
     }
 
-    if (userExist) {
+    const user = await User.findOne({ email });
+    if (!user) {
       return NextResponse.json(
-        { error: "User with that email already exists" },
+        { error: "Email or password is incorrect" },
         { status: 400 },
       )
     }
 
-    if (password !== confirmPassword) {
+    const passwordMatch = user.password === password;
+    if (!passwordMatch) {
       return NextResponse.json(
-        { error: "Password does not match" },
+        { error: "Email or password is incorrect" },
         { status: 400 },
       )
     }
 
-    const user = await User.create({ username, email, password });
-    return await sendToken(user, "User successfully registered");
+    return await sendToken(user, "User logged in successfully");
   } catch (error) {
     return NextResponse.json({ error })
   }
