@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       )
     }
 
-    const passwordMatch = user.password === password;
+    const passwordMatch = await user.comparePassword(password);
     if (!passwordMatch) {
       return NextResponse.json(
         { error: "Email or password is incorrect" },
