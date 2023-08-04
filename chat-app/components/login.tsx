@@ -2,15 +2,17 @@
 
 import handleLogin from '@/lib/handleLogin'
 import React, { useState } from 'react'
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
+  const router = useRouter()
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   })
   return (
     <div className="col col-md-6 col-12 d-flex flex-column justify-content-center align-items-center">
-      <form action="" className='bg-white p-4 m-auto shadow-lg' onSubmit={e => handleLogin(e, loginData)}>
+      <form action="" className='bg-white p-4 m-auto shadow-lg' onSubmit={e => handleLogin(e, loginData, router)}>
         <div>
           <input type="email" title="email" placeholder='Email' className='w-100 p-2 px-3 mt-3 rounded-2 border-1'
             value={loginData.email} onChange={(e) => setLoginData(prev => ({ ...prev, email: e.target.value }))} />
