@@ -1,11 +1,12 @@
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
-import { redirect } from "next/navigation";
+import { Dispatch, SetStateAction } from "react";
 
 export default function handleRegister(
   e: React.FormEvent<HTMLFormElement>,
   registerData:
     { username: string, email: string, password: string, confirmPassword: string },
-  router: AppRouterInstance
+  router: AppRouterInstance,
+  setCurrentUser: Dispatch<SetStateAction<object>>,
 ) {
   e.preventDefault();
   fetch('/api/register', {
@@ -18,6 +19,7 @@ export default function handleRegister(
     .then(res => res.json())
     .then(data => {
       if (data.success) {
+        setCurrentUser(data.user);
         router.push("/chat");
       }
       else {

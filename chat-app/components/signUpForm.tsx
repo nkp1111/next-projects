@@ -3,9 +3,11 @@
 import React, { useState } from 'react'
 import handleRegister from '@/lib/handleRegister'
 import { useRouter } from 'next/navigation';
+import { useGlobalContext } from '@/lib/getContext';
 
 export default function SignUpForm() {
   const router = useRouter()
+  const { setCurrentUser } = useGlobalContext();
   const [registerData, setRegisterData] = useState({
     username: "",
     email: "",
@@ -14,7 +16,7 @@ export default function SignUpForm() {
   })
   return (
     <div className="col col-md-6 col-12 d-flex flex-column justify-content-center align-items-center">
-      <form className='bg-white p-4 m-auto shadow-lg' onSubmit={e => handleRegister(e, registerData, router)}>
+      <form className='bg-white p-4 m-auto shadow-lg' onSubmit={e => handleRegister(e, registerData, router, setCurrentUser)}>
         <div>
           <input type="text" title="username" placeholder='Username' className='w-100 p-2 px-3 mt-3 rounded-2 border-1'
             value={registerData.username} onChange={(e) => setRegisterData(prev => ({ ...prev, username: e.target.value }))} />

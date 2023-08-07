@@ -1,10 +1,12 @@
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+import { Dispatch, SetStateAction } from "react";
 
 export default function handleLogin(
   e: React.FormEvent<HTMLFormElement>,
   loginData:
     { email: string, password: string },
-  router: AppRouterInstance
+  router: AppRouterInstance,
+  setCurrentUser: Dispatch<SetStateAction<object>>,
 ) {
   e.preventDefault();
   fetch('/api/login', {
@@ -17,6 +19,7 @@ export default function handleLogin(
     .then(res => res.json())
     .then(data => {
       if (data.success) {
+        setCurrentUser(data.user);
         router.push("/chat");
       }
       else {
