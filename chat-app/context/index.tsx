@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useState } from "react";
+import { UserData } from "@/types";
 
 const AppContext = createContext({});
 
@@ -9,12 +10,23 @@ const AppProvider = (
     { children: React.ReactNode }
 ) => {
 
-  const [currentSpeaker, setCurrentSpeaker] = useState<string>("");
+  const [currentListener, setCurrentListener] = useState<string>("");
+  const [currentUser, setCurrentUser] = useState<UserData>({
+    _id: "",
+    email: "",
+    username: "",
+    friends: [],
+    password: "",
+    avatar: "",
+  });
 
   return (
     <AppContext.Provider
       value={{
-        currentSpeaker,
+        currentListener,
+        setCurrentListener,
+        currentUser,
+        setCurrentUser,
       }}
     >
       {children}

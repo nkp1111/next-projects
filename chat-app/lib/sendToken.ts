@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { sign } from "jsonwebtoken";
 import { cookies } from "next/headers";
+import { UserData } from "@/types";
 
 export default async function sendToken(
-  user:
-    { _id: string, username: string, password: string, email: string, avatar?: string, bio?: string },
+  user: UserData,
   message: string,
 ) {
 

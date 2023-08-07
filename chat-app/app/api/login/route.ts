@@ -13,7 +13,7 @@ export async function POST(request: Request) {
       )
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).populate("friends");
     if (!user) {
       return NextResponse.json(
         { error: "Email or password is incorrect" },
