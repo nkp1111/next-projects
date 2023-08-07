@@ -9,12 +9,12 @@ export default function Chat() {
   const { currentListener, setCurrentListener, currentUser } = useGlobalContext();
   console.log(currentListener, currentUser);
   return (
-    <main>
+    <main className='d-flex h-100'>
       <Sidebar setCurrentListener={setCurrentListener}
         currentUser={currentUser as UserData} />
-      <section>
+      <section className='flex-grow-1'>
         {!currentListener ? (
-          <div className='w-100 h-100 d-flex justify-content-center align-items-center'>
+          <div className='w-100 d-flex justify-content-center align-items-center'>
             <p className='mt-5 fs-1 fw-bold text-secondary'>Open a conversation to start a chat</p>
           </div>
         ) : (

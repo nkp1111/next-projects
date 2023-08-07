@@ -6,9 +6,9 @@ export default function ChatLayout(
     { children: React.ReactNode }
 ) {
   return (
-    <>
+    <div className='vh-100 p-0'>
       <Header />
       {children}
-    </>
+    </div>
   )
 }
