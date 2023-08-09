@@ -10,7 +10,7 @@ export async function GET(request: NextRequest, { params }: { params: { friend: 
         { email: { $regex: `^.*${friendName}.*$`, $options: 'i' } },
       ]
     });
-    console.log(users)
+    // console.log(users)
     return NextResponse.json({ users, success: "All user matching name are fetched" })
   } catch (error) {
     return NextResponse.json({ message: "Error fetching friends", error })

@@ -9,10 +9,10 @@ export interface ContextValue {
 
 
 export type UserData = {
-  _id?: string,
+  _id: string,
   username: string,
   email: string,
   password?: string,
   avatar?: string,
-  friends: object[],
+  friends: UserData[],
 }

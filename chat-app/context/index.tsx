@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { UserData } from "@/types";
 
 const AppContext = createContext({});
@@ -19,6 +19,17 @@ const AppProvider = (
     password: "",
     avatar: "",
   });
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setCurrentUser(JSON.parse(storedUser));
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(currentUser));
+  }, [currentUser])
 
   return (
     <AppContext.Provider

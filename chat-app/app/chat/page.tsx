@@ -7,7 +7,7 @@ import { UserData } from "@/types"
 
 export default function Chat() {
   const { currentListener, setCurrentListener, currentUser } = useGlobalContext();
-  console.log(currentListener, currentUser);
+  // console.log(currentListener, "current user chat page", currentUser);
   return (
     <main className='d-flex h-100'>
       <Sidebar setCurrentListener={setCurrentListener}
@@ -19,7 +19,7 @@ export default function Chat() {
           </div>
         ) : (
           <div>
-
+            <textarea title="message" placeholder='Type your message'></textarea>
           </div>
         )}
 

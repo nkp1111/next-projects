@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import styles from "@/app/chat/chat.module.css"
 import { FaPlus } from 'react-icons/fa';
+import { addFriend } from '@/lib/user';
 
 export default function Sidebar(
   { setCurrentListener, currentUser }:
@@ -17,11 +18,11 @@ export default function Sidebar(
       fetch(`/api/user/${friendName}`)
         .then(res => res.json())
         .then(data => {
-          setFriendSearched(data.users);
+          setFriendSearched(data.users.filter((user: UserData) => user._id !== currentUser._id));
         })
         .catch(error => console.log(error));
     }
-  }, [friendName])
+  }, [currentUser._id, friendName])
 
   return (
     <div className={`overflow-hidden ${styles.sidebar}`}>
@@ -29,40 +30,51 @@ export default function Sidebar(
         className='w-100 p-2'
         value={friendName} onChange={(e) => setFriendName(e.target.value)} />
 
-      <ul className=''>
-        {friendSearched?.map((friend, ind) => (
-          <li key={ind} className='mt-3' onClick={(e) => setCurrentListener(`${ind}`)}>
-            <span className='me-3'>
-              <Image
-                src={"https://source.unsplash.com/random?avatar"} alt="gravatar"
-                width={40}
-                height={40}
-                className='rounded-circle' />
-            </span>
-            <span className='me-3'>{friend.username}</span>
-            <span className='shadow-sm border border-3 px-2 py-1 rounded-circle'>
-              <FaPlus />
-            </span>
-          </li>
-        ))}
-      </ul>
+      <div>
+        <h3>Friends to Add</h3>
+        {!friendSearched.length && <p>No friends found...</p>}
+        <ul className='navbar-nav'>
+          {friendSearched?.map((friend, ind) => (
+            <li key={ind} className='mt-3' onClick={(e) => setCurrentListener(`${ind}`)}>
+              <span className='me-3'>
+                <Image
+                  src={"https://source.unsplash.com/random?avatar"} alt="gravatar"
+                  width={40}
+                  height={40}
+                  className='rounded-circle' />
+              </span>
+              <span className='me-3'>{friend.username}</span>
+              <span className='shadow-sm border border-3 px-2 py-1 rounded-circle' onClick={() => addFriend({ userId: currentUser._id as string, friendId: friend._id as string })}>
+                <FaPlus />
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <hr className='border border-top-5' />
 
-      <ul className=''>
-        {currentUser.friends.map((friend, ind) => (
-          <li key={ind} className='mt-3' onClick={(e) => setCurrentListener(`${ind}`)}>
-            <span className='me-3'>
-              <Image
-                src={"https://source.unsplash.com/random?avatar"} alt="gravatar"
-                width={40}
-                height={40}
-                className='rounded-circle' />
-            </span>
-            <span>{JSON.stringify(friend)}</span>
-          </li>
-        ))}
-      </ul>
+      <div>
+        <h3>Friends Added</h3>
+        <ul className='navbar-nav'>
+          {currentUser.friends?.map((friend, ind) => (
+            <li key={ind} className='mt-3' onClick={(e) => setCurrentListener(`${ind}`)}
+              onClickCapture={() => {
+                setCurrentListener(friend._id);
+              }}>
+              <span className='me-3'>
+                <Image
+                  src={"https://source.unsplash.com/random?avatar"} alt="gravatar"
+                  width={40}
+                  height={40}
+                  className='rounded-circle' />
+              </span>
+              <span>{friend.username}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
     </div>
   )
 }
