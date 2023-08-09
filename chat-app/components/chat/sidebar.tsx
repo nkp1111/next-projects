@@ -30,12 +30,12 @@ export default function Sidebar(
         className='w-100 p-2'
         value={friendName} onChange={(e) => setFriendName(e.target.value)} />
 
-      <div>
+      <div className='px-1'>
         <h3>Friends to Add</h3>
         {!friendSearched.length && <p>No friends found...</p>}
         <ul className='navbar-nav'>
           {friendSearched?.map((friend, ind) => (
-            <li key={ind} className='mt-3' onClick={(e) => setCurrentListener(`${ind}`)}>
+            <li key={ind} className='mt-3'>
               <span className='me-3'>
                 <Image
                   src={"https://source.unsplash.com/random?avatar"} alt="gravatar"
@@ -54,14 +54,11 @@ export default function Sidebar(
 
       <hr className='border border-top-5' />
 
-      <div>
+      <div className='px-1'>
         <h3>Friends Added</h3>
         <ul className='navbar-nav'>
           {currentUser.friends?.map((friend, ind) => (
-            <li key={ind} className='mt-3' onClick={(e) => setCurrentListener(`${ind}`)}
-              onClickCapture={() => {
-                setCurrentListener(friend._id);
-              }}>
+            <li key={ind} className='mt-3' onClick={(e) => setCurrentListener(friend._id)}>
               <span className='me-3'>
                 <Image
                   src={"https://source.unsplash.com/random?avatar"} alt="gravatar"

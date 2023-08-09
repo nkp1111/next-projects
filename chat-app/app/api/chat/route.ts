@@ -2,8 +2,15 @@ import Conversation from '@/model/conversation';
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
-  const { listener, speaker } = await request.json();
-  const conversations = await Conversation.find({ speaker, listener });
+  const url = new URL(request.url);
+  const speaker = url.searchParams.get("speaker");
+  const listener = url.searchParams.get("listener");
+  const conversations = await Conversation.find({
+    $or: [
+      { speaker, listener },
+      { speaker: listener, listener: speaker },
+    ]
+  }).sort("createdAt");
   return NextResponse.json({ success: "All conversation fetched", conversations });
 }
 
