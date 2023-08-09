@@ -1,5 +1,29 @@
+.chat_mainbox {
+  height: 100%;
+}
+
+.chat_mainbox section {
+  overflow: hidden;
+}
+
 .sidebar {
   width: 25vw;
   min-width: 400px;
   box-shadow: 2px 0 rgba(0, 0, 0, 0.4);
 }
+
+.chat_box {
+  height: 100%;
+  overflow: hidden;
+}
+
+.chat_box>div:first-child {
+  height: 80%;
+  overflow-y: scroll;
+}
+
+.chat_box>div:last-child {
+  height: 20%;
+}
+
+.chat_box textarea {}

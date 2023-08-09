@@ -6,7 +6,7 @@ export default function ChatLayout(
     { children: React.ReactNode }
 ) {
   return (
-    <div className='vh-100 p-0'>
+    <div className='vh-100 p-0 d-flex flex-column'>
       <Header />
       {children}
     </div>
