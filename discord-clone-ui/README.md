@@ -38,11 +38,11 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 # Clone this repository
 $ git clone https://github.com/nkp1111/next-projects.git
 
-# Install dependencies
-$ npm install
-
 # Go to project directory
 $ cd discord-clone-ui
+
+# Install dependencies
+$ npm install
 
 # Run the app
 $ npm run dev
