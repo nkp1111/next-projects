@@ -4,8 +4,8 @@ import mongoConnect from '@/lib/mongoConnect'
 export async function GET(request: Request) {
   try {
     await mongoConnect()
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: "Mongo Database connected" });
   } catch (error) {
-    return NextResponse.json({ success: false, error }, { status: 400 })
+    return NextResponse.json({ success: "Mongo Database connection failed", error }, { status: 400 })
   }
 }

@@ -11,6 +11,7 @@ export default function Home() {
       .then(data => {
         console.log(data);
       })
+      .catch(err => console.log(err));
   }, []);
   return (
     <main className="vh-100 bg-light">

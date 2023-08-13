@@ -6,6 +6,7 @@ import { useGlobalContext } from '@/lib/getContext';
 import { UserData, Conversation } from "@/types"
 import styles from "@/app/chat/chat.module.css"
 import { getChats, sendChat } from '@/lib/user';
+import { format } from "date-fns"
 
 export default function Chat() {
   const { currentListener, setCurrentListener, currentUser } = useGlobalContext();
@@ -16,7 +17,6 @@ export default function Chat() {
   useEffect(() => {
     if (currentUser._id && currentListener) {
       getChats({ speaker: currentUser._id, listener: currentListener }).then(data => {
-        console.log(data, 'before setting conversation');
         setConversations(data);
       })
     }
@@ -35,14 +35,32 @@ export default function Chat() {
           <div className={`${styles.chat_box} d-flex flex-column`}>
             <div className='flex-grow-1 p-3'>
               {conversations.map(conversation => {
-                return <div key={conversation._id}>{conversation.text}</div>
+                return <div key={conversation._id}
+                  className={`${conversation.speaker === currentUser._id ? styles.user_message : styles.friend_message} mb-4 d-flex`}>
+                  <span className='p-1 px-3 rounded-3'>
+                    <span>{conversation.text}</span>
+                    <small className={`d-block ${conversation.speaker !== currentUser._id && 'text-end'}`}> {format(new Date(conversation.createdAt), "h:mmb")}</small>
+                  </span>
+
+                </div>
               })}
             </div>
 
             <div className='mt-auto p-3 d-flex align-items-center justify-content-between flex-column'>
               <textarea title="message" placeholder='Type your message' className='form-control'
                 value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
-              <button type="button" onClick={() => sendChat({ speaker: currentUser._id, listener: currentListener, text: message })}>Send</button>
+              <button type="button"
+                disabled={!message}
+                onClick={() => {
+                  sendChat({
+                    speaker: currentUser._id, listener: currentListener, text: message
+                  })
+                  setMessage("")
+                  getChats({ speaker: currentUser._id, listener: currentListener }).then(data => {
+                    setConversations(data);
+                  })
+                }}
+                className='btn btn-primary w-100 mt-2'>Send</button>
             </div>
           </div>
         )}

@@ -1,5 +1,6 @@
 .chat_mainbox {
   height: 100%;
+  background-color: azure;
 }
 
 .chat_mainbox section {
@@ -8,8 +9,9 @@
 
 .sidebar {
   width: 25vw;
-  min-width: 400px;
+  min-width: 300px;
   box-shadow: 2px 0 rgba(0, 0, 0, 0.4);
+  background-color: #fff;
 }
 
 .chat_box {
@@ -27,3 +29,22 @@
 }
 
 .chat_box textarea {}
+
+.user_message {
+  justify-content: end;
+}
+
+.user_message>span {
+  background: lightgreen;
+  text-align: right;
+}
+
+.friend_message>span {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+
+.user_message small,
+.friend_message small {
+  font-size: 0.6rem;
+  font-weight: 800;
+}
