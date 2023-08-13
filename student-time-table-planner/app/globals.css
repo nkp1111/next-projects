@@ -46,3 +46,8 @@ body {
 main {
   height: auto;
 }
+
+form {
+  min-width: 300px;
+  width: 80%;
+}

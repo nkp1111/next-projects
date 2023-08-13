@@ -1,3 +1,22 @@
 .height_full {
   height: 100vh;
 }
+
+.hide_md {}
+
+.md_center {}
+
+@media screen and (max-width: 768px) {
+  .hide_md {
+    display: none;
+  }
+
+  .md_center>* {
+    text-align: center;
+    margin: auto;
+  }
+
+  .md_center>form {
+    text-align: start;
+  }
+}
