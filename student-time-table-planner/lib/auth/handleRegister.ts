@@ -11,6 +11,7 @@ export default async function handleRegister(
     const registerUrl = SERVER_URL + "/api/register"
     const res = await fetch(registerUrl, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
