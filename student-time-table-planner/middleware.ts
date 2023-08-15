@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-
+import { SERVER_URL } from "@/constant"
 let mongooseConnected = false;
 
 export default function middleware(request: NextRequest) {
-  const serverUrl = process.env.SERVER_URL || "http://localhost:3000";
-  const mongoConfigUrl = serverUrl + "/api/config"
+  const mongoConfigUrl = SERVER_URL + "/api/config"
   if (!mongooseConnected) {
     fetch(mongoConfigUrl)
       .then(res => res.json())
