@@ -5,8 +5,8 @@ import Link from "next/link";
 import frontImage from "@/public/images/stock-image.jpg"
 import styles from "@/app/utils.module.css"
 import { useState } from "react";
-import { handleImageInput } from "@/lib/handleImageInput";
-import handleRegister from "@/lib/handleRegister";
+import { handleImageInput } from "@/lib/auth/handleImageInput";
+import handleRegister from "@/lib/auth/handleRegister";
 
 export default function Register() {
   const [registerData, setRegisterData] = useState({

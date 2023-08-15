@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Student from "@/models/students";
 import { StudentType } from "@/types"
+import { sendAuthToken } from "@/lib/auth/authToken";
 
 export async function POST(request: NextRequest) {
   try {
@@ -15,7 +16,8 @@ export async function POST(request: NextRequest) {
 
     const student = await Student.create({ name, email, password, photo, bio })
 
-    return NextResponse.json({ success: "Student registered successfully", student })
+    const successMessage = "Student registered successfully"
+    return sendAuthToken(student, successMessage);
 
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 })
