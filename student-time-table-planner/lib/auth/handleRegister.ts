@@ -1,10 +1,12 @@
 import { StudentType } from "@/types";
 import { SERVER_URL } from "@/constant";
 import { FormEvent } from "react";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 
 export default async function handleRegister(
   e: FormEvent<HTMLFormElement>,
-  registerData: StudentType
+  registerData: StudentType,
+  router: AppRouterInstance,
 ) {
   try {
     e.preventDefault();
@@ -20,6 +22,7 @@ export default async function handleRegister(
     const data = await res.json();
     if (data.success) {
       console.log(data.success)
+      router.push("/timetable")
     } else {
       console.log("User error", data.error)
     }

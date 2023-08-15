@@ -7,8 +7,10 @@ import styles from "@/app/utils.module.css"
 import { useState } from "react";
 import { handleImageInput } from "@/lib/auth/handleImageInput";
 import handleRegister from "@/lib/auth/handleRegister";
+import { useRouter } from "next/navigation"
 
 export default function Register() {
+  const router = useRouter();
   const [registerData, setRegisterData] = useState({
     name: "",
     email: "",
@@ -25,7 +27,7 @@ export default function Register() {
 
             <form className="bg-white shadow-lg p-4 rounded-2 mt-2" encType="multipart/form-data"
               onSubmit={(e) => {
-                handleRegister(e, registerData);
+                handleRegister(e, registerData, router);
                 setRegisterData({
                   name: "", email: "", password: "", bio: "", photo: "",
                 })

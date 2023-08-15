@@ -6,8 +6,10 @@ import frontImage from "@/public/images/stock-image.jpg"
 import styles from "@/app/utils.module.css"
 import handleLogin from "@/lib/auth/handleLogin";
 import { useState } from "react";
+import { useRouter } from "next/navigation"
 
 export default function Login() {
+  const router = useRouter();
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -21,7 +23,7 @@ export default function Login() {
 
             <form className="bg-white shadow-lg p-4 rounded-2 mt-2" encType="multipart/form-data"
               onSubmit={(e) => {
-                handleLogin(e, loginData)
+                handleLogin(e, loginData, router)
                 setLoginData({ email: "", password: "" });
               }}>
 
