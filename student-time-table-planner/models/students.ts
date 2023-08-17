@@ -20,6 +20,14 @@ const StudentSchema = new Schema({
   },
   bio: {
     type: String,
+  },
+  courses: {
+    type: [Schema.Types.ObjectId],
+    ref: "Course",
+  },
+  classes: {
+    type: [Schema.Types.ObjectId],
+    ref: "Class",
   }
 }, {
   timestamps: true

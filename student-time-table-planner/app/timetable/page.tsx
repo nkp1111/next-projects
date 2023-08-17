@@ -8,6 +8,7 @@ import getDay from 'date-fns/getDay'
 import enUS from 'date-fns/locale/en-US'
 import styles from "@/app/utils.module.css"
 import "react-big-calendar/lib/css/react-big-calendar.css"
+import Header from '@/components/header';
 
 
 const locales = {
@@ -41,7 +42,8 @@ const myEventsList = [
 export default function TimeTable() {
   return (
     <main className={styles.height_full}>
-      <div className='h-100 d-flex flex-column'>
+      <Header />
+      <div className='d-flex flex-column'>
         <h1 className='text-center text-dark fw-bold mt-5'>My TimeTable</h1>
         <div className="container mt-3">
           <Calendar
