@@ -13,7 +13,7 @@ export default function Header() {
               <a href="/timetable" className="nav-link text-white">My timeTable</a>
             </li>
             <li className="nav-item">
-              <a href="/courses" className="nav-link text-white">All Courses</a>
+              <a href="/course" className="nav-link text-white">All Courses</a>
             </li>
             <li className="nav-item">
               <a href="" className="nav-link text-white">My Courses</a>
