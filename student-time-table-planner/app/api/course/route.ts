@@ -14,8 +14,14 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    const { title, teacher }: CourseType = await request.json()
-    const course = await Course.create({ title, teacher })
+    const { title, teacher, classes }: CourseType = await request.json()
+    const allClasses: ClassType[] = [];
+    for (let classD of classes) {
+      const newClass = await Class.create(classD)
+      allClasses.push(newClass);
+    }
+
+    const course = await Course.create({ title, teacher, classes: allClasses })
     return NextResponse.json({ course, success: "New course created" })
   } catch (error) {
     return NextResponse.json({ error }, { status: 400 })
