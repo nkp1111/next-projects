@@ -15,7 +15,7 @@ export type StudentLoginType = {
 export type CourseType = {
   _id?: string,
   title: string,
-  classes: string[],
+  classes: (ClassType | string)[],
   teacher: string,
 }
 
