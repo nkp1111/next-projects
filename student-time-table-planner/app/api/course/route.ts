@@ -43,18 +43,3 @@ export async function PUT(request: NextRequest) {
   }
 }
 
-
-export async function DELETE(request: NextRequest) {
-  try {
-    const { courseId }:
-      { courseId: string } = await request.json()
-    const course: (CourseType | null) = await Course.findById(courseId);
-    if (course) {
-      await Class.deleteMany({ _id: { $in: course.classes } })
-      await Course.deleteOne({ _id: courseId })
-    }
-    return NextResponse.json({ success: "Course deleted successfully" })
-  } catch (error) {
-    return NextResponse.json({ error }, { status: 400 })
-  }
-}
