@@ -1,39 +1,55 @@
 "use client";
 
-import Header from '@/components/header'
+import { ClassType, CourseType } from '@/types';
+import React, { useEffect, useState } from 'react'
+import courseDetail from "@/lib/course-class/courseDetail"
 import styles from "@/app/utils.module.css"
+import Header from '@/components/header';
 import Link from 'next/link';
-import { CourseType, ClassType } from '@/types';
-import { useState } from 'react';
-import addNewCourse from '@/lib/course-class/addCourse';
+import updateCourse from '@/lib/course-class/updateCourse';
 import { useRouter } from 'next/navigation';
 import { addClass, removeClass } from '@/lib/course-class/addRemoveCourseClass';
 
-export default function AddNewCourse() {
+export async function generateMetadata({ params: { courseId } }: { params: { courseId: string } }) {
+  return {
+    title: courseId + "-course"
+  }
+}
+
+export default function EditCourseDetail(
+  { params: { courseId } }: { params: { courseId: string } }
+) {
   const router = useRouter();
   const [courseData, setCourseData] = useState<CourseType>({
     title: "",
     classes: [],
     teacher: "",
+    _id: ""
   });
   const [classData, setClassData] = useState<ClassType>({
     title: "",
     time: "",
   });
+  useEffect(() => {
+    courseDetail(courseId, setCourseData)
+  }, [courseId])
 
+  // useEffect(() => {
+  //   console.log(courseData);
+  // }, [courseData])
 
   return (
     <main className={styles.height_full}>
       <Header />
       <div className='d-flex flex-column align-items-center'>
-        <h1 className='text-center text-dark fw-bold mt-5'>Add New Course</h1>
+        <h1 className='text-center text-dark fw-bold mt-5'>Update Course</h1>
 
         <Link href="/course" role="button" className='text-success fw-bold p-2 shadow-lg'>Back</Link>
 
         <form className="bg-white shadow-lg p-4 rounded-2 mt-2"
           onSubmit={(e) => {
-            addNewCourse(e, courseData, router)
-            setCourseData({ title: "", classes: [], teacher: "" });
+            e.preventDefault();
+            updateCourse(courseData, router);
           }}>
           <div className="row">
             <fieldset className='col-md-6 col-12'>
@@ -99,7 +115,7 @@ export default function AddNewCourse() {
             </fieldset>
           </div>
           <hr className='border-2' />
-          <button type="submit" className="btn btn-primary px-3 me-auto">Add New Course</button>
+          <button type="submit" className="btn btn-primary px-3 me-auto">Update Course</button>
         </form>
       </div>
     </main>

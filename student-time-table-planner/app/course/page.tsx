@@ -41,7 +41,8 @@ export default function Course() {
                   <div className="ms-auto">
                     <button type="button" className="btn btn-danger ms-1"
                       onClick={() => removeCourse(course._id as string, router)}>Delete this Course</button>
-                    <button type="button" className="btn btn-secondary ms-1">Update this course</button>
+                    <button type="button" className="btn btn-secondary ms-1"
+                      onClick={() => router.push(`/course/${course._id}/edit`)}>Update this course</button>
                     <button type="button" className="btn btn-success ms-1">Add this Course</button>
                   </div>
                 </div>
