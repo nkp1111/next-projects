@@ -11,8 +11,11 @@ export default function formatClassData(
     const formattedData = {
       id: classD._id || ind.toString(),
       title: classD.title,
-      start: new Date(classD.time),
-      end: new Date(new Date(classD.time).getTime() + randomEndTime())
+      start: classD.startTime ? new Date(classD.startTime)
+        : (classD.time && new Date(classD.time)) || new Date(),
+      end: classD.endTime
+        ? new Date(classD.endTime)
+        : (classD.time && new Date(new Date(classD.time).getTime() + randomEndTime())) || new Date()
     }
     return formattedData;
   })

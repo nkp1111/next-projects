@@ -28,7 +28,8 @@ export default function EditCourseDetail(
   });
   const [classData, setClassData] = useState<ClassType>({
     title: "",
-    time: "",
+    startTime: "",
+    endTime: "",
   });
   useEffect(() => {
     courseDetail(courseId, setCourseData)
@@ -104,11 +105,18 @@ export default function EditCourseDetail(
                   value={classData.title} onChange={(e) => setClassData((prev) => ({ ...prev, title: e.target.value }))}
                 />
               </div>
-              {/* class time  */}
+              {/* class start time  */}
               <div className="mb-3">
-                <label htmlFor="time" className="form-label">Time of Class</label>
-                <input type="datetime-local" className="form-control" id="time"
-                  value={classData.time} onChange={(e) => setClassData((prev) => ({ ...prev, time: e.target.value }))}
+                <label htmlFor="starttime" className="form-label">Starting time of Class</label>
+                <input type="datetime-local" className="form-control" id="starttime"
+                  value={classData.startTime} onChange={(e) => setClassData((prev) => ({ ...prev, startTime: e.target.value }))}
+                />
+              </div>
+              {/* class end time  */}
+              <div className="mb-3">
+                <label htmlFor="endTime" className="form-label">Ending time of Class</label>
+                <input type="datetime-local" className="form-control" id="endTime"
+                  value={classData.endTime} onChange={(e) => setClassData((prev) => ({ ...prev, endTime: e.target.value }))}
                 />
               </div>
               <button type="button" className='btn btn-success' onClick={() => addClass(classData, setCourseData, setClassData)}>Add Class</button>

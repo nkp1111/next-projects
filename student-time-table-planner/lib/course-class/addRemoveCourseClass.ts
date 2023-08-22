@@ -8,10 +8,10 @@ export const addClass = (
   setCourseData: Dispatch<SetStateAction<CourseType>>,
   setClassData: Dispatch<SetStateAction<ClassType>>
 ) => {
-  const { title, time } = classData;
-  if (title && time) {
+  const { title, startTime, endTime } = classData;
+  if (title && startTime && endTime) {
     setCourseData(prev => ({ ...prev, classes: [...prev.classes, classData] }))
-    setClassData({ title: "", time: "" })
+    setClassData({ title: "", startTime: "", endTime: "" })
   }
 }
 

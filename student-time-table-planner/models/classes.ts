@@ -5,9 +5,13 @@ const ClassSchema = new Schema({
     type: String,
     required: true,
   },
-  time: {
+  startTime: {
     type: Date,
     required: true,
+    default: new Date(),
+  },
+  endTime: {
+    type: Date,
   }
 }, {
   timestamps: true

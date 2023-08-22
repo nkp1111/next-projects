@@ -91,3 +91,6 @@ export default function TimeTable() {
     </ main>
   )
 }
+
+
+export const revalidate = 0;

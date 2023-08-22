@@ -24,7 +24,9 @@ export type CourseType = {
 export type ClassType = {
   _id?: string,
   title: string,
-  time: string,
+  time?: string,
+  startTime: string,
+  endTime: string,
 }
 
 export type ScheduleType = {

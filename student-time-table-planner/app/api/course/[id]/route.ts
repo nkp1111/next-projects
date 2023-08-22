@@ -62,7 +62,6 @@ export async function PATCH(
     if (course) {
       // update class if _id present else create new class
       for (let classD of courseData.classes) {
-        console.log(classD, typeof classD, "class")
         if (typeof classD !== "string") {
           if (classD._id) {
             await Class.updateOne({ _id: classD._id }, { $set: classD });

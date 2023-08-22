@@ -11,6 +11,8 @@ export default async function myCourseClass(
     const res = await fetch(loginUrl, {
       method: "GET",
       credentials: "include",
+      cache: "no-store",
+      next: { revalidate: 0 },
     })
     const data = await res.json();
     if (data.success) {

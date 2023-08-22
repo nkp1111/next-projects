@@ -57,7 +57,7 @@ export default function CourseDetail(
                     <div className='text-start'>
                       <h3>{classD.title}</h3>
                       <p className='mt-0'><strong>Class Id: </strong><small>{classD._id}</small></p>
-                      <p><strong>Class Time: </strong> {classD.time}</p>
+                      <p><strong>Class Timings: </strong> {classD.startTime || classD.time} {classD.endTime && `- ${classD.endTime}` || null}</p>
                     </div>
                     <div className="ms-auto">
                       <button type="button" className="btn btn-success"

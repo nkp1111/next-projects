@@ -7,7 +7,6 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
   try {
-    console.log("get request student")
     const studentId: string = await verifyAuthToken();
     if (!studentId) {
       return NextResponse.json({ error: "Please login/register first" }, { status: 400 })
