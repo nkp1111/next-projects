@@ -1,8 +1,11 @@
+import { verifyAuthToken } from '@/lib/auth/authToken';
 import Class from '@/models/classes'
 import Course from '@/models/courses'
+import Student from '@/models/students';
 import { ClassType, CourseType } from '@/types'
 import { NextRequest, NextResponse } from 'next/server'
 
+// get course details
 export async function GET(
   request: NextRequest, { params: { id } }: { params: { id: string } }
 ) {
@@ -14,25 +17,40 @@ export async function GET(
   }
 }
 
-// export async function POST(
-//   request: NextRequest, { params: { id } }: { params: { id: string } }
-// ) {
-//   try {
-//     const { title, teacher, classes }: CourseType = await request.json()
-//     const allClasses: ClassType[] = [];
-//     for (let classD of classes) {
-//       const newClass = await Class.create(classD)
-//       allClasses.push(newClass);
-//     }
 
-//     const course = await Course.create({ title, teacher, classes: allClasses })
-//     return NextResponse.json({ course, success: "New course created" })
-//   } catch (error) {
-//     return NextResponse.json({ error }, { status: 500 })
-//   }
-// }
+// add course/class to student timetable
+export async function POST(
+  request: NextRequest,
+  { params: { id } }: { params: { id: string } }
+) {
+  try {
+    const studentId = await verifyAuthToken();
+    if (!studentId) {
+      return NextResponse.json({ error: "Please login/register first" }, { status: 400 })
+    }
+
+    const student = await Student.findById(studentId);
+    if (!student) {
+      return NextResponse.json({ error: "Student not found" }, { status: 400 });
+    }
+
+    const { classes }: { classes: string } = await request.json();
+
+    if (!student.courses.includes(id)) {
+      student.courses.push(id);
+    }
+    if (classes && !student.classes.includes(classes)) {
+      student.classes.push(classes);
+    }
+    await student.save();
+    return NextResponse.json({ success: "Course/Class Added to TimeTable" })
+  } catch (error) {
+    return NextResponse.json({ error }, { status: 500 })
+  }
+}
 
 
+// update course of given id
 export async function PATCH(
   request: NextRequest,
   { params: { id } }: { params: { id: string } }
@@ -67,7 +85,7 @@ export async function PATCH(
   }
 }
 
-
+// delete course of given id
 export async function DELETE(
   request: NextRequest,
   { params: { id } }: { params: { id: string } },

@@ -12,6 +12,7 @@ export function sendAuthToken(
   const token = sign(
     { id: user._id },
     SECRET_JWT_TOKEN,
+    { expiresIn: "1h" }
   )
   cookies().set("token", token);
   return NextResponse.json({ success: message, user })
@@ -24,7 +25,17 @@ export async function verifyAuthToken() {
       token.value,
       SECRET_JWT_TOKEN
     )
-
-    console.log(authData)
+    const { id } = authData as JwtPayload;
+    if (!id) {
+      // console.log("No user found")
+      return undefined;
+    } else {
+      // console.log("User found")
+      return id;
+    }
+  }
+  else {
+    console.log("NO token found")
+    return undefined;
   }
 }

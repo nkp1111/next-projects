@@ -7,6 +7,7 @@ import styles from "@/app/utils.module.css"
 import getAllCourses from "@/lib/course-class/allCourses";
 import Link from "next/link";
 import removeCourse from "@/lib/course-class/removeCourse";
+import addCourseToTimeTable from "@/lib/course-class/addCourseToTimeTable";
 import { useRouter } from "next/navigation";
 
 export default function Course() {
@@ -43,7 +44,8 @@ export default function Course() {
                       onClick={() => removeCourse(course._id as string, router)}>Delete this Course</button>
                     <button type="button" className="btn btn-secondary ms-1"
                       onClick={() => router.push(`/course/${course._id}/edit`)}>Update this course</button>
-                    <button type="button" className="btn btn-success ms-1">Add this Course</button>
+                    <button type="button" className="btn btn-success ms-1"
+                      onClick={() => addCourseToTimeTable(course._id as string, "", router)}>Add this Course</button>
                   </div>
                 </div>
               </li>

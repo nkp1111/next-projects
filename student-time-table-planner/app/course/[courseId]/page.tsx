@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react'
 import courseDetail from "@/lib/course-class/courseDetail"
 import styles from "@/app/utils.module.css"
 import Header from '@/components/header';
+import addCourseToTimeTable from '@/lib/course-class/addCourseToTimeTable';
+import { useRouter } from 'next/navigation';
 
 export async function generateMetadata({ params: { courseId } }: { params: { courseId: string } }) {
   return {
@@ -15,6 +17,7 @@ export async function generateMetadata({ params: { courseId } }: { params: { cou
 export default function CourseDetail(
   { params: { courseId } }: { params: { courseId: string } }
 ) {
+  const router = useRouter();
   const [detailedCourse, setDetailedCourse] = useState<CourseType>({
     title: "",
     classes: [],
@@ -42,7 +45,8 @@ export default function CourseDetail(
                     <h3>{classD}</h3>
                   </div>
                   <div className="ms-auto">
-                    <button type="button" className="btn btn-danger">Add this Class</button>
+                    <button type="button" className="btn btn-success"
+                      onClick={() => addCourseToTimeTable(detailedCourse._id as string, classD, router)}>Add this Class</button>
                   </div>
                 </div>
               </article>
@@ -56,7 +60,8 @@ export default function CourseDetail(
                       <p><strong>Class Time: </strong> {classD.time}</p>
                     </div>
                     <div className="ms-auto">
-                      <button type="button" className="btn btn-success">Add this Class</button>
+                      <button type="button" className="btn btn-success"
+                        onClick={() => addCourseToTimeTable(detailedCourse._id as string, classD._id as string, router)}>Add this Class</button>
                     </div>
                   </div>
                 </article>
