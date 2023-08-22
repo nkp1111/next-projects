@@ -68,7 +68,7 @@ export default function AddNewCourse() {
                         } else {
                           return <li key={ind} className='mb-2'>
                             <span>{classD.title} - </span>
-                            <span>{classD.startTime?.toString() || classD?.time || ""}</span>
+                            <span>{classD.startTime?.toString() || ""}</span>
                             <span>{classD.endTime?.toString()}</span>
                             <span className='ms-4 fw-bold btn btn-danger' onClick={() => removeClass(ind, courseData, setCourseData)}>X</span>
                           </li>

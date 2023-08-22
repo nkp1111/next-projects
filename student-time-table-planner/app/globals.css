@@ -41,6 +41,7 @@ body {
   width: 100vw;
   min-height: 100vh;
   background-color: #fbe3da;
+  overflow-x: hidden;
 }
 
 main {

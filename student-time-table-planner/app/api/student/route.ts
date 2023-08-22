@@ -11,8 +11,7 @@ export async function GET(request: NextRequest) {
     if (!studentId) {
       return NextResponse.json({ error: "Please login/register first" }, { status: 400 })
     }
-
-    const student = await Student.findById(studentId).populate(["courses", "classes"]);
+    let student = await Student.findById(studentId).populate(["courses", "classes"]);
     if (!student) {
       return NextResponse.json({ error: "Student not found" }, { status: 400 });
     }

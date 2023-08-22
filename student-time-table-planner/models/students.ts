@@ -1,5 +1,7 @@
 import { Schema, model, models } from "mongoose";
 import { hash, compare } from "bcrypt";
+import Course from "./courses"
+import Class from "./classes"
 
 const StudentSchema = new Schema({
   name: {
@@ -23,11 +25,11 @@ const StudentSchema = new Schema({
   },
   courses: {
     type: [Schema.Types.ObjectId],
-    ref: "Course",
+    ref: Course,
   },
   classes: {
     type: [Schema.Types.ObjectId],
-    ref: "Class",
+    ref: Class,
   }
 }, {
   timestamps: true

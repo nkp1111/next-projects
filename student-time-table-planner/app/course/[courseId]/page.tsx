@@ -29,14 +29,14 @@ export default function CourseDetail(
   }, [courseId])
 
   return (
-    <main className={styles.height_full}>
+    <main className={`${styles.height_full}`}>
       <Header />
       <div className='d-flex flex-column text-center text-dark'>
         <h1 className='fw-bold mt-5'>{detailedCourse?.title}</h1>
         <p ><strong>CourseId: </strong><small>{detailedCourse?._id}</small></p>
         <h2 className='fs-4'><span className='fs-5'>Taught By -</span> {detailedCourse?.teacher}</h2>
         <hr className='w-75 mx-auto' />
-        <div className='shadow-lg my-3 px-2'>
+        <div className={`shadow-lg my-3 px-2 ${styles.article_body}`}>
           {detailedCourse?.classes.map((classD, ind) => {
             if (typeof classD === 'string') {
               return <article key={ind}>
@@ -57,7 +57,7 @@ export default function CourseDetail(
                     <div className='text-start'>
                       <h3>{classD.title}</h3>
                       <p className='mt-0'><strong>Class Id: </strong><small>{classD._id}</small></p>
-                      <p><strong>Class Timings: </strong> {classD.startTime || classD.time} {classD.endTime && `- ${classD.endTime}` || null}</p>
+                      <p><strong>Class Timings: </strong> {classD.startTime} {classD.endTime && `- ${classD.endTime}` || null}</p>
                     </div>
                     <div className="ms-auto">
                       <button type="button" className="btn btn-success"

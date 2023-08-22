@@ -1,10 +1,16 @@
 .height_full {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .hide_md {}
 
 .md_center {}
+
+.article_body {
+  width: 50vw;
+  min-width: 500px;
+  margin: auto;
+}
 
 @media screen and (max-width: 768px) {
   .hide_md {

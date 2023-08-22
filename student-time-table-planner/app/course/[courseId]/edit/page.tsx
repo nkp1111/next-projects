@@ -84,7 +84,8 @@ export default function EditCourseDetail(
                         } else {
                           return <li key={ind} className='mb-2'>
                             <span>{classD.title} - </span>
-                            <span>{classD.time}</span>
+                            <span>{classD.startTime}</span>
+                            <span>{classD.endTime}</span>
                             <span className='ms-4 fw-bold btn btn-danger' onClick={() => removeClass(ind, courseData, setCourseData)}>X</span>
                           </li>
                         }
