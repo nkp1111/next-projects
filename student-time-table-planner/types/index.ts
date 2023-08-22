@@ -5,6 +5,8 @@ export type StudentType = {
   password: string,
   photo?: string,
   bio?: string,
+  courses: CourseType[],
+  classes: ClassType[],
 }
 
 export type StudentLoginType = {
@@ -23,4 +25,12 @@ export type ClassType = {
   _id?: string,
   title: string,
   time: string,
+}
+
+export type ScheduleType = {
+  id: string,
+  start: Date,
+  end: Date,
+  title?: string,
+  allDay?: boolean,
 }
