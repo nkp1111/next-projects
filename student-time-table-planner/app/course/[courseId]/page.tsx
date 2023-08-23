@@ -1,6 +1,6 @@
 "use client";
 
-import { ClassType, CourseType } from '@/types';
+import { CourseType } from '@/types';
 import React, { useEffect, useState } from 'react'
 import courseDetail from "@/lib/course-class/courseDetail"
 import styles from "@/app/utils.module.css"

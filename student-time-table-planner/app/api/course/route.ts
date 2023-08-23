@@ -29,17 +29,4 @@ export async function POST(request: NextRequest) {
 }
 
 
-// export async function PUT(request: NextRequest) {
-//   try {
-//     const { courseId, classInfo }:
-//       { courseId: string, classInfo: ClassType } = await request.json()
-//     const course = await Course.findById(courseId)
-//     const courseClass = await Class.create(classInfo)
-//     course.classes.push(courseClass)
-//     await course.save()
-//     return NextResponse.json({ course, success: "New course created" })
-//   } catch (error) {
-//     return NextResponse.json({ error }, { status: 400 })
-//   }
-// }
 

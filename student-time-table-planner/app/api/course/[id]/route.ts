@@ -1,8 +1,6 @@
-import { verifyAuthToken } from '@/lib/auth/authToken';
 import Class from '@/models/classes'
 import Course from '@/models/courses'
-import Student from '@/models/students';
-import { ClassType, CourseType } from '@/types'
+import { CourseType } from '@/types'
 import { NextRequest, NextResponse } from 'next/server'
 
 // get course details

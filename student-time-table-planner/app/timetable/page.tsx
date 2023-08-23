@@ -11,7 +11,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css"
 import Header from '@/components/header';
 import { useEffect, useState } from 'react';
 import myCourseClass from '@/lib/course-class/myCourseClass';
-import { ClassType, CourseType, ScheduleType, StudentType } from '@/types';
+import { ScheduleType, StudentType } from '@/types';
 import formatClassData from '@/lib/course-class/formatClassData';
 
 
@@ -27,6 +27,8 @@ const localizer = dateFnsLocalizer({
   locales,
 })
 
+
+// demo calendar event format
 const myEventsList = [
   {
     id: 0,

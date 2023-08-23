@@ -1,6 +1,4 @@
-import { CourseType } from "@/types";
 import { SERVER_URL } from "@/constant";
-import { Dispatch, SetStateAction } from "react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 
 export default async function removeCourse(

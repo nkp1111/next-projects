@@ -1,7 +1,6 @@
-import { ClassType, CourseType, StudentType } from "@/types";
+import { StudentType } from "@/types";
 import { SERVER_URL } from "@/constant";
-import { Dispatch, FormEvent, SetStateAction } from "react";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+import { Dispatch, SetStateAction } from "react";
 
 export default async function myCourseClass(
   setCurrentStudentDetail: Dispatch<SetStateAction<StudentType>>,
