@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function Header() {
@@ -5,18 +6,18 @@ export default function Header() {
     <header className='bg-primary text-white px-5 py-2'>
       <nav className='navbar '>
         <div className="navbar-brand fw-bolder text-uppercase text-white">
-          <a href="/timetable" className="nav-link text-white">timeTable</a>
+          <Link href="/timetable" className="nav-link text-white">timeTable</Link>
         </div>
         <div className="ms-auto">
           <ul className="navbar-nav flex-row gap-3 text-underline">
             <li className="nav-item">
-              <a href="/timetable" className="nav-link text-white">My timeTable</a>
+              <Link href="/timetable" className="nav-link text-white">My timeTable</Link>
             </li>
             <li className="nav-item">
-              <a href="/course" className="nav-link text-white">All Courses</a>
+              <Link href="/course" className="nav-link text-white">All Courses</Link>
             </li>
             <li className="nav-item">
-              <a href="" className="nav-link text-white">My Courses</a>
+              <Link href="/course/me" className="nav-link text-white">My Courses</Link>
             </li>
           </ul>
         </div>

@@ -4,10 +4,11 @@ import { Dispatch, FormEvent, SetStateAction } from "react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 
 export default async function myCourseClass(
-  setCurrentStudentDetail: Dispatch<SetStateAction<StudentType>>
+  setCurrentStudentDetail: Dispatch<SetStateAction<StudentType>>,
+  classIncludes: string = "false"
 ) {
   try {
-    const loginUrl = SERVER_URL + "/api/student"
+    const loginUrl = SERVER_URL + `/api/student?class=${classIncludes}`
     const res = await fetch(loginUrl, {
       method: "GET",
       credentials: "include",
