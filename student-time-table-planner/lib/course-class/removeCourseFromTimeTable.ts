@@ -1,27 +1,38 @@
-import { CourseType } from "@/types";
+import { StudentType } from "@/types";
 import { SERVER_URL } from "@/constant";
 import { Dispatch, SetStateAction } from "react";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 
-export default async function addCourseToTimeTable(
+
+export default async function removeCourseFromTimeTable(
   courseId: string,
-  classes: string,
-  router: AppRouterInstance,
+  courseIdToRemove: string,
+  classId: string,
+  setCurrentStudentDetail: Dispatch<SetStateAction<StudentType>>,
 ) {
   try {
     const courseUrl = SERVER_URL + `/api/course/${courseId}/me`;
     const res = await fetch(courseUrl, {
-      method: "POST",
+      method: "DELETE",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ classes }),
+      body: JSON.stringify({ classId, courseId: courseIdToRemove }),
     });
     const data = await res.json();
     if (data.success) {
       console.log(data.success);
-      router.push("/timetable")
+      setCurrentStudentDetail({
+        _id: "",
+        name: "",
+        email: "",
+        password: "",
+        photo: "",
+        bio: "",
+        courses: [],
+        classes: [],
+      })
+      window.location.reload();
     } else {
       console.log("User error", data.error)
     }

@@ -1,18 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { CourseType, ScheduleType, StudentType } from "@/types";
+import { StudentType, ClassType } from "@/types";
 import Header from "@/components/header";
 import styles from "@/app/utils.module.css"
-import getAllCourses from "@/lib/course-class/allCourses";
 import Link from "next/link";
-import removeCourse from "@/lib/course-class/removeCourse";
-import addCourseToTimeTable from "@/lib/course-class/addCourseToTimeTable";
-import { useRouter } from "next/navigation";
 import myCourseClass from "@/lib/course-class/myCourseClass";
+import removeCourseFromTimeTable from "@/lib/course-class/removeCourseFromTimeTable";
 
 export default function Course() {
-  const router = useRouter();
   const [currentStudentDetail, setCurrentStudentDetail] = useState<StudentType>({
     _id: "",
     name: "",
@@ -31,7 +27,12 @@ export default function Course() {
     )
   }, []);
 
-  useEffect(() => { console.log(currentStudentDetail) }, [currentStudentDetail])
+  const currentStudentClasses: string[] = currentStudentDetail.classes as unknown as string[];
+  const isCourseWithClass = (courseClasses: (string | ClassType)[]) => {
+    if (!courseClasses || courseClasses.length === 0) return false;
+    const courseIds = typeof courseClasses[0] === 'string' ? courseClasses : courseClasses.map((c) => typeof c === "string" ? c : String(c._id));
+    return currentStudentClasses.filter(c => courseIds.includes(c)).length > 0
+  }
 
   return (
     <main className={styles.height_full}>
@@ -49,23 +50,32 @@ export default function Course() {
                     </div>
                     <div><span className="fw-semibold">CourseId: </span><small>{course._id}</small></div>
                     <div><span className="fw-semibold">Taught By: </span><span className="fs-5">{course.teacher}</span></div>
+
+                    <div className="ms-auto">
+                      <button type="button" className={`btn btn-danger ${isCourseWithClass(course.classes) && 'd-none'}`}
+                        onClick={() => removeCourseFromTimeTable(course._id as string, course._id as string, "", setCurrentStudentDetail)}
+                      >Remove Course</button>
+                    </div>
                   </div>
                   <div className="ms-auto">
                     {course.classes.map((classD, ind) => {
                       if (typeof classD === 'string') {
-                        return <article key={ind}>
-                          <div className="d-flex gap-3 align-items-center">
-                            <div>
-                              <h3>{classD}</h3>
+                        if (currentStudentClasses.includes(classD)) {
+                          return <article key={ind}>
+                            <div className="d-flex gap-3 align-items-center">
+                              <div>
+                                <h3>{classD}</h3>
+                              </div>
+                              <div className="ms-auto">
+                                <button type="button" className="btn btn-danger"
+                                  onClick={() => removeCourseFromTimeTable(course._id as string, "", classD, setCurrentStudentDetail)}
+                                >Remove</button>
+                              </div>
                             </div>
-                            <div className="ms-auto">
-                              <button type="button" className="btn btn-danger"
-                              // onClick={() => addCourseToTimeTable(detailedCourse._id as string, classD, router)}
-                              >Remove</button>
-                            </div>
-                          </div>
-                        </article>
-                      } else {
+                          </article>
+                        }
+
+                      } else if (currentStudentClasses.includes(classD._id as string)) {
                         return (
                           <article key={ind} className="shadow-lg px-3 py-2 mt-3 border-2 rounded">
                             <div className="d-flex gap-3 align-items-center">
@@ -76,7 +86,7 @@ export default function Course() {
                               </div>
                               <div className="ms-auto">
                                 <button type="button" className="btn btn-danger"
-                                // onClick={() => addCourseToTimeTable(detailedCourse._id as string, classD._id as string, router)}
+                                  onClick={() => removeCourseFromTimeTable(course._id as string, "", classD._id as string, setCurrentStudentDetail)}
                                 >Remove</button>
                               </div>
                             </div>
@@ -94,3 +104,6 @@ export default function Course() {
     </ main>
   )
 }
+
+
+export const revalidate = 0;

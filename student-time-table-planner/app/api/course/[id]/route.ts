@@ -17,39 +17,6 @@ export async function GET(
   }
 }
 
-
-// add course/class to student timetable
-export async function POST(
-  request: NextRequest,
-  { params: { id } }: { params: { id: string } }
-) {
-  try {
-    const studentId = await verifyAuthToken();
-    if (!studentId) {
-      return NextResponse.json({ error: "Please login/register first" }, { status: 400 })
-    }
-
-    const student = await Student.findById(studentId);
-    if (!student) {
-      return NextResponse.json({ error: "Student not found" }, { status: 400 });
-    }
-
-    const { classes }: { classes: string } = await request.json();
-
-    if (!student.courses.includes(id)) {
-      student.courses.push(id);
-    }
-    if (classes && !student.classes.includes(classes)) {
-      student.classes.push(classes);
-    }
-    await student.save();
-    return NextResponse.json({ success: "Course/Class Added to TimeTable" })
-  } catch (error) {
-    return NextResponse.json({ error }, { status: 500 })
-  }
-}
-
-
 // update course of given id
 export async function PATCH(
   request: NextRequest,
