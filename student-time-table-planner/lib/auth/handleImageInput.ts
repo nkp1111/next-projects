@@ -1,3 +1,4 @@
+import { CourseType, ClassType } from "@/types";
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
 
@@ -15,6 +16,8 @@ export async function handleImageInput(
     password: string;
     bio: string;
     photo: string;
+    courses: CourseType[];
+    classes: ClassType[];
   }>>
 ) {
   const imgFile = e.target.files![0]

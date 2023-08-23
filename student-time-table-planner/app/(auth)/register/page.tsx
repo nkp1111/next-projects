@@ -8,6 +8,7 @@ import { useState } from "react";
 import { handleImageInput } from "@/lib/auth/handleImageInput";
 import handleRegister from "@/lib/auth/handleRegister";
 import { useRouter } from "next/navigation"
+import { CourseType, ClassType } from "@/types";
 
 export default function Register() {
   const router = useRouter();
@@ -17,10 +18,12 @@ export default function Register() {
     password: "",
     bio: "",
     photo: "",
+    courses: [] as CourseType[],
+    classes: [] as ClassType[],
   });
   return (
     <main className={`${styles.height_full}`}>
-      <div className="container-fluid h-100">
+      <div className="container-fluid vh-100">
         <div className="row h-100 d-flex align-items-center">
           <div className={`col-md-6 col-12 order-2 ${styles.md_center}`}>
             <h1>New Student&apos;s <strong className="text-dark">Register</strong> here</h1>
@@ -29,7 +32,8 @@ export default function Register() {
               onSubmit={(e) => {
                 handleRegister(e, registerData, router);
                 setRegisterData({
-                  name: "", email: "", password: "", bio: "", photo: "",
+                  name: "", email: "", password: "", bio: "",
+                  photo: "", courses: [], classes: [],
                 })
               }}>
 

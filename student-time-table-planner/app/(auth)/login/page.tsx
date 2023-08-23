@@ -16,7 +16,7 @@ export default function Login() {
   });
   return (
     <main className={`${styles.height_full}`}>
-      <div className="container-fluid h-100">
+      <div className="container-fluid vh-100">
         <div className="row h-100 d-flex align-items-center">
           <div className={`col-md-6 col-12 order-2 ${styles.md_center}`}>
             <h1 className="text-dark fw-bold">Login</h1>

@@ -6,7 +6,7 @@ import styles from "@/app/utils.module.css"
 export default function Home() {
   return (
     <main className={`${styles.height_full}`}>
-      <div className="container-fluid h-100">
+      <div className="container-fluid vh-100">
         <div className={`row h-100 d-flex align-items-center ${styles.md_center}`}>
           <div className="col-md-6 col-12 order-2">
             <h1>Time Table Planner</h1>
