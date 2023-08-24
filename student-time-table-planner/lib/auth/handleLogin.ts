@@ -2,6 +2,7 @@ import { StudentLoginType } from "@/types";
 import { SERVER_URL } from "@/constant";
 import { FormEvent } from "react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+import { showNotification, hideNotification } from "../general/notification";
 
 export default async function handleLogin(
   e: FormEvent<HTMLFormElement>,
@@ -10,6 +11,7 @@ export default async function handleLogin(
 ) {
   try {
     e.preventDefault();
+    showNotification({ title: "Login", message: "Login processing...", loading: true });
     const loginUrl = SERVER_URL + "/api/login"
     const res = await fetch(loginUrl, {
       method: "POST",
@@ -20,13 +22,15 @@ export default async function handleLogin(
       body: JSON.stringify(loginData)
     })
     const data = await res.json();
+    hideNotification();
     if (data.success) {
-      console.log(data.success)
+      showNotification({ title: "Login", message: data.success as string });
       router.push("/timetable")
     } else {
-      console.log("User error", data.error)
+      showNotification({ title: "Login", message: data.error as string, error: true });
     }
   } catch (error) {
-    console.log("System error", error)
+    hideNotification();
+    showNotification({ title: "Login", message: error as string, error: true });
   }
 }

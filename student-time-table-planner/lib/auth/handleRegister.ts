@@ -2,6 +2,7 @@ import { StudentType } from "@/types";
 import { SERVER_URL } from "@/constant";
 import { FormEvent } from "react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+import { hideNotification, showNotification } from "../general/notification";
 
 export default async function handleRegister(
   e: FormEvent<HTMLFormElement>,
@@ -9,6 +10,7 @@ export default async function handleRegister(
   router: AppRouterInstance,
 ) {
   try {
+    showNotification({ title: "Register", message: "Register processing...", loading: true })
     e.preventDefault();
     const registerUrl = SERVER_URL + "/api/register"
     const res = await fetch(registerUrl, {
@@ -20,13 +22,15 @@ export default async function handleRegister(
       body: JSON.stringify(registerData)
     })
     const data = await res.json();
+    hideNotification();
     if (data.success) {
-      console.log(data.success)
+      showNotification({ title: "Register", message: data.success });
       router.push("/timetable")
     } else {
-      console.log("User error", data.error)
+      showNotification({ title: "Register", message: data.error, error: true });
     }
   } catch (error) {
-    console.log("System error", error)
+    hideNotification();
+    showNotification({ title: "Register", message: error as string, error: true });
   }
 }

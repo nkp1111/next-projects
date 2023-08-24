@@ -2,6 +2,7 @@ import { CourseType } from "@/types";
 import { SERVER_URL } from "@/constant";
 import { FormEvent } from "react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+import { hideNotification, showNotification } from "../general/notification";
 
 export default async function addNewCourse(
   e: FormEvent<HTMLFormElement>,
@@ -9,6 +10,7 @@ export default async function addNewCourse(
   router: AppRouterInstance,
 ) {
   try {
+    showNotification({ title: "Add New Course", message: "Processing...", loading: true })
     e.preventDefault();
     const loginUrl = SERVER_URL + "/api/course"
     const res = await fetch(loginUrl, {
@@ -20,13 +22,15 @@ export default async function addNewCourse(
       body: JSON.stringify(courseData)
     })
     const data = await res.json();
+    hideNotification();
     if (data.success) {
-      console.log(data.success)
-      // router.push("/timetable")
+      showNotification({ title: "Add New Course", message: data.success })
+      router.push("/course")
     } else {
-      console.log("User error", data.error)
+      showNotification({ title: "Add New Course", message: data.error, error: true })
     }
   } catch (error) {
-    console.log("System error", error)
+    hideNotification();
+    showNotification({ title: "Add New Course", message: error as string, error: true })
   }
 }

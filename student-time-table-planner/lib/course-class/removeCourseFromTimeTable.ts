@@ -1,6 +1,7 @@
 import { StudentType } from "@/types";
 import { SERVER_URL } from "@/constant";
 import { Dispatch, SetStateAction } from "react";
+import { hideNotification, showNotification } from "../general/notification";
 
 
 export default async function removeCourseFromTimeTable(
@@ -10,6 +11,7 @@ export default async function removeCourseFromTimeTable(
   setCurrentStudentDetail: Dispatch<SetStateAction<StudentType>>,
 ) {
   try {
+    showNotification({ title: "Remove Course From TimeTable", message: "Processing...", loading: true });
     const courseUrl = SERVER_URL + `/api/course/${courseId}/me`;
     const res = await fetch(courseUrl, {
       method: "DELETE",
@@ -20,8 +22,9 @@ export default async function removeCourseFromTimeTable(
       body: JSON.stringify({ classId, courseId: courseIdToRemove }),
     });
     const data = await res.json();
+    hideNotification();
     if (data.success) {
-      console.log(data.success);
+      showNotification({ title: "Remove Course From TimeTable", message: data.success });
       setCurrentStudentDetail({
         _id: "",
         name: "",
@@ -34,9 +37,10 @@ export default async function removeCourseFromTimeTable(
       })
       window.location.reload();
     } else {
-      console.log("User error", data.error)
+      showNotification({ title: "Remove Course From TimeTable", message: data.error, error: true, });
     }
   } catch (error) {
-    console.log("System error", error)
+    hideNotification();
+    showNotification({ title: "Remove Course From TimeTable", message: error as string, error: true, });
   }
 }

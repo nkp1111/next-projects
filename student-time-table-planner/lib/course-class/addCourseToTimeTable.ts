@@ -1,5 +1,6 @@
 import { SERVER_URL } from "@/constant";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+import { hideNotification, showNotification } from "../general/notification";
 
 export default async function addCourseToTimeTable(
   courseId: string,
@@ -7,6 +8,7 @@ export default async function addCourseToTimeTable(
   router: AppRouterInstance,
 ) {
   try {
+    showNotification({ title: "Add Course To TimeTable", message: "Processing...", loading: true });
     const courseUrl = SERVER_URL + `/api/course/${courseId}/me`;
     const res = await fetch(courseUrl, {
       method: "POST",
@@ -17,13 +19,15 @@ export default async function addCourseToTimeTable(
       body: JSON.stringify({ classes }),
     });
     const data = await res.json();
+    hideNotification();
     if (data.success) {
-      console.log(data.success);
+      showNotification({ title: "Add Course To TimeTable", message: data.success, });
       router.push("/timetable")
     } else {
-      console.log("User error", data.error)
+      showNotification({ title: "Add Course To TimeTable", message: data.error, error: true, });
     }
   } catch (error) {
-    console.log("System error", error)
+    hideNotification();
+    showNotification({ title: "Add Course To TimeTable", message: error as string, error: true, });
   }
 }

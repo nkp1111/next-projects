@@ -1,22 +1,26 @@
 import { CourseType } from "@/types";
 import { SERVER_URL } from "@/constant";
 import { Dispatch, SetStateAction } from "react";
+import { hideNotification, showNotification } from "../general/notification";
 
 export default async function courseDetail(
   courseId: string,
   setDetailedCourse: Dispatch<SetStateAction<CourseType>>,
 ) {
   try {
+    showNotification({ title: "Course Detail", message: "Processing...", loading: true })
     const courseUrl = SERVER_URL + "/api/course/" + courseId;
     const res = await fetch(courseUrl);
     const data = await res.json();
+    hideNotification()
     if (data.success) {
-      console.log(data.success)
+      showNotification({ title: "Course Detail", message: data.success })
       setDetailedCourse(data.course);
     } else {
-      console.log("User error", data.error)
+      showNotification({ title: "Course Detail", message: data.error, error: true })
     }
   } catch (error) {
-    console.log("System error", error)
+    hideNotification()
+    showNotification({ title: "Course Detail", message: error as string, error: true, })
   }
 }

@@ -1,12 +1,14 @@
 import { StudentType } from "@/types";
 import { SERVER_URL } from "@/constant";
 import { Dispatch, SetStateAction } from "react";
+import { hideNotification, showNotification } from "../general/notification";
 
 export default async function myCourseClass(
   setCurrentStudentDetail: Dispatch<SetStateAction<StudentType>>,
   classIncludes: string = "false"
 ) {
   try {
+    showNotification({ title: "My Course", message: "Processing...", loading: true });
     const loginUrl = SERVER_URL + `/api/student?class=${classIncludes}`
     const res = await fetch(loginUrl, {
       method: "GET",
@@ -15,13 +17,15 @@ export default async function myCourseClass(
       next: { revalidate: 0 },
     })
     const data = await res.json();
+    hideNotification();
     if (data.success) {
-      console.log(data.success);
+      showNotification({ title: "My Course", message: data.success });
       setCurrentStudentDetail(data.student);
     } else {
-      console.log("User error", data.error)
+      showNotification({ title: "My Course", message: data.error, error: true });
     }
   } catch (error) {
-    console.log("System error", error)
+    hideNotification();
+    showNotification({ title: "My Course", message: error as string, error: true });
   }
 }

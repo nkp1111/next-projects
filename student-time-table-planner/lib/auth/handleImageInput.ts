@@ -1,5 +1,6 @@
 import { CourseType, ClassType } from "@/types";
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { hideNotification, showNotification } from "../general/notification";
 
 
 /**
@@ -24,12 +25,19 @@ export async function handleImageInput(
 
   if (imgFile) {
     const reader = new FileReader();
-
+    showNotification({ title: "Image Reader", message: "Please wait, Image is being read.", loading: true })
     reader.onload = (event) => {
+      hideNotification();
       if (event.target?.readyState === reader.DONE) {
         const imgData = event.target.result as string;
         setRegisterData((prev) => ({ ...prev, photo: imgData }));
       }
     }
+
+    reader.onerror = (e) => {
+      hideNotification();
+      showNotification({ title: "Image Reader", message: "File Reader Error", error: true })
+    }
+    reader.readAsDataURL(imgFile);
   }
 }
