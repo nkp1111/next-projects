@@ -11,7 +11,7 @@
 
 ## Links
 
-- [Live App]()
+- [Live App](https://next-projects-sigma.vercel.app/)
 - [GitHub](https://github.com/nkp1111/next-projects/tree/main/student-time-table-planner)
 
 ## Overview
