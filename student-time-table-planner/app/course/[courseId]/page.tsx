@@ -7,6 +7,7 @@ import styles from "@/app/utils.module.css"
 import Header from '@/components/header';
 import addCourseToTimeTable from '@/lib/course-class/addCourseToTimeTable';
 import { useRouter } from 'next/navigation';
+import formatDate from '@/lib/general/formatDate';
 
 export async function generateMetadata({ params: { courseId } }: { params: { courseId: string } }) {
   return {
@@ -57,7 +58,7 @@ export default function CourseDetail(
                     <div className='text-start'>
                       <h3>{classD.title}</h3>
                       <p className='mt-0'><strong>Class Id: </strong><small>{classD._id}</small></p>
-                      <p><strong>Class Timings: </strong> {classD.startTime} {classD.endTime && `- ${classD.endTime}` || null}</p>
+                      <p><strong>Class Timings: </strong> {formatDate(classD.startTime)} {classD.endTime && `- ${formatDate(classD.endTime)}` || null}</p>
                     </div>
                     <div className="ms-auto">
                       <button type="button" className="btn btn-success"

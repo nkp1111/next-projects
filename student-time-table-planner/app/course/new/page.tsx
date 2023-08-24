@@ -8,6 +8,7 @@ import { useState } from 'react';
 import addNewCourse from '@/lib/course-class/addCourse';
 import { useRouter } from 'next/navigation';
 import { addClass, removeClass } from '@/lib/course-class/addRemoveCourseClass';
+import formatDate from '@/lib/general/formatDate';
 
 export default function AddNewCourse() {
   const router = useRouter();
@@ -57,20 +58,25 @@ export default function AddNewCourse() {
               <div className="mb-3">
                 {courseData.classes.length > 0 && (
                   <article>
-                    <h3 className='fs-6'>All Course Classes</h3>
+                    <h3 className='fs-5'>All Course Classes</h3>
                     <ul>
                       {courseData.classes.map((classD, ind) => {
                         if (typeof classD === "string") {
-                          return <li key={ind} className='mb-2'>
-                            <span>{classD}</span>
+                          return <li key={ind} className='mb-2 d-flex align-items-center'>
+                            <strong>{classD}</strong>
                             <span className='ms-4 fw-bold btn btn-danger' onClick={() => removeClass(ind, courseData, setCourseData)}>X</span>
                           </li>
                         } else {
-                          return <li key={ind} className='mb-2'>
-                            <span>{classD.title} - </span>
-                            <span>{classD.startTime?.toString() || ""}</span>
-                            <span>{classD.endTime?.toString()}</span>
-                            <span className='ms-4 fw-bold btn btn-danger' onClick={() => removeClass(ind, courseData, setCourseData)}>X</span>
+                          return <li key={ind} className='mb-2 d-flex align-items-center'>
+                            <div>
+                              <strong>{classD.title}</strong>
+                              <br />
+                              <span>{formatDate(classD.startTime)} - </span>
+                              <span>{formatDate(classD.endTime)}</span>
+                            </div>
+                            <div>
+                              <span className='ms-4 fw-bold btn btn-danger' onClick={() => removeClass(ind, courseData, setCourseData)}>X</span>
+                            </div>
                           </li>
                         }
                       })}

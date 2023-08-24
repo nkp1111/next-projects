@@ -7,6 +7,7 @@ import styles from "@/app/utils.module.css"
 import Link from "next/link";
 import myCourseClass from "@/lib/course-class/myCourseClass";
 import removeCourseFromTimeTable from "@/lib/course-class/removeCourseFromTimeTable";
+import formatDate from "@/lib/general/formatDate";
 
 export default function Course() {
   const [currentStudentDetail, setCurrentStudentDetail] = useState<StudentType>({
@@ -57,7 +58,7 @@ export default function Course() {
                       >Remove Course</button>
                     </div>
                   </div>
-                  <div className="ms-auto">
+                  <div className="mx-auto">
                     {course.classes.map((classD, ind) => {
                       if (typeof classD === 'string') {
                         if (currentStudentClasses.includes(classD)) {
@@ -82,7 +83,7 @@ export default function Course() {
                               <div className='text-start'>
                                 <h3>{classD.title}</h3>
                                 <p className='mt-0'><strong>Class Id: </strong><small>{classD._id}</small></p>
-                                <p><strong>Class Timings: </strong> {classD.startTime} {classD.endTime && `- ${classD.endTime}` || null}</p>
+                                <p><strong>Class Timings: </strong> {formatDate(classD.startTime)} {classD.endTime && `- ${formatDate(classD.endTime)}` || null}</p>
                               </div>
                               <div className="ms-auto">
                                 <button type="button" className="btn btn-danger"
