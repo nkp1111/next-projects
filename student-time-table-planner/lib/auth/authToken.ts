@@ -12,7 +12,7 @@ export function sendAuthToken(
   const token = sign(
     { id: user._id },
     SECRET_JWT_TOKEN,
-    { expiresIn: "1h" }
+    // { expiresIn: "1h" }
   )
   cookies().set("token", token);
   return NextResponse.json({ success: message, user })

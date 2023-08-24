@@ -25,7 +25,7 @@ The application should take care of the following aspects:
 - Students can add a class to their timetable if the class’s time doesn’t clash with already booked classes’ time.
 - Students can delete a class from their timetable.
 
-![screenshot]()
+![screenshot](./public/images/Screenshot%202023-08-24%20145505.png)
 
 ### Built With
 
@@ -62,12 +62,13 @@ Open [localhost:3000](http://localhost:3000) with your browser to see the result
 
 ## Acknowledgements
 
-- mongoose
 - bootstrap
 - bcrypt
 - date-fns
 - jsonwebtoken
+- mongoose
 - react-big-calendar
+- @mantine/notifications
 
 ## Contact
 

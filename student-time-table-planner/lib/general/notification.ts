@@ -1,4 +1,4 @@
-import { Notifications, notifications } from "@mantine/notifications";
+import { notifications } from "@mantine/notifications";
 export function showNotification(
   { title, message, loading = false, error = false }
     : { title: string, message: string, loading?: boolean, error?: boolean }
