@@ -11,11 +11,6 @@ import { useRouter } from 'next/navigation';
 import { addClass, removeClass } from '@/lib/course-class/addRemoveCourseClass';
 import formatDate from '@/lib/general/formatDate';
 
-export async function generateMetadata({ params: { courseId } }: { params: { courseId: string } }) {
-  return {
-    title: courseId + "-course"
-  }
-}
 
 export default function EditCourseDetail(
   { params: { courseId } }: { params: { courseId: string } }

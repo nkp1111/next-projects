@@ -9,11 +9,6 @@ import addCourseToTimeTable from '@/lib/course-class/addCourseToTimeTable';
 import { useRouter } from 'next/navigation';
 import formatDate from '@/lib/general/formatDate';
 
-export async function generateMetadata({ params: { courseId } }: { params: { courseId: string } }) {
-  return {
-    title: courseId + "-course"
-  }
-}
 
 export default function CourseDetail(
   { params: { courseId } }: { params: { courseId: string } }
