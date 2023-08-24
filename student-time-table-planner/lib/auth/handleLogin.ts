@@ -31,6 +31,7 @@ export default async function handleLogin(
     }
   } catch (error) {
     hideNotification();
+    console.log(error)
     showNotification({ title: "Login", message: JSON.stringify(error), error: true });
   }
 }

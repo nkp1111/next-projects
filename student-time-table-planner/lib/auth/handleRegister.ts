@@ -31,6 +31,7 @@ export default async function handleRegister(
     }
   } catch (error) {
     hideNotification();
-    showNotification({ title: "Register", message: error as string, error: true });
+    console.log(error)
+    showNotification({ title: "Register", message: JSON.stringify(error), error: true });
   }
 }
