@@ -9,7 +9,7 @@ export default function NotificationLayout({
 }) {
   return (
     <>
-      <Notifications position="top-center" />
+      <Notifications position="top-center" limit={5} />
       {children}
     </>
   )
