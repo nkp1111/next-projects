@@ -24,13 +24,13 @@ export default async function handleLogin(
     const data = await res.json();
     hideNotification();
     if (data.success) {
-      showNotification({ title: "Login", message: data.success as string });
+      showNotification({ title: "Login", message: data.success });
       router.push("/timetable")
     } else {
-      showNotification({ title: "Login", message: data.error as string, error: true });
+      showNotification({ title: "Login", message: data.error, error: true });
     }
   } catch (error) {
     hideNotification();
-    showNotification({ title: "Login", message: error as string, error: true });
+    showNotification({ title: "Login", message: JSON.stringify(error), error: true });
   }
 }

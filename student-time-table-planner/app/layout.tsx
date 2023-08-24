@@ -1,10 +1,6 @@
-"use client";
-
 import './globals.css'
 import type { Metadata } from 'next'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Notifications } from "@mantine/notifications";
-
 
 export const metadata: Metadata = {
   title: 'Student TimeTable',
@@ -19,9 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Notifications position="top-center" />
         {children}
       </body>
     </html>
   )
 }
+
