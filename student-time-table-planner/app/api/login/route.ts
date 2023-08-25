@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
       }
 
       const successMessage = "Student logged In successfully"
-      return await sendAuthToken(student, successMessage);
+      return sendAuthToken(student, successMessage);
     } else {
       return NextResponse.json({ error: "Both email and password are required" }, { status: 400 })
     }

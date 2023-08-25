@@ -16,7 +16,7 @@ export async function connectMongo() {
     });
 
     client.on('serverDescriptionChanged', (event) => {
-      console.log('MongoDB server description changed:', event);
+      console.log('MongoDB server description changed:');
     });
 
     client.on('serverHeartbeatStarted', () => {
@@ -28,7 +28,7 @@ export async function connectMongo() {
     });
 
     client.on('serverHeartbeatFailed', (event) => {
-      console.log('MongoDB server heartbeat failed:', event);
+      console.log('MongoDB server heartbeat failed:');
     });
 
     await client.connect();

@@ -14,6 +14,8 @@
 - [Live App](https://next-projects-sigma.vercel.app/)
 - [GitHub](https://github.com/nkp1111/next-projects/tree/main/student-time-table-planner)
 
+- Demo email: n@g and password: a for login on live app
+
 ## Overview
 
 You have to implement an application to allow students to choose & register for multiple courses, view their timetable.
