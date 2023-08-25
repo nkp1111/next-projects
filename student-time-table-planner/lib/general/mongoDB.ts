@@ -5,7 +5,7 @@ const mongoUrl: string = process.env.MONGO_URL as string;
 
 export async function connectMongo() {
   try {
-    console.log("Trying to connect mongoDB", mongoUrl);
+    console.log("Trying to connect mongoDB");
     const client = await MongoClient.connect(mongoUrl)
     client.on('serverOpening', () => {
       console.log('MongoDB server is opening');

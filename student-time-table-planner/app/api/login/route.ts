@@ -15,11 +15,12 @@ export async function POST(request: NextRequest) {
       if (error || !client) {
         return NextResponse.json({ error }, { status: 500 })
       } else {
-        console.log(success, client)
+        console.log("client success", success, client)
       }
 
       let student;
       try {
+        console.log(Student)
         student = await Student.findOne({ email })
         console.log("student data fetched");
       } catch (error) {
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest) {
       }
 
       // disconnect mongo db connection
-      const { success: disconnectSuccess, error: disconnectError } = await disconnectMongo(client);
+      const { error: disconnectError } = await disconnectMongo(client);
       if (disconnectError) {
         console.log("Error while disconnecting mongo `Login api route`")
       }
@@ -50,6 +51,6 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ error }, { status: 500 })
+    return NextResponse.json({ error }, { status: 505 })
   }
 }
