@@ -1,9 +1,23 @@
+"use client";
+
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import frontImage from "@/public/images/stock-image.jpg"
 import styles from "@/app/utils.module.css"
 
 export default function Home() {
+  useEffect(() => {
+    (async () => {
+      const res = await fetch("/api/config")
+      const data = await res.json()
+      if (data.success) {
+        console.log(data.success)
+      } else {
+        console.log(data.error);
+      }
+    })();
+  }, [])
   return (
     <main className={`${styles.height_full}`}>
       <div className="container-fluid vh-100">
