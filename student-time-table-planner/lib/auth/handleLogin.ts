@@ -13,7 +13,7 @@ export default async function handleLogin(
     console.log("login", loginData)
     e.preventDefault();
     showNotification({ title: "Login", message: "Login processing...", loading: true });
-    const loginUrl = SERVER_URL + "/api/login"
+    const loginUrl = "/api/login"
     const res = await fetch(loginUrl, {
       method: "POST",
       credentials: "include",
