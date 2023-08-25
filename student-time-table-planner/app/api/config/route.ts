@@ -1,13 +1,15 @@
-import mongoose from "mongoose";
+import connectMongo from "@/lib/general/connectMongo";
 import { NextResponse } from "next/server";
 
-// variables defined in env file
-const mongoUrl: string = process.env.MONGO_URL as string;
 
 export async function GET() {
   try {
-    await mongoose.connect(mongoUrl)
-    return NextResponse.json({ success: "Mongo DB connected" })
+    const { success, error } = await connectMongo()
+    if (success) {
+      return NextResponse.json({ success: "Mongo DB connected" })
+    } else {
+      return NextResponse.json({ error }, { status: 500 });
+    }
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 })
   }
