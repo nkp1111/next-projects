@@ -46,6 +46,7 @@ const myEventsList = [
 ]
 
 export default function TimeTable() {
+  console.log('timetable started')
   const [currentStudentDetail, setCurrentStudentDetail] = useState<StudentType>({
     _id: "",
     name: "",
@@ -72,6 +73,8 @@ export default function TimeTable() {
       )
     }
   }, [currentStudentDetail])
+
+  console.log(myClassSchedule)
 
   // useEffect(() => { console.log(myClassSchedule) }, [myClassSchedule])
 

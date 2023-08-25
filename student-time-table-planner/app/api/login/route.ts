@@ -6,14 +6,16 @@ import { sendAuthToken } from "@/lib/auth/authToken";
 export async function POST(request: NextRequest) {
   try {
     const { email, password }: StudentLoginType = await request.json();
-
+    console.log("login api", email, password)
     if (email && password) {
       const student = await Student.findOne({ email })
       let passwordMatch = false;
       if (student) {
+        console.log("student found", student, password)
         passwordMatch = await student.comparePassword(password);
       }
 
+      console.log("student and password match", passwordMatch)
       if (!student || !passwordMatch) {
         return NextResponse.json({ error: "Email or password or both is/are incorrect" },
           { status: 400 })

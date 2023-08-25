@@ -10,6 +10,7 @@ export default async function handleLogin(
   router: AppRouterInstance,
 ) {
   try {
+    console.log("login", loginData)
     e.preventDefault();
     showNotification({ title: "Login", message: "Login processing...", loading: true });
     const loginUrl = SERVER_URL + "/api/login"
@@ -24,9 +25,11 @@ export default async function handleLogin(
     const data = await res.json();
     hideNotification();
     if (data.success) {
+      console.log(data.success)
       showNotification({ title: "Login", message: data.success });
       router.push("/timetable")
     } else {
+      console.log(data.error)
       showNotification({ title: "Login", message: data.error, error: true });
     }
   } catch (error) {
