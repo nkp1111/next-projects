@@ -22,7 +22,14 @@ export default async function handleLogin(
       },
       body: JSON.stringify(loginData)
     })
-    const data = await res.json();
+    let data;
+    try {
+      console.log("response after login", res)
+      data = await res.json();
+    } catch (e) {
+      console.log("error when parsing response", e)
+    }
+
     hideNotification();
     if (data.success) {
       console.log(data.success)
