@@ -1,16 +1,15 @@
-import { genreCategory, genreCategoryItem, typeCategoryItem } from "@/types"
+import { formattedCategoryType, genreCategoryItem } from "@/types"
 
 export default function formatCategory(categoryData: { [key: string]: any }) {
-  let formatCategoryData:
-    { segment: genreCategory[], types: typeCategoryItem[] } = {
+  let formatCategoryData: formattedCategoryType = {
     segment: [],
     types: [],
   };
 
   if (Object.keys(categoryData).length > 0) {
-    categoryData.data._embedded.classifications?.map((item: { [key: string]: any }) => {
+    categoryData.data._embedded.classifications?.map(async (item: { [key: string]: any }) => {
       if (item.segment) {
-        let data = { id: "", link: "", name: "", genres: [] };
+        let data = { id: "", link: "", name: "", genres: [], image: "" };
         data.link = item._links.self.href
         data.id = item.segment.id
         data.name = item.segment.name
@@ -26,13 +25,14 @@ export default function formatCategory(categoryData: { [key: string]: any }) {
         }))
 
         if (data.name !== "Undefined") {
+          data.image = "https://source.unsplash.com/random?" + data.name;
           formatCategoryData.segment.push(data)
         }
       }
 
 
       if (item.type) {
-        let data = { id: "", link: "", name: "", subtypes: [] };
+        let data = { id: "", link: "", name: "", subtypes: [], image: "" };
         data.link = item._links.self.href
         data.id = item.type.id
         data.name = item.type.name
@@ -43,6 +43,7 @@ export default function formatCategory(categoryData: { [key: string]: any }) {
         }))
 
         if (data.name !== "Undefined") {
+          data.image = "https://source.unsplash.com/random?" + data.name;
           formatCategoryData.types.push(data)
         }
       }

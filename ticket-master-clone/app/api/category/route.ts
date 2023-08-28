@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
   try {
     const res = await fetch(url)
     const data = await res.json();
-    return NextResponse.json({ data })
+    return NextResponse.json({ data, success: "Categories fetched" })
   } catch (error) {
     return NextResponse.json({ error })
   }
