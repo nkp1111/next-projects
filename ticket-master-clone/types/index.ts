@@ -9,6 +9,7 @@ export interface categoryItem {
   link: string;
   name: string;
   image?: string;
+  events?: { [index: string]: any }[];
 }
 
 export interface genreCategoryItem extends categoryItem {

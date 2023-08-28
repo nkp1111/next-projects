@@ -1,15 +1,16 @@
 import { formattedCategoryType, genreCategoryItem } from "@/types"
 
-export default function formatCategory(categoryData: { [key: string]: any }) {
+export default async function formatCategory(categoryData: { [key: string]: any }) {
   let formatCategoryData: formattedCategoryType = {
     segment: [],
     types: [],
   };
 
   if (Object.keys(categoryData).length > 0) {
-    categoryData.data._embedded.classifications?.map(async (item: { [key: string]: any }) => {
+
+    for (let item of categoryData.data._embedded.classifications) {
       if (item.segment) {
-        let data = { id: "", link: "", name: "", genres: [], image: "" };
+        let data = { id: "", link: "", name: "", genres: [], image: "", events: [] };
         data.link = item._links.self.href
         data.id = item.segment.id
         data.name = item.segment.name
@@ -25,14 +26,19 @@ export default function formatCategory(categoryData: { [key: string]: any }) {
         }))
 
         if (data.name !== "Undefined") {
+          const res = await fetch(`/api/categoryEvents?location=US&eventId=${data.id}`, {
+            method: "POST"
+          });
+          const categoryEvents = await res.json();
           data.image = "https://source.unsplash.com/random?" + data.name;
+          data.events = categoryEvents?.data?._embedded?.events || [];
           formatCategoryData.segment.push(data)
         }
       }
 
 
       if (item.type) {
-        let data = { id: "", link: "", name: "", subtypes: [], image: "" };
+        let data = { id: "", link: "", name: "", subtypes: [], image: "", events: [] };
         data.link = item._links.self.href
         data.id = item.type.id
         data.name = item.type.name
@@ -43,11 +49,16 @@ export default function formatCategory(categoryData: { [key: string]: any }) {
         }))
 
         if (data.name !== "Undefined") {
+          const res = await fetch(`/api/categoryEvents?location=US&eventId=${data.id}`, {
+            method: "POST"
+          });
+          const categoryEvents = await res.json();
           data.image = "https://source.unsplash.com/random?" + data.name;
+          data.events = categoryEvents?.data?._embedded?.events || [];
           formatCategoryData.types.push(data)
         }
       }
-    })
+    }
   }
   return formatCategoryData
 }
