@@ -6,19 +6,18 @@ import { useEffect, useState } from "react";
 export default function CategorySection() {
   const [categories, setCategories] = useState({});
   useEffect(() => {
-    fetch("/api/eventCategory")
-      .then(res => res.json())
-      .then(data => {
-        setCategories(data)
-      })
+
+    const handleCategory = async () => {
+      const res = await fetch("/api/category?location=US");
+      const data = await res.json();
+      const formattedData = formatCategory(data)
+      console.log(formattedData);
+      setCategories(data)
+    }
+
+    handleCategory();
   }, [])
 
-  useEffect(() => {
-    if (categories) {
-      const formattedData = formatCategory(categories);
-      console.log(formattedData);
-    }
-  }, [categories])
   return (
     <section className="bg-white w-100 mt-5 text-dark text-start py-3">
       <div className="container">

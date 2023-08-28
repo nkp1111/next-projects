@@ -25,7 +25,9 @@ export default function formatCategory(categoryData: { [key: string]: any }) {
           }))
         }))
 
-        formatCategoryData.segment.push(data)
+        if (data.name !== "Undefined") {
+          formatCategoryData.segment.push(data)
+        }
       }
 
 
@@ -40,7 +42,9 @@ export default function formatCategory(categoryData: { [key: string]: any }) {
           link: subtype._links.self.href,
         }))
 
-        formatCategoryData.types.push(data)
+        if (data.name !== "Undefined") {
+          formatCategoryData.types.push(data)
+        }
       }
     })
   }
