@@ -26,8 +26,10 @@ export default async function formatCategory(categoryData: { [key: string]: any 
         }))
 
         if (data.name !== "Undefined") {
-          const res = await fetch(`/api/categoryEvents?location=US&eventId=${data.id}`, {
-            method: "POST"
+          const res = await fetch(`/api/categoryEvents?location=US&eventName=${data.name}`, {
+            method: "POST",
+            cache: "no-store",
+            next: { revalidate: 0 },
           });
           const categoryEvents = await res.json();
           data.image = "https://source.unsplash.com/random?" + data.name;
@@ -49,8 +51,10 @@ export default async function formatCategory(categoryData: { [key: string]: any 
         }))
 
         if (data.name !== "Undefined") {
-          const res = await fetch(`/api/categoryEvents?location=US&eventId=${data.id}`, {
-            method: "POST"
+          const res = await fetch(`/api/categoryEvents?location=US&eventName=${data.name}`, {
+            method: "POST",
+            cache: "no-store",
+            next: { revalidate: 0 },
           });
           const categoryEvents = await res.json();
           data.image = "https://source.unsplash.com/random?" + data.name;

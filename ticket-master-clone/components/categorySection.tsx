@@ -47,7 +47,7 @@ export default function CategorySection() {
         </div>
       </div>
 
-      <div className="container">
+      <div className="container mt-5">
         <h2 className="fw-bold">Top Selling</h2>
         <div className="container">
           <div className="row p-0">
@@ -55,19 +55,21 @@ export default function CategorySection() {
               <article key={category.id} className="mb-5">
                 <h3>{category.name}</h3>
                 <div className="row p-0">
-                  {category.events?.map(event => (
-                    <div key={event.id} className="col-md-3 col-6 mb-3" style={{ height: "200px", overflow: "hidden" }}>
-                      <div className="card mb-3 p-2 position-relative overflow-hidden">
+                  {category.events?.slice(0, 8).map(event => (
+                    <div key={event.id} className="col-md-3 col-6 mb-3" style={{ height: "300px", overflow: "hidden" }}>
+                      <div className="card h-100 mb-3 p-2 position-relative overflow-hidden">
                         <div className="w-100 h-100">
                           <Image
-                            src={event?.images[0]?.url || "https://source.unsplash.com/random"}
-                            className="card-img-top object-cover"
+                            src={event?.images[9]?.url || "https://source.unsplash.com/random"}
+                            className="card-img-top object-contain h-100"
                             alt="..."
-                            width={event?.images[0]?.width || 350}
-                            height={event?.images[0]?.height || 300}
+                            width={event?.images[9]?.width || 350}
+                            height={event?.images[9]?.height || 300}
                           />
                         </div>
-                        <h5 className="card-title position-absolute p-2 bg-dark text-white rounded-1 top-0">{event.name}</h5>
+                        <div className="w-100 position-absolute p-2 bg-dark rounded-1">
+                          <h6 className="card-title text-white">{event.name}</h6>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -82,3 +84,4 @@ export default function CategorySection() {
   )
 }
 
+export const revalidate = 0;

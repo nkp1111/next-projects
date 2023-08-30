@@ -6,7 +6,7 @@ const data: {
   [key: string]: string;
 } = {
   location: "US",
-  eventId: "k7vGFKzleBdwS",
+  eventName: "music",
 }
 
 export async function POST(request: NextRequest) {
@@ -18,12 +18,13 @@ export async function POST(request: NextRequest) {
     data[key] = value;
   }
 
-  let url = TICKET_MASTER_URL + `events.json?countryCode=${data.location}&classificationCode=${data.eventId}&apikey=${API_KEY}`;
+  let url = TICKET_MASTER_URL + `events.json?countryCode=${data.location}&classificationName=${data.eventName}&apikey=${API_KEY}`;
 
   try {
-    const res = await fetch(url)
+    const res = await fetch(url, {
+      next: { revalidate: 0 },
+    })
     const data = await res.json();
-    data.typeId = "";
     return NextResponse.json({ data, success: "Event details fetched" });
   } catch (error) {
     data.typeId = "";
