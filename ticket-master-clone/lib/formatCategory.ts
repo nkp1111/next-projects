@@ -8,7 +8,7 @@ export default async function formatCategory(categoryData: { [key: string]: any 
 
   if (Object.keys(categoryData).length > 0) {
 
-    for (let item of categoryData.data._embedded.classifications) {
+    for (let item of categoryData?.data?._embedded?.classifications) {
       if (item.segment) {
         let data = { id: "", link: "", name: "", genres: [], image: "", events: [] };
         data.link = item._links.self.href
