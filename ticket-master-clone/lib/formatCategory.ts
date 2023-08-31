@@ -6,7 +6,7 @@ export default async function formatCategory(categoryData: { [key: string]: any 
     types: [],
   };
 
-  if (Object.keys(categoryData).length > 0) {
+  if (Object.keys(categoryData).length > 0 && categoryData?.data?._embedded?.classifications) {
 
     for (let item of categoryData?.data?._embedded?.classifications) {
       if (item.segment) {

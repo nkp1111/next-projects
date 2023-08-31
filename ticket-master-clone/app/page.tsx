@@ -2,6 +2,7 @@ import Header from '@/components/header'
 import styles from "@/app/utils.module.css"
 import SearchBar from '@/components/searchBar'
 import CategorySection from '@/components/categorySection'
+import Footer from '@/components/footer'
 
 export default function Home() {
   return (
@@ -18,6 +19,8 @@ export default function Home() {
 
         <CategorySection />
       </main>
+
+      <Footer />
     </div>
   )
 }
