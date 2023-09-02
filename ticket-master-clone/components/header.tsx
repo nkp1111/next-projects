@@ -2,9 +2,12 @@ import Image from "next/image";
 import logo from "@/public/ticketmaster.svg"
 import { navData, navSideData } from "@/constants/navData";
 
-export default function Header() {
+export default function Header(
+  { bgBlack = false }:
+    { bgBlack?: boolean }
+) {
   return (
-    <header>
+    <header className={`${bgBlack && 'bg-dark'}`}>
       <nav className="navbar w-100 d-flex justify-content-between px-3">
         <div className="d-flex align-items-center">
           <Image

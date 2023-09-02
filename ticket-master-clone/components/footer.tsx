@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <footer className='bg-dark py-5 mt-auto'>
+    <footer className='bg-dark py-5 mt-auto text-white'>
       <div className="container">
         <div className="row">
           {footerLinks.map(links => {
