@@ -64,7 +64,7 @@ export default function Events(
                         <p><strong>Time:</strong> {event?.dates?.start?.localTime}</p>
                         <p><strong>Genre: </strong> {event?.classifications[0]?.genre?.name}</p>
 
-                        <Link href={`/events/${event.id}/detail`}>See details</Link>
+                        <Link href={`/events/${categoryDetail.id}/${event.id}/`}>See details</Link>
                       </div>
                     </div>
                   </a>

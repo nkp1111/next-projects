@@ -28,3 +28,11 @@ export type formattedCategoryType = {
   segment: genreCategory[],
   types: typeCategoryItem[],
 }
+
+
+export type eventMapType = {
+  [key: string]: any
+  Date: string,
+  Time: string,
+  Tags: string[],
+}
