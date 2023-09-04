@@ -1,6 +1,6 @@
 import Header from '@/components/header'
 import styles from "@/app/utils.module.css"
-import SearchBar from '@/components/searchBar'
+import SearchBar from '@/components/searchbar'
 import CategorySection from '@/components/categorySection'
 import Footer from '@/components/footer'
 

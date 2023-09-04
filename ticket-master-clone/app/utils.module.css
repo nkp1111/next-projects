@@ -5,3 +5,7 @@
 .cursor_pointer {
   cursor: pointer;
 }
+
+.width_200 {
+  width: 200px;
+}

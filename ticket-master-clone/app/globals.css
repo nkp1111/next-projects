@@ -53,3 +53,7 @@ select:focus,
 select:checked {
   border: none !important;
 }
+
+select {
+  width: 200px !important;
+}
