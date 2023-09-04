@@ -47,3 +47,9 @@ header,
 main {
   width: 100%;
 }
+
+input:focus,
+select:focus,
+select:checked {
+  border: none !important;
+}

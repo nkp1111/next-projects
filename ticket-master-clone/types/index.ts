@@ -36,3 +36,10 @@ export type eventMapType = {
   Time: string,
   Tags: string[],
 }
+
+export type searchBarType = {
+  location: string,
+  date: Date | string,
+  keyword: string,
+  data?: any[],
+}

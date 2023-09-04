@@ -1,7 +1,7 @@
 "use client";
 
 import formatCategory from "@/lib/formatCategory";
-import { formattedCategoryType } from "@/types";
+import { formattedCategoryType, searchBarType } from "@/types";
 import { createContext, useState, useEffect, ReactNode } from "react";
 
 
@@ -13,6 +13,12 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     types: [],
   });
 
+  const [searchData, setSearchData] = useState<searchBarType>({
+    location: "",
+    date: "",
+    keyword: "",
+  });
+
   const handleCategory = async () => {
     const res = await fetch("/api/category?location=US");
     const data = await res.json();
@@ -20,11 +26,14 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     // console.log(formattedData);
     setCategories(formattedData)
   }
+
   return (
     <AppContext.Provider
       value={{
         categories,
         handleCategory,
+        searchData,
+        setSearchData,
       }}>
       {children}
     </AppContext.Provider>

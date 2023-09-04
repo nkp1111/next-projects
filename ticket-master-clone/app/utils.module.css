@@ -1,3 +1,7 @@
 .black_background {
-  background: url("https://source.unsplash.com/random/?black")
+  background: url("../public/black-background.jpg");
+}
+
+.cursor_pointer {
+  cursor: pointer;
 }
