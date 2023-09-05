@@ -9,7 +9,7 @@ export const navData: navDataType[] = [
 ]
 
 export const navSideData: navDataType[] = [
-  { id: 1, title: "Sign in", link: "" },
+  { id: 1, title: "Sign in", link: "/signin" },
   { id: 2, title: "Sell", link: "" },
   { id: 3, title: "Gift Cards", link: "" },
   { id: 4, title: "Help", link: "" },

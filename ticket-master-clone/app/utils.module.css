@@ -18,3 +18,15 @@
 .select_input>div {
   border-radius: 0;
 }
+
+.auth_background {
+  background: url("../public/ben-white-unsplash.jpg") center center/ cover no-repeat;
+}
+
+.high_z_index {
+  z-index: 100;
+}
+
+.auth_heading {
+  font-size: 3.5rem;
+}
