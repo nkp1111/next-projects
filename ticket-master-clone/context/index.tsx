@@ -14,8 +14,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   });
 
   const [searchData, setSearchData] = useState<searchBarType>({
-    location: "",
-    date: "",
+    location: "NY",
+    date: new Date(),
     keyword: "",
   });
 

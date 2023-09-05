@@ -7,8 +7,8 @@ import { BsSearch } from "react-icons/bs"
 import { HiOutlineLocationMarker } from "react-icons/hi"
 import LocationSelector from './Location';
 import DateSelector from './Date';
+import { useRouter } from 'next/navigation';
 import styles from "@/app/utils.module.css"
-
 
 
 export default function SearchBar() {
@@ -16,10 +16,16 @@ export default function SearchBar() {
     searchData: searchBarType,
     setSearchData: Dispatch<SetStateAction<searchBarType>>,
   } = useGlobalContext();
+  const router = useRouter();
 
   return (
-    <form className='bg-white border-start-1 d-flex align-items-center text-secondary w-100'>
-
+    <form className='bg-white border-start-1 d-flex align-items-center text-secondary w-100'
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (searchData.location && searchData.date) {
+          router.push("/events/search/")
+        }
+      }}>
       {/* select country */}
       <div className={`px-1 d-flex justify-content-between align-items-center ${styles.cursor_pointer}`}>
         <LocationSelector setSearchData={setSearchData} />
