@@ -2,6 +2,7 @@ import { footerIcons, footerLinks } from '@/constants/footerData'
 import React from 'react'
 import logo from "@/public/ticketmaster.svg"
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Footer() {
   return (
@@ -25,13 +26,15 @@ export default function Footer() {
         <hr className='border-white mt-5 mb-3' />
 
         <div className="d-flex flex-wrap justify-content-between align-items-center gap-3">
-          <Image
-            src={logo}
-            alt={'ticketmaster logo'}
-            width={143}
-            height={20}
-            loading="lazy"
-          />
+          <Link href="/">
+            <Image
+              src={logo}
+              alt={'ticketmaster logo'}
+              width={143}
+              height={20}
+              loading="lazy"
+            />
+          </Link>
 
           <p>By continuing post this page, you agree to our <a href="" target='_blank' className='fw-semibold'>Terms of Use.</a></p>
 

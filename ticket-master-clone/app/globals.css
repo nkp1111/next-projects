@@ -48,11 +48,11 @@ main {
   width: 100%;
 }
 
-input:focus,
+/* input:focus,
 select:focus,
 select:checked {
   border: none !important;
-}
+} */
 
 select {
   width: 200px !important;
