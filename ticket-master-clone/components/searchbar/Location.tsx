@@ -41,7 +41,7 @@ export default function Location(
       <Select
         name="location"
         defaultValue={{ value: "NY", label: "New York, NY" }}
-        className={`${styles.cursor_pointer} ${styles.width_200} text-start`}
+        className={`${styles.cursor_pointer} ${styles.width_200} ${styles.select_input} text-start `}
         options={countryOptions}
         onChange={(selectedOption) => setSearchData((prev) => ({ ...prev, location: selectedOption?.value || prev.location }))}
         isSearchable

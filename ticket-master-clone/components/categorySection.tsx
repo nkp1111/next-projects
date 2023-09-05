@@ -57,7 +57,7 @@ export default function CategorySection() {
                     className="text-primary text-underline">See all {category.name}</Link>
                 </div>
                 <div className="row p-0">
-                  {category.events?.slice(0, 8).map(event => (
+                  {category.events?.slice(0, 4).map(event => (
                     <div key={event.id} className="col-md-3 col-6 mb-3" style={{ height: "300px", overflow: "hidden" }}>
                       <div className="card h-100 mb-3 p-2 position-relative overflow-hidden">
                         <div className="w-100 h-100">
@@ -70,7 +70,9 @@ export default function CategorySection() {
                           />
                         </div>
                         <div className="w-100 position-absolute p-2 bg-dark rounded-1">
-                          <h6 className="card-title text-white">{event.name}</h6>
+                          <h6 className="card-title text-white">
+                            <a href={event.url} target='_blank' className='nav-link'>{event.name}</a>
+                          </h6>
                         </div>
                       </div>
                     </div>

@@ -28,13 +28,13 @@ export default function SearchPage() {
           <hr />
           <p><strong>Near </strong><span className="text-primary text-underline">{searchData.location}</span></p>
 
-          <div><SearchBar /></div>
+          <div><SearchBar isSearchPage /></div>
 
           <div className="container my-4">
-            <div className="row">
-              {searchResult?.map((event, ind) => (
-                <div className="col-12 card flex-row flex-wrap gap-4 mt-3 py-2 justify-content-center" key={ind}>
-                  <div className="">
+            {searchResult?.map((event, ind) => (
+              <div className="card flex-row mt-3 p-2" key={ind}>
+                <div className="row align-items-center w-100">
+                  <div className="col-md-2 col-6">
                     <Image
                       src={event.images[3]?.url}
                       alt={event.name}
@@ -43,24 +43,26 @@ export default function SearchPage() {
                       className='img-fluid'
                     />
                   </div>
-                  <div>
+
+                  <div className="col-md-2 col-6">
                     <p className="fs-5 m-0 text-success fw-semibold">{event?.dates?.start?.localDate}</p>
                     <p className="m-0">{event?.dates?.start?.localTime}</p>
                   </div>
 
-                  <div>
+                  <div className="col-md-6 col-10">
                     <h4 className="fw-bold">{event.name}</h4>
                     <p className="m-0">{event?._embedded?.venues[0]?.address.line1}, {event?._embedded?.venues[0]?.city.name},
                       {event?._embedded?.venues[0]?.country.name}</p>
                   </div>
-                  <div className="flex-grow-1"></div>
-                  <div>
+
+                  <div className="col-md-2 col-2">
                     <a href={event.url} className="btn btn-primary" role="button">See Tickets</a>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
+
         </div>
       </main>
       <Footer />

@@ -11,7 +11,9 @@ import { useRouter } from 'next/navigation';
 import styles from "@/app/utils.module.css"
 
 
-export default function SearchBar() {
+export default function SearchBar(
+  { isSearchPage = false }: { isSearchPage?: boolean }
+) {
   const { searchData, setSearchData }: {
     searchData: searchBarType,
     setSearchData: Dispatch<SetStateAction<searchBarType>>,
@@ -19,7 +21,7 @@ export default function SearchBar() {
   const router = useRouter();
 
   return (
-    <form className='bg-white border-start-1 d-flex align-items-center text-secondary w-100'
+    <form className={`border-start-1 d-flex gap-1 align-items-center text-secondary w-100 ${isSearchPage ? "bg-dark p-1" : "bg-white"}`}
       onSubmit={(e) => {
         e.preventDefault();
         if (searchData.location && searchData.date) {
@@ -27,16 +29,16 @@ export default function SearchBar() {
         }
       }}>
       {/* select country */}
-      <div className={`px-1 d-flex justify-content-between align-items-center ${styles.cursor_pointer}`}>
+      <div className={`d-flex ${styles.cursor_pointer} px-1`}>
         <LocationSelector setSearchData={setSearchData} />
-        <span className='ms-3'>
+        <div className='px-2 bg-white d-flex align-items-center'>
           <HiOutlineLocationMarker className="text-success fs-4" />
-        </span>
+        </div>
       </div>
       <div className='w-0 h-100 border-1 border-secondary' />
 
       {/* select date  */}
-      <div className={`px-2 d-flex justify-content-between align-items-center text-nowrap ${styles.cursor_pointer}`}>
+      <div className={`px-2 bg-white d-flex py-2 text-nowrap ${styles.cursor_pointer}`}>
         <DateSelector searchData={searchData} setSearchData={setSearchData} />
       </div>
       <div className='w-0 h-100 border-1 border-secondary' />
