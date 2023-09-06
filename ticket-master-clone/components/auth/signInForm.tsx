@@ -35,7 +35,7 @@ export default function SignInForm() {
           </p>
         </div>
 
-        <div className='text-end'>
+        <div className='text-end mt-3'>
           <button type="submit" className="btn btn-primary">Sign In</button>
         </div>
       </form>
