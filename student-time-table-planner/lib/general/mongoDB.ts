@@ -1,50 +1,12 @@
-import { MongoClient } from 'mongodb'
+import mongoose from 'mongoose'
 
-// variables defined in env file
-const mongoUrl: string = process.env.MONGO_URL as string;
-
-export async function connectMongo() {
+export default async function connectMongo(mongoUrl: string) {
   try {
     console.log("Trying to connect mongoDB");
-    const client = await MongoClient.connect(mongoUrl)
-    client.on('serverOpening', () => {
-      console.log('MongoDB server is opening');
-    });
-
-    client.on('serverClosed', () => {
-      console.log('MongoDB server is closed');
-    });
-
-    client.on('serverDescriptionChanged', (event) => {
-      console.log('MongoDB server description changed:');
-    });
-
-    client.on('serverHeartbeatStarted', () => {
-      console.log('MongoDB server heartbeat started');
-    });
-
-    client.on('serverHeartbeatSucceeded', () => {
-      console.log('MongoDB server heartbeat succeeded');
-    });
-
-    client.on('serverHeartbeatFailed', (event) => {
-      console.log('MongoDB server heartbeat failed:');
-    });
-
-    await client.connect();
-    return { success: "Mongo DB Connected", client }
+    await mongoose.connect(mongoUrl);
+    return { success: "Mongo DB Connected" }
   } catch (error) {
     return { error }
   }
 }
 
-export async function disconnectMongo(client: MongoClient) {
-  try {
-    // Close the connection when done
-    await client.close();
-    return { success: "MongoDB disconnected" }
-  } catch (error) {
-    console.log("Error while closing mongo connection")
-    return { error: JSON.stringify(error) };
-  }
-}

@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import Student from "@/models/students";
 import { StudentLoginType } from "@/types"
 import { sendAuthToken } from "@/lib/auth/authToken";
-import { connectMongo, disconnectMongo } from "@/lib/general/mongoDB";
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,14 +9,6 @@ export async function POST(request: NextRequest) {
 
     // if email and password are provided
     if (email && password) {
-      // establish mongo connection
-      const { success, error, client } = await connectMongo();
-      if (error || !client) {
-        return NextResponse.json({ error }, { status: 500 })
-      } else {
-        console.log("client success", success, client)
-      }
-
       let student;
       try {
         console.log(Student)
@@ -35,12 +26,6 @@ export async function POST(request: NextRequest) {
       if (!student || !passwordMatch) {
         return NextResponse.json({ error: "Email or password or both is/are incorrect" },
           { status: 400 })
-      }
-
-      // disconnect mongo db connection
-      const { error: disconnectError } = await disconnectMongo(client);
-      if (disconnectError) {
-        console.log("Error while disconnecting mongo `Login api route`")
       }
 
       const successMessage = "Student logged In successfully"
