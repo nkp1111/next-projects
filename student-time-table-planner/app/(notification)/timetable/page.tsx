@@ -74,8 +74,6 @@ export default function TimeTable() {
     }
   }, [currentStudentDetail])
 
-  console.log(myClassSchedule)
-
   // useEffect(() => { console.log(myClassSchedule) }, [myClassSchedule])
 
   return (
