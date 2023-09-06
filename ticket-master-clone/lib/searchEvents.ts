@@ -19,6 +19,6 @@ export default async function searchEvents(
     console.log(data.error)
   }
   console.log(data.success)
-  setSearchResult(data.data?._embedded.events);
+  setSearchResult(data.data?._embedded?.events);
   return
 }
