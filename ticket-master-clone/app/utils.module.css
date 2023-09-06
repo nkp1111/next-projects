@@ -19,6 +19,13 @@
   border-radius: 0;
 }
 
+
+/* auth page  */
+.auth_wrapper {
+  width: 75%;
+  height: 100%;
+}
+
 .auth_background {
   background: url("../public/ben-white-unsplash.jpg") center center/ cover no-repeat;
 }
@@ -29,4 +36,37 @@
 
 .auth_heading {
   font-size: 3.5rem;
+}
+
+@media screen and (max-width: 1000px) {
+
+  .auth_wrapper {
+    width: 100%;
+  }
+
+  .auth_heading {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .auth_wrapper {
+    width: 100%;
+  }
+
+  .auth_wrapper .row .col-12:first-child {
+    max-height: 30vh;
+  }
+
+  .auth_heading {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  .auth_heading {
+    font-size: 2.25rem;
+  }
 }

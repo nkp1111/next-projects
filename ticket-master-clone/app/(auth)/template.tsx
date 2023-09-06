@@ -2,6 +2,7 @@ import AuthBackground from '@/components/auth/authBackground'
 import logo from "@/public/ticketmaster.svg"
 import Image from 'next/image'
 import Link from 'next/link'
+import styles from "@/app/utils.module.css"
 
 export default function AuthTemplate({
   children,
@@ -23,12 +24,12 @@ export default function AuthTemplate({
       </header>
 
       <main className='flex-grow-1'>
-        <div className="w-75 container h-100">
+        <div className={`mx-auto ${styles.auth_wrapper}`}>
           <div className="row h-100">
-            <div className="col-5 p-0">
+            <div className="col-md-5 col-12 p-0">
               <AuthBackground />
             </div>
-            <div className="col-7">
+            <div className="col-md-7 col-12">
               {children}
             </div>
           </div>
