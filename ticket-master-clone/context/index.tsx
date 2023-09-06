@@ -1,6 +1,7 @@
 "use client";
 
 import formatCategory from "@/lib/formatCategory";
+import getCountryData from "@/lib/getCountryData";
 import { formattedCategoryType, searchBarType } from "@/types";
 import { createContext, useState, useEffect, ReactNode } from "react";
 
@@ -19,6 +20,9 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     keyword: "",
   });
 
+  const [selectCountry, setSelectCountry] = useState<any[]>([]);
+
+
   const handleCategory = async () => {
     const res = await fetch("/api/category?location=US");
     const data = await res.json();
@@ -27,6 +31,13 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     setCategories(formattedData)
   }
 
+  useEffect(() => {
+    getCountryData()
+      .then((data: any[]) => {
+        setSelectCountry(data)
+      })
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
@@ -34,6 +45,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         handleCategory,
         searchData,
         setSearchData,
+        selectCountry,
       }}>
       {children}
     </AppContext.Provider>

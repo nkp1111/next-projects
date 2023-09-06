@@ -1,22 +1,15 @@
-import getCountryData from '@/lib/getCountryData';
 import { searchBarType } from '@/types';
-import React, { useEffect, useState } from 'react'
 import Select from "react-select";
 import styles from "@/app/utils.module.css"
+import useGlobalContext from '@/lib/useGlobalContext';
 
 export default function Location(
   { setSearchData }:
     { setSearchData: React.Dispatch<React.SetStateAction<searchBarType>> }
 ) {
-  const [selectCountry, setSelectCountry] = useState<any[]>([]);
-  useEffect(() => {
-    getCountryData()
-      .then((data: any[]) => {
-        setSelectCountry(data)
-      })
-  }, []);
 
-  const countryOptions = selectCountry.map((country) => ({
+  const { selectCountry } = useGlobalContext();
+  const countryOptions = selectCountry.map((country: any) => ({
     label: country.name,
     options: country.states.map((state: any) => ({
       value: state.code,
