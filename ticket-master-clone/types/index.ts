@@ -43,3 +43,12 @@ export type searchBarType = {
   keyword: string,
   data?: any[],
 }
+
+export type UserType = {
+  email: string,
+  password: string,
+  firstName?: string,
+  lastName?: string,
+  country?: string,
+  zipCode?: string,
+}
