@@ -9,6 +9,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ success: "Mongo DB connected successfully" });
   } catch (error) {
     console.log("Mongo DB connection failed")
-    NextResponse.json({ error }, { status: 500 })
+    return NextResponse.json({ error }, { status: 500 })
   }
 }
