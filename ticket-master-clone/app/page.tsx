@@ -1,25 +1,26 @@
-"use client";
+// "use client"; 
 
 import Header from '@/components/header'
 import styles from "@/app/utils.module.css"
 import SearchBar from '@/components/searchbar'
 import CategorySection from '@/components/categorySection'
 import Footer from '@/components/footer'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
+
 
 export default function Home() {
-  useEffect(() => {
-    (async () => {
-      const mongoDBConnectUrl = "/api/dbconnect";
-      const res = await fetch(mongoDBConnectUrl);
-      const data = await res.json();
-      if (data.success) {
-        console.log(data.success)
-      } else {
-        console.log(data.error);
-      }
-    })();
-  }, [])
+  // useEffect(() => {
+  //   (async () => {
+  //     const mongoDBConnectUrl = "/api/dbconnect";
+  //     const res = await fetch(mongoDBConnectUrl);
+  //     const data = await res.json();
+  //     if (data.success) {
+  //       console.log(data.success)
+  //     } else {
+  //       console.log(data.error);
+  //     }
+  //   })();
+  // }, [])
 
   return (
     <div className={`text-white ${styles.black_background}`}>
