@@ -3,7 +3,10 @@ import { NextRequest, NextResponse } from 'next/server'
 let dbConnect = false;
 
 export default async function middleware(request: NextRequest) {
-  const mongoDBConnectUrl = "http://localhost:3000/api/dbconnect";
+  const splitUrl = request.url.split("/");
+  const baseUrl = splitUrl[0] + "//" + splitUrl[2]
+  const mongoDBConnectUrl = baseUrl + "/api/dbconnect";
+  console.log(mongoDBConnectUrl)
   if (!dbConnect) {
     const res = await fetch(mongoDBConnectUrl);
     const data = await res.json();
