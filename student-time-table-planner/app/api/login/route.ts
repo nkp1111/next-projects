@@ -1,26 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
-import Student from "@/models/students";
 import { StudentLoginType } from "@/types"
 import { sendAuthToken } from "@/lib/auth/authToken";
+import { COLLECTIONS } from "@/constant";
+import { comparePassword } from "@/lib/auth/authPassword";
+import getMongoDB from "@/lib/general/getMongoDB";
 
 export async function POST(request: NextRequest) {
   try {
+    const { error, db } = await getMongoDB()
+    if (error || !db) return NextResponse.json({ error }, { status: 400 })
+
     const { email, password }: StudentLoginType = await request.json();
 
     // if email and password are provided
     if (email && password) {
-      let student;
-      try {
-        console.log(Student)
-        student = await Student.findOne({ email })
-        console.log("student data fetched");
-      } catch (error) {
-        console.log(error, "error on login api")
-      }
-
+      let student = await db.collection(COLLECTIONS.students).findOne({ email });
       let passwordMatch = false;
       if (student) {
-        passwordMatch = await student.comparePassword(password);
+        passwordMatch = await comparePassword(password, student.password);
       }
 
       if (!student || !passwordMatch) {
@@ -29,7 +26,7 @@ export async function POST(request: NextRequest) {
       }
 
       const successMessage = "Student logged In successfully"
-      return sendAuthToken(student, successMessage);
+      return sendAuthToken(student as never, successMessage);
     } else {
       return NextResponse.json({ error: "Both email and password are required" }, { status: 400 })
     }
