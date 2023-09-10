@@ -1,0 +1,26 @@
+.cursor_pointer {
+  cursor: pointer;
+}
+
+.guess_box_item {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+
+.w_300 {
+  width: 300px;
+}
+
+.font_mono {
+  font-family: monospace;
+}
+
+.key_hover {
+  opacity: 0.8;
+  transition: 0.3s all linear;
+}
+
+.key_hover:hover {
+  opacity: 1;
+}
