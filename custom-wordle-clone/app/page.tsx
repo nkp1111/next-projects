@@ -1,15 +1,22 @@
+"use client";
+
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { MdOutlineLeaderboard } from "react-icons/md";
 import styles from "@/app/utils.module.css";
 import GuessBox from "@/components/guessBox";
 import Keyboard from "@/components/keyboard";
+import useGlobalContext from "@/lib/context";
 
 export default function Home() {
+  const { isOpen, setIsOpen } = useGlobalContext();
   return (
     <main className={`vh-100 vw-100 text-white bg-dark pt-5`}>
+      <div className={`${isOpen && styles.overlay}`} />
       <h1 className="text-center">Custom Wordle</h1>
       <div className="d-flex justify-content-center align-items-center mt-3">
-        <AiOutlineInfoCircle className={`text-white fs-3 fw-semibold ${styles.cursor_pointer}`} />
+        <AiOutlineInfoCircle className={`text-white fs-3 fw-semibold ${styles.cursor_pointer}`}
+          onClick={() => setIsOpen(() => true)} />
+
         <p className={`p-1 px-2 text-primary bg-dark shadow-sm border rounded-1 border-primary mx-3 my-0 ${styles.cursor_pointer}`}>
           Make your own worlde
         </p>

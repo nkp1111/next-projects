@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './globals.css'
+import { AppProvider } from '@/context';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -12,12 +13,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  rules,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  rules: React.ReactNode,
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AppProvider>
+          {children}
+          {rules}
+        </AppProvider>
+      </body>
     </html>
   )
 }

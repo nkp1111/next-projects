@@ -1,0 +1,15 @@
+.rules_body {
+  padding: 1rem;
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  top: 10%;
+  z-index: var(--modal-z-index);
+}
+
+@media screen and (max-width: 768px) {
+  .rules_body {
+    width: 90%;
+    left: 5%;
+  }
+}
