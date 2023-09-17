@@ -14,16 +14,21 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
   rules,
+  result,
 }: {
   children: React.ReactNode,
   rules: React.ReactNode,
+  result: React.ReactNode,
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
         <AppProvider>
           {children}
+          {/* rules modal  */}
           {rules}
+          {/* result modal  */}
+          {result}
         </AppProvider>
       </body>
     </html>

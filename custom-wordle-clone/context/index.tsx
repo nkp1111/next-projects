@@ -1,5 +1,6 @@
 "use client";
 
+import { handleKeyClick } from "@/lib/handleKeyClick";
 import { createContext, useEffect, useState } from "react";
 
 const AppContext = createContext<any>(null);
@@ -7,47 +8,55 @@ const AppContext = createContext<any>(null);
 const AppProvider = (
   { children }: { children: React.ReactNode }
 ) => {
-  const [isOpen, setIsOpen] = useState(false);
+  // control rule modal to show rules
+  const [isRuleOpen, setIsRuleOpen] = useState(false);
+  // control won modal showed when user won
+  const [isResultOpen, setIsResultOpen] = useState(false);
+  // word that used needs to guess
   const [wordToGuess, setWordToGuess] = useState("weary");
+  // words guessed until now are here
   const [guessBoxLetters, setGuessBoxLetters] = useState<string[]>([]);
+  const [gameStatus, setGameStatus] = useState({ isGameOver: false, gameWon: false });
+  // current word, character user guessed
   const [currentWord, setCurrentWord] = useState("");
-  const [currentPos, setCurrentPos] = useState(1);
 
-  /**
-   * @desc On key click handle game key event
-   * @param key - string 
-   */
-  const handleKeyClick = (key: string) => {
-    if (key === "Enter" && currentWord.length === 5) {
-      // check current guess light up word
-      setGuessBoxLetters(pre => [...pre, currentWord]);
-      setCurrentWord("")
-    }
-    else if (key === "Delete") {
-      if (currentWord.length > 0) {
-        setCurrentWord(pre => pre.slice(0, pre.length - 1))
-        setCurrentPos(pre => pre - 1)
-      }
-    }
-    else {
-      if (currentWord.length < 5) {
-        setCurrentWord(pre => pre + key)
-        setCurrentPos(pre => pre + 1)
-      }
-    }
+  const handleMouseKeyClick = (key: string) => {
+    handleKeyClick(key, currentWord, setGuessBoxLetters, setCurrentWord)
   }
+
+  useEffect(() => {
+    const handleGameStatus = () => {
+      const lastGuessed: string = guessBoxLetters.length > 0
+        ? guessBoxLetters[guessBoxLetters.length - 1] : "";
+
+      const gameWon = lastGuessed.toLowerCase() === wordToGuess.toLowerCase();
+      if (gameWon) {
+        setGameStatus({ isGameOver: true, gameWon })
+        setIsResultOpen(true);
+      }
+      if (guessBoxLetters.length === 6) {
+        setGameStatus({ isGameOver: true, gameWon: false })
+        setIsResultOpen(true);
+      }
+    }
+    handleGameStatus();
+  }, [guessBoxLetters, wordToGuess])
+
 
   useEffect(() => { console.log(currentWord) }, [currentWord]);
 
   return <AppContext.Provider
     value={{
-      isOpen,
-      setIsOpen,
-      handleKeyClick,
-      currentPos,
+      isRuleOpen,
+      setIsRuleOpen,
+      handleMouseKeyClick,
       currentWord,
       guessBoxLetters,
       wordToGuess,
+      isResultOpen,
+      setIsResultOpen,
+      gameStatus,
+      setGuessBoxLetters,
     }}>
     {children}
   </AppContext.Provider>

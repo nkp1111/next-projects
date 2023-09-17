@@ -8,14 +8,14 @@ import Keyboard from "@/components/keyboard";
 import useGlobalContext from "@/lib/context";
 
 export default function Home() {
-  const { isOpen, setIsOpen } = useGlobalContext();
+  const { isRuleOpen, setIsRuleOpen, isResultOpen } = useGlobalContext();
   return (
     <main className={`vh-100 vw-100 text-white bg-dark pt-5`}>
-      <div className={`${isOpen && styles.overlay}`} />
+      <div className={`${(isRuleOpen || isResultOpen) && styles.overlay}`} />
       <h1 className="text-center">Custom Wordle</h1>
       <div className="d-flex justify-content-center align-items-center mt-3">
         <AiOutlineInfoCircle className={`text-white fs-3 fw-semibold ${styles.cursor_pointer}`}
-          onClick={() => setIsOpen(() => true)} />
+          onClick={() => setIsRuleOpen(() => true)} />
 
         <p className={`p-1 px-2 text-primary bg-dark shadow-sm border rounded-1 border-primary mx-3 my-0 ${styles.cursor_pointer}`}>
           Make your own worlde
