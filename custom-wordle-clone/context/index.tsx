@@ -47,6 +47,7 @@ const AppProvider = (
       currentPos,
       currentWord,
       guessBoxLetters,
+      wordToGuess,
     }}>
     {children}
   </AppContext.Provider>

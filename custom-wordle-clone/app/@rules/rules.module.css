@@ -3,7 +3,7 @@
   position: absolute;
   width: 40%;
   left: 30%;
-  top: 10%;
+  top: 5%;
   z-index: var(--modal-z-index);
 }
 
