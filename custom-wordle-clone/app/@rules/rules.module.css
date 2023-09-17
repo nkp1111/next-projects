@@ -1,8 +1,8 @@
 .rules_body {
   padding: 2rem;
   position: absolute;
-  width: 33%;
-  left: 33%;
+  width: 40%;
+  left: 30%;
   top: 10%;
   z-index: var(--modal-z-index);
 }
