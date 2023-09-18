@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import checkWordInDictionary from "./checkWordInDictionary";
 
 
 /**
@@ -16,8 +17,14 @@ export const handleKeyClick = (
 ) => {
   if (key === "Enter" && currentWord.length === 5) {
     // check current guess light up word
-    setGuessBoxLetters(pre => [...pre, currentWord]);
-    setCurrentWord("")
+    checkWordInDictionary(currentWord).then(data => {
+      if (!data) {
+        console.log("word not in dictionary");
+      } else {
+        setGuessBoxLetters(pre => [...pre, currentWord]);
+        setCurrentWord("")
+      }
+    })
   }
   else if (key === "Delete") {
     if (currentWord.length > 0) {

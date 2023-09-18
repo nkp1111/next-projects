@@ -88,7 +88,8 @@ Open [localhost:3000](http://localhost:3000) with your browser to see the result
 
 * bootstrap
 * react-icons
-* dictionary api- [https://dictionaryapi.dev/](https://dictionaryapi.dev/)  .
+* dictionary api- [https://dictionaryapi.dev/](https://dictionaryapi.dev/).
+* random-word-api [https://random-word-api.herokuapp.com/word](https://random-word-api.herokuapp.com/word?length=5)
 
 ## Contact
 

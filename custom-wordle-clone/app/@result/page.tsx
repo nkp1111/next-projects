@@ -1,14 +1,18 @@
 "use client";
 
-import React, { Dispatch, SetStateAction } from 'react'
+import React from 'react'
 import { AiOutlineCheck, AiOutlineCloseCircle } from 'react-icons/ai';
 import styles from "@/app/modal.module.css"
 import useGlobalContext from '@/lib/context';
 
 
 export default function Result() {
-  const { isResultOpen, setIsResultOpen, setGuessBoxLetters }:
-    { isResultOpen: boolean, setIsResultOpen: Dispatch<SetStateAction<boolean>>, setGuessBoxLetters: Dispatch<SetStateAction<string[]>> } = useGlobalContext();
+  const { isResultOpen, gameStatus: { gameWon }, gameReset }:
+    {
+      isResultOpen: boolean,
+      gameStatus: { isGameOver: boolean, gameWon: boolean },
+      gameReset: () => void,
+    } = useGlobalContext();
 
   const modalOpenStyles = "d-block bg-dark position-absolute"
   const modalCloseStyles = "d-none"
@@ -18,8 +22,7 @@ export default function Result() {
       {/* close button  */}
       <div role="button" title="close button" className="text-end ms-auto fw-semibold"
         onClick={() => {
-          setGuessBoxLetters([]);
-          setIsResultOpen(false)
+          gameReset()
         }}>
         <AiOutlineCloseCircle className="fs-2" />
       </div>
@@ -27,7 +30,7 @@ export default function Result() {
         <div>
           <AiOutlineCheck className="fs-1 bg-success rounded-circle p-1 mb-3" />
         </div>
-        <h3 className='fw-bold fs-2 m-0'>You Won!</h3>
+        <h3 className='fw-bold fs-2 m-0'>{gameWon ? "You Won" : "You Lose"}</h3>
         <p className='d-block fs-5 m-0 text-info'>Share this word&apos;s link</p>
       </div>
 

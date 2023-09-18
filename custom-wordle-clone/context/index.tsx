@@ -1,5 +1,6 @@
 "use client";
 
+import getRandomWords from "@/lib/getRandomWord";
 import { handleKeyClick } from "@/lib/handleKeyClick";
 import { createContext, useEffect, useState } from "react";
 
@@ -24,6 +25,14 @@ const AppProvider = (
     handleKeyClick(key, currentWord, setGuessBoxLetters, setCurrentWord)
   }
 
+  const gameReset = async () => {
+    setGuessBoxLetters([]);
+    setGameStatus({ isGameOver: false, gameWon: false });
+    setIsResultOpen(false)
+    const data: string[] = await getRandomWords({ numOfLetters: 5 })
+    setWordToGuess(data[0])
+  }
+
   useEffect(() => {
     const handleGameStatus = () => {
       const lastGuessed: string = guessBoxLetters.length > 0
@@ -42,8 +51,13 @@ const AppProvider = (
     handleGameStatus();
   }, [guessBoxLetters, wordToGuess])
 
-
-  useEffect(() => { console.log(currentWord) }, [currentWord]);
+  // get random 5 letter word 
+  useEffect(() => {
+    (async () => {
+      const data: string[] = await getRandomWords({ numOfLetters: 5 })
+      setWordToGuess(data[0])
+    })();
+  }, []);
 
   return <AppContext.Provider
     value={{
@@ -57,6 +71,7 @@ const AppProvider = (
       setIsResultOpen,
       gameStatus,
       setGuessBoxLetters,
+      gameReset,
     }}>
     {children}
   </AppContext.Provider>
