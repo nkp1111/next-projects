@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import checkWordInDictionary from "./checkWordInDictionary";
-
+import toast from "react-hot-toast"
 
 /**
  * @desc On mouse click on virtual keyboard handle click event
@@ -26,6 +26,8 @@ export const handleKeyClick = (
           setCurrentWord("")
         }
       })
+    } else {
+      toast.error("Please enter 5 letter word first")
     }
   }
   else if (key === "Delete") {

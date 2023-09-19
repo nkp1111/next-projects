@@ -3,6 +3,7 @@
 import getRandomWords from "@/lib/getRandomWord";
 import { handleKeyClick } from "@/lib/handleKeyClick";
 import { createContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const AppContext = createContext<any>(null);
 
@@ -40,10 +41,12 @@ const AppProvider = (
 
       const gameWon = lastGuessed.toLowerCase() === wordToGuess.toLowerCase();
       if (gameWon) {
+        toast.success("You guessed right, correct word was " + wordToGuess)
         setGameStatus({ isGameOver: true, gameWon })
         setIsResultOpen(true);
       }
       if (guessBoxLetters.length === 6) {
+        toast.error("You guessed was not right, correct word was " + wordToGuess)
         setGameStatus({ isGameOver: true, gameWon: false })
         setIsResultOpen(true);
       }

@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react'
-import { AiOutlineCheck, AiOutlineCloseCircle } from 'react-icons/ai';
+import { AiOutlineCheck, AiOutlineCloseCircle, AiOutlineClose } from 'react-icons/ai';
 import styles from "@/app/modal.module.css"
 import useGlobalContext from '@/lib/context';
 
@@ -27,16 +27,22 @@ export default function Result() {
         <AiOutlineCloseCircle className="fs-2" />
       </div>
       <div className="text-center">
-        <div>
-          <AiOutlineCheck className="fs-1 bg-success rounded-circle p-1 mb-3" />
+        <div className='mb-3'>
+          {gameWon
+            ? <AiOutlineCheck className="fs-1 bg-success rounded-circle p-1" />
+            : <AiOutlineClose className="fs-1 bg-danger rounded-circle p-1" />
+          }
         </div>
         <h3 className='fw-bold fs-2 m-0'>{gameWon ? "You Won" : "You Lose"}</h3>
-        <p className='d-block fs-5 m-0 text-info'>Share this word&apos;s link</p>
+        <p className='d-block fs-5 m-0 text-info' role="button">Share this word&apos;s link</p>
       </div>
 
-
+      <button type="button" className='btn btn-success w-100 my-3' disabled>Make Your Own Wordle</button>
+      <button type="button" className='btn btn-danger w-100'
+        onClick={() => {
+          gameReset()
+        }}>Play A Random Word</button>
     </div>
   )
 }
-
 
