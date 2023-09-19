@@ -15,16 +15,18 @@ export const handleKeyClick = (
   setGuessBoxLetters: Dispatch<SetStateAction<string[]>>,
   setCurrentWord: Dispatch<SetStateAction<string>>
 ) => {
-  if (key === "Enter" && currentWord.length === 5) {
-    // check current guess light up word
-    checkWordInDictionary(currentWord).then(data => {
-      if (!data) {
-        console.log("word not in dictionary");
-      } else {
-        setGuessBoxLetters(pre => [...pre, currentWord]);
-        setCurrentWord("")
-      }
-    })
+  if (key === "Enter") {
+    if (currentWord.length === 5) {
+      // check current guess light up word
+      checkWordInDictionary(currentWord).then(data => {
+        if (!data) {
+          console.log("word not in dictionary");
+        } else {
+          setGuessBoxLetters(pre => [...pre, currentWord]);
+          setCurrentWord("")
+        }
+      })
+    }
   }
   else if (key === "Delete") {
     if (currentWord.length > 0) {

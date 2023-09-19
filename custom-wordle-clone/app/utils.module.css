@@ -34,3 +34,11 @@
   left: 0;
   z-index: var(--overlay-z-index);
 }
+
+.key_correct {
+  background: rgb(131, 131, 0);
+}
+
+.key_incorrect {
+  background: rgb(50, 50, 50);
+}
