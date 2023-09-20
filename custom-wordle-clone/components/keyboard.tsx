@@ -13,7 +13,7 @@ const keyStyles = 'd-flex flex-row gap-2 mt-1 rounded-1 flex-grow p-2 ' + styles
 export default function Keyboard() {
   const { handleMouseKeyClick, guessBoxLetters, wordToGuess } = useGlobalContext()
   const allWordsEntered = guessBoxLetters.join("");
-  console.log(allWordsEntered, wordToGuess.toUpperCase());
+
   return (
     <div className='mt-3'>
       {Object.keys(KEYS).map(key => (

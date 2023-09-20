@@ -12,7 +12,7 @@
 
 ## Links
 
-* [Live App]()
+* [Live App](https://next-projects-three.vercel.app/)
 * [GitHub](https://github.com/nkp1111/next-projects/tree/main/custom-wordle-clone)
 
 ## Overview
@@ -75,10 +75,6 @@ $ npm install
 
 # Run the app
 $ npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 
 ```
 

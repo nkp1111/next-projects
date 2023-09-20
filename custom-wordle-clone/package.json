@@ -15,11 +15,18 @@
     "bootstrap": "^5.3.1",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "fs": "^0.0.1-security",
     "next": "13.4.19",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
+    "sequelize": "^6.33.0",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.10.2"
   }
 }

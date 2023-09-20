@@ -6,9 +6,22 @@ import styles from "@/app/utils.module.css";
 import GuessBox from "@/components/guessBox";
 import Keyboard from "@/components/keyboard";
 import useGlobalContext from "@/lib/context";
+import { useEffect } from "react";
 
 export default function Home() {
   const { isRuleOpen, setIsRuleOpen, isResultOpen } = useGlobalContext();
+  // connect to postgres database
+  useEffect(() => {
+    (async () => {
+      const res = await fetch("/api/dbConnect", {
+        method: "POST"
+      })
+      const { success, error, message } = await res.json();
+      if (success) console.log(message);
+      if (error) console.log(error);
+    })();
+  }, [])
+
   return (
     <main className={`vh-100 vw-100 text-white bg-dark pt-5`}>
       <div className={`${(isRuleOpen || isResultOpen) && styles.overlay}`} />
