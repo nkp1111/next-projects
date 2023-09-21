@@ -9,7 +9,7 @@ import useGlobalContext from "@/lib/context";
 import { useEffect } from "react";
 
 export default function Home() {
-  const { isRuleOpen, setIsRuleOpen, isResultOpen } = useGlobalContext();
+  const { isRuleOpen, setIsRuleOpen, isResultOpen, isAuthOpen, setIsAuthOpen } = useGlobalContext();
   // connect to postgres database
   useEffect(() => {
     (async () => {
@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <main className={`vh-100 vw-100 text-white bg-dark pt-5`}>
-      <div className={`${(isRuleOpen || isResultOpen) && styles.overlay}`} />
+      <div className={`${(isRuleOpen || isResultOpen || isAuthOpen) && styles.overlay}`} />
       <h1 className="text-center">Custom Wordle</h1>
       <div className="d-flex justify-content-center align-items-center mt-3">
         <AiOutlineInfoCircle className={`text-white fs-3 fw-semibold ${styles.cursor_pointer}`}
@@ -33,7 +33,9 @@ export default function Home() {
         <p className={`p-1 px-2 text-primary bg-dark shadow-sm border rounded-1 border-primary mx-3 my-0 ${styles.cursor_pointer}`}>
           Make your own worlde
         </p>
-        <MdOutlineLeaderboard className={`text-white fs-3 fw-semibold ${styles.cursor_pointer}`} />
+
+        <MdOutlineLeaderboard className={`text-white fs-3 fw-semibold ${styles.cursor_pointer}`}
+          onClick={() => setIsAuthOpen(() => true)} />
       </div>
 
       <div className={`d-flex justify-content-center align-items-center flex-column fs-4 ${styles.font_mono}`}>

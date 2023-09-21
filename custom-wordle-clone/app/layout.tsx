@@ -16,10 +16,12 @@ export default function RootLayout({
   children,
   rules,
   result,
+  user
 }: {
   children: React.ReactNode,
   rules: React.ReactNode,
   result: React.ReactNode,
+  user: React.ReactNode,
 }) {
   return (
     <html lang="en">
@@ -31,6 +33,8 @@ export default function RootLayout({
           {rules}
           {/* result modal  */}
           {result}
+          {/* user modal  */}
+          {user}
         </AppProvider>
       </body>
     </html>

@@ -14,6 +14,8 @@ const AppProvider = (
   const [isRuleOpen, setIsRuleOpen] = useState(false);
   // control won modal showed when user won
   const [isResultOpen, setIsResultOpen] = useState(false);
+  // control auth modal for signUp and signIn
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
   // word that used needs to guess
   const [wordToGuess, setWordToGuess] = useState("weary");
   // words guessed until now are here
@@ -75,6 +77,8 @@ const AppProvider = (
       gameStatus,
       setGuessBoxLetters,
       gameReset,
+      isAuthOpen,
+      setIsAuthOpen,
     }}>
     {children}
   </AppContext.Provider>
