@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import styles from "@/app/modal.module.css"
 import useGlobalContext from '@/lib/context';
-import { STYLES } from "@/constant"
+import { STYLES } from "@/constant";
 
 const { modalCloseStyles, modalOpenStyles } = STYLES;
 
@@ -42,6 +42,7 @@ export default function Auth() {
           const data = await res.json()
           if (data) {
             console.log(data)
+            setIsAuthOpen(() => false);
           }
         }}>
         {isSignUp && (
