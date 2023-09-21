@@ -5,14 +5,13 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import styles from "@/app/modal.module.css"
 import useGlobalContext from '@/lib/context';
 import ColorKeyword from '@/components/colorKey';
+import { STYLES } from "@/constant";
 
+const { modalCloseStyles, modalOpenStyles } = STYLES;
 
 export default function Rules() {
   const { isRuleOpen, setIsRuleOpen }:
     { isRuleOpen: boolean, setIsRuleOpen: Dispatch<SetStateAction<boolean>> } = useGlobalContext();
-
-  const modalOpenStyles = "d-block bg-dark position-absolute"
-  const modalCloseStyles = "d-none"
 
   return (
     <div className={`text-white bg-dark card ${isRuleOpen ? modalOpenStyles : modalCloseStyles} ${styles.modal_body}`}>

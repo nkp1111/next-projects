@@ -10,6 +10,7 @@ const AppContext = createContext<any>(null);
 const AppProvider = (
   { children }: { children: React.ReactNode }
 ) => {
+  const [userData, setUserData] = useState({});
   // control rule modal to show rules
   const [isRuleOpen, setIsRuleOpen] = useState(false);
   // control won modal showed when user won
@@ -79,6 +80,8 @@ const AppProvider = (
       gameReset,
       isAuthOpen,
       setIsAuthOpen,
+      userData,
+      setUserData,
     }}>
     {children}
   </AppContext.Provider>

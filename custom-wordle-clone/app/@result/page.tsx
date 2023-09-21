@@ -4,7 +4,9 @@ import React from 'react'
 import { AiOutlineCheck, AiOutlineCloseCircle, AiOutlineClose } from 'react-icons/ai';
 import styles from "@/app/modal.module.css"
 import useGlobalContext from '@/lib/context';
+import { STYLES } from "@/constant";
 
+const { modalCloseStyles, modalOpenStyles } = STYLES;
 
 export default function Result() {
   const { isResultOpen, gameStatus: { gameWon }, gameReset }:
@@ -14,8 +16,6 @@ export default function Result() {
       gameReset: () => void,
     } = useGlobalContext();
 
-  const modalOpenStyles = "d-block bg-dark position-absolute"
-  const modalCloseStyles = "d-none"
 
   return (
     <div className={`text-white bg-dark card ${isResultOpen ? modalOpenStyles : modalCloseStyles} ${styles.modal_body}`}>
