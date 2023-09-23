@@ -17,6 +17,8 @@ const AppProvider = (
   const [isResultOpen, setIsResultOpen] = useState(false);
   // control auth modal for signUp and signIn
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+  // control custom word addition form
+  const [isAddCustomOpen, setIsAddCustomOpen] = useState(false);
   // word that used needs to guess
   const [wordToGuess, setWordToGuess] = useState("weary");
   // words guessed until now are here
@@ -47,6 +49,7 @@ const AppProvider = (
         toast.success("You guessed right, correct word was " + wordToGuess)
         setGameStatus({ isGameOver: true, gameWon })
         setIsResultOpen(true);
+        return;
       }
       if (guessBoxLetters.length === 6) {
         toast.error("You guessed was not right, correct word was " + wordToGuess)
@@ -60,10 +63,15 @@ const AppProvider = (
   // get random 5 letter word 
   useEffect(() => {
     (async () => {
-      const data: string[] = await getRandomWords({ numOfLetters: 5 })
+      const data: string[] = await getRandomWords({ numOfLetters: 5 });
+      // for (let word of data) {
+      //   if (await checkWordInDictionary(word)) setWordToGuess(word)
+      // }
       setWordToGuess(data[0])
     })();
   }, []);
+
+  console.log(wordToGuess)
 
   return <AppContext.Provider
     value={{
@@ -82,6 +90,8 @@ const AppProvider = (
       setIsAuthOpen,
       userData,
       setUserData,
+      isAddCustomOpen,
+      setIsAddCustomOpen,
     }}>
     {children}
   </AppContext.Provider>

@@ -21,10 +21,10 @@ export const handleKeyClick = (
       checkWordInDictionary(currentWord).then(data => {
         if (!data) {
           console.log("word not in dictionary");
-        } else {
-          setGuessBoxLetters(pre => [...pre, currentWord]);
-          setCurrentWord("")
         }
+        setGuessBoxLetters(pre => [...pre, currentWord]);
+        setCurrentWord("")
+
       })
     } else {
       toast.error("Please enter 5 letter word first")

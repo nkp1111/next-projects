@@ -13,8 +13,8 @@ export default function UserStats(
         <h5 className='text-uppercase fs-6'>Statistics</h5>
         <div className="container">
           <div className="row p-0 justify-content-center">
-            <div className="col-sm-6 col-12 fw-bold fs-2 m-0 text-center">{gamePlayedNum}</div>
-            <div className="col-sm-6 col-12 fw-bold fs-2 m-0 text-center">{gamePlayedNum > 0 ? +((gameWon / gamePlayedNum) * 100) : 0}</div>
+            <div className="col-sm-6 col-12 fw-bold fs-1 m-0 text-center">{gamePlayedNum}</div>
+            <div className="col-sm-6 col-12 fw-bold fs-1 m-0 text-center">{gamePlayedNum > 0 ? ((gameWon / gamePlayedNum) * 100).toFixed(0) : 0}</div>
             <div className="col-sm-6 col-12 text-center"><small>Played</small></div>
             <div className="col-sm-6 col-12 text-center"><small>Win %</small></div>
           </div>

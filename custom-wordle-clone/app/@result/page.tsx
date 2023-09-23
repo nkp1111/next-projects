@@ -1,21 +1,42 @@
 "use client";
 
-import React from 'react'
+import React, { useEffect, Dispatch, SetStateAction } from 'react'
 import { AiOutlineCheck, AiOutlineCloseCircle, AiOutlineClose } from 'react-icons/ai';
 import styles from "@/app/modal.module.css"
 import useGlobalContext from '@/lib/context';
 import { STYLES } from "@/constant";
+import { UserDetailSchema } from '@/type';
 
 const { modalCloseStyles, modalOpenStyles } = STYLES;
 
 export default function Result() {
-  const { isResultOpen, gameStatus: { gameWon }, gameReset }:
+  const { isResultOpen, gameStatus: { gameWon, isGameOver }, gameReset, guessBoxLetters, userData: { userId }, setUserData }:
     {
       isResultOpen: boolean,
       gameStatus: { isGameOver: boolean, gameWon: boolean },
       gameReset: () => void,
+      guessBoxLetters: string[],
+      userData: UserDetailSchema,
+      setUserData: Dispatch<SetStateAction<{}>>
     } = useGlobalContext();
 
+  useEffect(() => {
+    if (isGameOver) {
+      fetch("/api/countResult", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ gameWon, guessTurns: guessBoxLetters.length, userId }),
+      }).then(res => res.json())
+        .then(data => {
+          const { success, user } = data;
+          if (success) setUserData(user);
+        })
+        .catch(err => console.log(err))
+    }
+
+  }, [gameWon, guessBoxLetters, isGameOver, setUserData, userId])
 
   return (
     <div className={`text-white bg-dark card ${isResultOpen ? modalOpenStyles : modalCloseStyles} ${styles.modal_body}`}>
