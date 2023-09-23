@@ -9,7 +9,7 @@ import useGlobalContext from "@/lib/context";
 import { useEffect } from "react";
 
 export default function Home() {
-  const { isRuleOpen, setIsRuleOpen, isResultOpen, isAuthOpen, setIsAuthOpen } = useGlobalContext();
+  const { isRuleOpen, setIsRuleOpen, isResultOpen, isAuthOpen, setIsAuthOpen, isAddCustomOpen, setIsAddCustomOpen, } = useGlobalContext();
   // connect to postgres database
   useEffect(() => {
     (async () => {
@@ -24,13 +24,14 @@ export default function Home() {
 
   return (
     <main className={`vh-100 vw-100 text-white bg-dark pt-5`}>
-      <div className={`${(isRuleOpen || isResultOpen || isAuthOpen) && styles.overlay}`} />
+      <div className={`${(isRuleOpen || isResultOpen || isAuthOpen || isAddCustomOpen) && styles.overlay}`} />
       <h1 className="text-center">Custom Wordle</h1>
       <div className="d-flex justify-content-center align-items-center mt-3">
         <AiOutlineInfoCircle className={`text-white fs-3 fw-semibold ${styles.cursor_pointer}`}
           onClick={() => setIsRuleOpen(() => true)} />
 
-        <p className={`p-1 px-2 text-primary bg-dark shadow-sm border rounded-1 border-primary mx-3 my-0 ${styles.cursor_pointer}`}>
+        <p className={`p-1 px-2 text-primary bg-dark shadow-sm border rounded-1 border-primary mx-3 my-0 ${styles.cursor_pointer}`}
+          onClick={() => setIsAddCustomOpen(() => true)}>
           Make your own worlde
         </p>
 
