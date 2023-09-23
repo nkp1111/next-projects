@@ -20,11 +20,10 @@ export const handleKeyClick = (
       // check current guess light up word
       checkWordInDictionary(currentWord).then(data => {
         if (!data) {
-          console.log("word not in dictionary");
+          toast.error("Word not found in dictionary");
         }
         setGuessBoxLetters(pre => [...pre, currentWord]);
         setCurrentWord("")
-
       })
     } else {
       toast.error("Please enter 5 letter word first")

@@ -1,6 +1,6 @@
 "use client";
 
-import getRandomWords from "@/lib/getRandomWord";
+import getRandomValidWords from "@/lib/getRandomValidWord";
 import { handleKeyClick } from "@/lib/handleKeyClick";
 import { createContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -35,8 +35,8 @@ const AppProvider = (
     setGuessBoxLetters([]);
     setGameStatus({ isGameOver: false, gameWon: false });
     setIsResultOpen(false)
-    const data: string[] = await getRandomWords({ numOfLetters: 5 })
-    setWordToGuess(data[0])
+    // set new random valid word
+    await getRandomValidWords({ numOfLetters: 5, numOfWords: 1, setWordToGuess })
   }
 
   useEffect(() => {
@@ -62,12 +62,9 @@ const AppProvider = (
 
   // get random 5 letter word 
   useEffect(() => {
+    // get new random valid word
     (async () => {
-      const data: string[] = await getRandomWords({ numOfLetters: 5 });
-      // for (let word of data) {
-      //   if (await checkWordInDictionary(word)) setWordToGuess(word)
-      // }
-      setWordToGuess(data[0])
+      await getRandomValidWords({ numOfLetters: 5, numOfWords: 1, setWordToGuess })
     })();
   }, []);
 
