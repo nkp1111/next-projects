@@ -7,8 +7,11 @@ import useGlobalContext from '@/lib/context';
 import { STYLES } from "@/constant";
 import { UserDetailSchema } from '@/type';
 import getCurrentUserData from '@/lib/getCurrentUserData';
+import toast from 'react-hot-toast';
 
 const { modalCloseStyles, modalOpenStyles } = STYLES;
+
+let resultAdded = false;
 
 export default function Result() {
   const { isResultOpen, gameStatus: { gameWon, isGameOver }, gameReset, guessBoxLetters, userData, setUserData }:
@@ -27,11 +30,11 @@ export default function Result() {
         await getCurrentUserData(setUserData)
       })();
     }
-  }, [setUserData, userData])
-
+  }, [setUserData, userData]);
 
   useEffect(() => {
-    if (isGameOver) {
+    if (isGameOver && !resultAdded) {
+      resultAdded = true;
       fetch("/api/countResult", {
         method: "PUT",
         headers: {
@@ -41,12 +44,14 @@ export default function Result() {
       }).then(res => res.json())
         .then(data => {
           const { success, user } = data;
-          if (success) setUserData(user);
+          if (success) {
+            toast.success("Result updated")
+            setUserData(user);
+          }
         })
         .catch(err => console.log(err))
     }
-
-  }, [gameWon, guessBoxLetters, isGameOver, setUserData, userData])
+  }, [gameWon, guessBoxLetters.length, isGameOver, setUserData, userData])
 
   return (
     <div className={`text-white bg-dark card ${isResultOpen ? modalOpenStyles : modalCloseStyles} ${styles.modal_body}`}>
@@ -54,6 +59,7 @@ export default function Result() {
       <div role="button" title="close button" className="text-end ms-auto fw-semibold"
         onClick={() => {
           gameReset()
+          resultAdded = false;
         }}>
         <AiOutlineCloseCircle className="fs-2" />
       </div>
@@ -72,6 +78,7 @@ export default function Result() {
       <button type="button" className='btn btn-danger w-100'
         onClick={() => {
           gameReset()
+          resultAdded = false;
         }}>Play A Random Word</button>
     </div>
   )

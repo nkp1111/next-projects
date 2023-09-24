@@ -8,20 +8,22 @@ import { STYLES } from "@/constant";
 import { UserDetailSchema } from '@/type';
 import checkWordInDictionary from '@/lib/checkWordInDictionary';
 import toast from 'react-hot-toast';
-import getCurrentUserData from '@/lib/getCurrentUserData';
 
 const { modalCloseStyles, modalOpenStyles } = STYLES;
+let loadingToast;
 
 export default function AddCustom() {
   const { isAddCustomOpen, setIsAddCustomOpen,
-    userData, setIsAuthOpen, setUserData }
+    userData }
     : {
       isAddCustomOpen: boolean, setIsAddCustomOpen: Dispatch<SetStateAction<boolean>>,
-      userData: UserDetailSchema, setIsAuthOpen: Dispatch<SetStateAction<boolean>>,
-      setUserData: Dispatch<SetStateAction<{}>>
+      userData: UserDetailSchema
     } = useGlobalContext();
-
-  const [customWord, setCustomWord] = useState("");
+  const [wordToAdd, setWordToAdd] = useState("");
+  const [customWord, setCustomWord] = useState({
+    wordId: "",
+    word: "",
+  });
 
   useEffect(() => {
     if (!userData.userId) {
@@ -44,26 +46,36 @@ export default function AddCustom() {
       <form
         onSubmit={async (e) => {
           e.preventDefault()
-          if (!await checkWordInDictionary(customWord)) {
+          if (!await checkWordInDictionary(wordToAdd)) {
             toast.error("Word is not valid, Please enter a valid word");
             return;
           }
-
+          loadingToast = toast.loading(`Word to add: ${wordToAdd}`);
+          setWordToAdd("")
           const addCustomWordUrl = "/api/addCustomWord";
           const res = await fetch(addCustomWordUrl, {
             method: "POST",
             headers: {
               "Content-Type": "Application/json",
             },
-            body: JSON.stringify({ userId: userData.userId, customWord }),
+            body: JSON.stringify({ userId: userData.userId, customWord: wordToAdd }),
           })
 
-          const { success, error, word } = await res.json()
+          const { success, error, word } = await res.json();
+          // remove loading toast
+          toast.dismiss(loadingToast);
           if (success) {
-            console.log(success)
+            setCustomWord(pre => ({ word: word.word, wordId: word.wordId }));
             toast.success(`New word added ${word.word}.`)
           } else {
-            console.log(error);
+            if (error) {
+              toast.error("Words is already present as custom word");
+              if (word) {
+                setCustomWord(pre => ({ word: word.word, wordId: word.wordId }));
+              }
+            } else {
+              toast.error(error);
+            }
           }
         }}>
 
@@ -71,7 +83,7 @@ export default function AddCustom() {
         <div className="mb-3">
           <label htmlFor="customWord" className="form-label">Your custom word</label>
           <input type="text" className="form-control" id="customWord" name="customWord"
-            value={customWord} onChange={(e) => setCustomWord(e.target.value)}
+            value={wordToAdd} onChange={(e) => setWordToAdd(pre => e.target.value)}
             required />
           <p className="mt-3">
             <strong>Note: </strong> <br />
@@ -81,16 +93,35 @@ export default function AddCustom() {
         </div>
 
         <button type="submit" className="btn btn-primary"
-          disabled={customWord.length !== 5}
+          disabled={wordToAdd.length !== 5}
         >
           Add Word
         </button>
       </form>
 
-      <hr className='border-secondary mt-3 mb-2' />
-      <button className='btn btn-info' type="button"
-      >Added Custom Word </button>
+      {customWord.wordId && (
+        <>
+          <hr />
+          <div className='container'>
+            <div className="row align-items-center">
+              <div className="col-3"><strong className='fs-5'>Word</strong></div>
+              <div className="col-9"><strong className='fs-5'>Link</strong></div>
+              <div className="col-3">{customWord.word}</div>
+              <div className="col-9">/{customWord.wordId}</div>
+            </div>
+            <div className="ms-auto mt-2 text-end">
+              <button type="button"
+                className='btn btn-success'
+                onClick={() => {
+                  navigator.clipboard.writeText(`/${customWord.wordId}`)
+                  toast.success(`Word link copied - /${customWord.wordId}`)
+                }}
+              >Copy Link</button>
+            </div>
 
+          </div>
+        </>
+      )}
     </div>
   )
 }
