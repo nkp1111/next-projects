@@ -6,7 +6,7 @@ import { sequelize } from "@/lib/dbConfig"
 export async function POST(request: NextRequest) {
   const connect = await startDatabaseConnection();
   if (connect) {
-    await dbAssociation();
+    dbAssociation();
     await sequelize.sync({ alter: true });
     return NextResponse.json({ success: true, message: "Postgres DB Connected" });
   }

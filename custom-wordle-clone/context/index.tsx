@@ -68,8 +68,6 @@ const AppProvider = (
     })();
   }, []);
 
-  console.log(wordToGuess)
-
   return <AppContext.Provider
     value={{
       isRuleOpen,

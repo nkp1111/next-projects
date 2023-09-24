@@ -1,7 +1,7 @@
 .modal_body {
   padding: 2rem;
   position: absolute;
-  width: 40%;
+  width: 50%;
   left: 30%;
   top: 5%;
   z-index: var(--modal-z-index);

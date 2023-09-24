@@ -17,6 +17,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Word too small, min length of 5 required", success: false }, { status: 400 })
     }
 
+    const isWordExist = await Word.findOne({ where: { word: customWord } });
+    if (isWordExist) {
+      return NextResponse.json({ success: false, error: "Word already exists", word: isWordExist });
+    }
     const word = await Word.create({ userId, word: customWord })
 
     return NextResponse.json({ success: true, message: "User score updated", word })

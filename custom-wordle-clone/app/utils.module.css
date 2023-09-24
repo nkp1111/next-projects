@@ -2,6 +2,10 @@
   cursor: pointer;
 }
 
+.cursor_scroll {
+  cursor: all-scroll;
+}
+
 .guess_box_item {
   width: 3rem;
   height: 3rem;
