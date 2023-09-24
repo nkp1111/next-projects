@@ -6,7 +6,7 @@ import styles from "@/app/modal.module.css"
 import useGlobalContext from '@/lib/context';
 import { STYLES } from "@/constant";
 import { UserDetailSchema } from '@/type';
-import getCurrentUserData from '@/lib/getCurrentUserData';
+import getCurrentUserData from '@/lib/user/getCurrentUserData';
 import toast from 'react-hot-toast';
 
 const { modalCloseStyles, modalOpenStyles } = STYLES;

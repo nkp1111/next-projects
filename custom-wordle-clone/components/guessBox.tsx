@@ -2,7 +2,7 @@
 
 import styles from "@/app/utils.module.css"
 import useGlobalContext from "@/lib/context"
-import colorGuessWord from "@/lib/colorGuessWord";
+import colorGuessWord from "@/lib/general/colorGuessWord";
 import ColorKeyword from "./colorKey";
 
 export default function GuessBox() {

@@ -7,7 +7,7 @@ import GuessBox from "@/components/guessBox";
 import Keyboard from "@/components/keyboard";
 import useGlobalContext from "@/lib/context";
 import { useEffect } from "react";
-import getCurrentUserData from "@/lib/getCurrentUserData";
+import getCurrentUserData from "@/lib/user/getCurrentUserData";
 
 export default function Home() {
   const { isRuleOpen, setIsRuleOpen, isResultOpen, isAuthOpen, setIsAuthOpen, isAddCustomOpen, setIsAddCustomOpen, userData, setUserData } = useGlobalContext();

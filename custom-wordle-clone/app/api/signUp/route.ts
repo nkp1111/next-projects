@@ -1,7 +1,7 @@
 import User from "@/models/user";
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import sendAuthToken from "@/lib/sendAuthToken";
+import sendAuthToken from "@/lib/auth/sendAuthToken";
 
 export async function POST(request: NextRequest) {
   try {

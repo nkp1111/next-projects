@@ -7,7 +7,7 @@ import useGlobalContext from '@/lib/context';
 import { STYLES } from "@/constant";
 import UserStats from '@/components/userStats';
 import AuthForm from '@/components/authForm';
-import getCurrentUserData from '@/lib/getCurrentUserData';
+import getCurrentUserData from '@/lib/user/getCurrentUserData';
 
 const { modalCloseStyles, modalOpenStyles } = STYLES;
 

@@ -1,4 +1,4 @@
-import { verifyUser } from "@/lib/JwtToken";
+import { verifyUser } from "@/lib/auth/JwtToken";
 import User from "@/models/user"
 import { NextResponse } from "next/server";
 

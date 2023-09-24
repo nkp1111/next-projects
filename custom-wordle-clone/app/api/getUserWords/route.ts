@@ -1,4 +1,4 @@
-import { verifyUser } from '@/lib/JwtToken';
+import { verifyUser } from '@/lib/auth/JwtToken';
 import Word from '@/models/word';
 import { NextRequest, NextResponse } from 'next/server'
 

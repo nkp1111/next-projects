@@ -1,7 +1,7 @@
 "use client";
 
-import getRandomValidWords from "@/lib/getRandomValidWord";
-import { handleKeyClick } from "@/lib/handleKeyClick";
+import getRandomValidWords from "@/lib/general/getRandomValidWord";
+import { handleKeyClick } from "@/lib/general/handleKeyClick";
 import { createContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 

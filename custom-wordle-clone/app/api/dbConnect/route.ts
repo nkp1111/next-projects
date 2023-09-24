@@ -1,7 +1,7 @@
-import { startDatabaseConnection } from "@/lib/dbConfig"
+import { startDatabaseConnection } from "@/lib/db/dbConfig"
 import { NextRequest, NextResponse } from "next/server";
-import dbAssociation from "@/lib/dbAssociation";
-import { sequelize } from "@/lib/dbConfig"
+import dbAssociation from "@/lib/db/dbAssociation";
+import { sequelize } from "@/lib/db/dbConfig"
 
 export async function POST(request: NextRequest) {
   const connect = await startDatabaseConnection();

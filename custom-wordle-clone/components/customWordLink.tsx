@@ -27,7 +27,7 @@ export default function CustomWordLink(
                 >Copy Link - {customWord.word}</button>
               </div>
             </div>
-            <hr className='border-white mt-1 mb-2' />
+            <hr className='border-white mt-1 mb-2' key={ind} />
           </>
         ))}
       </div>
