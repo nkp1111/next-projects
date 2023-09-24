@@ -7,9 +7,9 @@ export default function UserStats(
 ) {
   return (
     <div>
-      <h3 className='fw-bold'>User: <span className='text-success'>{username}</span></h3>
+      <div className="container">
+        <h3 className='fw-bold mb-5'>User: <span className='text-success'>{username}</span></h3>
 
-      <div className="container px-5 mt-5">
         <h5 className='text-uppercase fs-6'>Statistics</h5>
         <div className="container">
           <div className="row p-0 justify-content-center">
@@ -20,27 +20,29 @@ export default function UserStats(
           </div>
         </div>
 
-        <br className='my-3' />
+        <hr className='my-3' />
         <h5 className='text-uppercase fs-6'>Guess Distribution</h5>
-        {Object.keys(guessDistribution).map(guessCount => {
-          const currentDist = guessDistribution[+guessCount];
-          return (
-            <div className={`d-flex mt-2 align-items-center ${styles.font_mono}`} key={guessCount}>
-              <span className='fw-bold me-1'>{guessCount}</span>
-              <span className={`bg-secondary px-1 text-end`}
-                style={{
-                  width: currentDist > 0
-                    ? ((currentDist / gameWon) * 100) + "%"
-                    : "auto",
-                  display: currentDist > 0
-                    ? "block"
-                    : "inline-block",
-                }}
-              >{currentDist}
-              </span>
-            </div>
-          )
-        })}
+        <div className="container">
+          {Object.keys(guessDistribution).map(guessCount => {
+            const currentDist = guessDistribution[+guessCount];
+            return (
+              <div className={`d-flex mt-2 align-items-center ${styles.font_mono}`} key={guessCount}>
+                <span className='fw-bold me-1'>{guessCount}</span>
+                <span className={`bg-secondary px-1 text-end`}
+                  style={{
+                    width: currentDist > 0
+                      ? ((currentDist / gameWon) * 100) + "%"
+                      : "auto",
+                    display: currentDist > 0
+                      ? "block"
+                      : "inline-block",
+                  }}
+                >{currentDist}
+                </span>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )

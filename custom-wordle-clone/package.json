@@ -16,6 +16,7 @@
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
     "next": "13.4.19",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
@@ -27,6 +28,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.3",
     "@types/pg": "^8.10.2"
   }
 }

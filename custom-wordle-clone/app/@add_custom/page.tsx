@@ -8,23 +8,28 @@ import { STYLES } from "@/constant";
 import { UserDetailSchema } from '@/type';
 import checkWordInDictionary from '@/lib/checkWordInDictionary';
 import toast from 'react-hot-toast';
+import getCurrentUserData from '@/lib/getCurrentUserData';
 
 const { modalCloseStyles, modalOpenStyles } = STYLES;
 
 export default function AddCustom() {
   const { isAddCustomOpen, setIsAddCustomOpen,
-    userData, setIsAuthOpen }
+    userData, setIsAuthOpen, setUserData }
     : {
       isAddCustomOpen: boolean, setIsAddCustomOpen: Dispatch<SetStateAction<boolean>>,
-      userData: UserDetailSchema, setIsAuthOpen: Dispatch<SetStateAction<boolean>>
+      userData: UserDetailSchema, setIsAuthOpen: Dispatch<SetStateAction<boolean>>,
+      setUserData: Dispatch<SetStateAction<{}>>
     } = useGlobalContext();
 
   const [customWord, setCustomWord] = useState("");
 
-  if (!userData.userId) {
-    setIsAddCustomOpen(false);
-    toast.error("Please login first");
-  }
+  useEffect(() => {
+    if (!userData.userId) {
+      setIsAddCustomOpen(false);
+      toast.error("Please login first");
+    }
+  }, [setIsAddCustomOpen, userData.userId])
+
 
   return (
     <div className={`text-white bg-dark card ${isAddCustomOpen ? modalOpenStyles : modalCloseStyles} ${styles.modal_body}`}>
@@ -68,6 +73,11 @@ export default function AddCustom() {
           <input type="text" className="form-control" id="customWord" name="customWord"
             value={customWord} onChange={(e) => setCustomWord(e.target.value)}
             required />
+          <p className="mt-3">
+            <strong>Note: </strong> <br />
+            <span>- Custom word needs to be of 5 character.</span><br />
+            {(!userData || !userData.userId) && (<span className="text-danger">- Please login first</span>)}
+          </p>
         </div>
 
         <button type="submit" className="btn btn-primary"

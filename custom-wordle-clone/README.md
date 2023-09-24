@@ -52,12 +52,20 @@ The custom wordle can be shared using the optional key value pair in the URL
 
 ![correct word](./public/design/YOU%20WON!%20MODAL%20[DESKTOP].png)
 
+## Features
+
+* Play(guess) random 5 letter word
+* User Authentication
+* Save game result to database
+* Save and play custom word?
+
 ## Built With
 
 * Next.js
 * React.js
 * Typescript
 * Bootstrap
+* PostgreSQL
 
 ## How To Use
 
@@ -84,6 +92,10 @@ Open [localhost:3000](http://localhost:3000) with your browser to see the result
 
 * bootstrap
 * react-icons
+* jsonwebtoken
+* sequelize
+* react-icons
+* react-hot-toast
 * dictionary api- [https://dictionaryapi.dev/](https://dictionaryapi.dev/).
 * random-word-api [https://random-word-api.herokuapp.com/word](https://random-word-api.herokuapp.com/word?length=5)
 

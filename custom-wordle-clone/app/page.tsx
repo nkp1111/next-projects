@@ -7,9 +7,10 @@ import GuessBox from "@/components/guessBox";
 import Keyboard from "@/components/keyboard";
 import useGlobalContext from "@/lib/context";
 import { useEffect } from "react";
+import getCurrentUserData from "@/lib/getCurrentUserData";
 
 export default function Home() {
-  const { isRuleOpen, setIsRuleOpen, isResultOpen, isAuthOpen, setIsAuthOpen, isAddCustomOpen, setIsAddCustomOpen, } = useGlobalContext();
+  const { isRuleOpen, setIsRuleOpen, isResultOpen, isAuthOpen, setIsAuthOpen, isAddCustomOpen, setIsAddCustomOpen, userData, setUserData } = useGlobalContext();
   // connect to postgres database
   useEffect(() => {
     (async () => {
@@ -21,6 +22,14 @@ export default function Home() {
       if (error) console.log(error);
     })();
   }, [])
+
+  useEffect(() => {
+    if (!userData.userId) {
+      (async () => {
+        await getCurrentUserData(setUserData)
+      })();
+    }
+  }, [setUserData, userData])
 
   return (
     <main className={`vh-100 vw-100 text-white bg-dark pt-5`}>
