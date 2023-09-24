@@ -4,6 +4,7 @@ import useGlobalContext from '@/lib/context';
 import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import CustomWordLink from './customWordLink';
+import getUserCustomWords from '@/lib/user/getUserCustomWords';
 
 export default function UserStats(
   { user: { username, gamePlayedNum, gameWon, guessDistribution } }
@@ -16,17 +17,7 @@ export default function UserStats(
   useEffect(() => {
     // get user custom words
     (async () => {
-      const res = await fetch("/api/getUserWords", {
-        credentials: "include"
-      })
-      const { success, customWords, error, message } = await res.json();
-      if (success) {
-        toast.success(message);
-        setUserCustomWords(customWords);
-      }
-      if (error) {
-        toast.error(error);
-      }
+      await getUserCustomWords(setUserCustomWords);
     })();
   }, [])
 
@@ -35,6 +26,7 @@ export default function UserStats(
       <div className="container">
         <div className="d-flex justify-content-between align-items-center mt-1">
           <h3 className='fw-bold mb-3'>User: <span className='text-success'>{username}</span></h3>
+          {/* logout button  */}
           <button type="button"
             className='btn btn-danger'
             onClick={async () => {

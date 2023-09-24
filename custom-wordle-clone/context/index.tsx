@@ -27,10 +27,12 @@ const AppProvider = (
   // current word, character user guessed
   const [currentWord, setCurrentWord] = useState("");
 
+  // activate with virtual keyboard on screen(game event)
   const handleMouseKeyClick = (key: string) => {
     handleKeyClick(key, currentWord, setGuessBoxLetters, setCurrentWord)
   }
 
+  // restarts new game after game over(game event)
   const gameReset = async () => {
     setGuessBoxLetters([]);
     setGameStatus({ isGameOver: false, gameWon: false });
@@ -39,6 +41,7 @@ const AppProvider = (
     await getRandomValidWords({ numOfLetters: 5, numOfWords: 1, setWordToGuess })
   }
 
+  // check game status (won or lose)
   useEffect(() => {
     const handleGameStatus = () => {
       const lastGuessed: string = guessBoxLetters.length > 0
@@ -60,9 +63,8 @@ const AppProvider = (
     handleGameStatus();
   }, [guessBoxLetters, wordToGuess])
 
-  // get random 5 letter word 
+  // get a random 5 letter valid word
   useEffect(() => {
-    // get new random valid word
     (async () => {
       await getRandomValidWords({ numOfLetters: 5, numOfWords: 1, setWordToGuess })
     })();

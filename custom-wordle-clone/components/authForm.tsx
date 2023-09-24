@@ -1,8 +1,9 @@
+import handleAuth from '@/lib/auth/handleAuth';
 import { useState } from 'react'
 
 export default function AuthForm(
-  { setUserData, setIsAuthOpen }
-    : { setUserData: any, setIsAuthOpen: any }
+  { setUserData }
+    : { setUserData: any }
 ) {
   const [isSignUp, setIsSignUp] = useState(true);
   const [user, setUser] = useState({
@@ -16,22 +17,9 @@ export default function AuthForm(
       <form
         onSubmit={async (e) => {
           e.preventDefault()
-          const authUrl = isSignUp ? "/api/signUp" : "/api/signIn";
-          const res = await fetch(authUrl, {
-            method: "POST",
-            headers: {
-              "Content-Type": "Application/json",
-            },
-            body: JSON.stringify(user),
-          })
-
-          const { success, error, user: newUser } = await res.json()
-          if (success) {
-            setUserData(newUser);
-            // setIsAuthOpen(() => false);
-          } else {
-            console.log(error);
-          }
+          await handleAuth(
+            isSignUp, user, setUserData
+          )
         }}>
         {isSignUp && (
           <div className="mb-3">

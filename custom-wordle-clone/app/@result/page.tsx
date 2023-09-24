@@ -8,6 +8,7 @@ import { STYLES } from "@/constant";
 import { UserDetailSchema } from '@/type';
 import getCurrentUserData from '@/lib/user/getCurrentUserData';
 import toast from 'react-hot-toast';
+import updateUserResult from '@/lib/user/updateUserResult';
 
 const { modalCloseStyles, modalOpenStyles } = STYLES;
 
@@ -35,23 +36,14 @@ export default function Result() {
   useEffect(() => {
     if (isGameOver && !resultAdded) {
       resultAdded = true;
-      fetch("/api/countResult", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ gameWon, guessTurns: guessBoxLetters.length, userId: userData.userId }),
-      }).then(res => res.json())
-        .then(data => {
-          const { success, user } = data;
-          if (success) {
-            toast.success("Result updated")
-            setUserData(user);
-          }
-        })
-        .catch(err => console.log(err))
+      updateUserResult(
+        gameWon,
+        guessBoxLetters,
+        userData.userId,
+        setUserData,
+      )
     }
-  }, [gameWon, guessBoxLetters.length, isGameOver, setUserData, userData])
+  }, [gameWon, guessBoxLetters, isGameOver, setUserData, userData])
 
   return (
     <div className={`text-white bg-dark card ${isResultOpen ? modalOpenStyles : modalCloseStyles} ${styles.modal_body}`}>

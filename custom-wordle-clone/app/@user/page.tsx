@@ -33,7 +33,7 @@ export default function Auth() {
 
       {userData && Object.keys(userData).length > 0
         ? <UserStats user={userData} />
-        : <AuthForm setIsAuthOpen={setIsAuthOpen} setUserData={setUserData} />}
+        : <AuthForm setUserData={setUserData} />}
 
     </div>
   )

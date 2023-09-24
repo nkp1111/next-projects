@@ -6,11 +6,11 @@ import styles from "@/app/modal.module.css"
 import useGlobalContext from '@/lib/context';
 import { STYLES } from "@/constant";
 import { UserDetailSchema } from '@/type';
-import checkWordInDictionary from '@/lib/general/checkWordInDictionary';
 import toast from 'react-hot-toast';
+import addNewCustomWord from '@/lib/user/addNewCustomWord';
 
 const { modalCloseStyles, modalOpenStyles } = STYLES;
-let loadingToast;
+
 
 export default function AddCustom() {
   const { isAddCustomOpen, setIsAddCustomOpen,
@@ -46,39 +46,14 @@ export default function AddCustom() {
       <form
         onSubmit={async (e) => {
           e.preventDefault()
-          if (!await checkWordInDictionary(wordToAdd)) {
-            toast.error("Word is not valid, Please enter a valid word");
-            return;
-          }
-          loadingToast = toast.loading(`Word to add: ${wordToAdd}`);
-          setWordToAdd("")
-          const addCustomWordUrl = "/api/addCustomWord";
-          const res = await fetch(addCustomWordUrl, {
-            method: "POST",
-            headers: {
-              "Content-Type": "Application/json",
-            },
-            body: JSON.stringify({ userId: userData.userId, customWord: wordToAdd }),
-          })
-
-          const { success, error, word } = await res.json();
-          // remove loading toast
-          toast.dismiss(loadingToast);
-          if (success) {
-            setCustomWord(pre => ({ word: word.word, wordId: word.wordId }));
-            toast.success(`New word added ${word.word}.`)
-          } else {
-            if (error) {
-              toast.error("Words is already present as custom word");
-              if (word) {
-                setCustomWord(pre => ({ word: word.word, wordId: word.wordId }));
-              }
-            } else {
-              toast.error(error);
-            }
-          }
+          // add new word to user
+          await addNewCustomWord(
+            wordToAdd,
+            setWordToAdd,
+            userData.userId,
+            setCustomWord,
+          )
         }}>
-
 
         <div className="mb-3">
           <label htmlFor="customWord" className="form-label">Your custom word</label>

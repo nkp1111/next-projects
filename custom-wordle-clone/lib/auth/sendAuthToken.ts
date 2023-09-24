@@ -5,6 +5,14 @@ import { NextResponse } from "next/server";
 import { signJwtPayload } from "./JwtToken";
 
 
+/**
+ * Sends an authentication token to the client.
+ * 
+ * @param cookies - A function that returns the request cookies.
+ * @param user - An object containing the user's details.
+ * @param message - (optional) A string message to include in the response.
+ * @returns A JSON response object with the success flag, user details, and optional message.
+ */
 export default async function sendAuthToken(
   { cookies,
     user,

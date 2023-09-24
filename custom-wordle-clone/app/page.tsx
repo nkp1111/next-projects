@@ -10,7 +10,10 @@ import { useEffect } from "react";
 import getCurrentUserData from "@/lib/user/getCurrentUserData";
 
 export default function Home() {
-  const { isRuleOpen, setIsRuleOpen, isResultOpen, isAuthOpen, setIsAuthOpen, isAddCustomOpen, setIsAddCustomOpen, userData, setUserData } = useGlobalContext();
+  const { isRuleOpen, setIsRuleOpen,
+    isResultOpen, isAuthOpen,
+    setIsAuthOpen, isAddCustomOpen,
+    setIsAddCustomOpen, userData, setUserData } = useGlobalContext();
   // connect to postgres database
   useEffect(() => {
     (async () => {
