@@ -9,26 +9,26 @@ export default function CustomWordLink(
     <div className='container'>
       <div className="row align-items-center">
         <div className="col-2"><strong>Word</strong></div>
-        <div className="col-10"><strong>Link</strong></div>
+        <div className="col-10"><strong>wordId</strong></div>
         {customWords.map((customWord, ind) => (
-          <>
-            <div className="col-12 d-flex flex-wrap gap-2" key={ind}>
+          <div key={ind} className='col-12'>
+            <div className="d-flex flex-wrap gap-2">
               <div className="d-flex">
                 <div className="">{customWord.word}</div>
-                <div className="ms-3">/{customWord.wordId}</div>
+                <div className="ms-3">{customWord.wordId}</div>
               </div>
               <div className='text-end ms-auto'>
                 <button type="button"
                   className='btn btn-success'
                   onClick={() => {
-                    navigator.clipboard.writeText(`/${customWord.wordId}`)
-                    toast.success(`Word link copied - /${customWord.wordId}`)
+                    navigator.clipboard.writeText(`${customWord.wordId}`)
+                    toast.success(`Word link copied - ${customWord.wordId}`)
                   }}
                 >Copy Link - {customWord.word}</button>
               </div>
             </div>
-            <hr className='border-white mt-1 mb-2' key={ind} />
-          </>
+            <hr className='border-white mt-1 mb-2' />
+          </div>
         ))}
       </div>
     </div>

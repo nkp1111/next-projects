@@ -17,13 +17,13 @@ export default function RootLayout({
   rules,
   result,
   user,
-  add_custom,
+  custom_word,
 }: {
   children: React.ReactNode,
   rules: React.ReactNode,
   result: React.ReactNode,
   user: React.ReactNode,
-  add_custom: React.ReactNode,
+  custom_word: React.ReactNode,
 }) {
   return (
     <html lang="en">
@@ -38,7 +38,7 @@ export default function RootLayout({
           {/* user modal  */}
           {user}
           {/* add custom word modal  */}
-          {add_custom}
+          {custom_word}
         </AppProvider>
       </body>
     </html>

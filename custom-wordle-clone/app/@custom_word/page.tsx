@@ -8,17 +8,23 @@ import { STYLES } from "@/constant";
 import { UserDetailSchema } from '@/type';
 import toast from 'react-hot-toast';
 import addNewCustomWord from '@/lib/user/addNewCustomWord';
+import getCustomWordById from '@/lib/user/getCustomWordById';
 
 const { modalCloseStyles, modalOpenStyles } = STYLES;
 
 
 export default function AddCustom() {
-  const { isAddCustomOpen, setIsAddCustomOpen,
-    userData }
+  const { isAddCustomOpen,
+    setIsAddCustomOpen,
+    userData, gameReset,
+    setWordToGuess }
     : {
       isAddCustomOpen: boolean, setIsAddCustomOpen: Dispatch<SetStateAction<boolean>>,
-      userData: UserDetailSchema
+      userData: UserDetailSchema, gameReset: () => Promise<void>, setWordToGuess: Dispatch<SetStateAction<string>>,
     } = useGlobalContext();
+
+  const [playCustom, setPlayCustom] = useState(false);
+  // for adding custom word
   const [wordToAdd, setWordToAdd] = useState("");
   const [customWord, setCustomWord] = useState({
     wordId: "",
@@ -40,37 +46,70 @@ export default function AddCustom() {
         onClick={() => setIsAddCustomOpen(() => false)}>
         <AiOutlineCloseCircle className="fs-2" />
       </div>
-      {/* add custom wordle  */}
-      <h3 className='fw-bold fs-2'>Custom Word</h3>
+      {/* add custom wordle or play custom word  */}
+      <div className="d-flex justify-content-between align-items-center mt-1">
+        <h3 className='fw-bold fs-2'>Custom Word-
+          <span className={playCustom ? "text-success" : "text-primary"}>{playCustom ? "Play" : "Add"}</span>
+        </h3>
+
+        <button type='button' className='btn btn-success btn-sm'
+          onClick={() => setPlayCustom(pre => !pre)}>
+          {playCustom ? "Add Custom" : "Play Custom"}
+        </button>
+      </div>
+
 
       <form
         onSubmit={async (e) => {
           e.preventDefault()
+          // start custom word play
+          if (playCustom) {
+            getCustomWordById(wordToAdd, gameReset);
+            setIsAddCustomOpen(false);
+            return
+          }
+
           // add new word to user
           await addNewCustomWord(
             wordToAdd,
             setWordToAdd,
             userData.userId,
-            setCustomWord,
-          )
+            setCustomWord)
         }}>
 
         <div className="mb-3">
-          <label htmlFor="customWord" className="form-label">Your custom word</label>
+          {/* label on base of customPlay  */}
+          <label htmlFor="customWord" className="form-label">
+            Your custom word {playCustom && "Id"}
+          </label>
           <input type="text" className="form-control" id="customWord" name="customWord"
             value={wordToAdd} onChange={(e) => setWordToAdd(pre => e.target.value)}
+            placeholder={playCustom ? "e.g. 0f9cb39a-833a-419a-8587-c7e42474c5dc" : "e.g. hello"}
             required />
+
           <p className="mt-3">
             <strong>Note: </strong> <br />
-            <span>- Custom word needs to be of 5 character.</span><br />
-            {(!userData || !userData.userId) && (<span className="text-danger">- Please login first</span>)}
+            {playCustom ? (
+              // play custom word notes
+              <>
+                <span>- Custom wordId needs to be in uuid format.
+                  <br /> e.g. 0f9cb39a-833a-419a-8587-c7e42474c5dc
+                  <br /> e.g. 0f9cb39a833a419a8587c7e42474c5dc</span><br />
+              </>
+            ) : (
+              // add custom word notes 
+              <>
+                <span>- Custom word needs to be of 5 character.</span><br />
+                {(!userData || !userData.userId) && (<span className="text-danger">- Please login first</span>)}
+              </>
+            )}
           </p>
         </div>
 
         <button type="submit" className="btn btn-primary"
-          disabled={wordToAdd.length !== 5}
+          disabled={playCustom ? ![32, 36].includes(wordToAdd.length) : wordToAdd.length !== 5}
         >
-          Add Word
+          {playCustom ? "Play Word" : "Add Word"}
         </button>
       </form>
 
