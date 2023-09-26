@@ -33,12 +33,18 @@ const AppProvider = (
   }
 
   // restarts new game after game over(game event)
-  const gameReset = async () => {
+  const gameReset = async (customWord?: string) => {
     setGuessBoxLetters([]);
     setGameStatus({ isGameOver: false, gameWon: false });
     setIsResultOpen(false)
-    // set new random valid word
-    await getRandomValidWords({ numOfLetters: 5, numOfWords: 1, setWordToGuess })
+    if (customWord) {
+      // set custom word as valid word
+      toast.success("Custom word loaded for play!")
+      setWordToGuess(customWord);
+    } else {
+      // set new random valid word
+      await getRandomValidWords({ numOfLetters: 5, numOfWords: 1, setWordToGuess })
+    }
   }
 
   // check game status (won or lose)

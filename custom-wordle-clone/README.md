@@ -57,7 +57,7 @@ The custom wordle can be shared using the optional key value pair in the URL
 * Play(guess) random 5 letter word
 * User Authentication
 * Save game result to database
-* Save and play custom word?
+* Save and play custom word by wordId(uuid format)
 
 ## Built With
 
