@@ -1,14 +1,5 @@
-"use client";
-import { useEffect } from "react";
-import { toast } from "react-hot-toast";
+import LandingPage from "@/components/landing_page";
 
 export default function Home() {
-  useEffect(() => {
-    toast.success("Its working");
-  }, [])
-  return (
-    <main className="">
-      Landing Page
-    </main>
-  )
+  return <LandingPage />
 }

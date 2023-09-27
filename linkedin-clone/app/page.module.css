@@ -1,0 +1,9 @@
+/* landing page  */
+.light_white_background {
+  background-color: var(--light-white);
+}
+
+.landing_heading_text {
+  color: var(--light-brown);
+  line-height: 1.5;
+}
