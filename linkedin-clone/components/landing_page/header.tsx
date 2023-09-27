@@ -1,8 +1,6 @@
-import React from 'react'
-import logo from "@/public/assets/logo-with-text.svg"
-import Image from 'next/image'
 import Link from 'next/link'
 import { navData } from './landingData'
+import Logo from '../general/logo'
 
 export default function Header() {
   return (
@@ -10,14 +8,7 @@ export default function Header() {
       <nav className="navbar navbar-light bg-light">
         <div className="container-fluid d-flex justify-content-around align-items-center">
           {/* logo  */}
-          <Link className="navbar-brand" href="#">
-            <Image
-              src={logo}
-              alt={"likedIn logo"}
-              width={"220"}
-              height={"40"}
-            />
-          </Link>
+          <Logo />
 
           <div className='d-flex align-items-center flex-wrap justify-content-center'>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 flex-row gap-4">

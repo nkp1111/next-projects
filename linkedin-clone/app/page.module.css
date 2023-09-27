@@ -7,3 +7,10 @@
   color: var(--light-brown);
   line-height: 1.5;
 }
+
+/* auth page  */
+.auth_form {
+  width: 50%;
+  min-width: 300px;
+  padding: 1.5rem;
+}

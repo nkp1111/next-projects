@@ -29,8 +29,8 @@ export default function Main() {
             <Image
               src={landingPageImage}
               alt="landing page background main using laptop"
-              width={"500"}
-              height={"500"}
+              width={"600"}
+              height={"600"}
               className="img-fluid"
             />
           </div>
