@@ -22,6 +22,7 @@ export default function RegisterForm() {
         <div className="position-relative">
           <input type={showPassword ? "text" : "password"}
             className="form-control" id="password" />
+          {/* show and hide password  */}
           <button type="button" className="btn text-primary position-absolute top-0 end-0"
             onClick={() => setShowPassword(pre => !pre)}>
             {showPassword ? "hide" : "show"}
