@@ -10,4 +10,4 @@
 - [student-time-table-planner](https://github.com/nkp1111/next-projects/tree/main/student-time-table-planner)
 - [ticket-master-clone](https://github.com/nkp1111/next-projects/tree/main/ticket-master-clone)
 - [custom-wordle-clone](https://github.com/nkp1111/next-projects/tree/main/custom-wordle-clone)
-- [linkedin-clone]()
+- [linkedin-clone](https://github.com/nkp1111/next-projects/tree/main/linkedin-clone)
