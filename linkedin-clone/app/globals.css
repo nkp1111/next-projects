@@ -34,7 +34,11 @@ a {
 
 /* general styles  */
 :root {
-  --light-white: #EEEEEE;
+  --light-white: #F1EFEF;
+  --light-green: #CCC8AA;
+  --gray: #7D7C7C;
+  --dark-black: #191717;
+
   --light-brown: #B2533E;
 }
 

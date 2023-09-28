@@ -6,3 +6,12 @@ export type navDataSchema = {
   link: string,
   icon: IconType,
 }
+
+export type objectStringKeyAnyValueSchema = { [key: string]: any };
+
+export type UserDetailSchema = {
+  userId: string,
+  email: string,
+  name?: string,
+  password: string,
+}
