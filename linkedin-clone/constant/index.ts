@@ -1,7 +1,7 @@
 // fetch api(internal) url's
 export const REGISTER_URL = "/api/register"
 export const LOGIN_URL = "/api/login"
-
+export const DB_CONNECT_URL = "/api/dbConnect"
 
 
 
