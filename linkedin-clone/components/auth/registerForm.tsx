@@ -23,6 +23,7 @@ export default function RegisterForm() {
           method: "POST",
           body: user
         }).then(data => {
+          // TODO: handle after register
           console.log(data);
         });
       }}>
