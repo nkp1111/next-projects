@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongodb';
 import { IconType } from 'react-icons';
 
 export type navDataSchema = {
@@ -9,8 +10,8 @@ export type navDataSchema = {
 
 export type objectStringKeyAnyValueSchema = { [key: string]: any };
 
-export type UserDetailSchema = {
-  userId: string,
+export type UserSchema = {
+  _id: ObjectId,
   email: string,
   name?: string,
   password: string,

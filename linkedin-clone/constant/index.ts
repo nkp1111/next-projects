@@ -15,4 +15,4 @@ export const COLLECTIONS: objectStringKeyAnyValueSchema = {
 // jwt secret
 export const JWT_SECRET_TOKEN = process.env.JWT_SECRET || "itssecretdonttellanyoneorsomethingbadwillnothappen";
 // cookie name to be set on browser
-export const AUTH_COOKIE_NAME = "customUser";
+export const AUTH_COOKIE_NAME = "linkedIn";
