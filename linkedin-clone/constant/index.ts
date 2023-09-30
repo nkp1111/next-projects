@@ -1,10 +1,15 @@
+import { objectStringKeyAnyValueSchema } from "@/types";
+
 // fetch api(internal) url's
 export const REGISTER_URL = "/api/register"
 export const LOGIN_URL = "/api/login"
 export const DB_CONNECT_URL = "/api/dbConnect"
 
-
-
+// database constants
+export const DATABASE: string = "linkedInClone";
+export const COLLECTIONS: objectStringKeyAnyValueSchema = {
+  users: "users",
+}
 
 
 // jwt secret

@@ -9,7 +9,7 @@ export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState({
     email: "",
-    name: "",
+    username: "",
     password: "",
   });
   return (
@@ -35,7 +35,7 @@ export default function RegisterForm() {
       <div className="mb-3">
         <label htmlFor="name" className="form-label">Your Name</label>
         <input type="text" className="form-control" id="name"
-          value={user.name} onChange={(e) => setUser(pre => ({ ...pre, name: e.target.value }))} />
+          value={user.username} onChange={(e) => setUser(pre => ({ ...pre, username: e.target.value }))} />
       </div>
 
       <div className="mb-3">
@@ -53,7 +53,7 @@ export default function RegisterForm() {
       </div>
 
       <button type="submit" className="btn btn-primary rounded-pill w-100 mt-2"
-        disabled={!user.email || !user.name || !user.password}>Continue</button>
+        disabled={!user.email || !user.username || !user.password}>Continue</button>
     </form>
   )
 }
