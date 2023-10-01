@@ -20,6 +20,7 @@
     "react-icons": "^4.11.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.3",
     "@types/node": "latest",
     "@types/pg": "^8.10.3",

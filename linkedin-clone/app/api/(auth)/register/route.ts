@@ -3,6 +3,7 @@ import getMongoDB from "@/lib/db/getMongoDB";
 import sendAuthToken from "@/lib/auth/sendAuthToken";
 import { cookies } from "next/headers";
 import { COLLECTIONS } from "@/constant";
+import { hashPassword } from "@/lib/auth/managePassword";
 
 export async function POST(request: NextRequest) {
   try {
@@ -17,7 +18,10 @@ export async function POST(request: NextRequest) {
     const userExists = await db.collection(COLLECTIONS.users).findOne({ email: userInfo.email });
     if (userExists) return NextResponse.json({ error: "User with that email already exists" }, { status: 400 });
 
-    // if user not exists, create new user
+    // hash password before saving
+    userInfo.password = await hashPassword(userInfo.password);
+
+    // create new user
     let { acknowledged, insertedId }: any = await db.collection(COLLECTIONS.users).insertOne(userInfo);
     if (!acknowledged) {
       return NextResponse.json({ error: "Error during adding user info to database" }, { status: 500 });

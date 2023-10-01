@@ -13,6 +13,6 @@ export type objectStringKeyAnyValueSchema = { [key: string]: any };
 export type UserSchema = {
   _id: ObjectId,
   email: string,
-  name?: string,
+  username?: string,
   password: string,
 }

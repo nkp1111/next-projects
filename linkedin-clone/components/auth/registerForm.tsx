@@ -4,6 +4,7 @@ import styles from "@/app/page.module.css"
 import { REGISTER_URL } from "@/constant";
 import handleFetch from "@/lib/handleFetch";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,13 +17,14 @@ export default function RegisterForm() {
     <form className={`${styles.auth_form} mx-auto text-start my-5 bg-white shadow-lg rounded-2`}
       onSubmit={(e) => {
         e.preventDefault();
-
+        const loadingToast = toast.loading("Registering... please wait.")
         // handle register 
         handleFetch({
           url: REGISTER_URL,
           method: "POST",
           body: user
         }).then(data => {
+          toast.remove(loadingToast);
           // TODO: handle after register
           console.log(data);
         });

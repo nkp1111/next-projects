@@ -5,6 +5,7 @@ import { LOGIN_URL } from "@/constant";
 import handleFetch from "@/lib/handleFetch";
 import Link from "next/link"
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,12 +18,14 @@ export default function SignInForm() {
       onSubmit={(e) => {
         e.preventDefault();
 
+        const loadingToast = toast.loading("Logging in... please wait.")
         // handle login
         handleFetch({
           url: LOGIN_URL,
           method: "POST",
           body: user
         }).then(data => {
+          toast.remove(loadingToast);
           // TODO: handle after login
           console.log(data);
         });
