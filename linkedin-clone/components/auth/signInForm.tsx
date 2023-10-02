@@ -4,6 +4,7 @@ import styles from "@/app/page.module.css"
 import { LOGIN_URL } from "@/constant";
 import handleFetch from "@/lib/handleFetch";
 import Link from "next/link"
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -13,6 +14,7 @@ export default function SignInForm() {
     email: "",
     password: "",
   });
+  const router = useRouter()
   return (
     <form className={`${styles.auth_form} mx-auto text-start my-5 bg-white shadow-lg rounded-2`}
       onSubmit={(e) => {
@@ -26,8 +28,7 @@ export default function SignInForm() {
           body: user
         }).then(data => {
           toast.remove(loadingToast);
-          // TODO: handle after login
-          console.log(data);
+          router.push("/dashboard");
         });
       }}>
       <h1 className='mt-3 fw-semibold'>Sign in</h1>

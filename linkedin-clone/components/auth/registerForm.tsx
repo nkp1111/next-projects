@@ -3,6 +3,7 @@
 import styles from "@/app/page.module.css"
 import { REGISTER_URL } from "@/constant";
 import handleFetch from "@/lib/handleFetch";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -13,6 +14,7 @@ export default function RegisterForm() {
     username: "",
     password: "",
   });
+  const router = useRouter()
   return (
     <form className={`${styles.auth_form} mx-auto text-start my-5 bg-white shadow-lg rounded-2`}
       onSubmit={(e) => {
@@ -25,8 +27,7 @@ export default function RegisterForm() {
           body: user
         }).then(data => {
           toast.remove(loadingToast);
-          // TODO: handle after register
-          console.log(data);
+          router.push("/dashboard")
         });
       }}>
       <div className="mb-3">

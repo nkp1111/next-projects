@@ -12,10 +12,10 @@ export default function NavLinkBar(
         const { icon: Icon } = item;
         return (
           <li className="nav-item" key={item.id}>
-            <Link className="nav-link d-flex flex-column align-items-center justify-content-center"
+            <Link className={`nav-link d-flex flex-column align-items-center justify-content-center`}
               href={item.link}>
               <span>
-                <Icon className="fs-4" />
+                <Icon className={`fs-4 ${item.spClass}`} />
               </span>
               <span>{item.title}</span>
             </Link>

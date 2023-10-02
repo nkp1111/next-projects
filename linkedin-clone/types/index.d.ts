@@ -6,6 +6,7 @@ export type navDataSchema = {
   title: string,
   link: string,
   icon: IconType,
+  spClass?: string,
 }
 
 export type objectStringKeyAnyValueSchema = { [key: string]: any };

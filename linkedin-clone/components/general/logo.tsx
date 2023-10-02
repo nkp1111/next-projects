@@ -1,15 +1,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import logo from "@/public/assets/logo-with-text.svg"
+import logoWithText from "@/public/assets/logo-with-text.svg"
+import logoIcon from "@/public/assets/linkedin-icon.svg"
 
-export default function Logo() {
+export default function Logo(
+  { iconOnly = false }
+    : { iconOnly?: boolean }
+) {
   return (
     <Link className="navbar-brand" href="/">
       <Image
-        src={logo}
+        src={!iconOnly ? logoWithText : logoIcon}
         alt={"likedIn logo"}
-        width={"220"}
-        height={"40"}
+        width={!iconOnly ? "220" : "50"}
+        height={!iconOnly ? "40" : "50"}
       />
     </Link>
   )
