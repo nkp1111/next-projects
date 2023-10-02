@@ -14,3 +14,12 @@
   min-width: 300px;
   padding: 1.5rem;
 }
+
+/* dashboard  */
+.secondary_linear_background {
+  background: linear-gradient(rgba(128, 128, 128, 0.5) 25%, rgba(128, 128, 128, 0.3) 50%, white);
+}
+
+.min_full_height {
+  min-height: 100vh;
+}

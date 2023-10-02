@@ -3,12 +3,13 @@ import React from 'react'
 import { navDataSchema } from '@/types';
 
 export default function NavLinkBar(
-  { navData }
-    : { navData: navDataSchema[] }
+  { navData, currentWidth }
+    : { navData: navDataSchema[], currentWidth: number }
 ) {
+  let navDataMod = currentWidth > 768 ? navData : navData.slice(0, 4)
   return (
-    <ul className="navbar-nav me-auto mb-2 mb-lg-0 flex-row gap-4">
-      {navData.map(item => {
+    <ul className="navbar-nav me-auto mb-2 mb-lg-0 flex-row gap-4 align-items-center justify-content-center">
+      {navDataMod.map(item => {
         const { icon: Icon } = item;
         return (
           <li className="nav-item" key={item.id}>
