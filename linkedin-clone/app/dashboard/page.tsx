@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import React, { useEffect, useState } from 'react'
 const Header = dynamic(() => import("@/components/dashboard/header"))
 const RightSidebar = dynamic(() => import("@/components/dashboard/rightSidebar"))
+const LeftSidebar = dynamic(() => import("@/components/dashboard/leftSidebar"))
 import styles from "@/app/page.module.css"
 
 export default function Dashboard() {
@@ -39,7 +40,7 @@ export default function Dashboard() {
           <div className="row">
             {currentWidth > 768 && (
               <div className="col-3 p-1">
-                <RightSidebar />
+                <LeftSidebar />
               </div>
             )}
 

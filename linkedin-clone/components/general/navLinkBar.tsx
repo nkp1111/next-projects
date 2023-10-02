@@ -4,9 +4,9 @@ import { navDataSchema } from '@/types';
 
 export default function NavLinkBar(
   { navData, currentWidth }
-    : { navData: navDataSchema[], currentWidth: number }
+    : { navData: navDataSchema[], currentWidth?: number }
 ) {
-  let navDataMod = currentWidth > 768 ? navData : navData.slice(0, 4)
+  let navDataMod = currentWidth && currentWidth < 768 ? navData.slice(0, 4) : navData;
   return (
     <ul className="navbar-nav me-auto mb-2 mb-lg-0 flex-row gap-4 align-items-center justify-content-center">
       {navDataMod.map(item => {
