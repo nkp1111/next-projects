@@ -11,7 +11,7 @@
 
 ## Links
 
-* [Live App]()
+* [Live App](https://next-projects-tau.vercel.app/)
 * [GitHub](https://github.com/nkp1111/next-projects/tree/main/linkedin-clone)
 
 ## Overview
@@ -21,7 +21,6 @@
 * Next.js
 * React.js
 * Typescript
-* Bootstrap
 
 ## How To Use
 
@@ -51,6 +50,8 @@ Open [localhost:3000](http://localhost:3000) with your browser to see the result
 * jsonwebtoken
 * react-hot-toast
 * bcrypt
+* mongodb
+* react-hot-toast
 
 ## Contact
 

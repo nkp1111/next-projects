@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "@/app/page.module.css"
 import { BsFillBookmarkFill, BsTicketPerforated } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
+import UserIcon from "../general/userIcon";
 
 export default function RightSidebar() {
   return (
@@ -11,13 +12,7 @@ export default function RightSidebar() {
 
       <div className="card shadow-sm rounded-2">
         <div className={`card-header text-center py-2 ${styles.secondary_linear_background}`}>
-          <Image
-            src="https://gravatar.com/avatar/"
-            alt="avatar"
-            width="50"
-            height="50"
-            className="rounded-circle"
-          />
+          <UserIcon />
         </div>
         <div className="card-body bg-white">
           <div className="mt-3 mb-4 text-center">
@@ -59,7 +54,6 @@ export default function RightSidebar() {
 
           <p className="text-secondary text-center fw-semibold mt-3">Discover More</p>
         </div>
-
       </div>
     </div>
   )

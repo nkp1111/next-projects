@@ -6,6 +6,8 @@ const Header = dynamic(() => import("@/components/dashboard/header"))
 const RightSidebar = dynamic(() => import("@/components/dashboard/rightSidebar"))
 const LeftSidebar = dynamic(() => import("@/components/dashboard/leftSidebar"))
 import styles from "@/app/page.module.css"
+import AddPostMain from '@/components/dashboard/addPostMain';
+import ShowPostMain from '@/components/dashboard/showPostMain';
 
 export default function Dashboard() {
   const [currentWidth, setCurrentWidth] = useState(1000);
@@ -44,8 +46,11 @@ export default function Dashboard() {
               </div>
             )}
 
-            <div className={`p-1 ${currentWidth > 768 ? "col-6" : "col-12"}`}>
-              <div className='w-100 bg-success'>Center</div>
+            <div className={`p-1 px-2 ${currentWidth > 768 ? "col-6" : "col-12"}`}>
+              <div className='w-100 d-flex flex-column gap-3'>
+                <AddPostMain />
+                <ShowPostMain />
+              </div>
             </div>
 
             {currentWidth > 768 && (

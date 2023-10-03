@@ -23,3 +23,7 @@
 .min_full_height {
   min-height: 100vh;
 }
+
+.cursor_pointer {
+  cursor: pointer;
+}
