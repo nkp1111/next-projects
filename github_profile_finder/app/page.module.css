@@ -3,3 +3,30 @@
   min-width: 300px;
   margin: auto;
 }
+
+.profile_container {
+  height: 120vh;
+  overflow: hidden;
+}
+
+.metadata_container {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .metadata_container {
+    width: 100% !important;
+    margin-bottom: 2rem;
+  }
+
+  .profile_container {
+    height: auto;
+    overflow: auto;
+    flex-wrap: wrap;
+  }
+}
+
+.cursor_pointer {
+  cursor: pointer;
+}

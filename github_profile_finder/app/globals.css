@@ -44,3 +44,7 @@ main {
   background: var(--dark-blue);
   color: var(--light-white);
 }
+
+main {
+  padding-bottom: 2vh;
+}
