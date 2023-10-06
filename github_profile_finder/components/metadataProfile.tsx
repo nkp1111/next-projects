@@ -1,13 +1,13 @@
 import { FaArrowRight } from 'react-icons/fa';
 import styles from "@/app/page.module.css"
 import { Dispatch, SetStateAction } from "react";
-import { ProfileMetaDataType } from '@/type';
+import { MetaDataType, ProfileMetaDataType } from '@/type';
 
 export default function MetadataProfile(
   { metaType, metadata, setMetaType }
     : {
       metaType: ProfileMetaDataType,
-      metadata: { [key: string]: string }[],
+      metadata: MetaDataType,
       setMetaType: Dispatch<SetStateAction<ProfileMetaDataType>>
     }
 ) {
@@ -21,9 +21,9 @@ export default function MetadataProfile(
             setMetaType(() => item);
           }}>{item}</span>)}
       </div>
-      {metaType === "repos" && metadata && metadata.length > 0 && (
+      {metaType === "repos" && metadata?.repoData && metadata.repoData?.length > 0 && (
         <>
-          {metadata.reverse().map((data: any, ind: number) => (
+          {metadata.repoData?.reverse().map((data: any, ind: number) => (
             <div key={data.id} className={`${ind !== 0 && "mt-3"} border border-white rounded-1 p-3 d-flex justify-content-between ${styles.cursor_pointer}`}>
               <h3 className='text-white fs-6 fw-normal text-start'>{data.name}</h3>
               <span>
@@ -34,9 +34,9 @@ export default function MetadataProfile(
         </>
       )}
 
-      {metaType === "gists" && metadata && metadata.length > 0 && (
+      {metaType === "gists" && metadata?.gistData && metadata.gistData?.length > 0 && (
         <>
-          {metadata.reverse().map((data: any, ind: number) => (
+          {metadata.gistData?.reverse().map((data: any, ind: number) => (
             <div key={data.id} className={`${ind !== 0 && "mt-3"} border border-white rounded-1 p-3 d-flex justify-content-between ${styles.cursor_pointer}`}>
               <p className='text-white m-0 text-start'>{data.description}</p>
               <span>
@@ -47,13 +47,13 @@ export default function MetadataProfile(
         </>
       )}
 
-      {metaType === "starred" && metadata && metadata.length > 0 && (
+      {metaType === "starred" && metadata?.starredData && metadata.starredData?.length > 0 && (
         <>
-          {metadata.reverse().map((data: any, ind: number) => (
+          {metadata.starredData?.reverse().map((data: any, ind: number) => (
             <div key={data.id} className={`${ind !== 0 && "mt-3"} border border-white rounded-1 p-3 d-flex justify-content-between align-items-center ${styles.cursor_pointer}`}>
               <div className="d-flex flex-column">
                 <h3 className='text-white fs-6 fw-normal text-start'>{data.name}</h3>
-                <p className='m-0'>{data.url}</p>
+                <p className='m-0 text-start'>{data.url}</p>
               </div>
               <span>
                 <FaArrowRight />

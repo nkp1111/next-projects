@@ -1,21 +1,16 @@
 import { formatProfileData } from '@/lib/formatProfileData';
-import setMetaData from '@/lib/setMetaData';
-import Image from 'next/image'
+import getMetaData from '@/lib/getMetaData';
 import React, { useEffect, useState } from 'react'
 import styles from "@/app/page.module.css"
-
 import GeneralProfile from './generalProfile';
 import MetadataProfile from './metadataProfile';
-import { ProfileMetaDataType } from '@/type';
+import { MetaDataType, ProfileMetaDataType } from '@/type';
 
 export default function ShowProfile(
   { profile }
     : { profile: any }
 ) {
-  console.log(profile)
-  const [repoData, setRepoData] = useState<any>(null);
-  const [gistData, setGistData] = useState<any>(null);
-  const [starredData, setStarredData] = useState<any>(null);
+  const [metadata, setMetadata] = useState<MetaDataType>({ repoData: [], gistData: [], starredData: [] });
   const [metaType, setMetaType] = useState<ProfileMetaDataType>("repos");
 
   // get repo, starred, gist data of user
@@ -23,15 +18,15 @@ export default function ShowProfile(
     if (!profile) return;
     let { repos_url, starred_url, gists_url } = profile;
     if (repos_url) {
-      setMetaData(repos_url, setRepoData);
+      getMetaData("repos", repos_url, setMetadata);
     }
 
     if (gists_url) {
-      setMetaData(gists_url.split("{")[0], setGistData);
+      getMetaData("gists", gists_url.split("{")[0], setMetadata);
     }
 
     if (starred_url) {
-      setMetaData(starred_url.split("{")[0], setStarredData);
+      getMetaData("starred", starred_url.split("{")[0], setMetadata);
     }
   }, [profile]);
 
@@ -43,9 +38,7 @@ export default function ShowProfile(
         <GeneralProfile profileData={profileData} />
         <MetadataProfile metaType={metaType}
           setMetaType={setMetaType}
-          metadata={metaType === "repos" ? repoData
-            : metaType === "starred" ? starredData
-              : metaType === "gists" ? gistData : null}
+          metadata={metadata}
         />
       </div>
     )

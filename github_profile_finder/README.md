@@ -1,26 +1,30 @@
 # GitHub Profile Finder
 
+- Find GitHub profile based on username
+- See list of repos, gists and starred repos
+- See repo details
+
 ## Table of Contents
 
-* [Links](#links)
-* [Overview](#overview)
-  * [Built With](#built-with)
-* [How to use](#how-to-use)
-* [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
+- [Links](#links)
+- [Overview](#overview)
+  - [Built With](#built-with)
+- [How to use](#how-to-use)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
 ## Links
 
-* [Live App]()
-* [GitHub](https://github.com/nkp1111/next-projects/tree/main/github_profile_finder)
+- [Live App]()
+- [GitHub](https://github.com/nkp1111/next-projects/tree/main/github_profile_finder)
 
 ## Overview
 
 ### Built With
 
-* Next.js
-* React.js
-* Typescript
+- Next.js
+- React.js
+- Typescript
 
 ## How To Use
 
@@ -45,11 +49,11 @@ Open [localhost:3000](http://localhost:3000) with your browser to see the result
 
 ## Acknowledgements
 
-* bootstrap
-* react-icons
+- bootstrap
+- react-icons
 
 ## Contact
 
-* Neeraj Parmar
-* GitHub [nkp1111](https://github.com/nkp1111)
-* Twitter [@nkp11111507](https://twitter.com/@nkp11111507)
+- Neeraj Parmar
+- GitHub [nkp1111](https://github.com/nkp1111)
+- Twitter [@nkp11111507](https://twitter.com/@nkp11111507)
