@@ -1,0 +1,1 @@
+export type ProfileMetaDataType = "repos" | "gists" | "starred";
