@@ -1,17 +1,22 @@
 import { formatProfileData } from '@/lib/formatProfileData';
 import getMetaData from '@/lib/getMetaData';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Dispatch, SetStateAction } from 'react'
 import styles from "@/app/page.module.css"
 import GeneralProfile from './generalProfile';
 import MetadataProfile from './metadataProfile';
 import { MetaDataType, ProfileMetaDataType } from '@/type';
 
 export default function ShowProfile(
-  { profile }
-    : { profile: any }
+  { profile, metadata, metaType, setMetadata, setMetaType, setIsModalOpen }
+    : {
+      profile: any,
+      metadata: MetaDataType,
+      metaType: ProfileMetaDataType,
+      setMetadata: Dispatch<SetStateAction<MetaDataType>>,
+      setMetaType: Dispatch<SetStateAction<ProfileMetaDataType>>,
+      setIsModalOpen: Dispatch<SetStateAction<{ state: boolean, id: string }>>
+    }
 ) {
-  const [metadata, setMetadata] = useState<MetaDataType>({ repoData: [], gistData: [], starredData: [] });
-  const [metaType, setMetaType] = useState<ProfileMetaDataType>("repos");
 
   // get repo, starred, gist data of user
   useEffect(() => {
@@ -28,7 +33,7 @@ export default function ShowProfile(
     if (starred_url) {
       getMetaData("starred", starred_url.split("{")[0], setMetadata);
     }
-  }, [profile]);
+  }, [profile, setMetadata]);
 
 
   if (profile && typeof profile === "object" && Object.keys(profile).length > 0) {
@@ -39,6 +44,7 @@ export default function ShowProfile(
         <MetadataProfile metaType={metaType}
           setMetaType={setMetaType}
           metadata={metadata}
+          setIsModalOpen={setIsModalOpen}
         />
       </div>
     )

@@ -36,6 +36,8 @@ a {
 :root {
   --light-white: #f4f4f4;
   --dark-blue: #00213e;
+  --overlay-z-index: 100;
+  --modal-z-index: 200;
 }
 
 body,

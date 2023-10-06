@@ -4,11 +4,12 @@ import { Dispatch, SetStateAction } from "react";
 import { MetaDataType, ProfileMetaDataType } from '@/type';
 
 export default function MetadataProfile(
-  { metaType, metadata, setMetaType }
+  { metaType, metadata, setMetaType, setIsModalOpen }
     : {
       metaType: ProfileMetaDataType,
       metadata: MetaDataType,
-      setMetaType: Dispatch<SetStateAction<ProfileMetaDataType>>
+      setMetaType: Dispatch<SetStateAction<ProfileMetaDataType>>,
+      setIsModalOpen: Dispatch<SetStateAction<{ state: boolean, id: string }>>,
     }
 ) {
   const profileMetadata: Array<ProfileMetaDataType> = ["repos", "gists", "starred"];
@@ -24,7 +25,8 @@ export default function MetadataProfile(
       {metaType === "repos" && metadata?.repoData && metadata.repoData?.length > 0 && (
         <>
           {metadata.repoData?.reverse().map((data: any, ind: number) => (
-            <div key={data.id} className={`${ind !== 0 && "mt-3"} border border-white rounded-1 p-3 d-flex justify-content-between ${styles.cursor_pointer}`}>
+            <div key={data.id} className={`${ind !== 0 && "mt-3"} border border-white rounded-1 p-3 d-flex justify-content-between ${styles.cursor_pointer}`}
+              onClick={() => setIsModalOpen(() => ({ state: true, id: data.id }))}>
               <h3 className='text-white fs-6 fw-normal text-start'>{data.name}</h3>
               <span>
                 <FaArrowRight />
@@ -37,7 +39,8 @@ export default function MetadataProfile(
       {metaType === "gists" && metadata?.gistData && metadata.gistData?.length > 0 && (
         <>
           {metadata.gistData?.reverse().map((data: any, ind: number) => (
-            <div key={data.id} className={`${ind !== 0 && "mt-3"} border border-white rounded-1 p-3 d-flex justify-content-between ${styles.cursor_pointer}`}>
+            <div key={data.id} className={`${ind !== 0 && "mt-3"} border border-white rounded-1 p-3 d-flex justify-content-between ${styles.cursor_pointer}`}
+              onClick={() => setIsModalOpen(() => ({ state: true, id: data.id }))}>
               <p className='text-white m-0 text-start'>{data.description}</p>
               <span>
                 <FaArrowRight />
@@ -50,7 +53,8 @@ export default function MetadataProfile(
       {metaType === "starred" && metadata?.starredData && metadata.starredData?.length > 0 && (
         <>
           {metadata.starredData?.reverse().map((data: any, ind: number) => (
-            <div key={data.id} className={`${ind !== 0 && "mt-3"} border border-white rounded-1 p-3 d-flex justify-content-between align-items-center ${styles.cursor_pointer}`}>
+            <div key={data.id} className={`${ind !== 0 && "mt-3"} border border-white rounded-1 p-3 d-flex justify-content-between align-items-center ${styles.cursor_pointer}`}
+              onClick={() => setIsModalOpen(() => ({ state: true, id: data.id }))}>
               <div className="d-flex flex-column">
                 <h3 className='text-white fs-6 fw-normal text-start'>{data.name}</h3>
                 <p className='m-0 text-start'>{data.url}</p>

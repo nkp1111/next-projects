@@ -4,6 +4,10 @@
   margin: auto;
 }
 
+.cursor_pointer {
+  cursor: pointer;
+}
+
 .profile_container {
   height: 120vh;
   overflow: hidden;
@@ -13,6 +17,26 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+.overlay {
+  background-color: rgba(88, 88, 88, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--overlay-z-index);
+}
+
+.modal_body {
+  padding: 2rem;
+  position: absolute;
+  width: 70%;
+  left: 15%;
+  top: 5%;
+  z-index: var(--modal-z-index);
+}
+
 
 @media screen and (max-width: 767px) {
   .metadata_container {
@@ -25,8 +49,10 @@
     overflow: auto;
     flex-wrap: wrap;
   }
-}
 
-.cursor_pointer {
-  cursor: pointer;
+  .modal_body {
+    width: 90%;
+    left: 5%;
+    padding: 1rem;
+  }
 }
