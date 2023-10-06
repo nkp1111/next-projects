@@ -15,10 +15,12 @@
 
 ## Links
 
-- [Live App]()
+- [Live App](https://next-projects-khaki.vercel.app/)
 - [GitHub](https://github.com/nkp1111/next-projects/tree/main/github_profile_finder)
 
 ## Overview
+
+![image](./public/screencapture-next-projects-khaki-vercel-app-2023-10-06-19_25_21.png)
 
 ### Built With
 
