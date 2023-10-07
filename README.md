@@ -11,3 +11,5 @@
 - [ticket-master-clone](https://github.com/nkp1111/next-projects/tree/main/ticket-master-clone)
 - [custom-wordle-clone](https://github.com/nkp1111/next-projects/tree/main/custom-wordle-clone)
 - [linkedin-clone](https://github.com/nkp1111/next-projects/tree/main/linkedin-clone)
+- [github-profile-finder](https://github.com/nkp1111/next-projects/tree/main/github_profile_finder)
+- [next-ecommerce](https://github.com/nkp1111/next-projects/tree/main/next-ecommerce)
