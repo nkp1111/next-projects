@@ -22,6 +22,7 @@ export default async function Home() {
             width={800}
             height={400}
             className="w-full max-w-sm rounded-lg shadow-xl"
+            priority
           />
           <div>
             <h1 className="font-bold text-5xl">{heroProduct.title}</h1>
