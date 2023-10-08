@@ -12,7 +12,7 @@ model Product {
   description String
   imageUrl    String
   price       Int
-  title       String
+  title       String   @unique
   createdAt   DateTime @default(now())
   updateAt    DateTime @updatedAt
 

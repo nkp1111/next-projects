@@ -10,15 +10,15 @@ const config: Config = {
   daisyui: {
     themes: [{
       lightTheme: {
-        "primary": "#edaad9",
-        "secondary": "#dbd402",
-        "accent": "#8a9cd8",
-        "neutral": "#2b2136",
-        "base-100": "#e7eaf4",
-        "info": "#4070f2",
-        "success": "#51d692",
-        "warning": "#f6d16a",
-        "error": "#f4392f",
+        "primary": "#e89912",
+        "secondary": "#76ad1f",
+        "accent": "#d7f95c",
+        "neutral": "#352537",
+        "base-100": "#fcfcfd",
+        "info": "#84baf0",
+        "success": "#3fe484",
+        "warning": "#c26b14",
+        "error": "#f33f2b",
         body: {
           "background-color": "#e3e6e6",
         }
