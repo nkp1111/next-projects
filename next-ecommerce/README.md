@@ -47,15 +47,17 @@ Open [localhost:3000](http://localhost:3000) with your browser to see the result
 
 ## Acknowledgements
 
-* tailwind
-* prisma
-* daisyui
-* prisma/client
-* next-auth
+* tailwind - for applying styles
+* prisma - provides cmd tools for managing db
+* daisyui - for tailwind component
+* prisma/client - for performing database(any) operation with prisma
+* next-auth - for authentication
 * @auth/prisma-adapter
 * prettier
 * eslint-config-prettier
 * prettier-plugin-tailwindcss
+
+* unsplash.com - for images
 
 ## Contact
 
