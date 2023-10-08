@@ -1,4 +1,4 @@
-import SubmitFormButton from "@/component/submitFormButton";
+import SubmitFormButton from "@/components/submitFormButton";
 import prisma from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
 
