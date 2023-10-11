@@ -3,6 +3,7 @@ import prisma from "@/lib/db/prisma"
 import Image from "next/image";
 import { notFound } from "next/navigation"
 import { cache } from "react";
+import AddToCartButton from "./addToCartButton/page";
 
 interface ProductDetailProps {
   params: { id: string }
@@ -54,6 +55,7 @@ export default async function ProductDetail(
         </h1>
         <p className="py-6">{product.description}</p>
         <PriceTag price={product.price} />
+        <AddToCartButton />
       </div>
     </div>
   )
