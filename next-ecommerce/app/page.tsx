@@ -2,7 +2,7 @@ import ProductCard from "@/components/productCard"
 import prisma from "@/lib/db/prisma"
 import Image from "next/image";
 import Link from "next/link";
-
+import { HiArrowLongRight } from "react-icons/hi2";
 export default async function Home() {
 
   const products = await prisma.product.findMany({
@@ -30,6 +30,7 @@ export default async function Home() {
             <Link href={`/products/${heroProduct.id}`}
               className="btn btn-primary">
               Check it out
+              <HiArrowLongRight className="ms-3 text-3xl font-bold" />
             </Link>
           </div>
         </div>
