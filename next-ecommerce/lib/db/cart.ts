@@ -5,11 +5,17 @@ import { cookies } from "next/headers"
 
 const cartCookieName = "Ecommerce-cart"
 
-
+// cart with items (products) and product info
 export type ShoppingCartWithItems = Prisma.CartGetPayload<{
   include: { items: { include: { product: true } } }
 }>
 
+// cart item(single product) with product info
+export type CartItemWithProduct = Prisma.CartItemGetPayload<{
+  include: { product: true },
+}>
+
+// cart with items and detail along with size, total(cart metadata)
 export type ShoppingCart = ShoppingCartWithItems & {
   size: number,
   total: number,
