@@ -4,17 +4,20 @@ import { CartItemWithProduct } from "@/lib/db/cart";
 import formatPrice from "@/lib/general/formatPrice";
 import Image from "next/image";
 import Link from "next/link";
-import setProductQuantity from "./actions";
+import { useTransition } from "react";
 
 interface CartEntryProps {
   cartItem: CartItemWithProduct;
+  setProductQuantity: (productId: string, quantity: number) => Promise<void>;
 }
 
 export default function CartEntry({ cartItem:
   { quantity,
     product: { imageUrl, title, id: productId, price },
-    id: cartItemId }
+    id: cartItemId },
+  setProductQuantity,
 }: CartEntryProps) {
+  const [pending, startTransition] = useTransition();
   return (
     <div>
       <div className="flex flex-wrap items-center gap-3">
@@ -37,17 +40,22 @@ export default function CartEntry({ cartItem:
             Quantity
             <select title="quantity" className="select select-bordered max-w-[80px] w-full"
               defaultValue={quantity}
-              onChange={(e) => setProductQuantity(productId, Number(e.target.value))}>
+              onChange={(e) => {
+                startTransition(() => {
+                  setProductQuantity(productId, Number(e.target.value))
+                })
+              }}>
 
               {Array(101).fill(0).map((_, ind) => (
                 <option key={ind} value={ind}>
-                  {ind}
+                  {ind === 0 ? `${ind} (remove)` : ind}
                 </option>
               ))}
             </select>
           </div>
-          <div>
+          <div className="flex align-middle">
             Subtotal: {formatPrice(price * quantity)}
+            {pending && <span className="loading loading-spinner ms-2" />}
           </div>
         </div>
       </div>
