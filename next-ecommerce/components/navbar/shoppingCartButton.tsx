@@ -4,6 +4,7 @@ import { ShoppingCart } from '@/lib/db/cart'
 import formatPrice from '@/lib/general/formatPrice'
 import { FiShoppingCart } from 'react-icons/fi'
 import Link from "next/link";
+
 interface ShoppingCartButtonProps {
   cart: ShoppingCart | null
 }

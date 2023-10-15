@@ -46,30 +46,35 @@ model CartItem {
 
 model Account {
   id                 String    @id @default(auto()) @map("_id") @db.ObjectId
-  userId             String    @db.ObjectId
-  providerType       String
-  providerId         String
-  providerAccountId  String
-  refreshToken       String?
-  accessToken        String?
+  userId             String    @map("user_id") @db.ObjectId
+  type               String
+  provider           String
+  providerAccountId  String    @map("provider_account_id")
+  refresh_token      String?   @db.String
+  access_token       String?   @db.String
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?   @db.String
+  session_state      String?
   accessTokenExpires DateTime?
   createdAt          DateTime  @default(now())
   updatedAt          DateTime  @updatedAt
-  user               User      @relation(fields: [userId], references: [id])
+  user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([providerId, providerAccountId])
+  @@unique([provider, providerAccountId])
   @@map("accounts")
 }
 
 model Session {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId       String   @db.ObjectId
+  userId       String   @map("user_id") @db.ObjectId
   expires      DateTime
-  sessionToken String   @unique
-  accessToken  String   @unique
+  sessionToken String   @unique @map("session_token")
+  accessToken  String?  @unique
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
-  user         User     @relation(fields: [userId], references: [id])
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("sessions")
 }
