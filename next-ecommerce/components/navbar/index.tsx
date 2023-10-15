@@ -4,6 +4,9 @@ import logo from '@/public/vercel.svg'
 import { redirect } from 'next/navigation';
 import { getCart } from '@/lib/db/cart';
 import ShoppingCartButton from './shoppingCartButton';
+import UserMenuButton from './userMenuButton';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 
 export async function searchItem(formData: FormData) {
@@ -16,6 +19,7 @@ export async function searchItem(formData: FormData) {
 
 export default async function Navbar() {
   const cart = await getCart();
+  const session = await getServerSession(authOptions)
 
   return (
     <nav className='bg-base-100'>
@@ -44,6 +48,9 @@ export default async function Navbar() {
 
           {/* shopping cart  */}
           <ShoppingCartButton cart={cart} />
+
+          {/* user profile  */}
+          <UserMenuButton session={session} />
         </div>
 
       </div>
