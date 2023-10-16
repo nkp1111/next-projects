@@ -71,7 +71,7 @@ model Session {
   userId       String   @map("user_id") @db.ObjectId
   expires      DateTime
   sessionToken String   @unique @map("session_token")
-  accessToken  String?  @unique
+  accessToken  String?  @unique @map("access_token")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)

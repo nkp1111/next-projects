@@ -20,6 +20,12 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   adapter: PrismaAdapter(prisma) as Adapter,
+  callbacks: {
+    session({ session, user }) {
+      session.user.id = user.id;
+      return session
+    }
+  }
 }
 
 const handler = NextAuth(authOptions);
