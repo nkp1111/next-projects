@@ -6,6 +6,7 @@ import GoogleProvider from "next-auth/providers/google"
 import GitHubProvider from "next-auth/providers/github"
 import NextAuth from "next-auth/next";
 import { env } from "@/lib/validation/env";
+import { mergeAnonymousCartIntoUserCart } from "@/lib/db/cart";
 
 
 export const authOptions: NextAuthOptions = {
@@ -24,6 +25,11 @@ export const authOptions: NextAuthOptions = {
     session({ session, user }) {
       session.user.id = user.id;
       return session
+    }
+  },
+  events: {
+    async signIn({ user }) {
+      await mergeAnonymousCartIntoUserCart(user.id);
     }
   }
 }
