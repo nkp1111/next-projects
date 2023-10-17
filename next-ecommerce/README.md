@@ -16,13 +16,18 @@
 
 ## Overview
 
+![image](./public/screencapture-localhost-3000-2023-10-18-00_23_57.png)
+
 ## Features
+
+-
 
 ## Built With
 
 * Next.js
 * React.js
 * Typescript
+* TailwindCSS
 
 ## How To Use
 
@@ -52,7 +57,9 @@ Open [localhost:3000](http://localhost:3000) with your browser to see the result
 * daisyui - for tailwind component
 * prisma/client - for performing database(any) operation with prisma
 * next-auth - for authentication
-* @auth/prisma-adapter
+* jsonwebtoken - for handling jwt tokens
+* zod - validation
+* @next-auth/prisma-adapter
 * prettier
 * eslint-config-prettier
 * prettier-plugin-tailwindcss
