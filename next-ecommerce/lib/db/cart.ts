@@ -135,6 +135,20 @@ export async function mergeAnonymousCartIntoUserCart(userId: string) {
         where: { cartId: userCart.id }
       });
       // add items from combined cart(user, local)
+      await tx.cart.update({
+        where: { id: userCart.id },
+        data: {
+          items: {
+            createMany: {
+              data: mergedCartItems.map(item => ({
+                cartId: userCart.id,
+                quantity: item.quantity,
+                productId: item.productId,
+              }))
+            }
+          }
+        }
+      })
       await tx.cartItem.createMany({
         data: mergedCartItems.map(item => ({
           cartId: userCart.id,
