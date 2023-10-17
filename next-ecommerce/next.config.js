@@ -8,7 +8,9 @@ const nextConfig = {
       { hostname: "images.unsplash.com", protocol: "https" },
       { hostname: "media.istockphoto.com" },
       { hostname: "lh3.googleusercontent.com" },
-      { hostname: "avatars.githubusercontent.com" }
+      { hostname: "avatars.githubusercontent.com" },
+      { hostname: "i.dummyjson.com" },
+      { hostname: "fakestoreapi.com" }
     ]
   }
 }
