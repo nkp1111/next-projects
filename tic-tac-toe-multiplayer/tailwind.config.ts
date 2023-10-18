@@ -20,7 +20,7 @@ const config: Config = {
         "warning": "#f3cd62",
         "error": "#ee6f6d",
         body: {
-          "background-color": "#333135",
+          "background": "linear-gradient(#333135 75%,#373a3f)",
           "color": "#eef1f7",
         }
       },
