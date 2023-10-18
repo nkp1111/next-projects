@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaBackward, FaForward } from "react-icons/fa";
 
 interface PaginationBarProps {
   currentPage: number;
@@ -27,7 +28,7 @@ export default function PaginationBar({ currentPage, totalPage }: PaginationBarP
       <div className="join block sm:hidden">
         {currentPage > 1 && (
           <Link href={`?page=${currentPage - 1}`} className="btn join-item">
-            Previous
+            <FaBackward />
           </Link>
         )}
         <button type="button" className="btn join-item pointer-events-none btn-active">
@@ -35,7 +36,7 @@ export default function PaginationBar({ currentPage, totalPage }: PaginationBarP
         </button>
         {currentPage < totalPage && (
           <Link href={`?page=${currentPage + 1}`} className="btn join-item">
-            Next
+            <FaForward />
           </Link>
         )}
       </div>

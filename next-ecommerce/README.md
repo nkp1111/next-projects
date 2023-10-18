@@ -5,13 +5,14 @@
 * [Links](#links)
 * [Overview](#overview)
   * [Built With](#built-with)
+* [Features](#features)
 * [How to use](#how-to-use)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
 
 ## Links
 
-* [Live App]()
+* [Live App](https://next-projects-kappa.vercel.app/)
 * [GitHub](https://github.com/nkp1111/next-projects/tree/main/next-ecommerce)
 
 ## Overview
@@ -20,7 +21,16 @@
 
 ## Features
 
--
+* Add prisma for database operation
+* Next-auth for authentication
+* Authentication using google and github oauth
+* Pagination
+* DasiyUI for ui
+* zod for data validation
+* use server actions for api requests
+* show all products?
+* show cart and add product to cart
+* search product based on keyword
 
 ## Built With
 
@@ -70,4 +80,5 @@ Open [localhost:3000](http://localhost:3000) with your browser to see the result
 
 * Neeraj Parmar
 * GitHub [nkp1111](https://github.com/nkp1111)
+* LinkedIn [neeraj](https://www.linkedin.com/in/neeraj-parmar-058591244/)
 * Twitter [@nkp11111507](https://twitter.com/@nkp11111507)

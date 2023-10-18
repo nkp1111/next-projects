@@ -1,10 +1,7 @@
 "use client";
 
-import { ShoppingCart } from '@/lib/db/cart'
-import formatPrice from '@/lib/general/formatPrice'
 import { BsThreeDots } from 'react-icons/bs'
 import { FaUserCircle } from 'react-icons/fa'
-import Link from "next/link";
 import { Session } from 'next-auth';
 import Image from 'next/image';
 import { signIn, signOut } from 'next-auth/react';

@@ -33,7 +33,7 @@ export default async function Home({ searchParams: { page = "1" } }: HomeProps) 
   return (
     <div className="flex flex-col items-center">
       {/* hero product  */}
-      {currentPage === 1 && (
+      {currentPage === 1 && heroProduct && heroProduct.imageUrl && (
         <div className="hero rounded-xl bg-base-200">
           <div className="hero-content flex-col lg:flex-row">
             <Image
