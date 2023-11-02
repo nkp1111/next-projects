@@ -10,7 +10,7 @@ export default function NavLinks() {
   return (
     <>
       {sections.map(section => (
-        <li key={section.id}>
+        <li key={section.id} className='mx-auto'>
           <Link href={section.link}
             className={`${path === section.link && "bg-secondary"}`}
           >
