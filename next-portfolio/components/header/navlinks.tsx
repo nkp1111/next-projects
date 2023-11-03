@@ -15,13 +15,13 @@ export default function NavLinks() {
         const Icon = section.icon;
         return (
           <li key={section.id}
-            className={`${path === section.link && "bg-secondary"} mx-auto flex flex-col items-center justify-center pt-2`} >
-            <Icon className='m-0 w-8 h-8 p-0' onClick={(e) => {
+            className={`${path === section.link && "bg-secondary"} mx-auto flex flex-col items-center justify-center hover:cursor-pointer pt-2`}
+            onClick={(e) => {
               router.push(section.link)
-            }} />
-            <Link href={section.link}>
-              {section.title}
-            </Link>
+            }}
+          >
+            <Icon className='m-0 w-8 h-8 p-0' />
+            <span>{section.title}</span>
           </li>
         )
       })}
