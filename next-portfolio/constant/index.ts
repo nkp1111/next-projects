@@ -7,6 +7,8 @@ import {
   DevicePhoneMobileIcon,
 } from '@heroicons/react/24/solid'
 
+
+// header data
 const sections = [
   { id: 1, title: "Home", link: "/", icon: HomeIcon },
   { id: 2, title: "About", link: "/about", icon: InformationCircleIcon },
@@ -17,4 +19,11 @@ const sections = [
 ];
 
 
-export { sections }
+const GITHUB_AUTH_TOKEN = `Bearer ${process.env.GITHUB_TOKEN}`
+
+// urls
+const URLS = {
+  profileUrl: `https://raw.githubusercontent.com/nkp1111/personal-files/main/data/personal_info.json`,
+}
+
+export { sections, URLS, GITHUB_AUTH_TOKEN }
