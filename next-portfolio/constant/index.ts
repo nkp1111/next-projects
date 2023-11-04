@@ -24,6 +24,10 @@ const GITHUB_AUTH_TOKEN = `Bearer ${process.env.GITHUB_TOKEN}`
 // urls
 const URLS = {
   profileUrl: `https://raw.githubusercontent.com/nkp1111/personal-files/main/data/personal_info.json`,
+  skillsUrl: "https://raw.githubusercontent.com/nkp1111/personal-files/main/data/skills.json",
 }
 
-export { sections, URLS, GITHUB_AUTH_TOKEN }
+// 0 for data change, false for using cache data
+const REVALIDATE_TIME: (false | number) = (process.env.REVALIDATE_TIME && Number(process.env.REVALIDATE_TIME)) || false;
+
+export { sections, URLS, GITHUB_AUTH_TOKEN, REVALIDATE_TIME }

@@ -1,4 +1,4 @@
-import { GITHUB_AUTH_TOKEN } from "@/constant"
+import { GITHUB_AUTH_TOKEN, REVALIDATE_TIME } from "@/constant"
 
 export default async function fetchRequest(
   { url, method = "GET" }: { url: string, method?: ("GET" | "POST" | "PATCH" | "DELETE" | "PUT") }
@@ -8,11 +8,17 @@ export default async function fetchRequest(
       method,
       headers: {
         "Authorization": GITHUB_AUTH_TOKEN,
-      }
+      },
+      next: { revalidate: REVALIDATE_TIME }
     });
-    return await res.json();
+    if (res.ok) {
+      return await res.json();
+    } else {
+      console.error("Error in fetch result with status " + res.status)
+      return;
+    }
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return;
   }
 }
