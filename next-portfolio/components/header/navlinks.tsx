@@ -15,7 +15,7 @@ export default function NavLinks() {
         const Icon = section.icon;
         return (
           <li key={section.id}
-            className={`${path === section.link && "bg-secondary"} mx-auto flex flex-col items-center justify-center hover:cursor-pointer pt-2`}
+            className={`${path === section.link && "bg-secondary"} mx-auto flex flex-col items-center justify-center hover:cursor-pointer hover:opacity-90 opacity-100 pt-2`}
             onClick={(e) => {
               router.push(section.link)
             }}

@@ -47,7 +47,7 @@ export default async function Home() {
             alt={"profile"}
             height={200}
             width={500}
-            className="sm:w-[500px] sm:h-[500px] w-[100px] h-[100px] rounded-full"
+            className="sm:w-[500px] sm:h-[500px] w-[100px] h-[100px] rounded-full object-contain"
           />
         )}
       </div>
