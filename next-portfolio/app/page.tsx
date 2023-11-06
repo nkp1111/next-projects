@@ -6,7 +6,7 @@ import Link from "next/link";
 
 
 export default async function Home() {
-  const { images } = await getMyProfile();
+  const { images, summary } = await getMyProfile();
   return (
     <main className="flex flex-col sm:flex-row p-4 ">
       <div className="flex flex-col flex-1 p-2 sm:px-10 md:px-20">
@@ -29,6 +29,9 @@ export default async function Home() {
           <span className="badge badge-ghost text-lg badge-info text-bold mx-2">Web Developer</span>
           that&apos;s passionate about learning new technologies.
         </p>
+
+        <p className="my-5">{summary}</p>
+
         <div className="mt-4 flex lg:flex-row flex-col gap-4">
           <Link href={"/skills"} className="btn btn-success flex flex-row font-normal" role="button">
             Check out my <span className="font-semibold">Skills</span>

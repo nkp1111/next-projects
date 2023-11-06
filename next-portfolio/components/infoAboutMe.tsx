@@ -14,7 +14,7 @@ export default function InfoAboutMe(
   return (
     <>
       {profileKeys.map((profileKey) => {
-        if (["images", "social"].includes(profileKey)) {
+        if (["images", "social", "summary"].includes(profileKey)) {
           return null;
         }
 
