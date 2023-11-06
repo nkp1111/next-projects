@@ -14,6 +14,20 @@ interface PersonalInfoParams {
 }
 
 
+interface ExperienceParams {
+  title: string;
+  company: string;
+  position: string;
+  language: string;
+  location: string;
+  start_date: string;
+  end_date: string;
+  projects: string[];
+  social: {
+    [key: string]: string;
+  }
+}
+
 
 interface SkillParams {
   name: string,
@@ -22,7 +36,9 @@ interface SkillParams {
   description: string,
 }
 
+
 export type {
   SkillParams,
   PersonalInfoParams,
+  ExperienceParams,
 }

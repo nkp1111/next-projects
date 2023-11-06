@@ -25,6 +25,7 @@ const GITHUB_AUTH_TOKEN = `Bearer ${process.env.GITHUB_TOKEN}`
 const URLS = {
   profileUrl: `https://raw.githubusercontent.com/nkp1111/personal-files/main/data/personal_info.json`,
   skillsUrl: "https://raw.githubusercontent.com/nkp1111/personal-files/main/data/skills.json",
+  experienceUrl: "https://raw.githubusercontent.com/nkp1111/personal-files/main/data/experience.json"
 }
 
 // 0 for data change, false for using cache data
