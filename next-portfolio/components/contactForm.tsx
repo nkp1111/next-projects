@@ -12,7 +12,7 @@ export default function ContactForm(
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className="card w-full max-w-sm shadow-2xl bg-base-100 mx-auto mt-4">
+    <div className="card w-full max-w-xl shadow-2xl bg-base-100 mx-auto mt-4">
 
       <form className="card-body group"
         action={handleSubmit}

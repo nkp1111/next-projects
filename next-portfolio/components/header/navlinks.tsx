@@ -2,9 +2,7 @@
 
 import React from 'react'
 import { sections } from '@/constant'
-import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import Image from 'next/image';
 
 export default function NavLinks() {
   const path = usePathname();

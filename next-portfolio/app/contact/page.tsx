@@ -10,7 +10,7 @@ export default async function Contact() {
   let phone;
   if (profile) {
     email = profile.email;
-    phone = profile.phone || "11111111";
+    phone = profile.phone;
   }
 
   // server action for handling db method
