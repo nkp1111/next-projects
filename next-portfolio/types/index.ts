@@ -37,8 +37,28 @@ interface SkillParams {
 }
 
 
+interface ProjectParam {
+  id: number;
+  name: string;
+  description: string;
+  image: string[];
+  links: {
+    github: string;
+    live_site: string[];
+  };
+  tags: string[];
+  technologies: string[];
+  acknowledgement: string[];
+  api_used?: string[];
+  createdAt: string;
+  duration?: number;
+  features: string[];
+}
+
+
 export type {
   SkillParams,
   PersonalInfoParams,
   ExperienceParams,
+  ProjectParam,
 }

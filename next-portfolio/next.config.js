@@ -3,7 +3,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       { hostname: "res.cloudinary.com" },
-      { hostname: "github.com" }
+      { hostname: "github.com" },
+      { hostname: "dummyimage.com" },
+      { hostname: "*.githubusercontent.com" }
     ]
   }
 }
