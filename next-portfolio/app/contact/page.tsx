@@ -33,10 +33,12 @@ export default async function Contact() {
               <EnvelopeIcon className='w-6 h-6 text-info' />
               <a href={`mailto:${email}`}>{email}</a>
             </div>
-            <div className='btn normal-case '>
-              <PhoneIcon className='w-6 h-6 text-success' />
-              <a href={`tel:${phone}`}>{phone}</a>
-            </div>
+            {phone && (
+              <div className='btn normal-case '>
+                <PhoneIcon className='w-6 h-6 text-success' />
+                <a href={`tel:${phone}`}>{phone}</a>
+              </div>
+            )}
           </div>
         )}
 

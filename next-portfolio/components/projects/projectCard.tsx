@@ -6,7 +6,7 @@ export default function ProjectCard(
   { project }: { project: ProjectParam }
 ) {
   const { name, image, links: { github, live_site }, createdAt } = project;
-  let dummyImage = "https://dummyimage.com/600x400/000/fff.jpg&text=Image+not+found";
+  let dummyImage = "https://dummyimage.com/600x400/000/fff.jpg&text=No+image";
   let projectImage = image && image.length > 0 ? image[0] : dummyImage;
   return (
     <div className="card card-compact bg-base-100 shadow-xl">

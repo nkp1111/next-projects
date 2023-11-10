@@ -32,4 +32,7 @@ const URLS = {
 // 0 for data change, false for using cache data
 const REVALIDATE_TIME: (false | number) = (process.env.REVALIDATE_TIME && Number(process.env.REVALIDATE_TIME)) || false;
 
-export { sections, URLS, GITHUB_AUTH_TOKEN, REVALIDATE_TIME }
+// delaying milliseconds for setting filtered projects 
+const DEBOUNCE_DELAY: number = 500
+
+export { sections, URLS, GITHUB_AUTH_TOKEN, REVALIDATE_TIME, DEBOUNCE_DELAY }
