@@ -21,7 +21,7 @@ export default function ProjectPagination(
     <div>
       <div className='grid grid-cols-12 gap-5 mt-8'>
         {currentProjects.map(project => (
-          <div key={project.id} className='col-span-12 md:col-span-6 lg:col-span-4 mx-auto'>
+          <div key={project.id} className='col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3 w-full mx-auto'>
             <ProjectCard project={project} />
           </div>
         ))}
