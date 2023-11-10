@@ -18,7 +18,7 @@ const sections = [
   { id: 6, title: "Contact", link: "/contact", icon: DevicePhoneMobileIcon },
 ];
 
-
+// github auth token to access json files
 const GITHUB_AUTH_TOKEN = `Bearer ${process.env.GITHUB_TOKEN}`
 
 // urls
@@ -38,4 +38,11 @@ const DEBOUNCE_DELAY: number = 500
 // project pagination number of project per page
 const ITEM_PER_PAGE: number = 6;
 
-export { sections, URLS, GITHUB_AUTH_TOKEN, REVALIDATE_TIME, DEBOUNCE_DELAY, ITEM_PER_PAGE }
+export {
+  sections,
+  URLS,
+  GITHUB_AUTH_TOKEN,
+  REVALIDATE_TIME,
+  DEBOUNCE_DELAY,
+  ITEM_PER_PAGE
+}

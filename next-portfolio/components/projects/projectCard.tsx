@@ -50,7 +50,7 @@ export default function ProjectCard(
         <p><span className='font-semibold'>Created At:</span> {handleDate(createdAt)}</p>
 
         <div className='border-t-2 border-secondary'>
-          <h3 className='font-semibold'>Project Links:</h3>
+          <h3 className='font-semibold my-2'>Project Links:</h3>
           <div className='card-actions justify-between gap-2'>
             <a
               href={github} target='_blank'
