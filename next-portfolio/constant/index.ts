@@ -35,4 +35,7 @@ const REVALIDATE_TIME: (false | number) = (process.env.REVALIDATE_TIME && Number
 // delaying milliseconds for setting filtered projects 
 const DEBOUNCE_DELAY: number = 500
 
-export { sections, URLS, GITHUB_AUTH_TOKEN, REVALIDATE_TIME, DEBOUNCE_DELAY }
+// project pagination number of project per page
+const ITEM_PER_PAGE: number = 6;
+
+export { sections, URLS, GITHUB_AUTH_TOKEN, REVALIDATE_TIME, DEBOUNCE_DELAY, ITEM_PER_PAGE }

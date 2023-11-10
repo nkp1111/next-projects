@@ -1,16 +1,18 @@
 "use client";
 
 import { ProjectParam } from '@/types'
-import React, { use, useEffect, useState } from 'react'
-import ProjectCard from './projectCard'
+import React, { useEffect, useState } from 'react'
 import getTopFilterParams from '@/lib/getTopFilterParams';
 import debounce from '@/lib/debounce';
 import { DEBOUNCE_DELAY } from '@/constant';
+import ProjectPagination from './projectPagination';
 
 
 export default function ProjectHolder(
   { projects }: { projects: ProjectParam[] }
 ) {
+
+  // pagination
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [filterQuery, setFilterQuery] = useState<string>("");
   const topFilterParams: string[] = getTopFilterParams({ projects });
@@ -69,13 +71,7 @@ export default function ProjectHolder(
         />
       </div>
 
-      <div className='grid grid-cols-12 gap-5 mt-8'>
-        {filteredProjects.map(project => (
-          <div key={project.id} className='col-span-12 md:col-span-6 lg:col-span-4 mx-auto'>
-            <ProjectCard project={project} />
-          </div>
-        ))}
-      </div>
+      <ProjectPagination filteredProjects={filteredProjects} />
     </div>
   )
 }
