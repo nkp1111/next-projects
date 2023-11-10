@@ -2,6 +2,7 @@ import React from 'react'
 import Link from "next/link"
 import NavLinks from './navlinks'
 import { UserIcon } from '@heroicons/react/20/solid'
+import ThemeSwitcher from './themeSwitcher'
 
 export default function Header() {
   return (
@@ -21,6 +22,8 @@ export default function Header() {
             <NavLinks />
           </ul>
         </div>
+
+        <ThemeSwitcher />
       </nav>
     </header>
   )
