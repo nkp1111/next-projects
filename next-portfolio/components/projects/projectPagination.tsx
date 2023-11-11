@@ -51,6 +51,7 @@ export default function ProjectPagination(
           nextClassName='btn'
           activeClassName='btn-primary'
           pageLabelBuilder={(page: number) => page}
+          disableInitialCallback
         />
       )}
     </div>
