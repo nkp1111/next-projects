@@ -42,13 +42,14 @@ export default function ProjectPagination(
           nextLabel={<ArrowRightIcon className='w-8 h-8' />}
           onPageChange={handlePageClick}
           pageRangeDisplayed={5}
-          pageCount={pageCount}
+          pageCount={pageCount || Math.ceil(filteredProjects.length / ITEM_PER_PAGE)}
           renderOnZeroPageCount={null}
           className='flex gap-2 justify-center content-center mt-10'
           pageClassName='btn'
           previousClassName='btn'
           nextClassName='btn'
           activeClassName='btn-primary'
+          pageLabelBuilder={(page: number) => page}
         />
       )}
     </div>
