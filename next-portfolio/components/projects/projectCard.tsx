@@ -15,19 +15,20 @@ export default function ProjectCard(
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="card md:w-80 w-full h-full card-normal bg-base-100 shadow-xl">
-      <figure className='h-52 relative shadow-sm'>
+    <div className="card lg:max-w-2xl w-full h-full card-normal bg-base-100 shadow-xl">
+      <figure className='shadow-sm relative h-52'>
         <Image
           src={projectImage}
           alt={name}
           width={600}
           height={400}
-          className='object-top absolute top-0 object-contain w-full'
+          className='object-top object-cover w-full h-full top-0 left-0 absolute'
+          loading='lazy'
         />
       </figure>
-      <div className="card-body">
+      <div className="card-body content-start">
         <h2 className="card-title font-bold">{name}</h2>
-        <p>
+        <p className='mb-4'>
           {description.length > 100
             ? !showMore
               ? description.slice(0, 95) + "... "

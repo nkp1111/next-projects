@@ -71,7 +71,10 @@ export default function ProjectHolder(
         />
       </div>
 
-      <ProjectPagination filteredProjects={filteredProjects} />
+      <ProjectPagination
+        filteredProjects={filteredProjects}
+        filterQuery={filterQuery}
+      />
     </div>
   )
 }

@@ -18,6 +18,7 @@ export default async function Home() {
               height={200}
               width={500}
               className="w-[100px] h-[100px] rounded-full"
+              priority
             />
           )}
         </div>
