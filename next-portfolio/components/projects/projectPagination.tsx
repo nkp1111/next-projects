@@ -12,9 +12,9 @@ export default function ProjectPagination(
 ) {
   // paginate items
   const [itemOffset, setItemOffset] = useState(0);
+  const [pageCount, setPageCount] = useState(Math.ceil(filteredProjects.length / ITEM_PER_PAGE) || 1);
   const endOffset = itemOffset + ITEM_PER_PAGE;
   const currentProjects = filteredProjects.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(filteredProjects.length / ITEM_PER_PAGE);
   const handlePageClick = (event: { selected: number }) => {
     const newOffset = (event.selected * ITEM_PER_PAGE) % filteredProjects.length;
     setItemOffset(newOffset);
@@ -23,7 +23,8 @@ export default function ProjectPagination(
   // show first page on filter query change
   useEffect(() => {
     setItemOffset(0);
-  }, [filterQuery])
+    setPageCount(Math.ceil(filteredProjects.length / ITEM_PER_PAGE));
+  }, [filterQuery, filteredProjects])
 
   return (
     <div>
