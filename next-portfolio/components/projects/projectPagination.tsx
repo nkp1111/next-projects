@@ -4,7 +4,7 @@ import { ProjectParam } from '@/types'
 import ReactPaginate from 'react-paginate';
 import { ITEM_PER_PAGE } from '@/constant';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
-
+import debounce from '@/lib/debounce';
 
 export default function ProjectPagination(
   { filteredProjects, filterQuery }
@@ -22,9 +22,15 @@ export default function ProjectPagination(
   // show first page on filter query change
   useEffect(() => {
     const endOffset = itemOffset + ITEM_PER_PAGE;
-    setCurrentProjects(filteredProjects.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(filteredProjects.length / ITEM_PER_PAGE));
+    debounce(() => {
+      setCurrentProjects(filteredProjects.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(filteredProjects.length / ITEM_PER_PAGE));
+    }, 300)();
   }, [filteredProjects, itemOffset])
+
+  useEffect(() => {
+    setItemOffset(0);
+  }, [filterQuery])
 
   return (
     <div>

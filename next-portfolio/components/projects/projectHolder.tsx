@@ -5,7 +5,9 @@ import React, { useEffect, useState } from 'react'
 import getTopFilterParams from '@/lib/getTopFilterParams';
 import debounce from '@/lib/debounce';
 import { DEBOUNCE_DELAY } from '@/constant';
-import ProjectPagination from './projectPagination';
+import dynamic from 'next/dynamic';
+// import ProjectPagination from './projectPagination';
+const ProjectPagination = dynamic(() => import("./projectPagination"), { ssr: false })
 
 
 export default function ProjectHolder(
