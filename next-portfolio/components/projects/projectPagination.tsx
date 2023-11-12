@@ -5,12 +5,18 @@ import ReactPaginate from 'react-paginate';
 import { ITEM_PER_PAGE } from '@/constant';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
 import debounce from '@/lib/debounce';
+import ManualPagination from './manualPagination';
+import { useSearchParams } from 'next/navigation';
 
 export default function ProjectPagination(
   { filteredProjects, filterQuery }
     : { filteredProjects: ProjectParam[], filterQuery: string }
 ) {
-  // paginate items
+
+  const params = useSearchParams();
+  let paginationType = params.get("pagination") || "manual";
+
+  // paginate (react-pagination)
   const [itemOffset, setItemOffset] = useState(0);
   const [pageCount, setPageCount] = useState(Math.ceil(filteredProjects.length / ITEM_PER_PAGE) || 1);
   const [currentProjects, setCurrentProjects] = useState(filteredProjects.slice(0, ITEM_PER_PAGE));
@@ -19,7 +25,7 @@ export default function ProjectPagination(
     setItemOffset(newOffset);
   };
 
-  // show first page on filter query change
+  // show first page on filter query change (react-paginate)
   useEffect(() => {
     const endOffset = itemOffset + ITEM_PER_PAGE;
     debounce(() => {
@@ -30,7 +36,14 @@ export default function ProjectPagination(
 
   useEffect(() => {
     setItemOffset(0);
-  }, [filterQuery])
+  }, [filterQuery]);
+
+  // manual pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  useEffect(() => {
+    const newOffset = ((currentPage - 1) * ITEM_PER_PAGE) % filteredProjects.length;
+    setItemOffset(newOffset);
+  }, [currentPage, filteredProjects])
 
   return (
     <div>
@@ -42,7 +55,7 @@ export default function ProjectPagination(
         ))}
       </div>
 
-      {filteredProjects.length > currentProjects.length && pageCount > 1 && (
+      {filteredProjects.length > currentProjects.length && pageCount > 1 && paginationType === "react" && (
         <ReactPaginate
           breakLabel="..."
           previousLabel={<ArrowLeftIcon className='w-8 h-8' />}
@@ -60,6 +73,16 @@ export default function ProjectPagination(
           disableInitialCallback
         />
       )}
+
+      {/* react-paginate ui is not working properly on production, create pagination manually */}
+      {filteredProjects.length > currentProjects.length && pageCount > 1 && paginationType !== "react" && (
+        <ManualPagination
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+          maxPage={pageCount || Math.ceil(filteredProjects.length / ITEM_PER_PAGE)}
+        />
+      )}
+
     </div>
   )
 }
