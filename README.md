@@ -15,3 +15,4 @@
 - [next-ecommerce](https://github.com/nkp1111/next-projects/tree/main/next-ecommerce)
 - [tic-tac-toe-multiplayer](https://github.com/nkp1111/next-projects/tree/main/tic-tac-toe-multiplayer) ???
 - [next-portfolio](https://github.com/nkp1111/next-projects/tree/main/next-portfolio)
+- [spotify-clone](https://github.com/nkp1111/next-projects/tree/main/spotify-clone)
