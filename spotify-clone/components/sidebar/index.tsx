@@ -2,11 +2,8 @@ import React from 'react'
 import Logo from '../general/logo'
 import { sidebarNav } from '@/constant/sidebarNav'
 import Link from 'next/link'
+import { BsArrowDownCircle } from "react-icons/bs";
 
-/**
- * @desc Sidebar
- * @returns 
- */
 export default function Sidebar() {
   return (
     <section className="w-80 bg-black h-full relative flex flex-col">
@@ -19,10 +16,12 @@ export default function Sidebar() {
             <Logo />
           </div>
           {/* navbar  */}
-          <nav className='navbar items-start flex-col mt-3'>
+          <nav className='navbar items-start flex-col mt-3 border-b border-gray-700'>
             {sidebarNav.map(navItem => (
-              <div key={navItem.id} className="btn btn-ghost w-full justify-start">
-                <navItem.icon className={"w-6 h-6 "} />
+              <div key={navItem.id} className={`btn btn-ghost rounded-sm w-full justify-start ${navItem.containerClass}`}>
+                <div className={`${navItem.id === 5 && "bg-gradient-to-tl from-purple-500 to-blue-500 p-1 rounded-sm"}`}>
+                  <navItem.icon className={`${navItem.id === 5 ? "w-5 h-5" : "w-7 h-7"}`} />
+                </div>
                 <Link
                   href={navItem.link}
                   className="normal-case">
@@ -33,8 +32,9 @@ export default function Sidebar() {
           </nav>
         </div>
 
-        <div className='w-24'>
-          end
+        <div className='w-full flex items-center gap-3 cursor-not-allowed btn justify-start normal-case'>
+          <BsArrowDownCircle className="text-xl font-bold" />
+          <span>Install App</span>
         </div>
       </div>
     </section>
