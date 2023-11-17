@@ -32,12 +32,12 @@ export default function AudioField() {
           <IoRepeat className="w-6 h-6" />
         </button>
       </div>
-      <div className='flex items-center gap-2'>
+      <div className='flex items-center gap-2 -mt-2'>
         <span>
           <small>{timePassed}</small>
         </span>
         <span>
-          <progress className="progress w-96 h-1" value="100" max="100"></progress>
+          <progress className="progress w-96 h-1 cursor-pointer" value="0" max="100"></progress>
         </span>
         <span>
           <small>{songDuration}</small>
