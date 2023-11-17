@@ -2,8 +2,9 @@ import { VscLibrary } from "react-icons/vsc"
 import { BiSearch } from "react-icons/bi"
 import { FiHome } from "react-icons/fi"
 import { AiFillPlusSquare, AiFillHeart } from "react-icons/ai"
+import { SidebarNavProps } from "@/types"
 
-const sidebarNav = [
+const sidebarNav: SidebarNavProps[] = [
   {
     id: 1,
     title: "Home",
