@@ -9,7 +9,6 @@ export default function Sidebar() {
     <section className="w-80 bg-black h-full relative flex flex-col">
       <h2 className="absolute text-center w-full invisible -top-96">Sidebar Navigation</h2>
       <div className='flex flex-col w-full h-full'>
-
         <div className='flex-1 p-2'>
           {/* spotify logo  */}
           <div className='p-4'>
@@ -32,7 +31,7 @@ export default function Sidebar() {
           </nav>
         </div>
 
-        <div className='w-full flex items-center gap-3 cursor-not-allowed btn justify-start normal-case'>
+        <div className='w-full flex items-center gap-3 cursor-not-allowed btn justify-start normal-case ps-4'>
           <BsArrowDownCircle className="text-xl font-bold" />
           <span>Install App</span>
         </div>
