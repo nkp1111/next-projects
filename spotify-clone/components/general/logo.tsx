@@ -11,7 +11,7 @@ export default function Logo(
   { className }: { className?: string }
 ) {
   return (
-    <Link href="/" className={`flex items-center gap-1 ${className}`}>
+    <Link href="/" className={`flex items-center gap-1 hover:text-primary transition-all duration-500 ${className}`}>
       <span><FaSpotify className="h-auto w-8" /></span>
       <span className='font-bold text-xl'>Spotify</span>
     </Link>

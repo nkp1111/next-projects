@@ -26,9 +26,9 @@ export default function CurrentSongInfo() {
         <span className='cursor-pointer'>
           <CiHeart className="w-6 h-6" />
         </span>
-        <span className='cursor-pointer'>
+        {/* <span className='cursor-pointer'>
           <AiFillCreditCard className="w-6 h-6" />
-        </span>
+        </span> */}
       </div>
     </div>
   )
