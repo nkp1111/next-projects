@@ -4,6 +4,7 @@ const nextConfig = {
     remotePatterns: [
       { hostname: "cdn.epidemicsound.com" },
       { hostname: "gravatar.com" },
+      { hostname: "raw.githubusercontent.com" },
     ]
   }
 }

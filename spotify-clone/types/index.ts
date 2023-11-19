@@ -21,6 +21,7 @@ interface SampleSongsProps {
   artist: string;
   album: string;
   image: string;
+  lastPlayed: string | number | Date;
 }
 
 
@@ -30,7 +31,8 @@ interface SamplePlaylistProps {
   numberOfSongs: number;
   totalDuration: number;
   image: string;
-  songsArray: string[]
+  songsArray: string[];
+  lastPlayed: string | number | Date;
 }
 
 export type {

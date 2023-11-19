@@ -8,7 +8,7 @@ import { FiExternalLink } from "react-icons/fi";
 
 export default function DisplayHeader() {
   return (
-    <div className='flex justify-between gap-3 items-center'>
+    <div className='flex justify-between gap-3 items-center flex-wrap'>
       <div className="flex gap-3 items-center">
         <button type="button"
           className='tooltip bg-black rounded-full p-2'
@@ -32,7 +32,7 @@ export default function DisplayHeader() {
         </button>
 
         <details className="dropdown">
-          <summary className="m-1 btn btn-sm flex items-center py-0 normal-case ps-0">
+          <summary className="m-1 btn btn-sm flex items-center py-0 normal-case ps-0 flex-nowrap">
             <span>
               <Image
                 src={"https://gravatar.com/avatar"}
