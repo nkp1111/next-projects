@@ -2,7 +2,8 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-      { hostname: "cdn.epidemicsound.com" }
+      { hostname: "cdn.epidemicsound.com" },
+      { hostname: "gravatar.com" },
     ]
   }
 }

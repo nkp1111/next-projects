@@ -9,6 +9,11 @@ interface SidebarNavProps {
 }
 
 
+interface DisplayNavProps extends SidebarNavProps {
+  active: boolean;
+}
+
+
 interface SampleSongsProps {
   id: string;
   name: string;
@@ -32,4 +37,5 @@ export type {
   SidebarNavProps,
   SampleSongsProps,
   SamplePlaylistProps,
+  DisplayNavProps,
 }
