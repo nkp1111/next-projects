@@ -16,7 +16,7 @@ export default async function AudioList() {
       />
 
       <AudioCardHolder
-        articleHeading={"Spotify original &amp; exclusive shows"}
+        articleHeading={"Spotify original & exclusive shows"}
         playlists={playlists} />
     </div>
   )

@@ -45,11 +45,11 @@ export default function DisplayHeader() {
             <span> Developer</span>
             <span className='-mt-2'><FaSortDown /></span>
           </summary>
-          <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-64 right-16">
+          <ul className="p-1 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-60 right-16">
             {/* navbar  */}
-            <nav className='navbar items-start flex-col mt-3'>
+            <nav className='navbar items-start flex-col'>
               {displayNav.map(navItem => (
-                <div key={navItem.id} className={`btn btn-ghost rounded-sm w-full justify-start items-center relative 
+                <div key={navItem.id} className={`btn btn-ghost rounded-sm w-full justify-start items-center relative py-0
                 ${navItem.id === displayNav.length && "mt-3"}
                  ${!navItem.active && "cursor-not-allowed"}`}>
                   <hr className={navItem.id === displayNav.length ? "block absolute border-red-50 border-t top-0 left-0 w-full h-1" : "hidden"} />
@@ -62,7 +62,7 @@ export default function DisplayHeader() {
                     {navItem.title}
                   </Link>
 
-                  <div className={[1, 3].includes(navItem.id) ? "block ms-5" : "hidden"}>
+                  <div className={[1, 3].includes(navItem.id) ? "block ms-auto" : "hidden"}>
                     <FiExternalLink className="w-5 h-5" />
                   </div>
                 </div>

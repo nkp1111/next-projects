@@ -35,6 +35,7 @@ interface SamplePlaylistProps {
   image: string;
   songsArray: string[];
   lastPlayed: string | number | Date;
+  description?: string;
 }
 
 export type {

@@ -14,7 +14,7 @@ const playlists: SamplePlaylistProps[] = [
       "3SAs2YaWH6",
       "Cax8ZhYuQ4",
     ],
-    lastPlayed: "2023-11-19T06:47:47.932Z",
+    lastPlayed: "2023-11-20T06:47:47.932Z",
   },
   {
     id: "2",
@@ -28,7 +28,7 @@ const playlists: SamplePlaylistProps[] = [
       "WSb7c0LQub",
       "Zcd1HIcopz",
     ],
-    lastPlayed: "1970-01-01T00:00:00.000Z",
+    lastPlayed: "2023-11-20T01:47:47.932Z",
   },
   {
     id: "1",
