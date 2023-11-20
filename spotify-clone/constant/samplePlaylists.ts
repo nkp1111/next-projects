@@ -2,6 +2,7 @@ import { SamplePlaylistProps } from "@/types";
 
 const playlists: SamplePlaylistProps[] = [
   {
+    id: "1",
     playlistName: "Electronic",
     createdBy: "Developer",
     numberOfSongs: 3,
@@ -16,6 +17,7 @@ const playlists: SamplePlaylistProps[] = [
     lastPlayed: "2023-11-19T06:47:47.932Z",
   },
   {
+    id: "2",
     playlistName: "Soothing Tunes",
     createdBy: "Developer",
     numberOfSongs: 2,
@@ -29,6 +31,7 @@ const playlists: SamplePlaylistProps[] = [
     lastPlayed: "1970-01-01T00:00:00.000Z",
   },
   {
+    id: "1",
     playlistName: "Electronic",
     createdBy: "Developer",
     numberOfSongs: 3,
@@ -43,6 +46,7 @@ const playlists: SamplePlaylistProps[] = [
     lastPlayed: "2023-11-19T06:47:47.932Z",
   },
   {
+    id: "1",
     playlistName: "Soothing Tunes",
     createdBy: "Developer",
     numberOfSongs: 2,
@@ -56,6 +60,7 @@ const playlists: SamplePlaylistProps[] = [
     lastPlayed: "1970-01-01T00:00:00.000Z",
   },
   {
+    id: "1",
     playlistName: "Electronic",
     createdBy: "Developer",
     numberOfSongs: 3,
@@ -70,6 +75,7 @@ const playlists: SamplePlaylistProps[] = [
     lastPlayed: "2023-11-19T06:47:47.932Z",
   },
   {
+    id: "1",
     playlistName: "Soothing Tunes",
     createdBy: "Developer",
     numberOfSongs: 2,
@@ -83,6 +89,7 @@ const playlists: SamplePlaylistProps[] = [
     lastPlayed: "1970-01-01T00:00:00.000Z",
   },
   {
+    id: "1",
     playlistName: "Electronic",
     createdBy: "Developer",
     numberOfSongs: 3,
@@ -97,6 +104,7 @@ const playlists: SamplePlaylistProps[] = [
     lastPlayed: "2023-11-19T06:47:47.932Z",
   },
   {
+    id: "1",
     playlistName: "Soothing Tunes",
     createdBy: "Developer",
     numberOfSongs: 2,
@@ -110,6 +118,7 @@ const playlists: SamplePlaylistProps[] = [
     lastPlayed: "1970-01-01T00:00:00.000Z",
   },
   {
+    id: "1",
     playlistName: "Electronic",
     createdBy: "Developer",
     numberOfSongs: 3,
@@ -124,6 +133,7 @@ const playlists: SamplePlaylistProps[] = [
     lastPlayed: "2023-11-19T06:47:47.932Z",
   },
   {
+    id: "1",
     playlistName: "Soothing Tunes",
     createdBy: "Developer",
     numberOfSongs: 2,
@@ -137,6 +147,7 @@ const playlists: SamplePlaylistProps[] = [
     lastPlayed: "1970-01-01T00:00:00.000Z",
   },
   {
+    id: "1",
     playlistName: "Electronic",
     createdBy: "Developer",
     numberOfSongs: 3,
@@ -151,6 +162,7 @@ const playlists: SamplePlaylistProps[] = [
     lastPlayed: "2023-11-19T06:47:47.932Z",
   },
   {
+    id: "1",
     playlistName: "Soothing Tunes",
     createdBy: "Developer",
     numberOfSongs: 2,
@@ -164,6 +176,7 @@ const playlists: SamplePlaylistProps[] = [
     lastPlayed: "1970-01-01T00:00:00.000Z",
   },
   {
+    id: "1",
     playlistName: "Electronic",
     createdBy: "Developer",
     numberOfSongs: 3,
@@ -178,6 +191,7 @@ const playlists: SamplePlaylistProps[] = [
     lastPlayed: "2023-11-19T06:47:47.932Z",
   },
   {
+    id: "1",
     playlistName: "Soothing Tunes",
     createdBy: "Developer",
     numberOfSongs: 2,

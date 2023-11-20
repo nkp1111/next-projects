@@ -26,6 +26,7 @@ interface SampleSongsProps {
 
 
 interface SamplePlaylistProps {
+  id: string;
   playlistName: string;
   createdBy: string;
   numberOfSongs: number;
