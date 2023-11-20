@@ -22,6 +22,7 @@ interface SampleSongsProps {
   album: string;
   image: string;
   lastPlayed: string | number | Date;
+  audio: any;
 }
 
 
