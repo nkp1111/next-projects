@@ -23,6 +23,8 @@ interface SampleSongsProps {
   image: string;
   lastPlayed: string | number | Date;
   audio: any;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 
@@ -36,6 +38,8 @@ interface SamplePlaylistProps {
   songsArray: string[];
   lastPlayed: string | number | Date;
   description?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export type {

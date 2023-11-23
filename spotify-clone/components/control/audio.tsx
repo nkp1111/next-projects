@@ -23,7 +23,7 @@ export default function AudioField() {
           <CgPlayTrackPrev className="w-7 h-7 aspect-auto" />
         </button>
         <button type="button"
-          className='btn hover:btn-primary bg-white text-black hover:text-white transition-all duration-300 flex justify-center tooltip'
+          className='btn bg-white hover:bg-white hover:scale-105 text-black transition-all duration-300 flex justify-center tooltip'
           data-tip="Play"
           aria-label="Play">
           <FaPlay className="w-4 h-4" />
