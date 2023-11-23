@@ -7,7 +7,7 @@ import PlaylistList from './playlistList';
 export default async function Sidebar() {
 
   return (
-    <section className="w-80 bg-black h-full relative flex flex-col overflow-y-auto">
+    <section className="w-72 bg-black h-full relative flex flex-col overflow-y-auto">
       {/* hidden heading  */}
       <h2 className="absolute text-center w-full invisible -top-96">Sidebar Navigation</h2>
       <div className='flex flex-col w-full overflow-hidden'>

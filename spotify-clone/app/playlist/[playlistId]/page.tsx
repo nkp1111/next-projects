@@ -1,5 +1,6 @@
 import DisplayHeader from '@/components/display/header';
 import PlaylistBanner from '@/components/playlist/banner';
+import SongTable from '@/components/playlist/songTable';
 import songs from '@/constant/sampleSongs';
 import getAllPlaylist from '@/lib/getAllPlaylist';
 import { SampleSongsProps } from '@/types';
@@ -61,6 +62,10 @@ export default async function Playlist({ params: { playlistId } }: PlaylistParam
             aria-label="Options">
             <HiOutlineDotsHorizontal className="w-8 h-8" />
           </button>
+        </div>
+
+        <div className='mt-3'>
+          <SongTable playlistSongs={playlistSongs} />
         </div>
 
       </div>
