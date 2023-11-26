@@ -2,7 +2,7 @@ import DisplayHeader from '@/components/display/header';
 import PlaylistBanner from '@/components/playlist/banner';
 import SongTable from '@/components/playlist/songTable';
 import songs from '@/constant/sampleSongs';
-import getAllPlaylist from '@/lib/getAllPlaylist';
+import getAllPlaylist from '@/lib/playlist/getAllPlaylist';
 import { SampleSongsProps } from '@/types';
 import { notFound } from 'next/navigation';
 import React, { cache } from 'react'

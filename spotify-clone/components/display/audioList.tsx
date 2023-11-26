@@ -1,4 +1,4 @@
-import getAllPlaylist from '@/lib/getAllPlaylist';
+import getAllPlaylist from '@/lib/playlist/getAllPlaylist';
 import React from 'react'
 import AudioCardHolder from './audioCard';
 

@@ -4,11 +4,11 @@ import Link from 'next/link'
 
 export default function SidebarNavItem() {
   return (
-    <nav className='navbar items-start flex-col mt-3 border-b border-gray-700'>
+    <nav className='navbar items-start flex-col mt-2 border-b border-gray-700'>
       {sidebarNav.map(navItem => (
         <div key={navItem.id} className={`btn btn-ghost rounded-sm w-full justify-start ${navItem.containerClass}`}>
           <div className={`${navItem.id === 5 && "bg-gradient-to-tl from-purple-500 to-blue-500 p-1 rounded-sm me-1"}`}>
-            <navItem.icon className={`${navItem.id === 5 ? "w-5 h-5" : "w-7 h-7"}`} />
+            <navItem.icon className={`${navItem.id === 5 ? "w-4 h-4" : "w-6 h-6"}`} />
           </div>
           <Link
             href={navItem.link}

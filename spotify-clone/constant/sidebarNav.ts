@@ -28,7 +28,7 @@ const sidebarNav: SidebarNavProps[] = [
     title: "Create Playlist",
     icon: AiFillPlusSquare,
     link: "/playlist/create",
-    containerClass: "mt-8",
+    containerClass: "mt-4",
   },
   {
     id: 5,

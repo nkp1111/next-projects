@@ -1,5 +1,5 @@
 import React from 'react'
-import getAllPlaylist from '@/lib/getAllPlaylist';
+import getAllPlaylist from '@/lib/playlist/getAllPlaylist';
 
 export default async function PlaylistList() {
   const playlists = await getAllPlaylist();
