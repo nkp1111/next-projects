@@ -2,7 +2,7 @@
 
 import { SampleSongsProps } from '@/types';
 import React from 'react'
-import formatRelativeDate from '@/lib/date/formatRelativeDate';
+import formatDateDistance from '@/lib/date/formatDateDistance';
 
 
 interface SongTableParams {
@@ -61,8 +61,9 @@ export default function SongTable({ playlistSongs }: SongTableParams) {
                   </div>
                 </div>
               )}
+              {head === "date added" && `${formatDateDistance(song.lastPlayed)} ago`}
               {/* // TODO: change typescript check  */}
-              {!["#", "title"].includes(head) && song[tableHeaderMap[head] as never]}
+              {!["#", "title", "date added"].includes(head) && song[tableHeaderMap[head] as never]}
             </div>
           ))}
         </div>
