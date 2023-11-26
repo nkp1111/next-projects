@@ -3,6 +3,7 @@
 import { SampleSongsProps } from '@/types';
 import React from 'react'
 import formatDateDistance from '@/lib/date/formatDateDistance';
+import Image from 'next/image';
 
 
 interface SongTableParams {
@@ -50,9 +51,11 @@ export default function SongTable({ playlistSongs }: SongTableParams) {
               {head === "#" && index + 1}
               {head === "title" && (
                 <div className='flex items-center gap-4 '>
-                  <img
+                  <Image
                     src={song.image}
                     alt="."
+                    width={300}
+                    height={300}
                     className='object-cover w-14 h-14'
                   />
                   <div className='flex flex-col'>
