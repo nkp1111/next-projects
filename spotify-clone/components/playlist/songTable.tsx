@@ -4,6 +4,7 @@ import { SampleSongsProps } from '@/types';
 import React from 'react'
 import formatDateDistance from '@/lib/date/formatDateDistance';
 import Image from 'next/image';
+import formatSecondsDuration from '@/lib/date/formatSecondsDuration';
 
 
 interface SongTableParams {
@@ -64,9 +65,13 @@ export default function SongTable({ playlistSongs }: SongTableParams) {
                   </div>
                 </div>
               )}
+              {head === "album" && `${song.album}`}
               {head === "date added" && `${formatDateDistance(song.lastPlayed)} ago`}
-              {/* // TODO: change typescript check  */}
-              {!["#", "title", "date added"].includes(head) && song[tableHeaderMap[head] as never]}
+              {head === "duration" && (
+                <span className='text-end'>
+                  {formatSecondsDuration(song.duration)}
+                </span>
+              )}
             </div>
           ))}
         </div>

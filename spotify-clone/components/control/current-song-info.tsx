@@ -1,11 +1,17 @@
+"use client";
+
 import songs from '@/constant/sampleSongs'
 import Image from 'next/image';
 import React from 'react'
 import { CiHeart } from "react-icons/ci";
 import { AiFillCreditCard } from "react-icons/ai";
+import { useGlobalContext } from '@/lib/context';
+import { ContextParams } from '@/types/context';
 
 export default function CurrentSongInfo() {
-  const { image, name, artist } = songs[1];
+  const { playBackControl: { currentTrack } }: ContextParams = useGlobalContext();
+  const { image, name, artist } = songs.find(song => song.id === currentTrack) || songs[0];
+
   return (
     <div className='flex items-center gap-6'>
       <div className="flex items-center gap-3">

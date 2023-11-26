@@ -1,4 +1,5 @@
 import { SamplePlaylistProps, SampleSongsProps } from ".";
+import { Dispatch, SetStateAction } from 'react'
 
 type VolumeParam = {
   prev: number,
@@ -25,7 +26,13 @@ type PlayBackModeParam = {
 
 type ContextParams = {
   volume: VolumeParam,
-  setVolume: React.Dispatch<React.SetStateAction<VolumeParam>>,
+  setVolume: Dispatch<SetStateAction<VolumeParam>>,
+  playlist: PlaylistParam,
+  setPlaylist: Dispatch<SetStateAction<PlaylistParam>>,
+  playBackControl: PlayBackControlParam,
+  setPlayBackControl: Dispatch<SetStateAction<PlayBackControlParam>>,
+  playBackMode: PlayBackModeParam,
+  setPlayBackMode: Dispatch<SetStateAction<PlayBackModeParam>>,
 }
 
 

@@ -24,6 +24,12 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         volume,
         setVolume,
+        playlist,
+        setPlaylist,
+        playBackControl,
+        setPlayBackControl,
+        playBackMode,
+        setPlayBackMode,
       }}>
       {children}
     </AudioContext.Provider>
