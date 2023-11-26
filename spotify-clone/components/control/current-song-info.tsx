@@ -13,7 +13,7 @@ export default function CurrentSongInfo() {
   const { image, name, artist } = songs.find(song => song.id === currentTrack) || songs[0];
 
   return (
-    <div className='flex items-center gap-6'>
+    <div className='flex items-center gap-6 w-64 p-2'>
       <div className="flex items-center gap-3">
         <figure>
           <Image
@@ -24,7 +24,7 @@ export default function CurrentSongInfo() {
           />
         </figure>
         <div className="justify-center gap-0">
-          <h2 className="font-semibold m-0">{name}</h2>
+          <h2 className="font-semibold m-0">{name.length > 12 ? name.slice(0, 9) + "..." : name}</h2>
           <p className='m-0 text-xs'>{artist}</p>
         </div>
       </div>

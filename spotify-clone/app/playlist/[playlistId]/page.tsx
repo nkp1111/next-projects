@@ -1,3 +1,4 @@
+import PlaylistPlayButton from '@/components/buttons/playlist-play-button';
 import DisplayHeader from '@/components/display/header';
 import PlaylistBanner from '@/components/playlist/banner';
 import SongTable from '@/components/playlist/songTable';
@@ -50,12 +51,7 @@ export default async function Playlist({ params: { playlistId } }: PlaylistParam
         <hr className='border border-b-accent' />
 
         <div className='flex mt-6 gap-10 items-center'>
-          <button type="button"
-            className='btn btn-primary text-black hover:scale-105 transition-all duration-300 flex justify-center tooltip w-14 h-14'
-            data-tip="Play"
-            aria-label="Play">
-            <FaPlay className="w-6 h-6" />
-          </button>
+          <PlaylistPlayButton />
 
           <button type="button"
             className='cursor-pointer transition-all duration-300 flex justify-center'
