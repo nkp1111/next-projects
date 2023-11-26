@@ -1,8 +1,27 @@
+import { SamplePlaylistProps, SampleSongsProps } from ".";
+
 type VolumeParam = {
   prev: number,
   current: number,
 }
 
+type PlaylistParam = {
+  currentPlaylist: SamplePlaylistProps,
+  queue: string[],
+}
+
+type PlayBackControlParam = {
+  isPlaying: boolean,
+  currentTrack: string,
+  currentTime: number,
+}
+
+type RepeatParam = "repeat-none" | "repeat-one" | "repeat-all";
+
+type PlayBackModeParam = {
+  shuffle: false,
+  repeat: RepeatParam,
+}
 
 type ContextParams = {
   volume: VolumeParam,
@@ -10,5 +29,11 @@ type ContextParams = {
 }
 
 
-
-export type { VolumeParam, ContextParams };
+export type {
+  VolumeParam,
+  PlaylistParam,
+  RepeatParam,
+  PlayBackControlParam,
+  PlayBackModeParam,
+  ContextParams,
+};

@@ -8,11 +8,9 @@ interface SidebarNavProps {
   containerClass?: string;
 }
 
-
 interface DisplayNavProps extends SidebarNavProps {
   active: boolean;
 }
-
 
 interface SampleSongsProps {
   id: string;
@@ -27,7 +25,6 @@ interface SampleSongsProps {
   updatedAt?: string;
 }
 
-
 interface SamplePlaylistProps {
   id: string;
   playlistName: string;
@@ -41,6 +38,7 @@ interface SamplePlaylistProps {
   createdAt?: string;
   updatedAt?: string;
 }
+
 
 export type {
   SidebarNavProps,
