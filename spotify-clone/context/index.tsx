@@ -46,6 +46,13 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
+  const handlePlaylistChange = (playlistId: string) => {
+    // get playlist by id
+    const newPlaylist = samplePlaylist.find(playlist => playlist.id === playlistId);
+    if (newPlaylist) {
+      setPlaylist((pre) => ({ ...pre, currentPlaylist: newPlaylist, queue: newPlaylist.songsArray }))
+    }
+  }
 
   return (
     <AudioContext.Provider
@@ -60,6 +67,7 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
         setPlayBackMode,
         handlePlayPauseTrack,
         handlePlaylistTrackChange,
+        handlePlaylistChange,
       }}>
       {children}
     </AudioContext.Provider>

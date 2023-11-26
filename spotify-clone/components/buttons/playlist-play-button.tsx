@@ -2,12 +2,21 @@
 
 import { useGlobalContext } from '@/lib/context';
 import { ContextParams } from '@/types/context';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaPause, FaPlay } from 'react-icons/fa';
 
 
-export default function PlaylistPlayButton() {
-  const { playBackControl: { isPlaying } }: ContextParams = useGlobalContext();
+export default function PlaylistPlayButton({ playlistId }: { playlistId: string }) {
+  const {
+    playBackControl: { isPlaying },
+    handlePlaylistChange,
+  }: ContextParams = useGlobalContext();
+
+
+  useEffect(() => {
+    handlePlaylistChange(playlistId)
+  }, [handlePlaylistChange, playlistId]);
+
   return (
     <button type="button"
       className='btn btn-primary text-black hover:scale-105 transition-all duration-300 flex justify-center tooltip w-14 h-14'

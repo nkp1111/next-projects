@@ -51,7 +51,7 @@ export default async function Playlist({ params: { playlistId } }: PlaylistParam
         <hr className='border border-b-accent' />
 
         <div className='flex mt-6 gap-10 items-center'>
-          <PlaylistPlayButton />
+          <PlaylistPlayButton playlistId={playlistId} />
 
           <button type="button"
             className='cursor-pointer transition-all duration-300 flex justify-center'

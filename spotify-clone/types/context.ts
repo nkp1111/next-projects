@@ -35,6 +35,7 @@ type ContextParams = {
   setPlayBackMode: Dispatch<SetStateAction<PlayBackModeParam>>,
   handlePlayPauseTrack: () => void,
   handlePlaylistTrackChange: (action: "next" | "prev") => void,
+  handlePlaylistChange: (playlistId: string) => void,
 }
 
 
