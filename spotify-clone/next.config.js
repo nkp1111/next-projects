@@ -9,7 +9,16 @@ const nextConfig = {
       { hostname: "is3-ssl.mzstatic.com" },
       { hostname: "i1.sndcdn.com" },
     ]
-  }
+  },
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.mp3$/,
+      use: {
+        loader: 'file-loader',
+      },
+    });
+    return config;
+  },
 }
 
 module.exports = nextConfig
