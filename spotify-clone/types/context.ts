@@ -36,6 +36,9 @@ type ContextParams = {
   handlePlayPauseTrack: () => void,
   handlePlaylistTrackChange: (action: "next" | "prev") => void,
   handlePlaylistChange: (playlistId: string) => void,
+  handleVolume: ({ newVolume, action }: {
+    newVolume?: number | undefined; action?: "mute" | "unmute" | undefined;
+  }) => void,
 }
 
 

@@ -25,6 +25,30 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
     volume: volume.current
   }));
 
+
+  /***************************************** */
+  // handle volume of current playing song
+  // change volume to new volume, mute and unmute
+  const handleVolume = (
+    { newVolume, action }: {
+      newVolume?: number, action?: "mute" | "unmute"
+    }) => {
+    if (newVolume || newVolume === 0) {
+      setVolume((pre) => ({ ...pre, current: newVolume }));
+      workingPlaylist.volume = newVolume / 100;
+    }
+
+    if (action === "mute") {
+      workingPlaylist.volume = 0;
+      setVolume((pre) => ({ ...pre, prev: pre.current, current: 0 }));
+    }
+
+    if (action === "unmute") {
+      workingPlaylist.volume = volume.prev / 100;
+      setVolume((pre) => ({ ...pre, prev: 0, current: pre.prev || 10 }));
+    }
+  }
+
   // play and pause current playing song
   const handlePlayPauseTrack = () => {
     setPlayBackControl((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
@@ -34,7 +58,6 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   const handlePlaylistTrackChange = (action: "next" | "prev") => {
-
     const { currentTrack } = playBackControl;
     const { queue } = playlist;
     const currentTrackNum = queue.indexOf(currentTrack);
@@ -43,9 +66,15 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
       let nextTrack = 0;
       if (action === "next") {
         nextTrack = currentTrackNum === queue.length - 1 ? currentTrackNum : currentTrackNum + 1;
+
+        // change playlist song to next
+        if (nextTrack === currentTrackNum + 1) workingPlaylist.next()
       }
       if (action === "prev") {
         nextTrack = currentTrackNum === 0 ? currentTrackNum : currentTrackNum - 1;
+
+        // change playlist song to prev
+        if (nextTrack === currentTrackNum - 1) workingPlaylist.prev()
       }
 
       setPlayBackControl((pre) => ({ ...pre, currentTrack: queue[nextTrack], currentTime: 0 }))
@@ -67,7 +96,7 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     setWorkingPlaylist(() => getWorkingPlaylist({ queue: playlist.queue, volume: volume.current }))
-  }, [playlist.queue, volume])
+  }, [playlist]);
 
   return (
     <AudioContext.Provider
@@ -83,6 +112,7 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
         handlePlayPauseTrack,
         handlePlaylistTrackChange,
         handlePlaylistChange,
+        handleVolume,
       }}>
       {children}
     </AudioContext.Provider>
