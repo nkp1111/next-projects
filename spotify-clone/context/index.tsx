@@ -1,9 +1,10 @@
 "use client";
 
 import { PlayBackControlParam, PlayBackModeParam, PlaylistParam, VolumeParam } from '@/types/context';
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import samplePlaylist from '@/constant/samplePlaylists';
 import getQueuePlaylist from '@/lib/playlist/getQueuePlaylist';
+import getWorkingPlaylist from '@/lib/playlist/getWorkingPlaylist';
 
 const AudioContext = createContext<any>(null);
 
@@ -19,8 +20,17 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   // TODO: handle shuffle and repeat
   const [playBackMode, setPlayBackMode] = useState<PlayBackModeParam>({ shuffle: false, repeat: "repeat-none" });
 
+  const [workingPlaylist, setWorkingPlaylist] = useState<any>(getWorkingPlaylist({
+    queue: playlist.queue,
+    volume: volume.current
+  }));
+
+  // play and pause current playing song
   const handlePlayPauseTrack = () => {
-    setPlayBackControl((pre) => ({ ...pre, isPlaying: !pre.isPlaying }))
+    setPlayBackControl((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
+    if (workingPlaylist) {
+      workingPlaylist.toggle();
+    }
   }
 
   const handlePlaylistTrackChange = (action: "next" | "prev") => {
@@ -53,6 +63,11 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
       setPlaylist((pre) => ({ ...pre, currentPlaylist: newPlaylist, queue: newPlaylist.songsArray }))
     }
   }
+
+
+  useEffect(() => {
+    setWorkingPlaylist(() => getWorkingPlaylist({ queue: playlist.queue, volume: volume.current }))
+  }, [playlist.queue, volume])
 
   return (
     <AudioContext.Provider

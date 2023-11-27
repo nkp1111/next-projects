@@ -1,3 +1,4 @@
+import formatSecondsDuration from '@/lib/date/formatSecondsDuration'
 import { SamplePlaylistProps } from '@/types'
 import Image from 'next/image'
 import React from 'react'
@@ -21,7 +22,7 @@ export default function PlaylistBanner(
           <p className="py-6 flex gap-2 flex-wrap">
             <span className='font-bold'>{playlist.createdBy} </span> .
             <span>{playlist.numberOfSongs} songs </span> .
-            <span>{new Date(playlist.totalDuration * 1000).toISOString().substring(11, 19)}</span>
+            <span>{formatSecondsDuration(playlist.totalDuration)}</span>
           </p>
         </div>
       </div>
