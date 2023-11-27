@@ -27,7 +27,9 @@ export default function RootLayout({
             <div className="w-full h-full hidden sm:flex flex-col">
               <div className="w-full flex-1 flex overflow-y-auto">
                 {/* menu options (nav) */}
-                <Sidebar />
+                <div>
+                  <Sidebar />
+                </div>
                 {children}
               </div>
               {/* control box(audio controller) */}
