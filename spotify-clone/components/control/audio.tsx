@@ -35,7 +35,7 @@ export default function AudioField() {
         </button>
         <button type="button"
           className='btn bg-white hover:bg-white hover:scale-105 text-black transition-all duration-300 flex justify-center'
-          aria-label="Play"
+          aria-label={isPlaying ? "Pause" : "Play"}
           onClick={handlePlayPauseTrack}>
           {isPlaying ? (
             <FaPause className="w-4 h-4" />

@@ -10,18 +10,20 @@ export default function PlaylistPlayButton({ playlistId }: { playlistId: string 
   const {
     playBackControl: { isPlaying },
     handlePlaylistChange,
+    handlePlayPauseTrack,
   }: ContextParams = useGlobalContext();
 
 
   useEffect(() => {
     handlePlaylistChange(playlistId)
-  }, [handlePlaylistChange, playlistId]);
+  }, [playlistId]);
 
   return (
     <button type="button"
       className='btn btn-primary text-black hover:scale-105 transition-all duration-300 flex justify-center tooltip w-14 h-14'
-      data-tip="Play"
-      aria-label="Play">
+      data-tip={isPlaying ? "Pause" : "Play"}
+      aria-label={isPlaying ? "Pause" : "Play"}
+      onClick={handlePlayPauseTrack}>
       {isPlaying ? (
         <FaPause className="w-5 h-5" />
       ) : (
