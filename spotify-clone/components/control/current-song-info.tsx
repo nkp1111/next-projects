@@ -10,7 +10,7 @@ import { ContextParams } from '@/types/context';
 
 export default function CurrentSongInfo() {
   const { playBackControl: { currentTrack } }: ContextParams = useGlobalContext();
-  const { image, name, artist } = songs.find(song => song.id === currentTrack) || songs[0];
+  const { image, name, artist } = currentTrack;
 
   return (
     <div className='flex items-center gap-6 w-64 p-2'>

@@ -5,6 +5,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import samplePlaylist from '@/constant/samplePlaylists';
 import getQueuePlaylist from '@/lib/playlist/getQueuePlaylist';
 import getWorkingPlaylist from '@/lib/playlist/getWorkingPlaylist';
+import getPlaylistSong from '@/lib/playlist/getPlaylistSong';
 
 const AudioContext = createContext<any>(null);
 
@@ -15,7 +16,7 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 
   const [playlist, setPlaylist] = useState<PlaylistParam>({ currentPlaylist, queue: currentPlaylist.songsArray });
 
-  const [playBackControl, setPlayBackControl] = useState<PlayBackControlParam>({ isPlaying: false, currentTrack: playlist?.queue[0], currentTime: 0 });
+  const [playBackControl, setPlayBackControl] = useState<PlayBackControlParam>({ isPlaying: false, currentTrack: getPlaylistSong(playlist?.queue[0]) });
 
   // TODO: handle shuffle and repeat
   const [playBackMode, setPlayBackMode] = useState<PlayBackModeParam>({ shuffle: false, repeat: "repeat-none" });
@@ -53,14 +54,14 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   const handlePlayPauseTrack = () => {
     setPlayBackControl((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
     if (workingPlaylist) {
-      workingPlaylist.toggle();
+      playBackControl.isPlaying ? workingPlaylist.pause() : workingPlaylist.play();
     }
   }
 
   const handlePlaylistTrackChange = (action: "next" | "prev") => {
     const { currentTrack } = playBackControl;
     const { queue } = playlist;
-    const currentTrackNum = queue.indexOf(currentTrack);
+    const currentTrackNum = queue.indexOf(currentTrack.id);
     // if current track is present in playlist
     if (currentTrackNum !== -1) {
       let nextTrack = 0;
@@ -77,11 +78,11 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
         if (nextTrack === currentTrackNum - 1) workingPlaylist.prev()
       }
 
-      setPlayBackControl((pre) => ({ ...pre, currentTrack: queue[nextTrack], currentTime: 0 }))
+      setPlayBackControl((pre) => ({ ...pre, currentTrack: getPlaylistSong(queue[nextTrack]) }))
     } else {
       // get new song from playlist from start
       console.log("Track not in playlist");
-      setPlayBackControl((pre) => ({ ...pre, currentTrack: queue[0], currentTime: 0 }))
+      setPlayBackControl((pre) => ({ ...pre, currentTrack: getPlaylistSong(queue[0]) }))
     }
   }
 
@@ -89,14 +90,29 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
     // get playlist by id
     const newPlaylist = samplePlaylist.find(playlist => playlist.id === playlistId);
     if (newPlaylist) {
-      setPlaylist((pre) => ({ ...pre, currentPlaylist: newPlaylist, queue: newPlaylist.songsArray }))
+      setPlaylist((pre) => ({ ...pre, currentPlaylist: newPlaylist, queue: newPlaylist.songsArray }));
+      setPlayBackControl((pre) => ({ ...pre, currentTrack: getPlaylistSong(newPlaylist.songsArray[0]) }))
     }
   }
 
 
   useEffect(() => {
+    if (workingPlaylist) {
+      try {
+        workingPlaylist.stop()
+      } catch (error) {
+        console.log(error);
+      }
+    }
     setWorkingPlaylist(() => getWorkingPlaylist({ queue: playlist.queue, volume: volume.current }))
   }, [playlist]);
+
+  useEffect(() => {
+    if (workingPlaylist && playBackControl.isPlaying) {
+      workingPlaylist.play();
+    }
+  }, [workingPlaylist, playBackControl]);
+
 
   return (
     <AudioContext.Provider

@@ -1,22 +1,35 @@
 "use client";
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { RxShuffle } from "react-icons/rx";
 import { IoRepeat } from "react-icons/io5";
 import { FaPlay, FaPause } from "react-icons/fa";
 import { CgPlayTrackPrev, CgPlayTrackNext } from "react-icons/cg";
 import { useGlobalContext } from '@/lib/context';
 import { ContextParams } from '@/types/context';
+import formatSecondsDuration from '@/lib/date/formatSecondsDuration';
 
-let timePassed = "0:00";
-let songDuration = "2:40";
 
 export default function AudioField() {
   const {
-    playBackControl: { isPlaying, currentTime, currentTrack },
+    playBackControl: { isPlaying, currentTrack },
     handlePlayPauseTrack,
     handlePlaylistTrackChange,
   }: ContextParams = useGlobalContext();
+
+  // current duration 
+  const [currentDuration, setCurrentDuration] = useState<number>(0);
+  useEffect(() => {
+    let interval = setInterval(() => {
+      setCurrentDuration((pre) => isPlaying ? pre + 1 : pre);
+    }, 1000)
+    return () => clearInterval(interval);
+  }, [isPlaying]);
+
+  // reset duration on new song
+  useEffect(() => {
+    setCurrentDuration(0)
+  }, [currentTrack]);
 
   return (
     <div className='flex flex-col justify-center items-center gap-1'>
@@ -57,15 +70,18 @@ export default function AudioField() {
           <IoRepeat className="w-6 h-6" />
         </button>
       </div>
+      {/* show current song progress  */}
       <div className='flex items-center gap-2 -mt-2'>
         <span>
-          <small>{timePassed}</small>
+          <small>{formatSecondsDuration(currentDuration)}</small>
         </span>
         <span>
-          <progress className="progress w-96 h-1 cursor-pointer" value="0" max="100"></progress>
+          <progress className="progress w-96 h-1 cursor-pointer"
+            value={Math.floor(currentDuration * 100 / currentTrack.duration)}
+            max="100"></progress>
         </span>
         <span>
-          <small>{songDuration}</small>
+          <small>{formatSecondsDuration(currentTrack.duration)}</small>
         </span>
       </div>
     </div>

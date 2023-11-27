@@ -13,8 +13,7 @@ type PlaylistParam = {
 
 type PlayBackControlParam = {
   isPlaying: boolean,
-  currentTrack: string,
-  currentTime: number,
+  currentTrack: SampleSongsProps,
 }
 
 type RepeatParam = "repeat-none" | "repeat-one" | "repeat-all";
