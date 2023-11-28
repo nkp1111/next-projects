@@ -5,6 +5,7 @@ import { RxShuffle } from "react-icons/rx";
 import { IoRepeat } from "react-icons/io5";
 import { FaPlay, FaPause } from "react-icons/fa";
 import { CgPlayTrackPrev, CgPlayTrackNext } from "react-icons/cg";
+import { TbRepeatOnce, TbRepeat } from "react-icons/tb";
 import { useGlobalContext } from '@/lib/context';
 import { ContextParams } from '@/types/context';
 import formatSecondsDuration from '@/lib/date/formatSecondsDuration';
@@ -15,6 +16,8 @@ export default function AudioField() {
     playBackControl: { isPlaying, currentTrack },
     handlePlayPauseTrack,
     handlePlaylistTrackChange,
+    playBackMode: { shuffle, repeat },
+    handlePlayBackMode,
   }: ContextParams = useGlobalContext();
 
   // current duration 
@@ -35,9 +38,11 @@ export default function AudioField() {
     <div className='flex flex-col justify-center items-center gap-1'>
       <div className='flex justify-center items-center gap-4'>
         <button type="button"
-          className='hover:text-white transition-all tooltip' data-tip="Shuffle"
-          aria-label="Shuffle">
-          <RxShuffle className="w-5 h-5" />
+          className={`hover:text-white transition-all duration-300 tooltip relative`} data-tip={!shuffle ? "Shuffle" : "Shuffle Off"}
+          aria-label="Shuffle"
+          onClick={(e) => handlePlayBackMode("shuffle")}>
+          <RxShuffle className={`w-5 h-5 ${shuffle && "text-primary"}`} />
+          {shuffle && <span className='absolute text-5xl m-0 bottom-0 -right-3 text-primary'>.</span>}
         </button>
         <button type="button"
           className='hover:text-white transition-all tooltip'
@@ -64,10 +69,15 @@ export default function AudioField() {
           <CgPlayTrackNext className="w-7 h-7 aspect-auto" />
         </button>
         <button type="button"
-          className='hover:text-white tooltip'
+          className='hover:text-white tooltip transition-all duration-300'
           data-tip="Repeat"
-          aria-label='Repeat'>
-          <IoRepeat className="w-6 h-6" />
+          aria-label='Repeat'
+          onClick={(e) => handlePlayBackMode("repeat")}>
+          {repeat === "repeat-one" ? (
+            <TbRepeatOnce className="w-6 h-6 text-primary" />
+          ) : (
+            < TbRepeat className={`w-6 h-6 ${repeat !== "repeat-none" && "text-primary"}`} />
+          )}
         </button>
       </div>
       {/* show current song progress  */}

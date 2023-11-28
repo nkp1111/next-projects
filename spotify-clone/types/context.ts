@@ -19,7 +19,7 @@ type PlayBackControlParam = {
 type RepeatParam = "repeat-none" | "repeat-one" | "repeat-all";
 
 type PlayBackModeParam = {
-  shuffle: false,
+  shuffle: boolean,
   repeat: RepeatParam,
 }
 
@@ -38,6 +38,7 @@ type ContextParams = {
   handleVolume: ({ newVolume, action }: {
     newVolume?: number | undefined; action?: "mute" | "unmute" | undefined;
   }) => void,
+  handlePlayBackMode: (action: "shuffle" | "repeat") => void,
 }
 
 
