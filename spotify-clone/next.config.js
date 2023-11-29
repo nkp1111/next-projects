@@ -8,6 +8,7 @@ const nextConfig = {
       { hostname: "d34qmkt8w5wll9.cloudfront.net" },
       { hostname: "is3-ssl.mzstatic.com" },
       { hostname: "i1.sndcdn.com" },
+      { hostname: "icons8.com" },
     ]
   },
   webpack: (config, options) => {

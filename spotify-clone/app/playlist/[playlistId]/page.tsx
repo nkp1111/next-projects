@@ -61,7 +61,7 @@ export default async function Playlist({ params: { playlistId } }: PlaylistParam
         </div>
 
         <div className='mt-3'>
-          <SongTable playlistSongs={playlistSongs} />
+          <SongTable playlistSongs={playlistSongs} playlistId={playlist.id} />
         </div>
 
       </div>

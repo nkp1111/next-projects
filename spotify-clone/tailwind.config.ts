@@ -11,6 +11,13 @@ const config: Config = {
   ],
   daisyui: {
     themes: ["forest"]
-  }
+  },
+  theme: {
+    extend: {
+      spacing: {
+        rt: '1px',
+      },
+    }
+  },
 }
 export default config
