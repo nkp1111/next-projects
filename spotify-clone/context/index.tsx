@@ -6,6 +6,10 @@ import samplePlaylist from '@/constant/samplePlaylists';
 import getWorkingPlaylist from '@/lib/playlist/getWorkingPlaylist';
 import getPlaylistSong from '@/lib/playlist/getPlaylistSong';
 import { AudioPlaylistType } from 'ts-audio';
+import changePlaylistQueue from '@/lib/playlist/changePlaylistQueue';
+import playlists from '@/constant/samplePlaylists';
+import songs from '@/constant/sampleSongs';
+import { SamplePlaylistProps } from '@/types';
 
 const AudioContext = createContext<any>(null);
 
@@ -124,9 +128,33 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
+  // play song by id 
+  const playSongById = (playlistId: string, songId: string) => {
+    let playlistC: SamplePlaylistProps | undefined = playlist.currentPlaylist;
+    if (playlistC.id !== playlistId) {
+      // find playlist by id 
+      playlistC = playlists.find(playlist => playlist.id === playlistId);
+    }
+
+    if (playlistC) {
+      const newQueue = playlistC.songsArray;
+      setPlaylist({ currentPlaylist: playlistC, queue: newQueue });
+      // find song by id
+      const song = songs.find(song => song.id === songId);
+      if (song) {
+        setPlayBackControl((pre) => ({ isPlaying: true, currentTrack: song }));
+        setWorkingPlaylist(() => getWorkingPlaylist({ queue: newQueue, volume: volume.current }));
+      }
+    }
+  }
+
 
   useEffect(() => {
     if (workingPlaylist && playBackControl.isPlaying) {
+      for (let i = 0; i < songs.length; i++) {
+        if (songs[i].id === playBackControl.currentTrack.id) break;
+        else workingPlaylist.next();
+      }
       workingPlaylist.play();
     }
   }, [workingPlaylist, playBackControl]);
@@ -148,6 +176,7 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
         handlePlaylistChange,
         handleVolume,
         handlePlayBackMode,
+        playSongById,
       }}>
       {children}
     </AudioContext.Provider>

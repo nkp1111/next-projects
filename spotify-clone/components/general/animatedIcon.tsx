@@ -15,7 +15,7 @@ export default function AnimatedIcon() {
 
 export function Progress() {
   const [currentHeight, setCurrentHeight] = useState(Math.floor(Math.random() * 6));
-  const [heightIncrement, setHeightIncrement] = useState(Math.floor(Math.random() * 3));
+  const [heightIncrement, setHeightIncrement] = useState(Math.floor(Math.random() * 2));
   useEffect(() => {
     let interval = setInterval(() => {
       setCurrentHeight(pre => pre + heightIncrement);
