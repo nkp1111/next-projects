@@ -1,3 +1,4 @@
+import { AudioPlaylistType } from "ts-audio";
 import { SamplePlaylistProps, SampleSongsProps } from ".";
 import { Dispatch, SetStateAction } from 'react'
 
@@ -23,23 +24,21 @@ type PlayBackModeParam = {
   repeat: RepeatParam,
 }
 
-type ContextParams = {
+
+interface DefaultStateParams {
   volume: VolumeParam,
-  setVolume: Dispatch<SetStateAction<VolumeParam>>,
   playlist: PlaylistParam,
-  setPlaylist: Dispatch<SetStateAction<PlaylistParam>>,
   playBackControl: PlayBackControlParam,
-  setPlayBackControl: Dispatch<SetStateAction<PlayBackControlParam>>,
   playBackMode: PlayBackModeParam,
-  setPlayBackMode: Dispatch<SetStateAction<PlayBackModeParam>>,
-  handlePlayPauseTrack: () => void,
-  handlePlaylistTrackChange: (action: "next" | "prev") => void,
-  handlePlaylistChange: (playlistId: string) => void,
-  handleVolume: ({ newVolume, action }: {
-    newVolume?: number | undefined; action?: "mute" | "unmute" | undefined;
-  }) => void,
-  handlePlayBackMode: (action: "shuffle" | "repeat") => void,
+  workingPlaylist: AudioPlaylistType,
 }
+
+interface ContextParams extends DefaultStateParams {
+  setVolume: (volume: number) => void,
+  muteVolume: () => void,
+  unMuteVolume: () => void,
+}
+
 
 
 export type {
@@ -49,4 +48,5 @@ export type {
   PlayBackControlParam,
   PlayBackModeParam,
   ContextParams,
+  DefaultStateParams,
 };

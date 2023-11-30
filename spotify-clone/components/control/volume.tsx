@@ -8,7 +8,8 @@ import { LiaVolumeDownSolid, LiaVolumeMuteSolid } from "react-icons/lia";
 import { RiPlayList2Fill } from "react-icons/ri";
 
 export default function Volume() {
-  const { volume, handleVolume }: ContextParams = useGlobalContext()
+  const { volume, setVolume, muteVolume, unMuteVolume }: ContextParams = useGlobalContext();
+
   return (
     <div className='flex gap-3 items-center'>
       <span className='cursor-pointer hover:text-white'>
@@ -23,13 +24,13 @@ export default function Volume() {
           // unmute button 
           <span className='tooltip' data-tip="Unmute" >
             <LiaVolumeMuteSolid className="w-6 h-6 cursor-pointer"
-              onClick={() => handleVolume({ action: "unmute" })} />
+              onClick={unMuteVolume} />
           </span>
         ) : (
           // mute button 
           <span className='tooltip' data-tip="Mute">
             <LiaVolumeDownSolid className="w-6 h-6 cursor-pointer"
-              onClick={() => handleVolume({ action: "mute" })} />
+              onClick={muteVolume} />
           </span>
         )}
 
@@ -39,9 +40,7 @@ export default function Volume() {
           min="0" max="100" value={volume.current}
           className="w-24 h-1  text-primary bg-green-900 rounded-lg cursor-pointer dark:bg-gray-700 left-0 top-0 w-100 tooltip"
           data-tip={volume.current}
-          onChange={(e) => {
-            handleVolume({ newVolume: Number(e.target.value) })
-          }} />
+          onChange={(e) => setVolume(Number(e.target.value))} />
       </span>
 
     </div>
