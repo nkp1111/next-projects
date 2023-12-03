@@ -11,7 +11,7 @@ import playlists from '@/constant/samplePlaylists';
 import songs from '@/constant/sampleSongs';
 import { SamplePlaylistProps } from '@/types';
 import { reducer } from '@/reducer';
-import { VOLUME_ACTION } from '@/reducer/action';
+import { MODE_ACTION, PLAYLIST_ACTION, TRACK_ACTION, VOLUME_ACTION } from '@/reducer/action';
 
 
 const currentPlaylist = samplePlaylist[0];
@@ -41,16 +41,38 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
     dispatch({ type: VOLUME_ACTION.UNMUTE });
   }
 
+  const handlePlayPauseTrack = () => {
+    dispatch({ type: TRACK_ACTION.PLAY_PAUSE })
+  }
 
-  // // play and pause current playing song
-  // const handlePlayPauseTrack = () => {
-  //   setPlayBackControl((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
-  //   if (workingPlaylist) {
-  //     playBackControl.isPlaying ? workingPlaylist.pause() : workingPlaylist.play();
-  //   }
-  // }
+  const handlePlayBackMode = (action: "shuffle" | "repeat") => {
+    if (action === "shuffle") {
+      dispatch({ type: MODE_ACTION.SHUFFLE })
+    }
 
-  // // handle playlist current song change
+    if (action === "repeat") {
+      dispatch({ type: MODE_ACTION.REPEAT })
+    }
+  }
+
+  const setCurrentPlaylist = (playlistId: string) => {
+    dispatch({ type: PLAYLIST_ACTION.SET, payload: { playlistId } })
+  }
+
+  useEffect(() => {
+    setCurrentPlaylist(playlists[0].id)
+  }, []);
+
+  const handlePlaylistTrackChange = (action: "next" | "prev") => {
+    if (action === "next") {
+      dispatch({ type: TRACK_ACTION.CHANGE_NEXT })
+    }
+
+    if (action === "prev") {
+      dispatch({ type: TRACK_ACTION.CHANGE_PREV })
+    }
+  }
+
   // const handlePlaylistTrackChange = (action: "next" | "prev") => {
   //   const { currentTrack } = playBackControl;
   //   const { queue } = playlist;
@@ -79,74 +101,6 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   //   }
   // }
 
-  // // handle playlist change
-  // const handlePlaylistChange = (playlistId: string) => {
-  //   // get playlist by id
-  //   const newPlaylist = samplePlaylist.find(playlist => playlist.id === playlistId);
-  //   if (newPlaylist) {
-  //     if (workingPlaylist) {
-  //       try {
-  //         workingPlaylist.pause();
-  //         workingPlaylist.stop();
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     }
-  //     const newQueue = newPlaylist.songsArray;
-
-  //     setPlaylist((pre) => ({ ...pre, currentPlaylist: newPlaylist, queue: newQueue }));
-  //     setPlayBackControl((pre) => ({ ...pre, currentTrack: getPlaylistSong(newQueue[0]) }));
-  //     setWorkingPlaylist(() => getWorkingPlaylist({ queue: newQueue, volume: volume.current }));
-  //   }
-  // }
-
-  // // handle playback mode change
-  // const handlePlayBackMode = (action: "shuffle" | "repeat") => {
-  //   if (action === "shuffle") {
-  //     setPlayBackMode(pre => ({ ...pre, shuffle: !pre.shuffle }))
-  //   }
-
-  //   if (action === "repeat") {
-  //     setPlayBackMode(pre => ({
-  //       ...pre,
-  //       repeat: pre.repeat === "repeat-none"
-  //         ? "repeat-all" : pre.repeat === "repeat-all"
-  //           ? "repeat-one" : "repeat-none"
-  //     }))
-  //   }
-  // }
-
-  // // play song by id 
-  // const playSongById = (playlistId: string, songId: string) => {
-  //   let playlistC: SamplePlaylistProps | undefined = playlist.currentPlaylist;
-  //   if (playlistC.id !== playlistId) {
-  //     // find playlist by id 
-  //     playlistC = playlists.find(playlist => playlist.id === playlistId);
-  //   }
-
-  //   if (playlistC) {
-  //     const newQueue = playlistC.songsArray;
-  //     setPlaylist({ currentPlaylist: playlistC, queue: newQueue });
-  //     // find song by id
-  //     const song = songs.find(song => song.id === songId);
-  //     if (song) {
-  //       setPlayBackControl((pre) => ({ isPlaying: true, currentTrack: song }));
-  //       setWorkingPlaylist(() => getWorkingPlaylist({ queue: newQueue, volume: volume.current }));
-  //     }
-  //   }
-  // }
-
-
-  // useEffect(() => {
-  //   if (workingPlaylist && playBackControl.isPlaying) {
-  //     for (let i = 0; i < songs.length; i++) {
-  //       if (songs[i].id === playBackControl.currentTrack.id) break;
-  //       else workingPlaylist.next();
-  //     }
-  //     workingPlaylist.play();
-  //   }
-  // }, [workingPlaylist, playBackControl]);
-
 
   return (
     <AudioContext.Provider
@@ -155,11 +109,12 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
         setVolume,
         muteVolume,
         unMuteVolume,
-        // handlePlayPauseTrack,
-        // handlePlaylistTrackChange,
+        handlePlayPauseTrack,
+        setCurrentPlaylist,
+        handlePlaylistTrackChange,
         // handlePlaylistChange,
         // handleVolume,
-        // handlePlayBackMode,
+        handlePlayBackMode,
         // playSongById,
       }}>
       {children}

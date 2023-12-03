@@ -37,6 +37,10 @@ interface ContextParams extends DefaultStateParams {
   setVolume: (volume: number) => void,
   muteVolume: () => void,
   unMuteVolume: () => void,
+  handlePlayPauseTrack: () => void,
+  handlePlayBackMode: (action: "shuffle" | "repeat") => void,
+  setCurrentPlaylist: (playlistId: string) => void,
+  handlePlaylistTrackChange: (action: "prev" | "next") => void,
 }
 
 

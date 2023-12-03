@@ -10,7 +10,7 @@ export default function PlaylistPlayButton({ playlistId }: { playlistId: string 
   const {
     playlist: { currentPlaylist },
     playBackControl: { isPlaying },
-    handlePlaylistChange,
+    setCurrentPlaylist,
     handlePlayPauseTrack,
   }: ContextParams = useGlobalContext();
 
@@ -23,7 +23,7 @@ export default function PlaylistPlayButton({ playlistId }: { playlistId: string 
         if (currentPlaylist.id === playlistId) {
           handlePlayPauseTrack()
         } else {
-          handlePlaylistChange(playlistId)
+          setCurrentPlaylist(playlistId)
         }
       }}>
       {isPlaying ? (
