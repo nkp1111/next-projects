@@ -30,7 +30,6 @@ interface DefaultStateParams {
   playlist: PlaylistParam,
   playBackControl: PlayBackControlParam,
   playBackMode: PlayBackModeParam,
-  workingPlaylist: AudioPlaylistType,
 }
 
 interface ContextParams extends DefaultStateParams {
@@ -41,6 +40,7 @@ interface ContextParams extends DefaultStateParams {
   handlePlayBackMode: (action: "shuffle" | "repeat") => void,
   setCurrentPlaylist: (playlistId: string) => void,
   handlePlaylistTrackChange: (action: "prev" | "next") => void,
+  setCurrentTrack: (songId: string) => void,
 }
 
 

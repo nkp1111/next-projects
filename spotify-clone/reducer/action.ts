@@ -6,6 +6,7 @@ export enum VOLUME_ACTION {
 
 
 export enum TRACK_ACTION {
+  TRACK_SET = "TRACK_SET",
   CHANGE_NEXT = "CHANGE_NEXT",
   CHANGE_PREV = "CHANGE_PREV",
   CHANGE_TO_SONG = "CHANGE_TO_SONG",
@@ -20,5 +21,5 @@ export enum MODE_ACTION {
 
 
 export enum PLAYLIST_ACTION {
-  SET = "SET",
+  PLAYLIST_SET = "PLAYLIST_SET",
 }

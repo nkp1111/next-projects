@@ -36,8 +36,9 @@ export default function SongTable({ playlistSongs, playlistId }: SongTableParams
   const [hoverInd, setHoverInd] = useState<number>(-1);
   const {
     playBackControl: { isPlaying, currentTrack },
+    playlist: { currentPlaylist },
     handlePlayPauseTrack,
-    // playSongById,
+    setCurrentTrack,
     setCurrentPlaylist,
   }: ContextParams = useGlobalContext();
   const playingCurrentSong = (current: SampleSongsProps, playing: SampleSongsProps) => isPlaying && current.id === playing.id;
@@ -77,8 +78,10 @@ export default function SongTable({ playlistSongs, playlistId }: SongTableParams
                             onClick={handlePlayPauseTrack} />
                           : <FaPlay className="w-4 h-4"
                             onClick={() => {
-                              setCurrentPlaylist(playlistId)
-                              // TODO: play current song
+                              if (playlistId !== currentPlaylist.id) {
+                                setCurrentPlaylist(playlistId)
+                              }
+                              setCurrentTrack(song.id);
                             }} />}
                       </button>
                       : playingCurrentSong(song, currentTrack)

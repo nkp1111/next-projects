@@ -1,17 +1,14 @@
 "use client";
 
 import { DefaultStateParams, PlayBackControlParam, PlayBackModeParam, PlaylistParam, VolumeParam } from '@/types/context';
-import React, { createContext, useContext, useEffect, useState, useReducer } from 'react'
+import React, { createContext, useContext, useEffect, useState, useReducer, useCallback } from 'react'
 import samplePlaylist from '@/constant/samplePlaylists';
 import getWorkingPlaylist from '@/lib/playlist/getWorkingPlaylist';
 import getPlaylistSong from '@/lib/playlist/getPlaylistSong';
-import { AudioPlaylistType } from 'ts-audio';
-import changePlaylistQueue from '@/lib/playlist/changePlaylistQueue';
 import playlists from '@/constant/samplePlaylists';
-import songs from '@/constant/sampleSongs';
-import { SamplePlaylistProps } from '@/types';
 import { reducer } from '@/reducer';
 import { MODE_ACTION, PLAYLIST_ACTION, TRACK_ACTION, VOLUME_ACTION } from '@/reducer/action';
+import { AudioPlaylistType } from 'ts-audio';
 
 
 const currentPlaylist = samplePlaylist[0];
@@ -20,13 +17,17 @@ const defaultState: DefaultStateParams = {
   playlist: { currentPlaylist, queue: currentPlaylist.songsArray },
   playBackControl: { isPlaying: false, currentTrack: getPlaylistSong(currentPlaylist.songsArray[0]) },
   playBackMode: { shuffle: false, repeat: "repeat-none" },
-  workingPlaylist: getWorkingPlaylist({ queue: currentPlaylist.songsArray, volume: 80 }),
 }
 
 const AudioContext = createContext<any>(null);
 
 const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
+  const [workingPlaylist, setWorkingPlaylist] = useState<{ current: number, playlist: AudioPlaylistType | null }>({
+    current: -1,
+    playlist: null,
+  });
+  const [playlistChange, setPlaylistChange] = useState(true);
 
   // handle volume change 
   const setVolume = (volume: number) => {
@@ -49,58 +50,119 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
     if (action === "shuffle") {
       dispatch({ type: MODE_ACTION.SHUFFLE })
     }
-
     if (action === "repeat") {
-      dispatch({ type: MODE_ACTION.REPEAT })
+      dispatch({ type: MODE_ACTION.REPEAT });
     }
   }
 
-  const setCurrentPlaylist = (playlistId: string) => {
-    dispatch({ type: PLAYLIST_ACTION.SET, payload: { playlistId } })
+  const setCurrentTrack = (songId: string) => {
+    dispatch({ type: TRACK_ACTION.TRACK_SET, payload: { songId } });
   }
 
-  useEffect(() => {
-    setCurrentPlaylist(playlists[0].id)
-  }, []);
+  const setCurrentPlaylist = (playlistId: string) => {
+    setWorkingPlaylist((pre) => ({ ...pre, current: 0 }));
+    dispatch({ type: PLAYLIST_ACTION.PLAYLIST_SET, payload: { playlistId } })
+  }
 
   const handlePlaylistTrackChange = (action: "next" | "prev") => {
     if (action === "next") {
       dispatch({ type: TRACK_ACTION.CHANGE_NEXT })
     }
-
     if (action === "prev") {
       dispatch({ type: TRACK_ACTION.CHANGE_PREV })
     }
   }
 
-  // const handlePlaylistTrackChange = (action: "next" | "prev") => {
-  //   const { currentTrack } = playBackControl;
-  //   const { queue } = playlist;
-  //   const currentTrackNum = queue.indexOf(currentTrack.id);
-  //   // if current track is present in playlist
-  //   if (currentTrackNum !== -1) {
-  //     let nextTrack = 0;
-  //     if (action === "next") {
-  //       nextTrack = currentTrackNum === queue.length - 1 ? currentTrackNum : currentTrackNum + 1;
 
-  //       // change playlist song to next
-  //       if (nextTrack === currentTrackNum + 1) workingPlaylist.next()
-  //     }
-  //     if (action === "prev") {
-  //       nextTrack = currentTrackNum === 0 ? currentTrackNum : currentTrackNum - 1;
+  useEffect(() => {
+    setCurrentPlaylist(playlists[0].id);
+  }, []);
 
-  //       // change playlist song to prev
-  //       if (nextTrack === currentTrackNum - 1) workingPlaylist.prev()
-  //     }
 
-  //     setPlayBackControl((pre) => ({ ...pre, currentTrack: getPlaylistSong(queue[nextTrack]) }))
-  //   } else {
-  //     // get new song from playlist from start
-  //     console.log("Track not in playlist");
-  //     setPlayBackControl((pre) => ({ ...pre, currentTrack: getPlaylistSong(queue[0]) }))
-  //   }
-  // }
+  useEffect(() => {
+    console.log('playlist volume change')
+    // set playlist current volume
+    const setPlaylistVolume = (volume: number) => {
+      if (workingPlaylist.playlist) workingPlaylist.playlist.volume = volume / 100;
+    }
+    setPlaylistVolume(state.volume.current)
+    return () => setPlaylistVolume(state.volume.current);
+  }, [state.volume, workingPlaylist]);
 
+
+  useEffect(() => {
+    console.log("playlist change")
+    // change playlist
+    const setNewPlaylist = () => {
+      if (workingPlaylist.playlist) workingPlaylist.playlist.stop();
+      setWorkingPlaylist((pre) => ({
+        ...pre,
+        playlist: getWorkingPlaylist({
+          queue: state.playlist.queue,
+          volume: state.volume.current / 100
+        }),
+        current: 0,
+      }))
+    }
+    setNewPlaylist();
+    return () => setNewPlaylist();
+  }, [state.playlist.queue]);
+
+
+  useEffect(() => {
+    console.log('track change');
+    // track change
+    const currentTrack = state.playBackControl.currentTrack;
+    const queue = state.playlist.queue;
+    const newTrackInd = queue.indexOf(currentTrack.id);
+    const playlistTrackInd = Math.max(workingPlaylist.current, 0);
+
+    // playlist not change //
+    if (playlistTrackInd < newTrackInd) {
+      // get next track
+      for (let i = playlistTrackInd; i < newTrackInd; i++) {
+        if (workingPlaylist.playlist) {
+          workingPlaylist.playlist.pause()
+          workingPlaylist.playlist.next()
+        }
+      }
+      // set current playlist track index
+      setWorkingPlaylist((pre) => ({ ...pre, current: newTrackInd }))
+    }
+
+    if (playlistTrackInd > newTrackInd) {
+      // get prev track
+      for (let i = playlistTrackInd; i > newTrackInd; i--) {
+        if (workingPlaylist.playlist) {
+          workingPlaylist.playlist.pause()
+          workingPlaylist.playlist.prev()
+        }
+      }
+      // set current playlist track index
+      setWorkingPlaylist((pre) => ({ ...pre, current: newTrackInd }))
+    }
+
+  }, [state.playBackControl.currentTrack, state.playlist.queue, workingPlaylist]);
+
+
+  useEffect(() => {
+    console.log('play/pause song')
+    // play/pause current song
+    const playPause = () => {
+      if (state.playBackControl.isPlaying) {
+        if (workingPlaylist.playlist) workingPlaylist.playlist.play();
+      } else {
+        if (workingPlaylist.playlist) workingPlaylist.playlist.pause();
+      }
+    }
+    playPause();
+    return () => playPause();
+  }, [state.playBackControl.isPlaying, workingPlaylist.playlist]);
+
+
+  useEffect(() => {
+    // console.log(state)
+  }, [state]);
 
   return (
     <AudioContext.Provider
@@ -112,10 +174,8 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
         handlePlayPauseTrack,
         setCurrentPlaylist,
         handlePlaylistTrackChange,
-        // handlePlaylistChange,
-        // handleVolume,
         handlePlayBackMode,
-        // playSongById,
+        setCurrentTrack,
       }}>
       {children}
     </AudioContext.Provider>
