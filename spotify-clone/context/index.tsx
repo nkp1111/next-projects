@@ -27,7 +27,17 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
     current: -1,
     playlist: null,
   });
-  const [playlistChange, setPlaylistChange] = useState(true);
+
+  const playPause = (state: DefaultStateParams,
+    workingPlaylist: { current: number, playlist: AudioPlaylistType | null }) => {
+    if (workingPlaylist.playlist) {
+      if (state.playBackControl.isPlaying) {
+        workingPlaylist.playlist.pause();
+      } else {
+        workingPlaylist.playlist.play();
+      }
+    }
+  }
 
   // handle volume change 
   const setVolume = (volume: number) => {
@@ -44,6 +54,7 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 
   const handlePlayPauseTrack = () => {
     dispatch({ type: TRACK_ACTION.PLAY_PAUSE })
+    playPause(state, workingPlaylist)
   }
 
   const handlePlayBackMode = (action: "shuffle" | "repeat") => {
@@ -57,11 +68,13 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 
   const setCurrentTrack = (songId: string) => {
     dispatch({ type: TRACK_ACTION.TRACK_SET, payload: { songId } });
+    playPause(state, workingPlaylist)
   }
 
   const setCurrentPlaylist = (playlistId: string) => {
     setWorkingPlaylist((pre) => ({ ...pre, current: 0 }));
     dispatch({ type: PLAYLIST_ACTION.PLAYLIST_SET, payload: { playlistId } })
+    // playPause(state, workingPlaylist)
   }
 
   const handlePlaylistTrackChange = (action: "next" | "prev") => {
@@ -94,12 +107,17 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
     console.log("playlist change")
     // change playlist
     const setNewPlaylist = () => {
-      if (workingPlaylist.playlist) workingPlaylist.playlist.stop();
+      try {
+        if (workingPlaylist.playlist) workingPlaylist.playlist.stop();
+      } catch (error) {
+        console.log(error);
+      }
+
       setWorkingPlaylist((pre) => ({
         ...pre,
         playlist: getWorkingPlaylist({
           queue: state.playlist.queue,
-          volume: state.volume.current / 100
+          volume: state.volume.current,
         }),
         current: 0,
       }))
@@ -146,21 +164,6 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 
 
   useEffect(() => {
-    console.log('play/pause song')
-    // play/pause current song
-    const playPause = () => {
-      if (state.playBackControl.isPlaying) {
-        if (workingPlaylist.playlist) workingPlaylist.playlist.play();
-      } else {
-        if (workingPlaylist.playlist) workingPlaylist.playlist.pause();
-      }
-    }
-    playPause();
-    return () => playPause();
-  }, [state.playBackControl.isPlaying, workingPlaylist.playlist]);
-
-
-  useEffect(() => {
     // console.log(state)
   }, [state]);
 
@@ -176,6 +179,7 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
         handlePlaylistTrackChange,
         handlePlayBackMode,
         setCurrentTrack,
+        workingPlaylist: workingPlaylist.playlist,
       }}>
       {children}
     </AudioContext.Provider>

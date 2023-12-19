@@ -33,6 +33,7 @@ interface DefaultStateParams {
 }
 
 interface ContextParams extends DefaultStateParams {
+  workingPlaylist: AudioPlaylistType,
   setVolume: (volume: number) => void,
   muteVolume: () => void,
   unMuteVolume: () => void,

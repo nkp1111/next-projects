@@ -12,6 +12,7 @@ export default function PlaylistPlayButton({ playlistId }: { playlistId: string 
     playBackControl: { isPlaying },
     setCurrentPlaylist,
     handlePlayPauseTrack,
+    workingPlaylist,
   }: ContextParams = useGlobalContext();
 
   return (
