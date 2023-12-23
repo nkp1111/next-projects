@@ -5,6 +5,7 @@ const nextConfig = {
       { hostname: "cdn.epidemicsound.com" },
       { hostname: "gravatar.com" },
       { hostname: "raw.githubusercontent.com" },
+      { hostname: "avatar.githubusercontent.com" },
       { hostname: "d34qmkt8w5wll9.cloudfront.net" },
       { hostname: "is3-ssl.mzstatic.com" },
       { hostname: "i1.sndcdn.com" },

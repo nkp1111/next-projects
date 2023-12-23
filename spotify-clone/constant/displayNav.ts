@@ -44,8 +44,8 @@ const displayNav: DisplayNavProps[] = [
     id: 6,
     title: "Log out",
     icon: AiFillHeart,
-    link: "/logout",
-    active: false,
+    link: "/api/auth/signout",
+    active: true,
   },
 ]
 

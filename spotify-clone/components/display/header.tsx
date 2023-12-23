@@ -5,8 +5,12 @@ import React from 'react'
 import { FaSortDown } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import HeaderNav from './headerNav';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
-export default function DisplayHeader() {
+export default async function DisplayHeader() {
+  const session = await getServerSession(authOptions);
+
   return (
     <div className='flex justify-between gap-3 items-center flex-wrap'>
       <div className="flex gap-3 items-center">
@@ -23,8 +27,8 @@ export default function DisplayHeader() {
           <summary className="m-1 btn btn-sm flex items-center py-0 normal-case ps-0 flex-nowrap">
             <span>
               <Image
-                src={"https://gravatar.com/avatar"}
-                alt={"avatar"}
+                src={session?.user?.image || "https://gravatar.com/avatar"}
+                alt={session?.user?.name + "-avatar"}
                 width={40}
                 height={40}
                 className='image-full object-cover w-7 h-7 rounded-full'
@@ -37,9 +41,9 @@ export default function DisplayHeader() {
             {/* navbar  */}
             <nav className='navbar items-start flex-col'>
               {displayNav.map(navItem => (
-                <div key={navItem.id} className={`btn btn-ghost rounded-sm w-full justify-start items-center relative py-0
-                ${navItem.id === displayNav.length && "mt-3"}
-                 ${!navItem.active && "cursor-not-allowed"}`}>
+                <div key={navItem.id}
+                  className={`btn btn-ghost rounded-sm w-full justify-start items-center relative py-0 ${navItem.id === displayNav.length && "mt-3"} ${!navItem.active && "cursor-not-allowed"}`}
+                >
                   <hr className={navItem.id === displayNav.length ? "block absolute border-red-50 border-t top-0 left-0 w-full h-1" : "hidden"} />
                   {/* <div className="">
                     <navItem.icon />

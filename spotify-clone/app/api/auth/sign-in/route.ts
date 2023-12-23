@@ -1,3 +1,4 @@
+// NOTE: this method of sign in is temporary put on hold(remove or add later)
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(request: NextRequest) {
