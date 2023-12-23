@@ -93,7 +93,6 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 
 
   useEffect(() => {
-    console.log('playlist volume change')
     // set playlist current volume
     const setPlaylistVolume = (volume: number) => {
       if (workingPlaylist.playlist) workingPlaylist.playlist.volume = volume / 100;
@@ -104,13 +103,12 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 
 
   useEffect(() => {
-    console.log("playlist change")
     // change playlist
     const setNewPlaylist = () => {
       try {
         if (workingPlaylist.playlist) workingPlaylist.playlist.stop();
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
 
       setWorkingPlaylist((pre) => ({
@@ -128,7 +126,6 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 
 
   useEffect(() => {
-    console.log('track change');
     // track change
     const currentTrack = state.playBackControl.currentTrack;
     const queue = state.playlist.queue;
