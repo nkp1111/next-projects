@@ -10,7 +10,7 @@ const displayNav: DisplayNavProps[] = [
     title: "Account",
     icon: FiHome,
     link: "/account",
-    active: false,
+    active: true,
   },
   {
     id: 2,
