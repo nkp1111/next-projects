@@ -86,7 +86,7 @@ export default function AudioField() {
           <small>{formatSecondsDuration(currentDuration)}</small>
         </span>
         <span>
-          <progress className="progress w-96 h-1 cursor-pointer"
+          <progress className="progress w-80 h-1 cursor-pointer"
             value={Math.floor(currentDuration * 100 / currentTrack.duration)}
             max="100"></progress>
         </span>
