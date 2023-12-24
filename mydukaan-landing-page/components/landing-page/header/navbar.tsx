@@ -20,6 +20,12 @@ export default function Navbar() {
         setShowBackground(true);
       }
     })
+
+    if (window.scrollY < 1) {
+      setShowBackground(false);
+    } else {
+      setShowBackground(true);
+    }
   }, []);
 
   useEffect(() => {

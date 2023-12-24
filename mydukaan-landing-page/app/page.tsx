@@ -1,6 +1,7 @@
 import FrontPage from "@/components/landing-page/front-page";
 import MainBackground from "@/components/landing-page/general/main-background";
 import Header from "@/components/landing-page/header";
+import MovingBrand from "@/components/landing-page/moving-brand";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <Header />
       <main className="relative z-20">
         <FrontPage />
+        <MovingBrand />
       </main>
     </div>
   )
