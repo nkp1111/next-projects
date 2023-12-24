@@ -18,7 +18,7 @@ export default function NavbarDropdownContent({ currentNavItem, setNavItemHover 
       }}
     >
       {currentNavData.map(data => (
-        <a href="#" className="py-3 sm:py-4 max-w-80 cursor-pointer hover:bg-zinc-200 p-2 rounded-md"
+        <a href="#" className="py-3 sm:py-4 max-w-80 cursor-pointer hover:bg-zinc-200 px-3 rounded-md"
           key={data.id}>
           <div className="flex items-start">
             <div className="flex-shrink-0 ">

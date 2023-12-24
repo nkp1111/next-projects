@@ -38,7 +38,7 @@ export default function TimeDeal() {
   return (
     <div className={`bg-black text-white ${endDate.getTime() - Date.now() > 0 ? "block" : "hidden"}`}>
       <MainPaddingX>
-        <div className='py-3 flex justify-between items-center'>
+        <div className='py-3 flex flex-col lg:flex-row justify-between items-center flex-wrap gap-2'>
           <div className='text-lg'>
             <span>&diams;</span>
             <strong className='mx-3'><em>Limited time deal</em></strong>
@@ -47,7 +47,7 @@ export default function TimeDeal() {
 
           <div className='flex gap-3 items-center'>
             <p>Subscribe now to Yearly plan and avail upto 25% discount!</p>
-            <button type="button" className='bg-orange-400 text-black p-2 px-3 font-semibold rounded-md text-sm hover:-mt-1 transition-all duration-300 ease-linear'>Avail now</button>
+            <button type="button" className='bg-orange-400 text-black p-2 px-3 font-semibold rounded-md text-sm hover:-mt-1 transition-all duration-300 ease-linear whitespace-nowrap'>Avail now</button>
           </div>
 
           {/* remaining time left  */}

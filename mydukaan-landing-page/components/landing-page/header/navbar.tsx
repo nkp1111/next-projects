@@ -23,22 +23,22 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (currentNavItem) {
+    if (navItemHover) {
       setShowBackground(true);
     } else {
       if (window.scrollY < 1) {
         setShowBackground(false);
       }
     }
-  }, [currentNavItem]);
+  }, [navItemHover]);
 
   return (
     <div className={`${showBackground ? "bg-white" : "bg-transparent"} transition-all duration-300 ease-linear`} >
       <nav>
         <MainPaddingX>
-          <div className="flex w-full items-center flex-wrap py-4">
+          <div className="flex w-full items-center flex-wrap py-4 gap-1 justify-between">
             {/* logo  */}
-            <Link href="/" className='relative'>
+            <Link href="/" className='relative mx-auto'>
               <div className="absolute bg-white rounded-full h-full aspect-square -z-10 top-0"></div>
               <Image
                 src={logo}
@@ -55,7 +55,7 @@ export default function Navbar() {
               </svg>
             </button>
 
-            <div className="hidden items-center justify-between font-medium w-full md:flex md:w-auto md:ms-16 ms-5 md:flex-1 flex-wrap">
+            <div className="hidden items-center justify-center lg:justify-between font-medium w-full md:flex md:w-auto lg:ms-16 md:flex-1 flex-wrap gap-2">
               <ul className="flex gap-1 md:p-0 rounded-lg">
                 {/* nav items  */}
                 {["Products", "Company", "Resources"].map(item => (
@@ -79,8 +79,8 @@ export default function Navbar() {
                 </li>
               </ul>
 
-              <div className='ms-auto flex gap-5'>
-                <a role='button' href="#" className='cursor-pointer text-lg rounded-md text-gray-700 hover:underline transition-all duration-300 ease-linear px-5 py-3'>Sign In</a>
+              <div className='gap-3 flex'>
+                <a role='button' href="#" className='cursor-pointer text-lg rounded-md text-gray-700 hover:underline transition-all duration-300 ease-linear px-2 py-3'>Sign In</a>
                 <div>
                   <button type="button" className='cursor-pointer text-lg rounded-md bg-sky-700 text-white px-5 py-3 transition-all duration-300 ease-linear hover:-mt-1'>Start Free</button>
                 </div>
