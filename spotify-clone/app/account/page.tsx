@@ -1,7 +1,7 @@
 import DisplayHeader from '@/components/display/header'
 import { getServerSession } from 'next-auth'
 import React from 'react'
-import { authOptions } from '../api/auth/[...nextauth]/route'
+import { authOptions } from '../api/auth/[...nextauth]/authOptions'
 import { redirect } from 'next/navigation'
 
 export default async function page() {

@@ -6,7 +6,7 @@ import { FaSortDown } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import HeaderNav from './headerNav';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
 
 export default async function DisplayHeader() {
   const session = await getServerSession(authOptions);
