@@ -34,7 +34,7 @@ export default function Navbar() {
 
   return (
     <div className={`${showBackground ? "bg-white" : "bg-transparent"} transition-all duration-300 ease-linear`} >
-      <nav>
+      <nav className='relative'>
         <MainPaddingX>
           <div className="flex w-full items-center flex-wrap py-4 gap-1 justify-between">
             {/* logo  */}
@@ -48,14 +48,14 @@ export default function Navbar() {
               />
             </Link>
 
-            <button data-collapse-toggle="mega-menu-full" type="button" className="flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden ms-auto" aria-controls="mega-menu-full" aria-expanded="false">
+            <button data-collapse-toggle="mega-menu-full" type="button" className="flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden ms-auto" aria-controls="mega-menu-full" aria-expanded="false">
               <span className="sr-only">Open main menu</span>
               <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
               </svg>
             </button>
 
-            <div className="hidden items-center justify-center lg:justify-between font-medium w-full md:flex md:w-auto lg:ms-16 md:flex-1 flex-wrap gap-2">
+            <div className="hidden items-center justify-center lg:justify-between font-medium w-full lg:flex md:w-auto lg:ms-16 md:flex-1 flex-wrap gap-2">
               <ul className="flex gap-1 md:p-0 rounded-lg">
                 {/* nav items  */}
                 {["Products", "Company", "Resources"].map(item => (
@@ -90,7 +90,7 @@ export default function Navbar() {
         </MainPaddingX>
 
         {/* dropdown- item  */}
-        <div className={`mt-1 border-t border-secondary py-4 transition-all duration-300 ease-linear ${navItemHover ? "flex w-full" : "hidden"}`}>
+        <div className={`bg-white border-t border-secondary py-4 transition-all duration-300 ease-linear absolute top-[100%] left-0 w-full ${navItemHover ? "flex w-full" : "hidden"}`}>
           <MainPaddingX>
             <NavbarDropdownContent
               currentNavItem={currentNavItem as "" | "Resources" | "Products" | "Company"}
