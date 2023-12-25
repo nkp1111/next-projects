@@ -5,7 +5,7 @@ export default function MainPaddingX(
     : { children: React.ReactNode }
 ) {
   return (
-    <div className='px-10 md:px-48'>
+    <div className='px-10 md:px-32 xl:px-40 2xl:px-48'>
       {children}
     </div>
   )

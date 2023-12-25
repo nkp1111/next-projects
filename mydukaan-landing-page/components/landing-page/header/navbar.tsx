@@ -44,7 +44,7 @@ export default function Navbar() {
         <MainPaddingX>
           <div className="flex w-full items-center flex-wrap py-4 gap-1 justify-between">
             {/* logo  */}
-            <Link href="/" className='relative mx-auto'>
+            <Link href="/" className='relative lg:mx-auto '>
               <div className="absolute bg-white rounded-full h-full aspect-square -z-10 top-0"></div>
               <Image
                 src={logo}
@@ -54,7 +54,7 @@ export default function Navbar() {
               />
             </Link>
 
-            <button data-collapse-toggle="mega-menu-full" type="button" className="flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden ms-auto" aria-controls="mega-menu-full" aria-expanded="false">
+            <button data-collapse-toggle="mega-menu-full" type="button" className="flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden ms-auto bg-white" aria-controls="mega-menu-full" aria-expanded="false">
               <span className="sr-only">Open main menu</span>
               <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />

@@ -36,9 +36,9 @@ export default function TimeDeal() {
   }, []);
 
   return (
-    <div className={`bg-black text-white ${endDate.getTime() - Date.now() > 0 ? "block" : "hidden"}`}>
+    <div className={`bg-black text-white ${endDate.getTime() - Date.now() > 0 ? "block" : "hidden"} sm:text-base text-xs`}>
       <MainPaddingX>
-        <div className='py-3 flex flex-col lg:flex-row justify-between items-center flex-wrap gap-2'>
+        <div className='py-3 flex flex-col lg:flex-row justify-between items-center flex-wrap sm:gap-2 gap-0'>
           <div className='text-lg'>
             <span>&diams;</span>
             <strong className='mx-3'><em>Limited time deal</em></strong>
