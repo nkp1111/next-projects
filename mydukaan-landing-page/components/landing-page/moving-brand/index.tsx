@@ -16,30 +16,32 @@ const imageArr = [healthXpImage, vuImage, govoImage, styleUpImage, wowImage, lem
 
 export default function MovingBrand() {
   return (
-    <section className='bg-stone-900 py-10 flex gap-64 overflow-hidden group'>
-      <div className="flex animate-loop-scroll space-x-64 group-hover:paused">
+    <section className='bg-stone-900 flex space-x-32 overflow-hidden group items-center'>
+      <div className="flex items-center animate-loop-scroll space-x-32 group-hover:paused w-auto">
         {imageArr.map((item, ind) => (
-          <Image
-            key={ind}
-            src={item}
-            alt=""
-            width={80}
-            height={40}
-            className='w-36 aspect-auto'
-          />
+          <div key={ind} className='w-48 h-48 flex items-center'>
+            <Image
+              src={item}
+              alt=""
+              width={80}
+              height={40}
+              className='w-full h-auto'
+            />
+          </div>
         ))}
       </div>
-      <div className="flex animate-loop-scroll space-x-64 group-hover:paused"
+      <div className="flex items-center animate-loop-scroll space-x-32 group-hover:paused w-auto"
         aria-hidden={true}>
         {imageArr.map((item, ind) => (
-          <Image
-            key={ind}
-            src={item}
-            alt=""
-            width={80}
-            height={40}
-            className='w-36 aspect-auto'
-          />
+          <div key={ind} className='w-48 h-48 flex items-center'>
+            <Image
+              src={item}
+              alt=""
+              width={80}
+              height={40}
+              className='w-full h-auto'
+            />
+          </div>
         ))}
       </div>
 

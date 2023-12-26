@@ -51,6 +51,7 @@ export default function Navbar() {
                 alt="logo"
                 width={160}
                 height={50}
+                className='aspect-auto'
               />
             </Link>
 
