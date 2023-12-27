@@ -3,6 +3,7 @@ import FrontPage from "@/components/landing-page/front-page";
 import MainBackground from "@/components/landing-page/general/main-background";
 import Header from "@/components/landing-page/header";
 import MovingBrand from "@/components/landing-page/moving-brand";
+import ToolsSection from "@/components/landing-page/tools-section";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <FrontPage />
         <MovingBrand />
         <FeatureSection />
+        <ToolsSection />
       </main>
     </div>
   )
