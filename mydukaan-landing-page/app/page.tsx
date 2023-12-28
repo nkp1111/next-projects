@@ -3,6 +3,7 @@ import FrontPage from "@/components/landing-page/front-page";
 import MainBackground from "@/components/landing-page/general/main-background";
 import Header from "@/components/landing-page/header";
 import MovingBrand from "@/components/landing-page/moving-brand";
+import PluginSection from "@/components/landing-page/plugin-section";
 import ThemeSection from "@/components/landing-page/theme-section";
 import ToolsSection from "@/components/landing-page/tools-section";
 
@@ -17,6 +18,7 @@ export default function Home() {
         <FeatureSection />
         <ToolsSection />
         <ThemeSection />
+        <PluginSection />
       </main>
     </div>
   )
