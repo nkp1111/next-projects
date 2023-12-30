@@ -16,7 +16,7 @@ export default function TestimonialSection() {
               heading={"Hear from our satisfied customers"}
             />
           </div>
-          <p className='md:text-xl text-lg text-gray-600 mt-5 mb-12 md:w-11/12 md:mx-auto order-3'>From beginners to enterprise brands, everyone loves Dukaan!</p>
+          <p className='md:text-xl text-lg text-gray-600 my-5 md:w-11/12 md:mx-auto order-3'>From beginners to enterprise brands, everyone loves Dukaan!</p>
           <Image
             src={apostropheImage}
             alt={"."}

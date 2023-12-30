@@ -4,20 +4,48 @@ import React, { useEffect, useState } from 'react'
 import TestimonialArticle from './testimonial-article';
 import { testimonialArticleData } from './testimonial-article-data';
 
-const getCarouselItems = () => [
-  {
-    position: 0,
-    el: document.getElementById('carousel-item-1') as HTMLElement,
-  },
-  {
-    position: 1,
-    el: document.getElementById('carousel-item-2') as HTMLElement,
-  },
-  {
-    position: 2,
-    el: document.getElementById('carousel-item-3') as HTMLElement,
-  },
-];
+const getCarouselItems = () => {
+  if (window.innerWidth >= 768) {
+    return [
+      {
+        position: 0,
+        el: document.getElementById('carousel-item-1') as HTMLElement,
+      },
+      {
+        position: 1,
+        el: document.getElementById('carousel-item-2') as HTMLElement,
+      },
+      {
+        position: 2,
+        el: document.getElementById('carousel-item-3') as HTMLElement,
+      },
+    ];
+  } else {
+    return [
+      {
+        position: 0,
+        el: document.getElementById('carousel-item-6') as HTMLElement,
+      },
+      {
+        position: 1,
+        el: document.getElementById('carousel-item-7') as HTMLElement,
+      },
+      {
+        position: 2,
+        el: document.getElementById('carousel-item-8') as HTMLElement,
+      },
+      {
+        position: 3,
+        el: document.getElementById('carousel-item-9') as HTMLElement,
+      },
+      {
+        position: 4,
+        el: document.getElementById('carousel-item-10') as HTMLElement,
+      },
+    ];
+  }
+}
+
 
 
 export default function TestimonialCarousel() {
@@ -40,6 +68,31 @@ export default function TestimonialCarousel() {
     return () => {
       prevButton.removeEventListener('click', () => showPrev(items.length - 1));
       nextButton.removeEventListener('click', () => showNext(items.length - 1));
+    }
+  }, []);
+
+  useEffect(() => {
+    const sliderIndicatorHolder = document.getElementById("slider-indicators") as HTMLElement;
+    const items = getCarouselItems();
+    const addIndicators = (items: any) => {
+      sliderIndicatorHolder.innerHTML = "";
+      items.forEach((_: any, index: number) => {
+        const indicator = document.createElement("button");
+        indicator.setAttribute("id", `carousel-indicator-${index}`);
+        indicator.setAttribute("type", "button");
+        indicator.setAttribute("class", `h-3 w-3 rounded-full bg-gray-500 duration-300 linear-ease transition-all`);
+        indicator.setAttribute("aria-current", `${index === currentPos}`);
+        indicator.setAttribute("aria-label", `Slide-${index + 1}`)
+        indicator.addEventListener("click", () => setCurrentPos(index))
+        sliderIndicatorHolder?.appendChild(indicator);
+      })
+    }
+    window.addEventListener("resize", () => {
+      addIndicators(items)
+    });
+    addIndicators(items);
+    return () => {
+      window.removeEventListener("resize", () => addIndicators(items))
     }
   }, []);
 
@@ -71,6 +124,13 @@ export default function TestimonialCarousel() {
       })
     }
     showHideCarouselItem();
+    const sliderIndicatorHolder = document.getElementById("slider-indicators") as HTMLElement;
+    const indicators: HTMLCollection = sliderIndicatorHolder.children;
+
+    for (let i = 0; i < indicators.length; i++) {
+      indicators[i].classList.remove("bg-gray-900")
+      if (i === currentPos) indicators[i].classList.add("bg-gray-900")
+    }
   }, [currentPos]);
 
   return (
@@ -79,27 +139,40 @@ export default function TestimonialCarousel() {
       <div
         className="relative rounded-lg pb-5"
       >
-        {/* <!-- Item 1 --> */}
-        <div id="carousel-item-1" className="hidden duration-700 ease-in-out px-12">
-          <TestimonialArticle articleData={testimonialArticleData[0]} />
-          <TestimonialArticle articleData={testimonialArticleData[1]} />
+        <div className='md:block hidden'>
+          {/* <!-- Item 1 --> */}
+          <div id="carousel-item-1" className="hidden duration-700 ease-in-out px-12">
+            <TestimonialArticle articleData={testimonialArticleData[0]} />
+            <TestimonialArticle articleData={testimonialArticleData[1]} />
+          </div>
+          {/* <!-- Item 2 --> */}
+          <div id="carousel-item-2" className="hidden duration-700 ease-in-out px-12 ">
+            <TestimonialArticle articleData={testimonialArticleData[2]} />
+            <TestimonialArticle articleData={testimonialArticleData[3]} />
+          </div>
+          {/* <!-- Item 3 --> */}
+          <div id="carousel-item-3" className="hidden duration-700 ease-in-out px-12 ">
+            <TestimonialArticle articleData={testimonialArticleData[3]} />
+            <TestimonialArticle articleData={testimonialArticleData[4]} />
+          </div>
         </div>
-        {/* <!-- Item 2 --> */}
-        <div id="carousel-item-2" className="hidden duration-700 ease-in-out px-12 ">
-          <TestimonialArticle articleData={testimonialArticleData[2]} />
-          <TestimonialArticle articleData={testimonialArticleData[3]} />
+        <div className='md:hidden block'>
+          {/* <!-- Item --> */}
+          {testimonialArticleData.map((item) => (
+            <div key={item.id} id={`carousel-item-${item.id + 5}`} className="hidden duration-700 ease-in-out px-12">
+              <TestimonialArticle articleData={item} />
+            </div>
+          ))}
         </div>
-        {/* <!-- Item 3 --> */}
-        <div id="carousel-item-3" className="hidden duration-700 ease-in-out px-12 ">
-          <TestimonialArticle articleData={testimonialArticleData[3]} />
-          <TestimonialArticle articleData={testimonialArticleData[4]} />
-        </div>
+
+
       </div>
       {/* <!-- Slider indicators --> */}
       <div
         className="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse"
+        id="slider-indicators"
       >
-        <button
+        {/* <button
           id="carousel-indicator-1"
           type="button"
           className={`h-3 w-3 rounded-full bg-gray-500 duration-300 linear-ease transition-all ${currentPos === 0 && "bg-gray-900"}`}
@@ -108,27 +181,8 @@ export default function TestimonialCarousel() {
           onClick={() => {
             setCurrentPos(0)
           }}
-        ></button>
-        <button
-          id="carousel-indicator-2"
-          type="button"
-          className={`h-3 w-3 rounded-full bg-gray-500 duration-300 linear-ease transition-all ${currentPos === 1 && "bg-gray-900"}`}
-          aria-current="false"
-          aria-label="Slide 2"
-          onClick={() => {
-            setCurrentPos(1)
-          }}
-        ></button>
-        <button
-          id="carousel-indicator-3"
-          type="button"
-          className={`h-3 w-3 rounded-full bg-gray-500 duration-300 linear-ease transition-all ${currentPos === 2 && "bg-gray-900"}`}
-          aria-current="false"
-          aria-label="Slide 3"
-          onClick={() => {
-            setCurrentPos(2)
-          }}
-        ></button>
+        ></button> */}
+
       </div>
       {/* <!-- Slider controls --> */}
       <button

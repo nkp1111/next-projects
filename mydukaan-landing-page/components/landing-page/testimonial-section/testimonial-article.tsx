@@ -15,7 +15,7 @@ interface TestimonialArticleParams {
 
 export default function TestimonialArticle({ articleData }: TestimonialArticleParams) {
   return (
-    <article className='bg-white rounded-md py-6 px-5 mx-auto flex-col inline-flex flex-1 sm:h-[480px] h-auto'>
+    <article className='bg-white rounded-md py-6 px-5 mx-auto flex-col inline-flex flex-1 lg:h-[500px] md:h-[600px] h-auto'>
       <div className="flex flex-col order-2 flex-1 justify-between">
         <div>
           <h3 className='font-semibold xl:text-xl text-lg mb-1'>
