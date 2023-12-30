@@ -4,6 +4,7 @@ import MainBackground from "@/components/landing-page/general/main-background";
 import Header from "@/components/landing-page/header";
 import MovingBrand from "@/components/landing-page/moving-brand";
 import PluginSection from "@/components/landing-page/plugin-section";
+import TestimonialSection from "@/components/landing-page/testimonial-section";
 import ThemeSection from "@/components/landing-page/theme-section";
 import ToolsSection from "@/components/landing-page/tools-section";
 
@@ -19,6 +20,7 @@ export default function Home() {
         <ToolsSection />
         <ThemeSection />
         <PluginSection />
+        <TestimonialSection />
       </main>
     </div>
   )
