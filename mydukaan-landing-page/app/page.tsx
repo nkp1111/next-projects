@@ -10,6 +10,7 @@ import ScaleSection from "@/components/landing-page/scale-section";
 import TestimonialSection from "@/components/landing-page/testimonial-section";
 import ThemeSection from "@/components/landing-page/theme-section";
 import ToolsSection from "@/components/landing-page/tools-section";
+import Footer from "@/components/landing-page/footer";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
         <BlogSection />
         <SellingSection />
       </main>
+      <Footer />
     </div>
   )
 }
