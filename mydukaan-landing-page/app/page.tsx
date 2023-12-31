@@ -1,3 +1,4 @@
+import BlogSection from "@/components/landing-page/blog-section";
 import FeatureSection from "@/components/landing-page/feature-section";
 import FrontPage from "@/components/landing-page/front-page";
 import MainBackground from "@/components/landing-page/general/main-background";
@@ -23,6 +24,7 @@ export default function Home() {
         <PluginSection />
         <TestimonialSection />
         <ScaleSection />
+        <BlogSection />
       </main>
     </div>
   )

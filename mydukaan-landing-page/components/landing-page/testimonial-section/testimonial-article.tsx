@@ -32,7 +32,7 @@ export default function TestimonialArticle({ articleData }: TestimonialArticlePa
             alt={articleData.name + "avatar"}
             width={20}
             height={20}
-            className="relative inline-block h-[58px] w-[58px] !rounded-full  object-cover object-center"
+            className="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center"
           />
           <div className="flex w-full flex-col gap-0.5">
             <div className="flex items-start justify-start flex-col">
