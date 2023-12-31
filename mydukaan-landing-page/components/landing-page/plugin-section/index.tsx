@@ -15,7 +15,7 @@ export default function PluginSection() {
         <p className='md:text-xl text-lg text-gray-600 mt-5 mb-12 md:w-11/12 md:mx-auto'>Choose from over 40+ plugins. Be it tracking analytics, managing shipments to building email lists. There&apos;s a plugin for everything.</p>
       </div>
       <div className='hidden -mt-1 -mt-2 -mt-3 -mt-5 -mt-6 -mt-12 -mt-20 -mt-16 -mt-24'></div>
-      <div className='flex flex-row gap-8 mt-32 relative'>
+      <div className='flex flex-row gap-8 mt-32 relative md:flex-nowrap flex-wrap'>
         {pluginArticleData.map(articleData => (
           <PluginSectionArticle
             key={articleData.id}

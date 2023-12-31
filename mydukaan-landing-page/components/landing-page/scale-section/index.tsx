@@ -13,7 +13,7 @@ export default function ScaleSection() {
     "Personalised Storefront Design",
   ]
   return (
-    <section className={`z-30 relative py-20 bg-neutral-900 text-white text-center`}>
+    <section className={`z-30 relative py-20 bg-neutral-900 text-white text-center overflow-hidden`}>
       <BackgroundGrid />
       <MainPaddingX>
         <div className='md:w-5/6 md:mx-auto'>
@@ -22,8 +22,8 @@ export default function ScaleSection() {
           />
           <p className='text-lg mt-3 mb-5 text-gray-400'>Unlock your brands’s online potential on Dukaan’s lightning fast infrastructure with custom built features.</p>
 
-          <div className='flex md:w-3/4 w-full mx-auto'>
-            <ul className="mx-auto flex flex-col my-10 gap-10 flex-1">
+          <div className='flex lg:w-3/4 w-full mx-auto md:flex-row flex-col my-10 gap-10'>
+            <ul className="md:mx-auto flex flex-col gap-10 flex-1">
               {scaleFeatures.slice(0, 3).map(feature => (
                 <li key={feature}
                   className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -34,7 +34,7 @@ export default function ScaleSection() {
                 </li>
               ))}
             </ul>
-            <ul className="mx-auto flex flex-col my-10 gap-10 md:w-3/4 w-full flex-1">
+            <ul className="md:mx-auto flex flex-col gap-10 flex-1">
               {scaleFeatures.slice(3,).map(feature => (
                 <li key={feature}
                   className="flex items-center space-x-3 rtl:space-x-reverse">
