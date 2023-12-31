@@ -53,7 +53,7 @@ export default function Footer() {
             </div>
             <div className="flex md:justify-between items-center md:flex-row flex-col">
               <p>By Neeraj Parmar, 2023.</p>
-              <p>Made in india</p>
+              <p>Made in India</p>
             </div>
           </div>
         </div>
