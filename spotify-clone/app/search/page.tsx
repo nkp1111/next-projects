@@ -2,7 +2,7 @@ import AudioCard from "@/components/display/audioCard";
 import DisplayHeader from "@/components/display/header";
 import SearchBar from "@/components/search/searchBar";
 import ShowSearchResult from "@/components/search/showSearchResult";
-import getAllPlaylist from "@/lib/playlist/getAllPlaylist";
+import { getAllPlaylist } from "@/lib/playlist/getAllPlaylist";
 
 export default async function Search() {
   const playlists = await getAllPlaylist();

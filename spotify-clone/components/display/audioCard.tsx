@@ -19,7 +19,7 @@ export default function AudioCard(
         {playlists.map((playlist, ind) => (
           <Link
             key={ind}
-            href={`/playlist/${playlist.id}`}
+            href={`/playlist/${playlist.id || playlist._id}`}
             className="card bg-base-100 shadow-xl p-4 rounded-sm cursor-pointer">
             <figure className='rounded-md'>
               <Image

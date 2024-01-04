@@ -3,6 +3,7 @@ import { SampleSongsProps } from "@/types";
 const songs: SampleSongsProps[] = [
   {
     id: "PbM6xHE9aF",
+    _id: "PbM6xHE9aF",
     name: "Come 2gether",
     duration: 206,
     artist: "Ooyy",
@@ -14,6 +15,7 @@ const songs: SampleSongsProps[] = [
   },
   {
     id: "3SAs2YaWH6",
+    _id: "3SAs2YaWH6",
     name: "Genesis",
     duration: 259,
     artist: "Ooyy",
@@ -25,6 +27,7 @@ const songs: SampleSongsProps[] = [
   },
   {
     id: "Cax8ZhYuQ4",
+    _id: "Cax8ZhYuQ4",
     name: "Flames",
     duration: 185,
     artist: "Ooyy",
@@ -36,6 +39,7 @@ const songs: SampleSongsProps[] = [
   },
   {
     id: "WSb7c0LQub",
+    _id: "WSb7c0LQub",
     name: "Calling Me",
     duration: 222,
     artist: "Ooyy",
@@ -47,6 +51,7 @@ const songs: SampleSongsProps[] = [
   },
   {
     id: "Zcd1HIcopz",
+    _id: "Zcd1HIcopz",
     name: "Thunderbird",
     duration: 188,
     artist: "Ooyy",

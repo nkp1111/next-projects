@@ -3,6 +3,7 @@ import { SamplePlaylistProps } from "@/types";
 const playlists: SamplePlaylistProps[] = [
   {
     id: "1",
+    _id: "1",
     playlistName: "Electronic",
     createdBy: "Developer",
     numberOfSongs: 3,
@@ -18,6 +19,7 @@ const playlists: SamplePlaylistProps[] = [
   },
   {
     id: "2",
+    _id: "2",
     playlistName: "Soothing Tunes",
     createdBy: "Developer",
     numberOfSongs: 2,

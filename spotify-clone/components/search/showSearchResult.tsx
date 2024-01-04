@@ -80,7 +80,7 @@ export default function ShowSearchResult() {
             </div>
 
             <div className={`absolute bottom-4 right-4 transition-all duration-300 ease-linear ${pointerOnTopResult ? "block" : "hidden"}`}>
-              <PlaylistPlayButton playlistId={topResultPlaylist[0].id} />
+              <PlaylistPlayButton playlistId={String(topResultPlaylist[0].id || topResultPlaylist[0]._id)} />
             </div>
           </div>
         </article>
@@ -101,7 +101,7 @@ export default function ShowSearchResult() {
                   />
 
                   <div className={`absolute opacity-40 w-1/2 h-1/2 top-0 left-0 me-3 transition-all ease-linear duration-300 ${pointerResultIndex === index ? "block" : "hidden"}`}>
-                    <PlaylistPlayButton playlistId={topResultPlaylist[0].id}></PlaylistPlayButton>
+                    <PlaylistPlayButton playlistId={String(topResultPlaylist[0].id || topResultPlaylist[0]._id)}></PlaylistPlayButton>
                   </div>
                 </div>
                 <div className='flex flex-col ms-4'>

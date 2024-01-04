@@ -41,7 +41,7 @@ export default function SongTable({ playlistSongs, playlistId }: SongTableParams
     setCurrentTrack,
     setCurrentPlaylist,
   }: ContextParams = useGlobalContext();
-  const playingCurrentSong = (current: SampleSongsProps, playing: SampleSongsProps) => isPlaying && current.id === playing.id;
+  const playingCurrentSong = (current: SampleSongsProps, playing: SampleSongsProps) => isPlaying && String(current._id) === String(playing._id);
 
   return (
     <div className="p-2 w-full">
@@ -57,7 +57,7 @@ export default function SongTable({ playlistSongs, playlistId }: SongTableParams
 
       {/* table body  */}
       {playlistSongs.map((song, index) => (
-        <div key={song.id}
+        <div key={song.id || String(song._id)}
           className='flex px-3 items-center text-gray-400 my-2 btn-ghost transition-all duration-300 py-2'
           onMouseEnter={() => setHoverInd(index)}
           onMouseLeave={() => setHoverInd(-1)}>
@@ -78,15 +78,15 @@ export default function SongTable({ playlistSongs, playlistId }: SongTableParams
                             onClick={handlePlayPauseTrack} />
                           : <FaPlay className="w-4 h-4"
                             onClick={() => {
-                              if (playlistId !== currentPlaylist.id) {
+                              if (playlistId !== String(currentPlaylist._id)) {
                                 setCurrentPlaylist(playlistId)
                               }
-                              setCurrentTrack(song.id);
+                              setCurrentTrack(String(song._id));
                             }} />}
                       </button>
                       : playingCurrentSong(song, currentTrack)
                         ? <AnimatedIcon />
-                        : <span className={`${song.id === currentTrack.id && "text-primary font-semibold"}`}>{index + 1}</span>
+                        : <span className={`${song._id === currentTrack._id && "text-primary font-semibold"}`}>{index + 1}</span>
                   }
                 </div>
               )}
@@ -100,7 +100,7 @@ export default function SongTable({ playlistSongs, playlistId }: SongTableParams
                     className='object-cover w-14 h-14'
                   />
                   <div className='flex flex-col'>
-                    <span className={`text-lg ${song.id === currentTrack.id ? "text-primary font-semibold" : "text-white"}`}>{song.name}</span>
+                    <span className={`text-lg ${song._id === currentTrack._id ? "text-primary font-semibold" : "text-white"}`}>{song.name}</span>
                     <span className='text-sm'>{song.artist}</span>
                   </div>
                 </div>

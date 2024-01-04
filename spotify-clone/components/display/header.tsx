@@ -34,7 +34,7 @@ export default async function DisplayHeader() {
                 className='image-full object-cover w-7 h-7 rounded-full'
               />
             </span>
-            <span> Developer</span>
+            <span> {session?.user?.name || "Developer"}</span>
             <span className='-mt-2'><FaSortDown /></span>
           </summary>
           <ul className="p-1 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-60 right-16">

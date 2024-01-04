@@ -10,6 +10,7 @@ const nextConfig = {
       { hostname: "is3-ssl.mzstatic.com" },
       { hostname: "i1.sndcdn.com" },
       { hostname: "icons8.com" },
+      { hostname: "lh3.googleusercontent.com" },
     ]
   },
   webpack: (config, options) => {

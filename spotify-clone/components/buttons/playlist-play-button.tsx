@@ -21,7 +21,7 @@ export default function PlaylistPlayButton({ playlistId }: { playlistId: string 
       data-tip={isPlaying ? "Pause" : "Play"}
       aria-label={isPlaying ? "Pause" : "Play"}
       onClick={() => {
-        if (currentPlaylist.id === playlistId) {
+        if (String(currentPlaylist._id) === playlistId) {
           handlePlayPauseTrack()
         } else {
           setCurrentPlaylist(playlistId)

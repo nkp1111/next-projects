@@ -67,8 +67,18 @@ const theme: NextAuthThemeProps = {
 
 const adapter = MongoDBAdapter(clientPromise) as Adapter;
 
+const callbacks = {
+  session({ session, user }) {
+    session.user.id = user.id || user._id;
+    session.user.likedSongs = user.likedSongs || [];
+    session.user.playlist = user.playlist || [];
+    return session
+  }
+}
+
 export const authOptions: NextAuthOptions = {
   providers,
   theme,
   adapter,
+  callbacks,
 }

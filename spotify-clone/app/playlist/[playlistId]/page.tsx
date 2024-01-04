@@ -3,8 +3,8 @@ import DisplayHeader from '@/components/display/header';
 import PlaylistBanner from '@/components/playlist/banner';
 import SongTable from '@/components/playlist/songTable';
 import songs from '@/constant/sampleSongs';
-import getAllPlaylist from '@/lib/playlist/getAllPlaylist';
-import { SampleSongsProps } from '@/types';
+import { getAllPlaylist } from '@/lib/playlist/getAllPlaylist';
+import { SamplePlaylistProps, SampleSongsProps } from '@/types';
 import { notFound } from 'next/navigation';
 import React, { cache } from 'react'
 import { FaPlay } from 'react-icons/fa';
@@ -19,8 +19,8 @@ type PlaylistParams = {
  * @param {string} playlistId
  */
 const getCurrentPlaylist = cache(async (playlistId: string) => {
-  const playlists = await getAllPlaylist();
-  return playlists.find(pl => pl.id === playlistId);
+  const playlists: SamplePlaylistProps[] = await getAllPlaylist();
+  return playlists.find(pl => String(pl._id) === playlistId);
 })
 
 
@@ -61,7 +61,7 @@ export default async function Playlist({ params: { playlistId } }: PlaylistParam
         </div>
 
         <div className='mt-3'>
-          <SongTable playlistSongs={playlistSongs} playlistId={playlist.id} />
+          <SongTable playlistSongs={playlistSongs} playlistId={String(playlist.id || playlist._id)} />
         </div>
 
       </div>
