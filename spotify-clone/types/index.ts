@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import type { IconType } from "react-icons";
 
 interface SidebarNavProps {
@@ -14,6 +15,7 @@ interface DisplayNavProps extends SidebarNavProps {
 
 interface SampleSongsProps {
   id: string;
+  _id: ObjectId | string;
   name: string;
   duration: number;
   artist: string;
@@ -27,6 +29,7 @@ interface SampleSongsProps {
 
 interface SamplePlaylistProps {
   id: string;
+  _id: ObjectId | string;
   playlistName: string;
   createdBy: string;
   numberOfSongs: number;
