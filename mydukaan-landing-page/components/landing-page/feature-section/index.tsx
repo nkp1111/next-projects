@@ -6,7 +6,7 @@ import SectionArticle from './section-article'
 
 export default function FeatureSection() {
   return (
-    <section className='z-30 relative py-16'>
+    <section className='z-30 relative py-16 bg-white'>
       <MainPaddingX>
         <div className='md:w-5/6 md:mx-auto'>
           <SectionHeading

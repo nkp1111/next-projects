@@ -169,7 +169,7 @@ export default function TestimonialCarousel() {
       </div>
       {/* <!-- Slider indicators --> */}
       <div
-        className="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse"
+        className="absolute bottom-7 left-1/2 z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse"
         id="slider-indicators"
       >
         {/* <button

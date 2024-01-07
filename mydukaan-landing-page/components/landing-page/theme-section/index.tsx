@@ -6,7 +6,7 @@ import { themeArticleData } from './theme-article-data'
 
 export default function ThemeSection() {
   return (
-    <section className={`z-30 relative py-20`}>
+    <section className={`z-30 relative py-20 bg-white`}>
       <MainPaddingX>
         <div className='md:w-5/6 md:mx-auto'>
           <SectionHeading

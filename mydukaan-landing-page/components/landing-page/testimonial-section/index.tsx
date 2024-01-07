@@ -6,9 +6,10 @@ import TestimonialCarousel from './testimonial-carousel'
 import MainPaddingX from '../general/main-padding-x'
 
 
-export default function TestimonialSection() {
+export default function TestimonialSection({ bgColor = false }: { bgColor?: boolean }) {
+  const bgCustomColor = "rgba(250,183,59,0.1)"
   return (
-    <section className={`z-30 relative py-16`}>
+    <section className={`z-30 relative py-16`} style={{ background: !bgColor ? "white" : bgCustomColor }}>
       <MainPaddingX>
         <div className='md:w-3/4 md:mx-auto text-center flex flex-col'>
           <div className='order-2'>
