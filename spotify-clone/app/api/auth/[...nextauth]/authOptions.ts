@@ -1,5 +1,5 @@
 import { NextAuthThemeProps } from "@/types/auth"
-import { NextAuthOptions } from "next-auth"
+import { NextAuthOptions, Session } from "next-auth"
 // import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google"
 import GitHubProvider from "next-auth/providers/github"
@@ -68,7 +68,7 @@ const theme: NextAuthThemeProps = {
 const adapter = MongoDBAdapter(clientPromise) as Adapter;
 
 const callbacks = {
-  session({ session, user }) {
+  session({ session, user }: { session: Session, user: any }) {
     session.user.id = user.id || user._id;
     session.user.likedSongs = user.likedSongs || [];
     session.user.playlist = user.playlist || [];
