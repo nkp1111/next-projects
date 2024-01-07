@@ -4,11 +4,7 @@ import React, { useEffect, useState } from 'react'
 import MainPaddingX from '../general/main-padding-x'
 
 
-const limitedTimeDealEndTime = process.env.LIMITED_DEAL_END_DATE || "2023-12-28T05:16:16.971Z";
-const endDate = new Date(limitedTimeDealEndTime);
-
-
-export default function TimeDeal() {
+export default function TimeDeal({ endDate }: { endDate: Date }) {
 
   const [remainingTime, setRemainingTime] = useState({
     days: 0,
