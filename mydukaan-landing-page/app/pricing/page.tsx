@@ -6,7 +6,6 @@ import TestimonialSection from "@/components/landing-page/testimonial-section";
 import Footer from "@/components/landing-page/footer";
 import FAQSection from '@/components/landing-page/faq-section';
 import PricingFrontPage from '@/components/landing-page/pricing-front-page';
-import PricingPlugins from '@/components/landing-page/pricing-plugins';
 
 export default function Pricing() {
   return (
@@ -15,7 +14,6 @@ export default function Pricing() {
       <Header />
       <main className="relative z-20">
         <PricingFrontPage />
-        <PricingPlugins />
         <TestimonialSection bgColor />
         <FAQSection />
         <SellingSection pricingPage />

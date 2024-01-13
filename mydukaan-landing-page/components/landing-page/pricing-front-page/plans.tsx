@@ -1,11 +1,16 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { planData } from './plans-data';
 import PlanArticle from './plan-article';
 
-export default function Plans() {
-  const [planDuration, setPlanDuration] = useState<"monthly" | "yearly">("monthly");
+interface PlansInterface {
+  planDuration: "monthly" | "yearly",
+  setPlanDuration: React.Dispatch<React.SetStateAction<"monthly" | "yearly">>,
+}
+
+export default function Plans({ planDuration, setPlanDuration }: PlansInterface) {
+
   return (
     <div className='flex flex-col'>
       <div className='my-10 flex justify-center'>

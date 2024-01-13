@@ -111,7 +111,10 @@ export default function PlanArticle({ articleData, duration }: PlanArticleParams
 }
 
 
-export function PluginsList({ showAll = false, allPlugins, lessPlugins }: { showAll?: boolean, allPlugins: PlanPluginsParams[], lessPlugins: PlanPluginsParams[] }) {
+export function PluginsList(
+  { showAll = false, allPlugins, lessPlugins }:
+    { showAll?: boolean, allPlugins: PlanPluginsParams[], lessPlugins: PlanPluginsParams[] }
+) {
   const pluginsToShow = showAll ? allPlugins : lessPlugins;
 
   return (
