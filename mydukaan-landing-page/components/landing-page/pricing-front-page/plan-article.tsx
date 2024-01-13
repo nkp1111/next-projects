@@ -30,7 +30,7 @@ interface PlanArticleParams {
   duration: "yearly" | "monthly";
 }
 
-function formatNumber(number: number) {
+export function formatNumber(number: number) {
   let str = number.toString();
   let frontStr = str.slice(0, str.length - 3);
   let lastStr = str.slice(str.length - 3,);
