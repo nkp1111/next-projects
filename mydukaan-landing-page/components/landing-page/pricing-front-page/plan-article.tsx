@@ -1,5 +1,16 @@
+"use client";
+
 import Image from 'next/image';
-import React from 'react'
+import React, { useState } from 'react';
+
+
+interface PlanPluginsParams {
+  id: number;
+  title?: string;
+  image: string;
+  height: string;
+  width: string;
+}
 
 interface PlanArticleParams {
   articleData: {
@@ -11,13 +22,7 @@ interface PlanArticleParams {
       yearly: number;
     };
     features: string[];
-    plugins: {
-      id: number;
-      title?: string;
-      image: string;
-      height: string;
-      width: string;
-    }[];
+    plugins: PlanPluginsParams[];
     plugin_worth: number;
     most_popular: boolean;
   };
@@ -45,6 +50,10 @@ function formatNumber(number: number) {
 
 export default function PlanArticle({ articleData, duration }: PlanArticleParams) {
   const planPrice = articleData.pricing[duration];
+  const allPlugins = articleData.plugins;
+  const lessAmount = 5;
+  const lessPlugins = allPlugins.slice(0, lessAmount);
+  const [showAllPlugins, setShowAllPlugins] = useState(false);
   return (
     <article className={`border rounded-md lg:w-[23%] flex flex-col md:w-[47%] w-full relative lg:mb-0 md:mb-10 ${articleData.most_popular ? "border-orange-400 rounded-t-none mt-8 md:mt-0" : "border-gray-300"}`}>
       {articleData.most_popular &&
@@ -89,6 +98,34 @@ export default function PlanArticle({ articleData, duration }: PlanArticleParams
         <span>{articleData.plugins.length} Plugins worth ₹{articleData.plugin_worth} included</span>
       </div>
 
+      <div className='p-6 flex gap-2 flex-wrap'>
+        <PluginsList showAll={showAllPlugins} lessPlugins={lessPlugins} allPlugins={allPlugins} />
+
+        <span className='underline text-sm text-gray-800 cursor-pointer'
+          onClick={() => setShowAllPlugins(pre => !pre)}>
+          {showAllPlugins ? "See less" : `+View ${allPlugins.length - lessAmount} more`}
+        </span>
+      </div>
     </article>
+  )
+}
+
+
+export function PluginsList({ showAll = false, allPlugins, lessPlugins }: { showAll?: boolean, allPlugins: PlanPluginsParams[], lessPlugins: PlanPluginsParams[] }) {
+  const pluginsToShow = showAll ? allPlugins : lessPlugins;
+
+  return (
+    <>
+      {pluginsToShow.map(plugin => (
+        <div key={plugin.id} className='bg-red-300 rounded-md mx-auto'>
+          <Image
+            src={plugin.image}
+            width={30}
+            height={30}
+            alt={plugin.title || "."}
+          />
+        </div>
+      ))}
+    </>
   )
 }
