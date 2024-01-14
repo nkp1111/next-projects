@@ -29,7 +29,7 @@ export default function PluginsBuiltIn() {
           </span>
         </div>
 
-        <div className='absolute -bottom-[30px] -right-[20px] rounded-full w-40 h-40 bg-sky-200 -z-0'> </div>
+        <div className='absolute -bottom-[30px] -right-[20px] rounded-full w-40 h-40 -z-0 bg-gradient-to-r from-blue-100 via-blue-300 to-blue-500'> </div>
       </div>
     </section>
   )
