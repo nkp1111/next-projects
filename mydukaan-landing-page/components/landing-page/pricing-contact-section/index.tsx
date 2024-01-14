@@ -6,7 +6,7 @@ import Image from 'next/image';
 export default function PricingContactSection() {
   return (
     <section className={`z-30 relative pt-12 text-start `}>
-      <div className='flex gap-3 md:gap-8 md:p-16 p-10 bg-gradient-to-r from-rose-400 to-orange-300 relative overflow-hidden rounded-lg'>
+      <div className='flex md:flex-row flex-col md:text-start text-center gap-10 md:gap-8 md:p-16 p-10 bg-gradient-to-r from-orange-400 to-rose-400 relative overflow-hidden rounded-lg'>
         <div className='absolute bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 w-full aspect-square -left-1/2 -bottom-3/4 rounded-full'></div>
 
         <div className='relative z-10 flex-1'>
@@ -15,7 +15,7 @@ export default function PricingContactSection() {
           </h2>
           <p className='md:text-xl text-lg text-gray-600 mt-5 mb-8'>Scale your D2C business on Dukaan’s lightning fast infrastructure with custom built features.</p>
 
-          <div className="flex relative gap-3">
+          <div className="flex relative gap-3 justify-center md:justify-start">
             <button type="button" className='bg-stone-950 text-white font-bold border border-black rounded-lg px-6 py-3 text-lg  hover:-mt-1 hover:mb-1 transition-all duration-300 ease-linear'>Get in touch</button>
             <button type="button" className='font-medium rounded-lg px-6 py-3 text-lg hover:text-neutral-900 transition-all duration-300 ease-linear underline'>Learn more</button>
           </div>
@@ -30,7 +30,7 @@ export default function PricingContactSection() {
               "Marketplace Integration",
               "Custom Shipping Rules",
               "Dedicated Support"].map(item => (
-                <li key={item} className='text-lg mb-2 text-gray-900 flex gap-2'>
+                <li key={item} className='text-lg mb-2 text-gray-900 flex gap-2 md:justify-start justify-center'>
                   <span><StarIcon fillColor='#333' /></span>
                   <span>{item}</span>
                 </li>
