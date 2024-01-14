@@ -5,6 +5,7 @@ import MainPaddingX from '../general/main-padding-x'
 import Plans from './plans'
 import PluginsBuiltIn from './plugins-inbuilt'
 import ComparePlanSection from '../compare-plan-section';
+import PricingContactSection from '../pricing-contact-section';
 
 export default function PricingFrontPage() {
   const [planDuration, setPlanDuration] = useState<"monthly" | "yearly">("monthly");
@@ -16,6 +17,7 @@ export default function PricingFrontPage() {
         <Plans {...{ planDuration, setPlanDuration }} />
         <PluginsBuiltIn />
         <ComparePlanSection {...{ planDuration, setPlanDuration }} />
+        <PricingContactSection />
       </MainPaddingX>
     </div>
   )
