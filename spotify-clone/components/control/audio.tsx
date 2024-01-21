@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react'
 import { RxShuffle } from "react-icons/rx";
-import { IoRepeat } from "react-icons/io5";
 import { FaPlay, FaPause } from "react-icons/fa";
 import { CgPlayTrackPrev, CgPlayTrackNext } from "react-icons/cg";
 import { TbRepeatOnce, TbRepeat } from "react-icons/tb";

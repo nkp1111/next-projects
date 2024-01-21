@@ -5,6 +5,10 @@ import Sidebar from '@/components/sidebar'
 import AudioControl from '@/components/control'
 import { AudioProvider } from '@/context'
 import SessionProvider from '@/components/auth/sessionProvider'
+import MobileBottomNav from '@/components/mobile-bottom-nav'
+import MobileControl from '@/components/control/mobile-control'
+import MobileHeader from '@/components/mobile-header'
+import MobileDisplay from '@/components/mobile-display'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -40,7 +44,20 @@ export default function RootLayout({
 
               {/* mobile view */}
               <div className="w-full h-full flex sm:hidden">
-                mobile
+                <div className='h-full w-full overflow-hidden flex flex-col'>
+                  <div className="flex-1 overflow-y-auto pt-20">
+                    <MobileHeader />
+                    <div className='px-5 py-2'>
+                      {children}
+                    </div>
+                  </div>
+                  <div className='h-20 opacity-80 flex justify-between items-center flex-wrap px-2'>
+                    <MobileControl />
+                  </div>
+                  <div className='h-24 opacity-80 flex justify-between items-center flex-wrap px-5'>
+                    <MobileBottomNav />
+                  </div>
+                </div>
               </div>
             </main>
           </AudioProvider>
