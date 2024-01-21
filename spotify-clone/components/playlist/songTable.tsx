@@ -9,6 +9,8 @@ import { FaPause, FaPlay } from 'react-icons/fa';
 import { useGlobalContext } from '@/lib/context';
 import { ContextParams } from '@/types/context';
 import AnimatedIcon from '../general/animatedIcon';
+import { BsThreeDotsVertical } from "react-icons/bs";
+
 
 interface SongTableParams {
   playlistSongs: SampleSongsProps[];
@@ -16,11 +18,12 @@ interface SongTableParams {
 }
 
 const tableStructure: { [key: number]: string } = {
-  0: "w-10",
+  0: "w-8",
   1: "flex-1 flex-grow-[2]",
-  2: "flex-1",
-  3: "flex-1",
-  4: "w-32",
+  2: "flex-1  md:block hidden",
+  3: "flex-1  md:block hidden",
+  4: "w-32  md:block hidden",
+  5: "w-10 md:hidden block"
 }
 
 const tableHeaderMap: { [key: string]: string } = {
@@ -30,6 +33,7 @@ const tableHeaderMap: { [key: string]: string } = {
   // TODO: change to createdAt
   "date added": "lastPlayed",
   "duration": "duration",
+  "": "options"
 }
 
 export default function SongTable({ playlistSongs, playlistId }: SongTableParams) {
@@ -58,14 +62,14 @@ export default function SongTable({ playlistSongs, playlistId }: SongTableParams
       {/* table body  */}
       {playlistSongs.map((song, index) => (
         <div key={song.id || String(song._id)}
-          className='flex px-3 items-center text-gray-400 my-2 btn-ghost transition-all duration-300 py-2'
+          className='flex px-3 items-center text-gray-400 my-2 btn-ghost transition-all duration-300 py-2 cursor-pointer'
           onMouseEnter={() => setHoverInd(index)}
           onMouseLeave={() => setHoverInd(-1)}>
           {Object.keys(tableHeaderMap).map((head, ind) => (
             <div key={head}
-              className={`capitalize ${tableStructure[ind]} `}>
+              className={`capitalize ${tableStructure[ind]} rounded-sm`}>
               {head === "#" && (
-                <div>
+                <div className=''>
                   {
                     hoverInd === index
                       ? <button
@@ -105,13 +109,20 @@ export default function SongTable({ playlistSongs, playlistId }: SongTableParams
                   </div>
                 </div>
               )}
-              {head === "album" && `${song.album}`}
-              {head === "date added" && `${formatDateDistance(song.lastPlayed)} ago`}
-              {head === "duration" && (
-                <span className='text-end'>
-                  {formatSecondsDuration(song.duration)}
-                </span>
-              )}
+              <div className=''>
+                {head === "album" && `${song.album}`}
+                {head === "date added" && `${formatDateDistance(song.lastPlayed)} ago`}
+                {head === "duration" && (
+                  <span className='text-end'>
+                    {formatSecondsDuration(song.duration)}
+                  </span>
+                )}
+                {head === "" && (
+                  <span className='text-end cursor-pointer hover:text-white transition-all duration-300'>
+                    <BsThreeDotsVertical />
+                  </span>
+                )}
+              </div>
             </div>
           ))}
         </div>

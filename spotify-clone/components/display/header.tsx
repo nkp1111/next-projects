@@ -17,7 +17,7 @@ export default async function DisplayHeader() {
         <HeaderNav />
       </div>
 
-      <div className="flex gap-5 items-center">
+      <div className="gap-5 items-center md:flex hidden">
         <button type="button"
           className='btn border border-white btn-sm px-10'>
           Upgrade

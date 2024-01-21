@@ -2,13 +2,11 @@ import playlists from "@/constant/samplePlaylists"
 import getMongoDB from "../db/getMongoClient";
 import { COLLECTIONS } from "@/constant/db";
 
-
-export async function getAllPlaylist() {
+export async function getAllSongs() {
   "use server"
   const { db, error } = await getMongoDB();
   if (!db || error) return playlists;
 
-  const playlistsFetched = await db.collection(COLLECTIONS.playlists).find({}).toArray();
-  // return playlistsFetched as any;
-  return playlists
+  const songsFetched = await db.collection(COLLECTIONS.tracks).find({}).toArray();
+  return songsFetched;
 }
