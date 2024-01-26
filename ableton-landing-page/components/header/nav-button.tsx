@@ -19,7 +19,7 @@ export default function NavButton() {
       </button>
 
 
-      <div className='absolute top-full left-0 right-0 transition-custom1 shadow-md flex flex-col gap-5 px-10 py-5'>
+      <div className='absolute top-full left-0 right-0 transition-custom1 shadow-md flex flex-col gap-5 px-10 py-5 bg-white'>
         {seeMore ? (
           <NavExtraInfo />
         ) : null}

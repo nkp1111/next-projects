@@ -8,9 +8,9 @@ import SingleLink from './singleLink';
 export default function NavLinks() {
   const [currentLink, setCurrentLink] = useState("Home");
   return (
-    <div className='flex md:gap-7 gap-4 justify-between flex-1'>
-      <div className='flex md:gap-7 gap-4'>
-        <ul className='flex md:gap-7 gap-4'>
+    <div className='flex md:gap-7 gap-3 justify-between flex-1 flex-wrap'>
+      <div className='flex md:gap-7 gap-3 flex-wrap'>
+        <ul className='flex md:gap-7 gap-3 sm:flex-nowrap flex-wrap'>
           {navData.slice(0, 7).map(item => (
             <SingleLink
               key={item.id}
@@ -25,7 +25,7 @@ export default function NavLinks() {
       </div>
 
       <div>
-        <ul className='flex md:gap-7 gap-4'>
+        <ul className='flex md:gap-7 gap-3'>
           {navData.slice(7,).map(item => (
             <SingleLink
               key={item.id}
