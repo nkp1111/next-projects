@@ -17,6 +17,16 @@ const config: Config = {
         'custom-tomato-red': '#ff764d',
         'custom-green': '#b6ffc0',
       },
+      // custom transition for project
+      transitionProperty: {
+        "custom1": "all",
+      },
+      transitionDuration: {
+        "custom1": "300",
+      },
+      transitionTimingFunction: {
+        "custom1": "linear",
+      }
     },
   },
   plugins: [],
