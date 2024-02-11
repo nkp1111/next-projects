@@ -7,7 +7,9 @@ import ProjectHolder from '@/components/projects/projectHolder';
 const getTime = (dateString: string) => new Date(dateString).getTime();
 
 export default async function Projects() {
-  const { projects }: { projects: ProjectParam[] } = await getMyProjects();
+  const data: { projects: ProjectParam[] } = await getMyProjects();
+  if (!data) return;
+  const { projects } = data;
   // all projects 
   const projectSortedByDate = projects.sort((a, b) => getTime(b.createdAt) - getTime(a.createdAt))
   // .filter(project => project.id !== 15);
