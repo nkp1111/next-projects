@@ -14,12 +14,12 @@
 
 ## Links
 
-- [Live App]()
+- [Live App](https://nkp1111-ableton-landing-page.vercel.app/)
 - [GitHub](https://github.com/nkp1111/next-projects/tree/main/ableton-landing-page)
 
 ## Overview
 
-![image]()
+![image](./public/screencapture-nkp1111-ableton-landing-page-vercel-app-2024-02-11-10_10_40.png)
 
 ## Built With
 
