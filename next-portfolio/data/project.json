@@ -5,8 +5,9 @@
       "name": "ProjectWolf",
       "description": "Multi-chain cryptocurrency presale platform allowing users to swap ETH, SOL, and BNB for WOLF tokens across scheduled time-based rounds with dynamic pricing algorithms.",
       "image": [
-        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
+        "/projectwolf-shot.png"
       ],
+      "longImage": "/projectwolf-long.png",
       "links": {
         "github": "",
         "live_site": [
@@ -52,8 +53,9 @@
       "name": "ShareThere",
       "description": "Location-aware community social media network that discovers and organizes content within local geographic groups using MongoDB geospatial queries and real-time payment webhooks.",
       "image": [
-        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
+        "/sharethere-shot.png"
       ],
+      "longImage": "/sharethere-long.png",
       "links": {
         "github": "",
         "live_site": [
@@ -96,8 +98,9 @@
       "name": "FaceWish",
       "description": "Automated greeting and event card generation platform that isolates user facial features from uploaded photos and blends them into customizable character templates with instant rendering.",
       "image": [
-        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
+        "/facewish-shot.png"
       ],
+      "longImage": "/facewish-long.png",
       "links": {
         "github": "",
         "live_site": [
@@ -134,12 +137,44 @@
       ]
     },
     {
+      "id": 47,
+      "name": "CICS Trading Web Panels",
+      "description": "Commodity trading and financial dashboard application providing real-time gold and silver spot price feeds, automated order bookings, and inventory tracking.",
+      "image": [
+        "/cics-shot.png"
+      ],
+      "links": {
+        "github": "",
+        "live_site": []
+      },
+      "tags": [
+        "Trading",
+        "Financial Dashboard",
+        "Bullion",
+        "Node.js"
+      ],
+      "technologies": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "REST APIs",
+        "WebSockets"
+      ],
+      "acknowledgement": [],
+      "api_used": [],
+      "createdAt": "2024-10-01",
+      "duration": 2,
+      "features": [
+        "Real-time spot rate calculation and live dashboard broadcast",
+        "Order booking and customer position management panel",
+        "Automated trade validation and transaction ledger generation"
+      ]
+    },
+    {
       "id": 45,
       "name": "OWR - SaaS E-commerce Platform",
       "description": "Enterprise multi-vendor e-commerce platform allowing sellers to build independent digital storefronts, manage product catalogs, and handle automated logistics and fulfillment.",
-      "image": [
-        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
-      ],
+      "image": [],
       "links": {
         "github": "",
         "live_site": [
@@ -183,9 +218,7 @@
       "id": 48,
       "name": "Lavado Car Wash Platform",
       "description": "On-demand car wash booking and fleet management ecosystem connecting customers, mobile service washers, and administrative supervisors across three dedicated portals.",
-      "image": [
-        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
-      ],
+      "image": [],
       "links": {
         "github": "",
         "live_site": []
@@ -221,9 +254,7 @@
       "id": 49,
       "name": "Xira Real-Time Chat Platform",
       "description": "High-concurrency real-time team collaboration and messaging application featuring channel management, direct messaging, read receipts, and file sharing.",
-      "image": [
-        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
-      ],
+      "image": [],
       "links": {
         "github": "",
         "live_site": []
@@ -254,46 +285,10 @@
       ]
     },
     {
-      "id": 47,
-      "name": "CICS Trading Web Panels",
-      "description": "Commodity trading and financial dashboard application providing real-time gold and silver spot price feeds, automated order bookings, and inventory tracking.",
-      "image": [
-        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
-      ],
-      "links": {
-        "github": "",
-        "live_site": []
-      },
-      "tags": [
-        "Trading",
-        "Financial Dashboard",
-        "Bullion",
-        "Node.js"
-      ],
-      "technologies": [
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "REST APIs",
-        "WebSockets"
-      ],
-      "acknowledgement": [],
-      "api_used": [],
-      "createdAt": "2024-10-01",
-      "duration": 2,
-      "features": [
-        "Real-time spot rate calculation and live dashboard broadcast",
-        "Order booking and customer position management panel",
-        "Automated trade validation and transaction ledger generation"
-      ]
-    },
-    {
       "id": 52,
       "name": "Automated WhatsApp Trading Bot",
       "description": "Automated messaging and trading assistant utilizing whatsapp-web.js to synchronize market orders and broadcast transactions across high-volume trader groups.",
-      "image": [
-        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
-      ],
+      "image": [],
       "links": {
         "github": "",
         "live_site": []
@@ -319,125 +314,6 @@
         "Simultaneous broadcast of market rates and trade confirmations across multiple groups",
         "Session persistence and automated reconnection handlers"
       ]
-    },
-    {
-      "id": 1,
-      "name": "YelpCamp Fullstack Project",
-      "description": "Full-stack web application for discovering, reviewing, and managing campgrounds worldwide with interactive clustering maps, secure authentication, and image management.",
-      "image": [
-        "https://github.com/nkp1111/Yelpcamp-fullstack-project/raw/main/public/images/yelpcamp-home.png"
-      ],
-      "links": {
-        "github": "https://github.com/nkp1111/Yelpcamp-fullstack-project",
-        "live_site": [
-          "https://yelpcamp-fullstack-project.vercel.app/"
-        ]
-      },
-      "tags": [
-        "Fullstack",
-        "Express",
-        "MongoDB",
-        "Leaflet Maps",
-        "Node.js"
-      ],
-      "technologies": [
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "Mongoose",
-        "Leaflet.js",
-        "Cloudinary",
-        "Passport.js"
-      ],
-      "acknowledgement": [],
-      "api_used": [
-        "Cloudinary",
-        "Positionstack",
-        "Leaflet"
-      ],
-      "createdAt": "2023-02-05",
-      "duration": 3,
-      "features": [
-        "Complete CRUD operations for campgrounds, reviews, and user accounts",
-        "Geocoding and interactive cluster maps with Leaflet",
-        "Secure session authentication, authorization, and data sanitization",
-        "Cloudinary multi-image upload with thumbnail transformations"
-      ]
-    },
-    {
-      "id": 8,
-      "name": "Next-Ecommerce",
-      "description": "Modern full-stack e-commerce web application featuring product catalogs, server-rendered dynamic routing, persistent shopping cart, and Stripe checkout.",
-      "image": [
-        "https://github.com/nkp1111/next-ecommerce/raw/main/public/screencapture-localhost-3000-2023-10-18-20_20_23.png"
-      ],
-      "links": {
-        "github": "https://github.com/nkp1111/next-ecommerce",
-        "live_site": [
-          "https://next-ecommerce-nkp1111.vercel.app/"
-        ]
-      },
-      "tags": [
-        "Next.js",
-        "TypeScript",
-        "E-Commerce",
-        "Stripe",
-        "Tailwind CSS"
-      ],
-      "technologies": [
-        "Next.js",
-        "React",
-        "TypeScript",
-        "Tailwind CSS",
-        "Stripe Checkout"
-      ],
-      "acknowledgement": [],
-      "api_used": [
-        "Stripe"
-      ],
-      "createdAt": "2023-10-15",
-      "duration": 2,
-      "features": [
-        "Server-side rendering (SSR) and dynamic product slug routing in Next.js",
-        "Interactive cart state management with local persistence",
-        "Stripe checkout payment flow and order confirmation"
-      ]
-    },
-    {
-      "id": 38,
-      "name": "Spotify Clone",
-      "description": "Full-featured music streaming web application with playlist management, audio playback controls, song search, and responsive modern dark interface.",
-      "image": [
-        "https://dummyimage.com/600x400/18182f/1db954.png&text=Spotify+Clone"
-      ],
-      "links": {
-        "github": "https://github.com/nkp1111/spotify-clone",
-        "live_site": []
-      },
-      "tags": [
-        "React",
-        "Audio",
-        "TypeScript",
-        "Tailwind CSS",
-        "MongoDB"
-      ],
-      "technologies": [
-        "Next.js",
-        "React",
-        "TypeScript",
-        "Tailwind CSS",
-        "MongoDB"
-      ],
-      "acknowledgement": [],
-      "api_used": [],
-      "createdAt": "2023-11-05",
-      "duration": 2,
-      "features": [
-        "Custom HTML5 audio player with scrub bar, volume, and playback state",
-        "User playlist creation, track favoriting, and persistent library",
-        "Responsive dark mode UI built with Tailwind CSS"
-      ]
     }
   ]
 }
-

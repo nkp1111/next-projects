@@ -41,6 +41,7 @@ interface ProjectParam {
   name: string;
   description: string;
   image: string[];
+  longImage?: string;
   links: {
     github: string;
     live_site: string[];
