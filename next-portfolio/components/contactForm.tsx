@@ -1,78 +1,107 @@
 "use client";
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { PaperAirplaneIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 
-export default function ContactForm(
-  { handleSubmit }: { handleSubmit: (formData: FormData) => void }
-) {
-  const [contactData, setContactData] = useState({
-    name: "", email: "", message: "",
-  });
-  const [formSubmitted, setFormSubmitted] = useState(false);
+export default function ContactForm({
+  handleSubmit,
+}: {
+  handleSubmit: (formData: FormData) => void;
+}) {
+  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    const formData = new FormData(e.currentTarget);
+    try {
+      await handleSubmit(formData);
+      setSubmitted(true);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (submitted) {
+    return (
+      <div className="card w-full max-w-xl mx-auto bg-base-100 border border-success/30 shadow-md p-8 text-center rounded-2xl">
+        <CheckCircleIcon className="w-12 h-12 text-success mx-auto mb-3" />
+        <h3 className="text-xl font-bold text-base-content">Message Sent!</h3>
+        <p className="text-sm text-base-content/70 mt-1">
+          Thank you for reaching out. I will get back to you as soon as possible.
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div className="card w-full max-w-xl shadow-2xl bg-base-100 mx-auto mt-4">
-
-      <form className="card-body group"
-        action={handleSubmit}
-        noValidate>
-        <span className={`mt-2 text-sm text-red-500`}>
-          *Please fill all fields
-        </span>
-
-        {/* name  */}
+    <div className="card w-full max-w-xl shadow-md bg-base-100 border border-base-200 mx-auto rounded-2xl overflow-hidden">
+      <form onSubmit={onSubmit} className="p-6 sm:p-8 space-y-4">
+        
+        {/* Name */}
         <div className="form-control">
-          <label className="label">
-            <span className="label-text">Name</span>
+          <label className="label py-1">
+            <span className="text-xs font-semibold text-base-content/80">Your Name</span>
           </label>
           <input
             name="name"
             type="text"
-            placeholder="Who are you?"
-            className="input input-bordered"
-            onChange={(e) => setContactData((pre) => ({ ...pre, name: e.target.value }))}
-            required />
+            placeholder="John Doe"
+            className="input input-bordered input-sm sm:input-md rounded-xl bg-base-200/40 focus:bg-base-100"
+            required
+          />
         </div>
-        {/* email  */}
+
+        {/* Email */}
         <div className="form-control">
-          <label className="label">
-            <span className="label-text">Email</span>
+          <label className="label py-1">
+            <span className="text-xs font-semibold text-base-content/80">Your Email</span>
           </label>
           <input
             name="email"
             type="email"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-            placeholder="Can you give me your email?"
-            className="input input-bordered peer invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500"
-            onChange={(e) => setContactData((pre) => ({ ...pre, email: e.target.value }))}
-            required />
-
-          <span className="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-            Please enter a valid email address
-          </span>
+            placeholder="john@example.com"
+            className="input input-bordered input-sm sm:input-md rounded-xl bg-base-200/40 focus:bg-base-100"
+            required
+          />
         </div>
-        {/* message  */}
+
+        {/* Message */}
         <div className="form-control">
-          <label className="label">
-            <span className="label-text">Message</span>
+          <label className="label py-1">
+            <span className="text-xs font-semibold text-base-content/80">Message</span>
           </label>
           <textarea
             name="message"
-            placeholder="Please write your message here"
-            className="textarea textarea-bordered peer-[1]"
-            onChange={(e) => setContactData((pre) => ({ ...pre, message: e.target.value }))}
-            required />
+            rows={4}
+            placeholder="Let's talk about opportunities or collaborations..."
+            className="textarea textarea-bordered rounded-xl bg-base-200/40 focus:bg-base-100 text-sm"
+            required
+          />
         </div>
-        <div className="form-control mt-6">
+
+        {/* Submit */}
+        <div className="pt-2">
           <button
             type="submit"
-            className={`btn btn-primary group-invalid:pointer-events-none group-invalid:opacity-40 ${loading && "pointer-events-none"}`}
+            disabled={loading}
+            className="btn btn-primary w-full rounded-xl font-semibold gap-2 shadow-sm"
           >
-            Send Message
+            {loading ? (
+              <span className="loading loading-spinner loading-xs"></span>
+            ) : (
+              <>
+                <span>Send Message</span>
+                <PaperAirplaneIcon className="w-4 h-4" />
+              </>
+            )}
           </button>
         </div>
+
       </form>
     </div>
-  )
+  );
 }

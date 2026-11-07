@@ -1,8 +1,6 @@
-import { URLS } from "@/constant";
-import fetchRequest from "./fetchRequest";
+import projectData from "@/data/project.json";
+import { ProjectParam } from "@/types";
 
-export default async function getMyProjects() {
-  let { projectUrl } = URLS;
-  const data = await fetchRequest({ url: projectUrl })
-  return data;
+export default async function getMyProjects(): Promise<{ projects: ProjectParam[] }> {
+  return projectData as { projects: ProjectParam[] };
 }

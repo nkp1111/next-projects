@@ -1,0 +1,443 @@
+{
+  "projects": [
+    {
+      "id": 50,
+      "name": "ProjectWolf",
+      "description": "Multi-chain cryptocurrency presale platform allowing users to swap ETH, SOL, and BNB for WOLF tokens across scheduled time-based rounds with dynamic pricing algorithms.",
+      "image": [
+        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
+      ],
+      "links": {
+        "github": "",
+        "live_site": [
+          "https://projectwolf.com/"
+        ]
+      },
+      "tags": [
+        "Crypto",
+        "Web3",
+        "Blockchain",
+        "Drizzle ORM",
+        "PostgreSQL",
+        "Node.js"
+      ],
+      "technologies": [
+        "Node.js",
+        "PostgreSQL",
+        "Drizzle ORM",
+        "React",
+        "Alchemy Webhooks",
+        "QuickNode RPC",
+        "Binance API",
+        "In-Memory Cache"
+      ],
+      "acknowledgement": [],
+      "api_used": [
+        "Alchemy",
+        "QuickNode",
+        "Binance"
+      ],
+      "createdAt": "2026-01-15",
+      "duration": 4,
+      "features": [
+        "Multi-chain token presale supporting cross-currency swaps (ETH, SOL, BNB) for WOLF",
+        "Automated time-based tiered round pricing progression",
+        "15-second TTL in-memory rate caching from Binance API to prevent rate limits",
+        "Webhook-driven on-chain payment verification via Alchemy and QuickNode",
+        "Atomic database state management using Drizzle ORM and PostgreSQL"
+      ]
+    },
+    {
+      "id": 46,
+      "name": "ShareThere",
+      "description": "Location-aware community social media network that discovers and organizes content within local geographic groups using MongoDB geospatial queries and real-time payment webhooks.",
+      "image": [
+        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
+      ],
+      "links": {
+        "github": "",
+        "live_site": [
+          "https://sharethere.com"
+        ]
+      },
+      "tags": [
+        "Social Media",
+        "Geospatial",
+        "MongoDB",
+        "Stripe",
+        "Node.js"
+      ],
+      "technologies": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "MongoDB $geoNear",
+        "Stripe Webhooks",
+        "PayPal Webhooks",
+        "React"
+      ],
+      "acknowledgement": [],
+      "api_used": [
+        "Stripe",
+        "PayPal"
+      ],
+      "createdAt": "2025-04-01",
+      "duration": 5,
+      "features": [
+        "Hyper-local post discovery utilizing MongoDB $geoNear aggregation and 2dsphere indexing",
+        "3-tier radial proximity metrics (near, medium, far) with cursor-based pagination",
+        "Stripe Webhooks integration for recurring community subscriptions",
+        "PayPal Webhooks integration for real-time user donation confirmations",
+        "Role-based moderation, user following activity feeds, and rich post authoring"
+      ]
+    },
+    {
+      "id": 51,
+      "name": "FaceWish",
+      "description": "Automated greeting and event card generation platform that isolates user facial features from uploaded photos and blends them into customizable character templates with instant rendering.",
+      "image": [
+        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
+      ],
+      "links": {
+        "github": "",
+        "live_site": [
+          "https://facewish.com/"
+        ]
+      },
+      "tags": [
+        "Image Processing",
+        "Canvas",
+        "Sharp",
+        "Templates",
+        "Node.js"
+      ],
+      "technologies": [
+        "Node.js",
+        "Express",
+        "Sharp",
+        "Node-Canvas",
+        "REST APIs",
+        "Cloudinary"
+      ],
+      "acknowledgement": [],
+      "api_used": [
+        "Cloudinary"
+      ],
+      "createdAt": "2026-02-01",
+      "duration": 3,
+      "features": [
+        "Server-side composite image rendering pipeline using Sharp and Canvas",
+        "Face cutout handling and seamless blending into professional character templates",
+        "Multi-character template filtering and interactive customization layers",
+        "Dynamic sticker resizing, layering, and background swapping endpoints",
+        "Instant high-resolution digital card generation and delivery"
+      ]
+    },
+    {
+      "id": 45,
+      "name": "OWR - SaaS E-commerce Platform",
+      "description": "Enterprise multi-vendor e-commerce platform allowing sellers to build independent digital storefronts, manage product catalogs, and handle automated logistics and fulfillment.",
+      "image": [
+        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
+      ],
+      "links": {
+        "github": "",
+        "live_site": [
+          "https://business.owr.app/"
+        ]
+      },
+      "tags": [
+        "SaaS",
+        "E-Commerce",
+        "PostgreSQL",
+        "Sequelize",
+        "Redis"
+      ],
+      "technologies": [
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Sequelize ORM",
+        "Redis",
+        "Shiprocket API",
+        "Delhivery API",
+        "MSG91"
+      ],
+      "acknowledgement": [],
+      "api_used": [
+        "Shiprocket",
+        "Delhivery",
+        "MSG91"
+      ],
+      "createdAt": "2023-09-01",
+      "duration": 10,
+      "features": [
+        "Multi-tenant relational database schema using PostgreSQL and Sequelize",
+        "Redis caching layer reducing database read load by over 40%",
+        "Integrated courier logistics APIs (Shiprocket, Delhivery) for automated dispatch and tracking",
+        "SMS and transactional OTP alert pipelines via MSG91",
+        "Automated integration test suites with Mocha and Chai, validated via Zod"
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Lavado Car Wash Platform",
+      "description": "On-demand car wash booking and fleet management ecosystem connecting customers, mobile service washers, and administrative supervisors across three dedicated portals.",
+      "image": [
+        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
+      ],
+      "links": {
+        "github": "",
+        "live_site": []
+      },
+      "tags": [
+        "SaaS",
+        "On-Demand",
+        "Dispatch",
+        "MongoDB",
+        "Node.js"
+      ],
+      "technologies": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Firebase Cloud Messaging (FCM)",
+        "REST APIs"
+      ],
+      "acknowledgement": [],
+      "api_used": [
+        "FCM Push Notifications"
+      ],
+      "createdAt": "2024-09-01",
+      "duration": 3,
+      "features": [
+        "3-tier application architecture: Customer booking, Washer service app, and Admin panel",
+        "Automated first-available washer dispatch algorithm with administrative override capabilities",
+        "Recurring subscription packages and one-time service appointment scheduling",
+        "Push notification delivery pipeline for real-time service status transitions"
+      ]
+    },
+    {
+      "id": 49,
+      "name": "Xira Real-Time Chat Platform",
+      "description": "High-concurrency real-time team collaboration and messaging application featuring channel management, direct messaging, read receipts, and file sharing.",
+      "image": [
+        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
+      ],
+      "links": {
+        "github": "",
+        "live_site": []
+      },
+      "tags": [
+        "Chat",
+        "WebSockets",
+        "Real-Time",
+        "Socket.io",
+        "Node.js"
+      ],
+      "technologies": [
+        "Node.js",
+        "Express",
+        "Socket.io",
+        "MongoDB",
+        "Redis Pub/Sub"
+      ],
+      "acknowledgement": [],
+      "api_used": [],
+      "createdAt": "2024-11-01",
+      "duration": 3,
+      "features": [
+        "Low-latency duplex communication powered by Socket.io and Redis Pub/Sub",
+        "One-on-one direct messages and multi-user group channels",
+        "Typing indicators, online presence tracking, and message delivery receipts",
+        "Media and document attachment processing with Cloudinary storage"
+      ]
+    },
+    {
+      "id": 47,
+      "name": "CICS Trading Web Panels",
+      "description": "Commodity trading and financial dashboard application providing real-time gold and silver spot price feeds, automated order bookings, and inventory tracking.",
+      "image": [
+        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
+      ],
+      "links": {
+        "github": "",
+        "live_site": []
+      },
+      "tags": [
+        "Trading",
+        "Financial Dashboard",
+        "Bullion",
+        "Node.js"
+      ],
+      "technologies": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "REST APIs",
+        "WebSockets"
+      ],
+      "acknowledgement": [],
+      "api_used": [],
+      "createdAt": "2024-10-01",
+      "duration": 2,
+      "features": [
+        "Real-time spot rate calculation and live dashboard broadcast",
+        "Order booking and customer position management panel",
+        "Automated trade validation and transaction ledger generation"
+      ]
+    },
+    {
+      "id": 52,
+      "name": "Automated WhatsApp Trading Bot",
+      "description": "Automated messaging and trading assistant utilizing whatsapp-web.js to synchronize market orders and broadcast transactions across high-volume trader groups.",
+      "image": [
+        "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1761711638/Screenshot_2025-10-29_095002_ca5qpe.png"
+      ],
+      "links": {
+        "github": "",
+        "live_site": []
+      },
+      "tags": [
+        "Automation",
+        "WhatsApp",
+        "Bot",
+        "Node.js"
+      ],
+      "technologies": [
+        "Node.js",
+        "whatsapp-web.js",
+        "REST APIs",
+        "Cron Scheduling"
+      ],
+      "acknowledgement": [],
+      "api_used": [],
+      "createdAt": "2024-08-01",
+      "duration": 2,
+      "features": [
+        "Automated WhatsApp message parsing for structured buy/sell trade instructions",
+        "Simultaneous broadcast of market rates and trade confirmations across multiple groups",
+        "Session persistence and automated reconnection handlers"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "YelpCamp Fullstack Project",
+      "description": "Full-stack web application for discovering, reviewing, and managing campgrounds worldwide with interactive clustering maps, secure authentication, and image management.",
+      "image": [
+        "https://github.com/nkp1111/Yelpcamp-fullstack-project/raw/main/public/images/yelpcamp-home.png"
+      ],
+      "links": {
+        "github": "https://github.com/nkp1111/Yelpcamp-fullstack-project",
+        "live_site": [
+          "https://yelpcamp-fullstack-project.vercel.app/"
+        ]
+      },
+      "tags": [
+        "Fullstack",
+        "Express",
+        "MongoDB",
+        "Leaflet Maps",
+        "Node.js"
+      ],
+      "technologies": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+        "Leaflet.js",
+        "Cloudinary",
+        "Passport.js"
+      ],
+      "acknowledgement": [],
+      "api_used": [
+        "Cloudinary",
+        "Positionstack",
+        "Leaflet"
+      ],
+      "createdAt": "2023-02-05",
+      "duration": 3,
+      "features": [
+        "Complete CRUD operations for campgrounds, reviews, and user accounts",
+        "Geocoding and interactive cluster maps with Leaflet",
+        "Secure session authentication, authorization, and data sanitization",
+        "Cloudinary multi-image upload with thumbnail transformations"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Next-Ecommerce",
+      "description": "Modern full-stack e-commerce web application featuring product catalogs, server-rendered dynamic routing, persistent shopping cart, and Stripe checkout.",
+      "image": [
+        "https://github.com/nkp1111/next-ecommerce/raw/main/public/screencapture-localhost-3000-2023-10-18-20_20_23.png"
+      ],
+      "links": {
+        "github": "https://github.com/nkp1111/next-ecommerce",
+        "live_site": [
+          "https://next-ecommerce-nkp1111.vercel.app/"
+        ]
+      },
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "E-Commerce",
+        "Stripe",
+        "Tailwind CSS"
+      ],
+      "technologies": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Stripe Checkout"
+      ],
+      "acknowledgement": [],
+      "api_used": [
+        "Stripe"
+      ],
+      "createdAt": "2023-10-15",
+      "duration": 2,
+      "features": [
+        "Server-side rendering (SSR) and dynamic product slug routing in Next.js",
+        "Interactive cart state management with local persistence",
+        "Stripe checkout payment flow and order confirmation"
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Spotify Clone",
+      "description": "Full-featured music streaming web application with playlist management, audio playback controls, song search, and responsive modern dark interface.",
+      "image": [
+        "https://dummyimage.com/600x400/18182f/1db954.png&text=Spotify+Clone"
+      ],
+      "links": {
+        "github": "https://github.com/nkp1111/spotify-clone",
+        "live_site": []
+      },
+      "tags": [
+        "React",
+        "Audio",
+        "TypeScript",
+        "Tailwind CSS",
+        "MongoDB"
+      ],
+      "technologies": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "MongoDB"
+      ],
+      "acknowledgement": [],
+      "api_used": [],
+      "createdAt": "2023-11-05",
+      "duration": 2,
+      "features": [
+        "Custom HTML5 audio player with scrub bar, volume, and playback state",
+        "User playlist creation, track favoriting, and persistent library",
+        "Responsive dark mode UI built with Tailwind CSS"
+      ]
+    }
+  ]
+}
+

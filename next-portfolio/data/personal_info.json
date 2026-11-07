@@ -1,0 +1,44 @@
+{
+  "name": "Neeraj Parmar",
+  "email": "neerajp4321@gmail.com",
+  "phone": "+917383367995",
+  "location": "Ahmedabad, Gujarat, India",
+  "summary": "Backend-focused Node.js Developer with 3.5+ years of experience building scalable microservices, RESTful APIs, and distributed backend systems. Proficient in Node.js, Express, TypeScript, PostgreSQL, Drizzle ORM, MongoDB, Redis, BullMQ, Docker, and third-party integrations including Web3 (Alchemy, QuickNode, Binance) and Stripe.",
+  "resume": "https://github.com/nkp1111/nkp1111/blob/main/neeraj_cv_2026.pdf",
+  "website": ["https://portfolio-teal-six-33.vercel.app/"],
+  "images": [
+    "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699017487/mine/qs9vaaepnzyz7aunhojc.jpg",
+    "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699017487/mine/ggrphtzg4optregq0l4h.jpg"
+  ],
+  "language": [
+    {
+      "name": "English",
+      "proficiency": "Professional"
+    },
+    {
+      "name": "Hindi",
+      "proficiency": "Fluent"
+    },
+    {
+      "name": "Gujarati",
+      "proficiency": "Native"
+    }
+  ],
+  "social": [
+    {
+      "name": "linkedin",
+      "link": "https://www.linkedin.com/in/neeraj-parmar-058591244/",
+      "icon": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699180346/mine/skills/images_erkytz.png"
+    },
+    {
+      "name": "github",
+      "link": "https://github.com/nkp1111",
+      "icon": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699180467/mine/skills/m3hyqwmaevibfzb0hlnb.png"
+    },
+    {
+      "name": "twitter",
+      "link": "https://twitter.com/nkp11111507",
+      "icon": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699180606/mine/skills/images_glb3oq.png"
+    }
+  ]
+}

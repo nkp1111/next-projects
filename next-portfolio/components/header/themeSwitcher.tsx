@@ -1,37 +1,37 @@
 "use client";
 
 import handleThemeSwitch from '@/lib/handleThemeSwitch';
-import { SunIcon } from '@heroicons/react/20/solid';
-import { MoonIcon } from '@heroicons/react/24/solid';
+import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 import React, { useEffect, useState } from 'react'
 
 export default function ThemeSwitcher() {
-  const [currentTheme, setCurrentTheme] = useState("lightTheme");
+  const [currentTheme, setCurrentTheme] = useState<string>("darkTheme");
+
   useEffect(() => {
-    // set base theme according to theme if provided otherwise lightTheme
     const localTheme = localStorage.getItem("portfolio-theme");
-    if (localTheme) {
-      const html: HTMLHtmlElement | null = document.querySelector('html')
-      if (!html) return;
-      html.setAttribute('data-theme', localTheme === "darkTheme" ? "darkTheme" : "lightTheme");
+    const activeTheme = localTheme === "lightTheme" ? "lightTheme" : "darkTheme";
+    const html = document.querySelector('html');
+    if (html) {
+      html.setAttribute('data-theme', activeTheme);
     }
-  }, [])
+    setCurrentTheme(activeTheme);
+  }, []);
+
   return (
-    <div>
-      <button type="button"
-        title={"Theme Switcher"}
-        className='mx-5'
-        onClick={() => {
-          handleThemeSwitch()
-          setCurrentTheme((pre) => pre === "light" ? "dark" : "light");
-        }}>
-        {/* different icon shown base on current theme  */}
-        {currentTheme === "light" ? (
-          <SunIcon className='w-12 h-12 text-yellow-600 rounded-full bg-orange-100' />
-        ) : (
-          <MoonIcon className='w-12 h-12 rounded-full shadow-sm shadow-black' />
-        )}
-      </button>
-    </div>
+    <button
+      type="button"
+      title="Toggle Theme"
+      className="btn btn-ghost btn-circle btn-sm ml-2 text-base-content/80 hover:text-base-content"
+      onClick={() => {
+        handleThemeSwitch();
+        setCurrentTheme((prev) => (prev === "darkTheme" ? "lightTheme" : "darkTheme"));
+      }}
+    >
+      {currentTheme === "darkTheme" ? (
+        <SunIcon className="w-5 h-5 text-amber-400" />
+      ) : (
+        <MoonIcon className="w-5 h-5 text-slate-700" />
+      )}
+    </button>
   )
 }

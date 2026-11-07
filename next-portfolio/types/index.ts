@@ -3,6 +3,8 @@ interface PersonalInfoParams {
   email: string;
   phone: string;
   location: string;
+  summary: string;
+  resume?: string;
   website: string[];
   images: string[];
   language: { name: string; proficiency: string }[];
@@ -10,9 +12,8 @@ interface PersonalInfoParams {
     name: string;
     link: string;
     icon: string;
-  }[]
+  }[];
 }
-
 
 interface ExperienceParams {
   title: string;
@@ -25,17 +26,15 @@ interface ExperienceParams {
   projects: string[];
   social: {
     [key: string]: string;
-  }
+  };
 }
-
 
 interface SkillParams {
-  name: string,
-  level: number,
-  image: string,
-  description: string,
+  name: string;
+  level: number;
+  image: string;
+  description: string;
 }
-
 
 interface ProjectParam {
   id: number;
@@ -55,10 +54,9 @@ interface ProjectParam {
   features: string[];
 }
 
-
 export type {
   SkillParams,
   PersonalInfoParams,
   ExperienceParams,
   ProjectParam,
-}
+};

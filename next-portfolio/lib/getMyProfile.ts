@@ -1,8 +1,6 @@
-import { URLS } from "@/constant";
-import fetchRequest from "./fetchRequest";
+import personalInfo from "@/data/personal_info.json";
+import { PersonalInfoParams } from "@/types";
 
-export default async function getMyProfile() {
-  let { profileUrl } = URLS;
-  const data = await fetchRequest({ url: profileUrl })
-  return data;
+export default async function getMyProfile(): Promise<PersonalInfoParams> {
+  return personalInfo as PersonalInfoParams;
 }

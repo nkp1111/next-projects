@@ -1,8 +1,6 @@
-import { URLS } from "@/constant";
-import fetchRequest from "./fetchRequest";
+import skillsData from "@/data/skills.json";
+import { SkillParams } from "@/types";
 
-export default async function getMySkills() {
-  let { skillsUrl } = URLS;
-  const data = await fetchRequest({ url: skillsUrl })
-  return data;
+export default async function getMySkills(): Promise<{ skills: SkillParams[] }> {
+  return skillsData as { skills: SkillParams[] };
 }

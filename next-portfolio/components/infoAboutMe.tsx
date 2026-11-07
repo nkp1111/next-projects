@@ -1,92 +1,120 @@
 import { PersonalInfoParams } from '@/types'
-import { LinkIcon } from '@heroicons/react/20/solid';
+import { 
+  EnvelopeIcon, 
+  PhoneIcon, 
+  MapPinIcon, 
+  LanguageIcon, 
+  ArrowTopRightOnSquareIcon 
+} from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import React from 'react'
 
-
-export default function InfoAboutMe(
-  { profile }: { profile: PersonalInfoParams }
-) {
-
-  const profileKeys = Object.keys(profile) as (keyof PersonalInfoParams)[];
-  const socialLinks = profile["social"];
+export default function InfoAboutMe({ profile }: { profile: PersonalInfoParams }) {
+  const { name, email, phone, location, language, social, summary } = profile;
 
   return (
-    <>
-      {profileKeys.map((profileKey) => {
-        if (["images", "social", "summary"].includes(profileKey)) {
-          return null;
-        }
+    <div className="flex flex-col gap-6">
+      
+      {/* Bio / Summary Card */}
+      <div className="card bg-base-100 border border-base-200 shadow-sm p-6 rounded-2xl">
+        <h2 className="text-xl font-bold text-base-content mb-3">Professional Background</h2>
+        <p className="text-base-content/80 leading-relaxed text-sm sm:text-base">
+          {summary}
+        </p>
+      </div>
 
-        if (profileKey === "language") {
-          return (
-            <div key={profileKey}
-              className='border-t-2 my-4 border-secondary flex pt-4'>
-              <div className='capitalize text-lg'>{profileKey} Known:</div>
-              <div className='text-xl ms-4'> {profile[profileKey].map(lang => lang.name).join(", ")}</div>
-            </div>
-          )
-        }
-
-        if (profileKey === "website") {
-          return (
-            <div key={profileKey}
-              className='border-t-2 my-4 border-secondary flex pt-4'>
-              <div className='capitalize text-lg'>{profileKey}:</div>
-              <div className='text-xl ms-4'>
-                <ol>
-                  {profile[profileKey].map(site => {
-                    if (!site) return;
-                    return (
-                      <li key={site}>
-                        <a href={site} className='underline text-info flex'>
-                          <span>{site}</span>
-                          <LinkIcon className='w-[25px] h-[25px] ms-3' />
-                        </a>
-                      </li>
-                    )
-                  })}
-                </ol>
-              </div>
-            </div>
-          )
-        }
-
-        return (
-          <div key={profileKey}
-            className='grid grid-cols-5 sm:border-b-0 border-t-2 mb-3'>
-            <div className='capitalize sm:col-span-1 col-span-5 text-lg'>{profileKey}: </div>
-            <div className='text-xl sm:col-span-4 col-span-5 ms-2 sm:ms-0'> {profile[profileKey] as string}</div>
+      {/* Contact & Details Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        
+        {/* Email */}
+        <div className="p-4 rounded-xl bg-base-100 border border-base-200 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <EnvelopeIcon className="w-5 h-5" />
           </div>
-        )
-      })}
+          <div className="overflow-hidden">
+            <div className="text-xs text-base-content/60 font-medium">Email</div>
+            <a href={`mailto:${email}`} className="text-sm font-semibold text-base-content hover:text-primary truncate block transition-colors">
+              {email}
+            </a>
+          </div>
+        </div>
 
-      <div className='border-y-2 my-4 border-secondary flex py-4 flex-col'>
-        <div className='capitalize text-xl text-center font-semibold'>Social Links</div>
-        <div className='flex gap-3 ms-4 flex-wrap justify-center'>
-          {socialLinks.map(social => {
-            const { name, link, icon } = social;
-            return (
-              <a key={name}
-                href={link}
-                title={link}
-                target='_blank'
-                className='btn flex-1 flex flex-nowrap gap-1'
-              >
-                {icon && (
-                  <Image
-                    src={icon}
-                    alt="logo"
-                    width={40}
-                    height={40}
-                    className={"w-[25px] h-[25px] "}
-                  />
-                )}
-                <span>{name}</span></a>
-            )
-          })}
+        {/* Phone */}
+        <div className="p-4 rounded-xl bg-base-100 border border-base-200 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <PhoneIcon className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="text-xs text-base-content/60 font-medium">Phone</div>
+            <a href={`tel:${phone}`} className="text-sm font-semibold text-base-content hover:text-primary transition-colors">
+              {phone}
+            </a>
+          </div>
+        </div>
+
+        {/* Location */}
+        <div className="p-4 rounded-xl bg-base-100 border border-base-200 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <MapPinIcon className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="text-xs text-base-content/60 font-medium">Location</div>
+            <div className="text-sm font-semibold text-base-content">
+              {location}
+            </div>
+          </div>
+        </div>
+
+        {/* Languages */}
+        <div className="p-4 rounded-xl bg-base-100 border border-base-200 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <LanguageIcon className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="text-xs text-base-content/60 font-medium">Languages</div>
+            <div className="text-sm font-semibold text-base-content flex gap-1 flex-wrap">
+              {language.map((lang, idx) => (
+                <span key={lang.name}>
+                  {lang.name}
+                  {idx < language.length - 1 && ","}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Social Links */}
+      <div className="card bg-base-100 border border-base-200 shadow-sm p-6 rounded-2xl">
+        <h3 className="text-sm font-semibold uppercase tracking-wider text-base-content/60 mb-4">
+          Connect Across Platforms
+        </h3>
+        <div className="flex flex-wrap gap-3">
+          {social.map((item) => (
+            <a
+              key={item.name}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline btn-sm gap-2 capitalize font-medium hover:bg-primary hover:border-primary hover:text-primary-content transition-all"
+            >
+              {item.icon && (
+                <Image
+                  src={item.icon}
+                  alt={item.name}
+                  width={18}
+                  height={18}
+                  className="w-4 h-4 rounded-sm"
+                />
+              )}
+              <span>{item.name}</span>
+              <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5 opacity-60" />
+            </a>
+          ))}
         </div>
       </div>
-    </>
+
+    </div>
   )
 }

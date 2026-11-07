@@ -1,0 +1,95 @@
+{
+  "skills": [
+    {
+      "name": "Node.js",
+      "level": 0.95,
+      "description": "Node.js is a runtime environment for executing JavaScript on the server side, used for building high-concurrency microservices, APIs, and real-time backend systems.",
+      "image": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699110295/mine/skills/nodejs-6_b1fn4q.jpg"
+    },
+    {
+      "name": "TypeScript",
+      "level": 0.9,
+      "description": "TypeScript adds static typing and compile-time error checks to JavaScript development, improving code maintainability and enterprise API design.",
+      "image": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699110364/mine/skills/ts_dloskl.jpg"
+    },
+    {
+      "name": "JavaScript",
+      "level": 0.95,
+      "description": "JavaScript (ES6+) is the foundational language for modern web and backend development, enabling dynamic behavior, async event loops, and server scripting.",
+      "image": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699110293/mine/skills/js_xozwu0.jpg"
+    },
+    {
+      "name": "Express.js",
+      "level": 0.9,
+      "description": "Express is a fast, unopinionated, minimalist web framework for Node.js, used for routing, middleware pipelines, and scalable RESTful APIs.",
+      "image": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699110364/mine/skills/express_comvli.png"
+    },
+    {
+      "name": "PostgreSQL",
+      "level": 0.85,
+      "description": "PostgreSQL is an enterprise-grade open-source relational database known for its reliability, ACID compliance, complex query performance, and indexing.",
+      "image": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699110295/mine/skills/postgresql_chxejr.jpg"
+    },
+    {
+      "name": "Drizzle ORM",
+      "level": 0.85,
+      "description": "Drizzle ORM is a lightweight, type-safe TypeScript ORM for SQL databases with zero runtime overhead and automatic schema migrations.",
+      "image": "https://dummyimage.com/100x100/c5f74f/000000.png&text=Drizzle"
+    },
+    {
+      "name": "MongoDB",
+      "level": 0.85,
+      "description": "MongoDB is a document-oriented NoSQL database featuring powerful aggregation pipelines, $geoNear 2dsphere indexing, and flexible data modeling.",
+      "image": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699110293/mine/skills/mongodb_qwt7wq.jpg"
+    },
+    {
+      "name": "Redis",
+      "level": 0.85,
+      "description": "Redis is an in-memory data store used for high-throughput distributed caching, pub/sub messaging, session storage, and rate limiting.",
+      "image": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1717414896/mine/skills/Logotype_wqzg74.svg"
+    },
+    {
+      "name": "BullMQ",
+      "level": 0.85,
+      "description": "BullMQ is a robust Redis-backed distributed task queue for Node.js, managing asynchronous job processing, delayed tasks, and worker concurrency.",
+      "image": "https://dummyimage.com/100x100/e0234e/ffffff.png&text=BullMQ"
+    },
+    {
+      "name": "Docker",
+      "level": 0.8,
+      "description": "Docker containerizes applications into lightweight, isolated environments for reliable, consistent deployment across development and production.",
+      "image": "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg"
+    },
+    {
+      "name": "React",
+      "level": 0.85,
+      "description": "React is a component-driven JavaScript library for creating interactive, responsive user interfaces and front-end architectures.",
+      "image": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699110297/mine/skills/react_psmkip.png"
+    },
+    {
+      "name": "Next.js",
+      "level": 0.85,
+      "description": "Next.js is the full-stack React framework providing hybrid static and server rendering (SSR/SSG), routing, and optimized web performance.",
+      "image": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699110294/mine/skills/nextjs_o8o98r.jpg"
+    },
+    {
+      "name": "Git",
+      "level": 0.85,
+      "description": "Git is the distributed version control system for tracking changes, branch workflows, and collaborating on production software projects.",
+      "image": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699110364/mine/skills/git_tfw4yx.jpg"
+    },
+    {
+      "name": "Tailwind CSS",
+      "level": 0.9,
+      "description": "Tailwind CSS is a utility-first CSS framework for crafting custom, responsive, and modern user interfaces rapidly.",
+      "image": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699160713/mine/skills/nnirfnusnk6igpexywl8.png"
+    },
+    {
+      "name": "Python",
+      "level": 0.6,
+      "description": "Python is a versatile programming language used for scripting, backend automation, and data handling.",
+      "image": "https://res.cloudinary.com/dxvkq8yw6/image/upload/v1699160087/mine/skills/Python.svg_mfe2fg.png"
+    }
+  ]
+}
+

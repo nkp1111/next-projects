@@ -1,88 +1,68 @@
+"use client";
+
 import React, { useEffect, useState } from 'react'
 import ProjectCard from './projectCard'
 import { ProjectParam } from '@/types'
-import ReactPaginate from 'react-paginate';
 import { ITEM_PER_PAGE } from '@/constant';
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
 import debounce from '@/lib/debounce';
 import ManualPagination from './manualPagination';
-import { useSearchParams } from 'next/navigation';
+import { SparklesIcon } from '@heroicons/react/24/outline';
 
 export default function ProjectPagination(
   { filteredProjects, filterQuery }
     : { filteredProjects: ProjectParam[], filterQuery: string }
 ) {
+  // pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageCount = Math.ceil(filteredProjects.length / ITEM_PER_PAGE) || 1;
+  const itemOffset = (currentPage - 1) * ITEM_PER_PAGE;
+  const [currentProjects, setCurrentProjects] = useState(filteredProjects.slice(itemOffset, itemOffset + ITEM_PER_PAGE));
 
-  const params = useSearchParams();
-  let paginationType = params.get("pagination") || "manual";
-
-  // paginate (react-pagination)
-  const [itemOffset, setItemOffset] = useState(0);
-  const [pageCount, setPageCount] = useState(Math.ceil(filteredProjects.length / ITEM_PER_PAGE) || 1);
-  const [currentProjects, setCurrentProjects] = useState(filteredProjects.slice(0, ITEM_PER_PAGE));
-  const handlePageClick = (event: { selected: number }) => {
-    const newOffset = (event.selected * ITEM_PER_PAGE) % filteredProjects.length;
-    setItemOffset(newOffset);
-  };
-
-  // show first page on filter query change (react-paginate)
+  // reset to page 1 on search change
   useEffect(() => {
-    const endOffset = itemOffset + ITEM_PER_PAGE;
-    debounce(() => {
-      setCurrentProjects(filteredProjects.slice(itemOffset, endOffset));
-      setPageCount(Math.ceil(filteredProjects.length / ITEM_PER_PAGE));
-    }, 300)();
-  }, [filteredProjects, itemOffset])
-
-  useEffect(() => {
-    setItemOffset(0);
+    setCurrentPage(1);
   }, [filterQuery]);
 
-  // manual pagination
-  const [currentPage, setCurrentPage] = useState(1);
   useEffect(() => {
-    const newOffset = ((currentPage - 1) * ITEM_PER_PAGE) % filteredProjects.length;
-    setItemOffset(newOffset);
-  }, [currentPage, filteredProjects])
+    debounce(() => {
+      const offset = (currentPage - 1) * ITEM_PER_PAGE;
+      setCurrentProjects(filteredProjects.slice(offset, offset + ITEM_PER_PAGE));
+    }, 150)();
+  }, [currentPage, filteredProjects]);
+
+  if (filteredProjects.length === 0) {
+    return (
+      <div className="card bg-base-100 border border-base-200 p-12 text-center rounded-2xl my-8">
+        <SparklesIcon className="w-12 h-12 text-base-content/30 mx-auto mb-3" />
+        <h3 className="text-lg font-bold text-base-content">No projects match your filter</h3>
+        <p className="text-xs text-base-content/60 mt-1">
+          Try searching for keywords like &quot;Node.js&quot;, &quot;Web3&quot;, &quot;PostgreSQL&quot;, or &quot;MongoDB&quot;.
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <div className='grid grid-cols-12 gap-5 mt-8'>
+    <div className="flex flex-col gap-10">
+      
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {currentProjects.map(project => (
-          <div key={project.id} className='col-span-12 md:col-span-6 lg:col-span-4 w-full mx-auto'>
-            <ProjectCard project={project} />
-          </div>
+          <ProjectCard key={project.id} project={project} />
         ))}
       </div>
 
-      {filteredProjects.length > currentProjects.length && pageCount > 1 && paginationType === "react" && (
-        <ReactPaginate
-          breakLabel="..."
-          previousLabel={<ArrowLeftIcon className='w-8 h-8' />}
-          nextLabel={<ArrowRightIcon className='w-8 h-8' />}
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          pageCount={pageCount || Math.ceil(filteredProjects.length / ITEM_PER_PAGE)}
-          renderOnZeroPageCount={null}
-          className='flex gap-2 justify-center content-center mt-10'
-          pageClassName='btn'
-          previousClassName='btn'
-          nextClassName='btn'
-          activeClassName='btn-primary'
-          pageLabelBuilder={(page: number) => page}
-          disableInitialCallback
-        />
-      )}
-
-      {/* react-paginate ui is not working properly on production, create pagination manually */}
-      {filteredProjects.length > currentProjects.length && pageCount > 1 && paginationType !== "react" && (
-        <ManualPagination
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-          maxPage={pageCount || Math.ceil(filteredProjects.length / ITEM_PER_PAGE)}
-        />
+      {/* Pagination */}
+      {filteredProjects.length > ITEM_PER_PAGE && pageCount > 1 && (
+        <div className="flex justify-center pt-4">
+          <ManualPagination
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+            maxPage={pageCount}
+          />
+        </div>
       )}
 
     </div>
-  )
+  );
 }

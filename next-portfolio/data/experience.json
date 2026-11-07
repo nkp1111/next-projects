@@ -1,0 +1,44 @@
+{
+  "work_experience": [
+    {
+      "title": "Node.js Developer",
+      "company": "Incipient Infotech",
+      "position": "Node.js Developer",
+      "language": "JavaScript, TypeScript",
+      "location": "Ahmedabad, Gujarat, India",
+      "start_date": "2024-08-09",
+      "end_date": "Present",
+      "projects": [
+        "ProjectWolf",
+        "ShareThere",
+        "FaceWish",
+        "Lavado Car Wash",
+        "Neo bot",
+        "Xira",
+        "Neo prometal",
+        "CICS trading"
+      ],
+      "social": {
+        "website": "https://incipientinfo.tech/",
+        "linkedin": "https://in.linkedin.com/company/incipientinfotech"
+      }
+    },
+    {
+      "title": "Node.js Developer",
+      "company": "QuadB Technologies",
+      "position": "Node.js Developer",
+      "language": "JavaScript",
+      "location": "Remote (Ludhiana, Punjab)",
+      "start_date": "2023-05-18",
+      "end_date": "2024-06-18",
+      "projects": [
+        "OWR-backend"
+      ],
+      "social": {
+        "website": "https://www.quadbtech.com/",
+        "linkedin": "https://www.linkedin.com/company/quadbtech/mycompany/"
+      }
+    }
+  ]
+}
+

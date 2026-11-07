@@ -1,8 +1,6 @@
-import { URLS } from "@/constant";
-import fetchRequest from "./fetchRequest";
+import experienceData from "@/data/experience.json";
+import { ExperienceParams } from "@/types";
 
-export default async function getMyExperiences() {
-  let { experienceUrl } = URLS;
-  const data = await fetchRequest({ url: experienceUrl })
-  return data;
+export default async function getMyExperiences(): Promise<{ work_experience: ExperienceParams[] }> {
+  return experienceData as { work_experience: ExperienceParams[] };
 }
